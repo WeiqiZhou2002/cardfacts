@@ -18,7 +18,9 @@
     "test": "node --import tsx --test tests/*.test.ts",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "pnpm format:check && pnpm typecheck && pnpm validate && pnpm test && pnpm build"
+    "check": "pnpm format:check && pnpm typecheck && pnpm validate && pnpm test && pnpm build",
+    "snapshot": "node --import tsx scripts/cli.ts snapshot",
+    "history": "node --import tsx scripts/cli.ts history"
   },
   "dependencies": {
     "ajv": "^8.20.0",

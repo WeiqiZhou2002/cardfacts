@@ -17,7 +17,7 @@ vectors are intentionally excluded from automatic formatting so their original b
 | Command                                          | Result                                                                                                                                |
 | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
 | `pnpm validate [--base-ref REV]`                 | Validate production data, vocabularies, maintenance settings and fixture structure; optionally protect history against a Git revision |
-| `pnpm build`                                     | Validate and write `dist/cards.json`, `dist/cards.min.json` and `dist/SHA256SUMS`                                                     |
+| `pnpm build`                                     | Validate and write `dist/cards.json`, `dist/cards.min.json`, `dist/history.json` and `dist/SHA256SUMS`                                |
 | `pnpm sources --json`                            | Source IDs, URLs, issuer IDs, manual-only flags, products and citing field JSON pointers                                              |
 | `pnpm stale --days 90 --as-of 2026-10-28 --json` | Versions strictly more than 90 calendar days old, including pending and historical versions                                           |
 | `pnpm fetch-source SOURCE_ID [--json]`           | Render a permitted public source, persist local state, and print its normalized-text SHA-256 or structured outcome                    |
@@ -30,7 +30,7 @@ explicitly. It reports versions, allowing a later site to group them by product.
 validation failure. `sources` includes attempted citations of null fields, so pending data remains
 discoverable. Resolve a returned field pointer against the product named in that record.
 
-Build and validation require no browser and no network. Phase 1 does not build or deploy a website,
+Build and validation require no browser and no network. The tooling does not build or deploy a website,
 publish a release, open issues or PRs, or run an unattended maintenance agent.
 
 ## Source fetcher
@@ -46,7 +46,7 @@ Configure `CARDFACTS_STATE_DIR` to a directory outside the repository (default
 page text under version control and never modifies data or verification dates.
 
 Issuer policy is in `maintenance/issuer-domains.json`. Domains cover the named domain and its subdomains,
-with hostname-boundary matching. All three seed issuers are initially `manual_only` pending website terms
+with hostname-boundary matching. All seven catalog issuer brands remain `manual_only` pending website terms
 review. Record the review in `automation_review` before removing an issuer from that list. This setting
 does not make a claim about whether the issuer permits or prohibits automation.
 
@@ -83,3 +83,18 @@ CARDFACTS_BROWSER_TEST=1 node --import tsx --test tests/browser.test.ts
 `maintenance/schedule.json` declares daily products and the rotation interval. `maintenance/leads.json`
 contains issuer news/feed leads, initially empty. Queue orchestration, the source budget, GitHub writes,
 and scheduled deployment belong to the later maintenance-agent phase.
+
+## Catalog revision commands
+
+- `pnpm snapshot PRODUCT --recorded-at TIME --reason TEXT`: append a complete structured product
+  revision. Requires an explicit UTC timestamp and reason; never overwrites old files.
+- `pnpm history PRODUCT --json`: list revision metadata.
+- `pnpm history PRODUCT --recorded-at TIME --json`: retrieve the latest full snapshot at/before that time.
+- `pnpm history PRODUCT --as-of DATE --json`: select effective terms from the latest snapshot. The two
+  date filters may be combined.
+- `pnpm history PRODUCT --from REVISION_ID --to REVISION_ID --json`: compare snapshot contents.
+
+History/snapshot commands always emit JSON. Invalid dates and unknown products/revision IDs fail; times
+before the first snapshot return `not_recorded`. A date is `YYYY-MM-DD`; a recorded time is UTC
+`YYYY-MM-DDTHH:mm:ssZ`. Every current edit, including notes-only changes, requires a new snapshot before
+ordinary validation/build. See [the history guide](history.md) for the complete maintenance sequence.

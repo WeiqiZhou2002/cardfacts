@@ -1,0 +1,140 @@
+{
+  "format_version": 1,
+  "id": "20261028T221039Z-6dcc87b940c7",
+  "product_id": "us-citi-double-cash",
+  "recorded_at": "2026-10-28T22:10:39Z",
+  "reason": "Initial Phase 2 issuer-source research; unknown effective starts and incomplete coverage remain explicit.",
+  "content_sha256": "6dcc87b940c7cd97043468e379246d6daf2256165aac3265fbd6e1c14769cb51",
+  "product": {
+    "id": "us-citi-double-cash",
+    "issuer": "Citi",
+    "name": "Citi Double Cash",
+    "country": "US",
+    "currency": "USD",
+    "network": null,
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "citi-thankyou",
+      "unit": "cash"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-citi-double-cash-page",
+        "url": "https://www.citi.com/credit-cards/citi-double-cash-credit-card",
+        "title": "Citi Double Cash official product information",
+        "accessed": "2026-10-28"
+      }
+    ],
+    "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "reviewed",
+      "credits": "reviewed",
+      "notes": "Reviewed listed ongoing benefits; merchant exclusions in notes remain part of eligibility. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-citi-double-cash-page",
+        "last_verified": "2026-10-28",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "0.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "base",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-citi-double-cash-page",
+            "last_verified": "2026-10-28",
+            "notes": "1% on purchases plus 1% when paid; payment required for full rate.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"],
+              "requires_payment": true
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "portal-hotels",
+        "category": "hotels",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-citi-double-cash-page",
+            "last_verified": "2026-10-28",
+            "notes": "Citi Travel hotel/car/attraction purchases; includes payment component.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["issuer_portal"],
+              "requires_payment": true
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "portal-car-rental",
+        "category": "car_rental",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-citi-double-cash-page",
+            "last_verified": "2026-10-28",
+            "notes": "Citi Travel hotel/car/attraction purchases; includes payment component.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["issuer_portal"],
+              "requires_payment": true
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "portal-entertainment",
+        "category": "entertainment",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-citi-double-cash-page",
+            "last_verified": "2026-10-28",
+            "notes": "Citi Travel hotel/car/attraction purchases; includes payment component.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["issuer_portal"],
+              "requires_payment": true
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

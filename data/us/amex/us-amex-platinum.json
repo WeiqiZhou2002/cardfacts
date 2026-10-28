@@ -432,5 +432,11 @@
         }
       ]
     }
-  ]
+  ],
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Phase 1 seed retained; optional fees and some credit terms are still pending. Existing verification dates are unchanged."
+  }
 }

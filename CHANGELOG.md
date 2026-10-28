@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026.10.28-phase2-draft
+
+- Expand to 30 products: 20 personal and 10 business, with explicit coverage limits and issuer citations.
+- Add schema v2 selectors, spend/payment/time conditions, nullable networks and special reset bases.
+- Preserve complete append-only product snapshots; query by recorded time or effective date and compare revisions.
+- Export deterministic `history.json`, validate checksums, and prevent edits/deletions/backdating of recorded revisions.
+- Keep unconfirmed terms pending and all issuer automation manual-only; preserve the 23 progress fixtures.
+
 ## 2026.10.28-draft
 
 - Establish the schema, bilingual category vocabularies, validation and reproducible data builds.

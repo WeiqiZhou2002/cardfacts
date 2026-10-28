@@ -1,0 +1,228 @@
+{
+  "format_version": 1,
+  "id": "20261028T221039Z-0d525154a9e6",
+  "product_id": "us-chase-ink-cash",
+  "recorded_at": "2026-10-28T22:10:39Z",
+  "reason": "Initial Phase 2 issuer-source research; unknown effective starts and incomplete coverage remain explicit.",
+  "content_sha256": "0d525154a9e609015d3c5554fdb4059dd01edb6242fdf74163abefc5e44340f8",
+  "product": {
+    "id": "us-chase-ink-cash",
+    "issuer": "Chase",
+    "name": "Ink Business Cash",
+    "country": "US",
+    "currency": "USD",
+    "network": null,
+    "audience": "business",
+    "availability": "open",
+    "rewards": {
+      "program": "chase-ultimate-rewards",
+      "unit": "cash"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-chase-ink-cash-page",
+        "url": "https://creditcards.chase.com/business-credit-cards/ink/cash",
+        "title": "Ink Business Cash official product information",
+        "accessed": "2026-10-28"
+      }
+    ],
+    "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "reviewed",
+      "credits": "reviewed",
+      "notes": "Reviewed listed ongoing benefits; merchant exclusions in notes remain part of eligibility. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-chase-ink-cash-page",
+        "last_verified": "2026-10-28",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "0.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "base",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-ink-cash-page",
+            "last_verified": "2026-10-28",
+            "notes": "Other eligible purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "office-supplies",
+        "category": "office_supplies",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-ink-cash-page",
+            "last_verified": "2026-10-28",
+            "notes": "Combined category cap; telecom includes internet, cable and phone.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": {
+              "amount": "25000.00",
+              "period": "annual",
+              "reset_basis": "anniversary",
+              "rate_after_cap": "1",
+              "shared_with": ["telecom"]
+            }
+          }
+        ]
+      },
+      {
+        "id": "telecom",
+        "category": "telecom",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-ink-cash-page",
+            "last_verified": "2026-10-28",
+            "notes": "Combined category cap; telecom includes internet, cable and phone.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": {
+              "amount": "25000.00",
+              "period": "annual",
+              "reset_basis": "anniversary",
+              "rate_after_cap": "1",
+              "shared_with": ["office-supplies"]
+            }
+          }
+        ]
+      },
+      {
+        "id": "gas",
+        "category": "gas",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-ink-cash-page",
+            "last_verified": "2026-10-28",
+            "notes": "Combined category cap; telecom includes internet, cable and phone.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": {
+              "amount": "25000.00",
+              "period": "annual",
+              "reset_basis": "anniversary",
+              "rate_after_cap": "1",
+              "shared_with": ["dining"]
+            }
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-ink-cash-page",
+            "last_verified": "2026-10-28",
+            "notes": "Combined category cap; telecom includes internet, cable and phone.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": {
+              "amount": "25000.00",
+              "period": "annual",
+              "reset_basis": "anniversary",
+              "rate_after_cap": "1",
+              "shared_with": ["gas"]
+            }
+          }
+        ]
+      },
+      {
+        "id": "lyft",
+        "category": "rideshare",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": "2027-09-30",
+            "status": "verified",
+            "source": "us-chase-ink-cash-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible Lyft purchases.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["any"],
+              "merchants": ["Lyft"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": [
+      {
+        "id": "instacart",
+        "name": "Instacart Business Credit",
+        "category": "food_delivery",
+        "delivery": "in_app",
+        "enrollment": "activation",
+        "match": {
+          "keywords": ["Instacart Business Credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": "2027-12-31",
+            "status": "verified",
+            "source": "us-chase-ink-cash-page",
+            "last_verified": "2026-10-28",
+            "notes": "Instacart+ membership and Business Account required; initial free membership later renews for a fee.",
+            "amount": "20.00",
+            "period": "monthly",
+            "reset_basis": "calendar",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": null
+          }
+        ]
+      }
+    ]
+  }
+}

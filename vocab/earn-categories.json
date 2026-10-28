@@ -226,8 +226,8 @@
       "zh": "轮换类别"
     },
     "definition": {
-      "en": "Issuer categories that change by period; detailed schedules deferred.",
-      "zh": "发卡机构按周期调整的类别，详细日程暂未建模。"
+      "en": "Issuer categories or merchants selected for an explicitly dated period.",
+      "zh": "发卡机构在明确时间区间内指定的轮换类别或商户。"
     }
   },
   {

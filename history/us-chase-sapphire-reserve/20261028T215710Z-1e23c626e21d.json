@@ -1,0 +1,381 @@
+{
+  "format_version": 1,
+  "id": "20261028T215710Z-1e23c626e21d",
+  "product_id": "us-chase-sapphire-reserve",
+  "recorded_at": "2026-10-28T21:57:10Z",
+  "reason": "Preserve the Phase 1 catalog before Phase 2 changes; verification dates remain unchanged.",
+  "content_sha256": "1e23c626e21d2350f2f8557b4b42476268fc7763f36fc85d7f6033573b00bd34",
+  "product": {
+    "id": "us-chase-sapphire-reserve",
+    "issuer": "Chase",
+    "name": "Sapphire Reserve",
+    "country": "US",
+    "currency": "USD",
+    "aliases": ["SAPPHIRE RESERVE", "CHASE SAPPHIRE RESERVE"],
+    "sources": [
+      {
+        "id": "chase-csr-page",
+        "url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+        "title": "Chase Sapphire Reserve product page, including its offer details overlay",
+        "accessed": "2026-10-28"
+      }
+    ],
+    "notes": "Complimentary subscriptions (Apple TV, Apple Music, DashPass) are memberships, not credits, and are omitted. effective_from of the 2025 refresh is not stated on the cited page and is left null (to verify).",
+    "credits": [
+      {
+        "id": "travel",
+        "name": "Annual Travel Credit",
+        "family": "travel",
+        "delivery": "statement_credit",
+        "enrollment": "none",
+        "match": {
+          "keywords": ["TRAVEL CREDIT"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": null,
+            "status": "verified",
+            "amount": "300.00",
+            "period": "annual",
+            "reset_basis": "anniversary_statement",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": 28,
+            "source": "chase-csr-page",
+            "last_verified": "2026-10-27",
+            "notes": "The year runs from account opening to the first statement date after the account-open anniversary, then every 12 billing cycles. Credits are issued for the year in which the purchase posts; they post within 3 business days but may take up to 4 weeks.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "travel"
+      },
+      {
+        "id": "the-edit",
+        "name": "Credit for stays with The Edit",
+        "family": "hotel",
+        "delivery": "statement_credit",
+        "enrollment": "none",
+        "match": {
+          "keywords": ["THE EDIT"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": "2025-12-31",
+            "status": "to_verify",
+            "amount": null,
+            "period": "semiannual",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": 28,
+            "source": "chase-csr-page",
+            "last_verified": "2026-10-27",
+            "notes": "Terms before 2026 are no longer on the page. Period and amount are placeholders until an archived issuer source is cited.",
+            "effective_from_basis": "unknown"
+          },
+          {
+            "effective_from": "2026-01-01",
+            "effective_to": null,
+            "status": "verified",
+            "amount": "500.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "period_boundaries": "stated",
+            "per_transaction_cap": "250.00",
+            "max_posting_lag_days": 28,
+            "source": "chase-csr-page",
+            "last_verified": "2026-10-27",
+            "notes": "Starting 2026-01-01, up to $250 per qualifying prepaid stay of two nights or more, up to $500 each calendar year.",
+            "effective_from_basis": "stated"
+          }
+        ],
+        "category": "hotel"
+      },
+      {
+        "id": "dining",
+        "name": "Dining Credit",
+        "family": "dining",
+        "delivery": "statement_credit",
+        "enrollment": "none",
+        "match": {
+          "keywords": ["DINING CREDIT", "EXCLUSIVE TABLES"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": null,
+            "status": "verified",
+            "amount": "150.00",
+            "period": "semiannual",
+            "reset_basis": "calendar",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": null,
+            "source": "chase-csr-page",
+            "last_verified": "2026-10-27",
+            "notes": "Up to $150 from January 1 through June 30 and $150 from July 1 through December 31 at Sapphire Reserve Exclusive Tables restaurants on OpenTable.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "dining"
+      },
+      {
+        "id": "stubhub",
+        "name": "StubHub Credit",
+        "delivery": "statement_credit",
+        "enrollment": "activation",
+        "match": {
+          "keywords": ["STUBHUB", "VIAGOGO"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": "2027-12-31",
+            "status": "verified",
+            "amount": "150.00",
+            "period": "semiannual",
+            "reset_basis": "calendar",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": null,
+            "source": "chase-csr-page",
+            "last_verified": "2026-10-27",
+            "notes": "Up to $150 January through June and $150 July through December for StubHub and viagogo purchases, through 2027-12-31. One-time activation required.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "entertainment_events"
+      },
+      {
+        "id": "peloton",
+        "name": "Peloton Credit",
+        "delivery": "statement_credit",
+        "enrollment": "activation",
+        "match": {
+          "keywords": ["PELOTON"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": "2027-12-31",
+            "status": "verified",
+            "amount": "10.00",
+            "period": "monthly",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null,
+            "source": "chase-csr-page",
+            "last_verified": "2026-10-27",
+            "notes": "$10 in statement credits per month on eligible Peloton memberships through 2027-12-31, up to $120 annually. Activation required.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "fitness_wellness"
+      },
+      {
+        "id": "trusted-traveler",
+        "name": "Global Entry, TSA PreCheck or NEXUS fee credit",
+        "family": "travel-program",
+        "delivery": "statement_credit",
+        "enrollment": "none",
+        "match": {
+          "keywords": ["GLOBAL ENTRY", "TSA PRECHECK", "NEXUS"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": null,
+            "status": "verified",
+            "amount": "120.00",
+            "period": "multi_year",
+            "period_years": 4,
+            "reset_basis": "since_last_credit",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": null,
+            "source": "chase-csr-page",
+            "last_verified": "2026-10-27",
+            "notes": "One statement credit of up to $120 every four years for the application fee.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "trusted_traveler"
+      },
+      {
+        "id": "lyft",
+        "name": "Lyft ride credits",
+        "family": "rideshare",
+        "delivery": "in_app",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": []
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": "2027-09-30",
+            "status": "verified",
+            "amount": "10.00",
+            "period": "monthly",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null,
+            "source": "chase-csr-page",
+            "last_verified": "2026-10-27",
+            "notes": "Up to $10 in monthly in-app Lyft credits through 2027-09-30; never posted to the card.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "rideshare"
+      },
+      {
+        "id": "doordash",
+        "name": "DoorDash promos",
+        "family": "dining",
+        "delivery": "in_app",
+        "enrollment": "activation",
+        "match": {
+          "keywords": []
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": "2029-12-31",
+            "status": "verified",
+            "amount": "35.00",
+            "period": "monthly",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null,
+            "source": "chase-csr-page",
+            "last_verified": "2026-10-27",
+            "notes": "Up to $35 each month in DashPass promos ($15 plus two $10) through 2029-12-31; applied in the DoorDash app, never posted to the card.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "food_delivery"
+      }
+    ],
+    "network": "visa",
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "chase-ultimate-rewards",
+      "unit": "points"
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "chase-csr-page",
+        "last_verified": "2026-10-28",
+        "notes": "Annual fee verified. First-year fee is not separately stated; unknown optional fees remain null.",
+        "annual_fee": "795.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": "195.00",
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "chase-travel",
+        "category": "travel",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "chase-csr-page",
+            "last_verified": "2026-10-28",
+            "notes": "Purchases through Chase Travel, including The Edit. Consult reward terms for exclusions.",
+            "rate": "8",
+            "conditions": {
+              "channels": ["issuer_portal"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "direct-flights",
+        "category": "flights",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "chase-csr-page",
+            "last_verified": "2026-10-28",
+            "notes": "Flights booked directly with airlines.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["direct"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "direct-hotels",
+        "category": "hotels",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "chase-csr-page",
+            "last_verified": "2026-10-28",
+            "notes": "Hotels booked directly.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["direct"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "chase-csr-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible restaurant dining worldwide.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "chase-csr-page",
+            "last_verified": "2026-10-28",
+            "notes": "Base rate for other eligible purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ]
+  }
+}

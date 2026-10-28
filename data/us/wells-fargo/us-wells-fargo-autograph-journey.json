@@ -1,0 +1,181 @@
+{
+  "id": "us-wells-fargo-autograph-journey",
+  "issuer": "Wells Fargo",
+  "name": "Wells Fargo Autograph Journey",
+  "country": "US",
+  "currency": "USD",
+  "network": "visa",
+  "audience": "personal",
+  "availability": "open",
+  "rewards": {
+    "program": "wells-fargo-rewards",
+    "unit": "points"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-wells-fargo-autograph-journey-page",
+      "url": "https://creditcards.wellsfargo.com/autograph-journey-visa-credit-card/",
+      "title": "Wells Fargo Autograph Journey official product information",
+      "accessed": "2026-10-28"
+    }
+  ],
+  "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "reviewed",
+    "credits": "reviewed",
+    "notes": "Reviewed listed ongoing benefits; merchant exclusions in notes remain part of eligibility. Empty credits means none captured, not a guarantee of absence."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-wells-fargo-autograph-journey-page",
+      "last_verified": "2026-10-28",
+      "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+      "annual_fee": "95.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "base",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-wells-fargo-autograph-journey-page",
+          "last_verified": "2026-10-28",
+          "notes": "Other eligible purchases.",
+          "rate": "1",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "hotels",
+      "category": "hotels",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-wells-fargo-autograph-journey-page",
+          "last_verified": "2026-10-28",
+          "notes": "Based on merchant category; travel excludes higher-rate hotel/airfare categories.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "flights",
+      "category": "flights",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-wells-fargo-autograph-journey-page",
+          "last_verified": "2026-10-28",
+          "notes": "Based on merchant category; travel excludes higher-rate hotel/airfare categories.",
+          "rate": "4",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "dining",
+      "category": "dining",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-wells-fargo-autograph-journey-page",
+          "last_verified": "2026-10-28",
+          "notes": "Based on merchant category; travel excludes higher-rate hotel/airfare categories.",
+          "rate": "3",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "travel",
+      "category": "travel",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-wells-fargo-autograph-journey-page",
+          "last_verified": "2026-10-28",
+          "notes": "Based on merchant category; travel excludes higher-rate hotel/airfare categories.",
+          "rate": "3",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "id": "airline",
+      "name": "Annual Airline Credit",
+      "category": "travel",
+      "delivery": "statement_credit",
+      "enrollment": "none",
+      "match": {
+        "keywords": ["Annual Airline Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-wells-fargo-autograph-journey-page",
+          "last_verified": "2026-10-28",
+          "notes": "First eligible airline purchase; first period starts at opening, renewals start month after annual fee assessment.",
+          "amount": "50.00",
+          "period": "annual",
+          "reset_basis": "month_after_annual_fee",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": 60,
+          "conditions": {
+            "minimum_spend": {
+              "amount": "50.00",
+              "period": "transaction"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

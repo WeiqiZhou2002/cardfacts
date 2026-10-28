@@ -1,0 +1,174 @@
+{
+  "id": "us-amex-blue-cash-everyday",
+  "issuer": "American Express",
+  "name": "Blue Cash Everyday",
+  "country": "US",
+  "currency": "USD",
+  "network": "amex",
+  "audience": "personal",
+  "availability": "open",
+  "rewards": {
+    "program": "amex-reward-dollars",
+    "unit": "cash"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-amex-blue-cash-everyday-page",
+      "url": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/",
+      "title": "Blue Cash Everyday official product information",
+      "accessed": "2026-10-28"
+    }
+  ],
+  "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "reviewed",
+    "credits": "reviewed",
+    "notes": "Reviewed listed ongoing benefits; merchant exclusions in notes remain part of eligibility. Empty credits means none captured, not a guarantee of absence."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-amex-blue-cash-everyday-page",
+      "last_verified": "2026-10-28",
+      "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+      "annual_fee": "0.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": "2.7"
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "groceries",
+      "category": "groceries",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-blue-cash-everyday-page",
+          "last_verified": "2026-10-28",
+          "notes": "US supermarkets; excludes superstores and warehouse clubs.",
+          "rate": "3",
+          "conditions": {
+            "channels": ["any"],
+            "region": "US"
+          },
+          "cap": {
+            "amount": "6000.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "rate_after_cap": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gas",
+      "category": "gas",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-blue-cash-everyday-page",
+          "last_verified": "2026-10-28",
+          "notes": "US gas stations.",
+          "rate": "3",
+          "conditions": {
+            "channels": ["any"],
+            "region": "US"
+          },
+          "cap": {
+            "amount": "6000.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "rate_after_cap": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "online-retail",
+      "category": "online_retail",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-blue-cash-everyday-page",
+          "last_verified": "2026-10-28",
+          "notes": "Eligible US online retail.",
+          "rate": "3",
+          "conditions": {
+            "channels": ["any"],
+            "region": "US",
+            "online_only": true
+          },
+          "cap": {
+            "amount": "6000.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "rate_after_cap": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "base",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-blue-cash-everyday-page",
+          "last_verified": "2026-10-28",
+          "notes": "Other eligible purchases.",
+          "rate": "1",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "id": "disney",
+      "name": "Disney Streaming Credit",
+      "category": "streaming_digital",
+      "delivery": "statement_credit",
+      "enrollment": "required",
+      "match": {
+        "keywords": ["DISNEY", "HULU", "ESPN"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-blue-cash-everyday-page",
+          "last_verified": "2026-10-28",
+          "notes": "Eligible Disney+, Hulu or ESPN subscriptions purchased on US websites.",
+          "amount": "7.00",
+          "period": "monthly",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null
+        }
+      ]
+    }
+  ]
+}

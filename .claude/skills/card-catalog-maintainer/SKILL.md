@@ -117,7 +117,7 @@ Only in `pr` mode. One product per pull request.
 2. Apply the versioning rules in [references/extraction.md](references/extraction.md#versioning). Set
    `last_verified` to today on every version you confirmed, and update the source
    `accessed` date to the actual access date. Never rewrite a historical source URL; add a new source ID.
-3. Run `pnpm validate --base-ref origin/main` and `pnpm build`. Fix your own mistakes; if the failure is not yours, stop and
+3. Append a full product snapshot with `pnpm snapshot PRODUCT_ID --recorded-at UTC_TIME --reason TEXT` using the actual UTC recording time. This is also required for notes-only and re-verification edits. Never edit or delete `history/` records. Then run `pnpm validate --base-ref origin/main` and `pnpm build`. Fix your own mistakes; if the failure is not yours, stop and
    report it.
 4. Commit with a message naming the product and the change, push, and open or update the pull request
    using [references/pr-template.md](references/pr-template.md). Labels: `bot` plus `data-change`.
@@ -127,7 +127,7 @@ Only in `pr` mode. One product per pull request.
 For versions from `pnpm stale --days 7` whose sources were fetched in this run with values found unchanged,
 set `last_verified` and source `accessed` to today on one branch `bot/reverify/<YYYY-MM-DD>` and open a single pull request
 labelled `bot` and `reverify` (add `automerge` only if `CARDFACTS_AUTOMERGE_REVERIFY` is `true`). Never
-mix value changes into this pull request.
+mix value changes into this pull request. Append a full snapshot for each changed product before validation, as in step 5.
 
 ### 7. Summary
 

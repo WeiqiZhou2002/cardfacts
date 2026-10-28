@@ -1,0 +1,203 @@
+{
+  "id": "us-us-bank-altitude-go",
+  "issuer": "U.S. Bank",
+  "name": "U.S. Bank Altitude Go",
+  "country": "US",
+  "currency": "USD",
+  "network": "visa",
+  "audience": "personal",
+  "availability": "open",
+  "rewards": {
+    "program": "us-bank-altitude",
+    "unit": "points"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-us-bank-altitude-go-page",
+      "url": "https://www.usbank.com/credit-cards/altitude-go-visa-signature-credit-card.html",
+      "title": "U.S. Bank Altitude Go official product information",
+      "accessed": "2026-10-28"
+    }
+  ],
+  "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "reviewed",
+    "credits": "reviewed",
+    "notes": "Reviewed listed ongoing benefits; merchant exclusions in notes remain part of eligibility. Empty credits means none captured, not a guarantee of absence."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-us-bank-altitude-go-page",
+      "last_verified": "2026-10-28",
+      "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+      "annual_fee": "0.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "base",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-us-bank-altitude-go-page",
+          "last_verified": "2026-10-28",
+          "notes": "Other eligible purchases.",
+          "rate": "1",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "dining",
+      "category": "dining",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-us-bank-altitude-go-page",
+          "last_verified": "2026-10-28",
+          "notes": "Eligible dining purchases.",
+          "rate": "4",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": {
+            "amount": "2000.00",
+            "period": "quarterly",
+            "reset_basis": "calendar",
+            "rate_after_cap": "1"
+          }
+        }
+      ]
+    },
+    {
+      "id": "groceries",
+      "category": "groceries",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-us-bank-altitude-go-page",
+          "last_verified": "2026-10-28",
+          "notes": "Select streaming; supermarket/discount-store/warehouse exclusions apply to grocery and fuel categories.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "gas",
+      "category": "gas",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-us-bank-altitude-go-page",
+          "last_verified": "2026-10-28",
+          "notes": "Select streaming; supermarket/discount-store/warehouse exclusions apply to grocery and fuel categories.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "ev-charging",
+      "category": "ev_charging",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-us-bank-altitude-go-page",
+          "last_verified": "2026-10-28",
+          "notes": "Select streaming; supermarket/discount-store/warehouse exclusions apply to grocery and fuel categories.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "streaming",
+      "category": "streaming",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-us-bank-altitude-go-page",
+          "last_verified": "2026-10-28",
+          "notes": "Select streaming; supermarket/discount-store/warehouse exclusions apply to grocery and fuel categories.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "id": "streaming",
+      "name": "Streaming Service Credit",
+      "category": "streaming_digital",
+      "delivery": "statement_credit",
+      "enrollment": "none",
+      "match": {
+        "keywords": ["Streaming Service Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-us-bank-altitude-go-page",
+          "last_verified": "2026-10-28",
+          "notes": "At most once per 12 months after 11 consecutive calendar months of eligible streaming; posts within two statement cycles. Anchor needs activity history.",
+          "amount": "15.00",
+          "period": "annual",
+          "reset_basis": "qualifying_activity",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null,
+          "conditions": {
+            "consecutive_months": 11
+          }
+        }
+      ]
+    }
+  ]
+}

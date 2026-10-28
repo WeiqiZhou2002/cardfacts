@@ -193,6 +193,33 @@
           "cap": null
         }
       ]
+    },
+    {
+      "id": "capital-one-entertainment",
+      "category": "entertainment",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "capone-venture-x-page",
+          "last_verified": "2026-10-28",
+          "notes": "Capital One Entertainment ticketing purchases; excludes exclusive presales and direct Capital One Hall/Arena ticketing.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["any"],
+            "merchants": ["Capital One Entertainment"]
+          },
+          "cap": null
+        }
+      ]
     }
-  ]
+  ],
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Phase 1 seed retained; optional fees and some credit terms are still pending. Existing verification dates are unchanged."
+  }
 }

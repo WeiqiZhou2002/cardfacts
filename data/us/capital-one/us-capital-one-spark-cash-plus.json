@@ -1,0 +1,161 @@
+{
+  "id": "us-capital-one-spark-cash-plus",
+  "issuer": "Capital One",
+  "name": "Spark Cash Plus",
+  "country": "US",
+  "currency": "USD",
+  "network": null,
+  "audience": "business",
+  "availability": "open",
+  "rewards": {
+    "program": "capital-one-cash-back",
+    "unit": "cash"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-capital-one-spark-cash-plus-page",
+      "url": "https://www.capitalone.com/small-business/credit-cards/spark-cash-plus/",
+      "title": "Spark Cash Plus official product information",
+      "accessed": "2026-10-28"
+    }
+  ],
+  "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "reviewed",
+    "credits": "reviewed",
+    "notes": "Reviewed listed ongoing benefits; merchant exclusions in notes remain part of eligibility. Empty credits means none captured, not a guarantee of absence."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-capital-one-spark-cash-plus-page",
+      "last_verified": "2026-10-28",
+      "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+      "annual_fee": "150.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": "0.00",
+      "foreign_transaction_fee_percent": null
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "base",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-capital-one-spark-cash-plus-page",
+          "last_verified": "2026-10-28",
+          "notes": "Other eligible purchases.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "portal-hotels",
+      "category": "hotels",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-capital-one-spark-cash-plus-page",
+          "last_verified": "2026-10-28",
+          "notes": "Eligible issuer-portal bookings.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["issuer_portal"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "portal-car-rental",
+      "category": "car_rental",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-capital-one-spark-cash-plus-page",
+          "last_verified": "2026-10-28",
+          "notes": "Eligible issuer-portal bookings.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["issuer_portal"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "portal-vacation-rentals",
+      "category": "vacation_rentals",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-capital-one-spark-cash-plus-page",
+          "last_verified": "2026-10-28",
+          "notes": "Eligible issuer-portal bookings.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["issuer_portal"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "id": "annual-fee-refund",
+      "name": "Annual Fee Refund",
+      "category": "other",
+      "delivery": "statement_credit",
+      "enrollment": "none",
+      "match": {
+        "keywords": ["Annual Fee Refund"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-capital-one-spark-cash-plus-page",
+          "last_verified": "2026-10-28",
+          "notes": "Net spending by membership anniversary; refund posts within two billing cycles afterward.",
+          "amount": "150.00",
+          "period": "annual",
+          "reset_basis": "anniversary",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null,
+          "conditions": {
+            "minimum_spend": {
+              "amount": "150000.00",
+              "period": "benefit_period"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

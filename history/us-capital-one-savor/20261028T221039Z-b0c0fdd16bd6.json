@@ -1,0 +1,237 @@
+{
+  "format_version": 1,
+  "id": "20261028T221039Z-b0c0fdd16bd6",
+  "product_id": "us-capital-one-savor",
+  "recorded_at": "2026-10-28T22:10:39Z",
+  "reason": "Initial Phase 2 issuer-source research; unknown effective starts and incomplete coverage remain explicit.",
+  "content_sha256": "b0c0fdd16bd6a64f810dd5331c574daaecfcbd426beb3f4be0639ef2edec3d4e",
+  "product": {
+    "id": "us-capital-one-savor",
+    "issuer": "Capital One",
+    "name": "Savor Rewards",
+    "country": "US",
+    "currency": "USD",
+    "network": null,
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "capital-one-cash-back",
+      "unit": "cash"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-capital-one-savor-page",
+        "url": "https://www.capitalone.com/credit-cards/savor/",
+        "title": "Savor Rewards official product information",
+        "accessed": "2026-10-28"
+      }
+    ],
+    "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "reviewed",
+      "credits": "reviewed",
+      "notes": "Reviewed listed ongoing benefits; merchant exclusions in notes remain part of eligibility. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-capital-one-savor-page",
+        "last_verified": "2026-10-28",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "0.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": "0"
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "base",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-capital-one-savor-page",
+            "last_verified": "2026-10-28",
+            "notes": "Other eligible purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "portal-hotels",
+        "category": "hotels",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-capital-one-savor-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible issuer-portal bookings.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["issuer_portal"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "portal-car-rental",
+        "category": "car_rental",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-capital-one-savor-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible issuer-portal bookings.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["issuer_portal"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "portal-vacation-rentals",
+        "category": "vacation_rentals",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-capital-one-savor-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible issuer-portal bookings.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["issuer_portal"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "capital-one-entertainment",
+        "category": "entertainment",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-capital-one-savor-page",
+            "last_verified": "2026-10-28",
+            "notes": "Capital One Entertainment purchases.",
+            "rate": "8",
+            "conditions": {
+              "channels": ["any"],
+              "merchants": ["Capital One Entertainment"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "groceries",
+        "category": "groceries",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-capital-one-savor-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible category; groceries exclude superstores, streaming restricted to eligible services.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-capital-one-savor-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible category; groceries exclude superstores, streaming restricted to eligible services.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "entertainment",
+        "category": "entertainment",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-capital-one-savor-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible category; groceries exclude superstores, streaming restricted to eligible services.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "streaming",
+        "category": "streaming",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-capital-one-savor-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible category; groceries exclude superstores, streaming restricted to eligible services.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

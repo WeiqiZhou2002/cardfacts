@@ -1,0 +1,659 @@
+{
+  "id": "us-amex-business-platinum",
+  "issuer": "American Express",
+  "name": "American Express Business Platinum",
+  "country": "US",
+  "currency": "USD",
+  "network": "amex",
+  "audience": "business",
+  "availability": "open",
+  "rewards": {
+    "program": "amex-membership-rewards",
+    "unit": "points"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-amex-business-platinum-page",
+      "url": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-business-platinum-credit-card-amex/",
+      "title": "American Express Business Platinum official product information",
+      "accessed": "2026-10-28"
+    }
+  ],
+  "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Future shipping/wireless merchant restrictions pending; rates never stack. Employee-card tiers and precise timing of multi-year benefit need further terms review."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-amex-business-platinum-page",
+      "last_verified": "2026-10-28",
+      "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+      "annual_fee": "895.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "base",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "Other eligible purchases.",
+          "rate": "1",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "portal-flights",
+      "category": "flights",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "Eligible issuer-portal bookings.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["issuer_portal"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "portal-hotels",
+      "category": "hotels",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "Amex Travel prepaid hotels.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["issuer_portal"],
+            "prepaid": true
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "construction",
+      "category": "home_improvement",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "US construction materials and hardware suppliers.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"],
+            "region": "US"
+          },
+          "cap": {
+            "amount": "2000000.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "rate_after_cap": "1",
+            "shared_with": ["technology", "shipping", "large-purchases"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "technology",
+      "category": "software_cloud",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "US electronic goods, software and cloud providers.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"],
+            "region": "US"
+          },
+          "cap": {
+            "amount": "2000000.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "rate_after_cap": "1",
+            "shared_with": ["construction", "shipping", "large-purchases"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "shipping",
+      "category": "shipping",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": "2027-02-16",
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "US shipping providers.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"],
+            "region": "US"
+          },
+          "cap": {
+            "amount": "2000000.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "rate_after_cap": "1",
+            "shared_with": ["construction", "technology", "large-purchases"]
+          }
+        },
+        {
+          "effective_from": "2027-02-17",
+          "effective_from_basis": "stated",
+          "effective_to": null,
+          "status": "to_verify",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "Announced select-merchant restriction; list pending.",
+          "rate": null,
+          "conditions": {
+            "channels": ["any"],
+            "region": "US"
+          },
+          "cap": {
+            "amount": "2000000.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "rate_after_cap": "1",
+            "shared_with": ["construction", "technology", "large-purchases"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "large-purchases",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "Each eligible transaction of at least $5,000.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"],
+            "minimum_transaction_amount": "5000.00"
+          },
+          "cap": {
+            "amount": "2000000.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "rate_after_cap": "1",
+            "shared_with": ["construction", "technology", "shipping"]
+          }
+        }
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "id": "hotel",
+      "name": "Hotel Credit",
+      "category": "hotel",
+      "delivery": "statement_credit",
+      "enrollment": "none",
+      "match": {
+        "keywords": ["Hotel Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": "2026-12-31",
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "Prepaid Amex Travel FHR/THC; THC requires two nights.",
+          "amount": "300.00",
+          "period": "semiannual",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null
+        },
+        {
+          "effective_from": "2027-01-01",
+          "effective_from_basis": "stated",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "Prepaid Amex Travel FHR/THC; both require two nights.",
+          "amount": "300.00",
+          "period": "semiannual",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null,
+          "conditions": {
+            "minimum_nights": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "airline",
+      "name": "Airline Fee Credit",
+      "category": "airline_incidental",
+      "delivery": "statement_credit",
+      "enrollment": "required",
+      "match": {
+        "keywords": ["Airline Fee Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "Incidental fees from selected qualifying airline.",
+          "amount": "200.00",
+          "period": "annual",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": 56
+        }
+      ]
+    },
+    {
+      "id": "hilton",
+      "name": "Hilton Credit",
+      "category": "hotel",
+      "delivery": "statement_credit",
+      "enrollment": "required",
+      "match": {
+        "keywords": ["Hilton Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "Direct Hilton purchases; Hilton for Business membership required; excludes gift cards.",
+          "amount": "50.00",
+          "period": "quarterly",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null
+        }
+      ]
+    },
+    {
+      "id": "clear",
+      "name": "CLEAR Plus Credit",
+      "category": "trusted_traveler",
+      "delivery": "statement_credit",
+      "enrollment": "none",
+      "match": {
+        "keywords": ["CLEAR Plus Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "CLEAR Plus membership; tax/fees excluded.",
+          "amount": "219.00",
+          "period": "annual",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null
+        }
+      ]
+    },
+    {
+      "id": "trusted-traveler",
+      "name": "Global Entry / TSA PreCheck",
+      "category": "trusted_traveler",
+      "delivery": "statement_credit",
+      "enrollment": "none",
+      "match": {
+        "keywords": ["GLOBAL ENTRY", "TSA PRECHECK"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "Global Entry up to $120 or TSA PreCheck up to $85; one shared four-year credit.",
+          "amount": "120.00",
+          "period": "multi_year",
+          "reset_basis": "since_last_credit",
+          "period_boundaries": "inferred",
+          "max_posting_lag_days": null,
+          "period_years": 4
+        }
+      ]
+    },
+    {
+      "id": "dell",
+      "name": "Dell Credit",
+      "category": "business_services",
+      "delivery": "statement_credit",
+      "enrollment": "required",
+      "match": {
+        "keywords": ["Dell Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "US purchases directly from Dell.",
+          "amount": "150.00",
+          "period": "annual",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null
+        }
+      ]
+    },
+    {
+      "id": "dell-spend",
+      "name": "Dell Spend Credit",
+      "category": "business_services",
+      "delivery": "statement_credit",
+      "enrollment": "required",
+      "match": {
+        "keywords": ["Dell Spend Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "Additional Dell credit after eligible annual US Dell spend.",
+          "amount": "1000.00",
+          "period": "annual",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null,
+          "conditions": {
+            "minimum_spend": {
+              "amount": "5000.00",
+              "period": "benefit_period"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "adobe",
+      "name": "Adobe Credit",
+      "category": "business_services",
+      "delivery": "statement_credit",
+      "enrollment": "required",
+      "match": {
+        "keywords": ["Adobe Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "Direct US Adobe purchases.",
+          "amount": "250.00",
+          "period": "annual",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null,
+          "conditions": {
+            "minimum_spend": {
+              "amount": "600.00",
+              "period": "benefit_period"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "chatgpt-business",
+      "name": "ChatGPT Business Credit",
+      "category": "business_services",
+      "delivery": "statement_credit",
+      "enrollment": "required",
+      "match": {
+        "keywords": ["ChatGPT Business Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "US ChatGPT Business purchases.",
+          "amount": "300.00",
+          "period": "annual",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null
+        }
+      ]
+    },
+    {
+      "id": "indeed",
+      "name": "Indeed Credit",
+      "category": "business_services",
+      "delivery": "statement_credit",
+      "enrollment": "required",
+      "match": {
+        "keywords": ["Indeed Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "Eligible Indeed purchases.",
+          "amount": "90.00",
+          "period": "quarterly",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null
+        }
+      ]
+    },
+    {
+      "id": "wireless",
+      "name": "Wireless Credit",
+      "category": "wireless",
+      "delivery": "statement_credit",
+      "enrollment": "required",
+      "match": {
+        "keywords": ["Wireless Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": "2027-02-16",
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "US wireless service paid directly.",
+          "amount": "10.00",
+          "period": "monthly",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null
+        },
+        {
+          "effective_from": "2027-02-17",
+          "effective_from_basis": "stated",
+          "effective_to": null,
+          "status": "to_verify",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "Select-merchant restriction announced; eligible list pending.",
+          "amount": null,
+          "period": "monthly",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null
+        }
+      ]
+    },
+    {
+      "id": "zo",
+      "name": "ZO Membership Credit",
+      "category": "business_services",
+      "delivery": "statement_credit",
+      "enrollment": "required",
+      "match": {
+        "keywords": ["ZO Membership Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "ZO event-space bookings or Dining Club; membership required.",
+          "amount": "500.00",
+          "period": "annual",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null
+        }
+      ]
+    },
+    {
+      "id": "one-ap",
+      "name": "One AP Credit",
+      "category": "business_services",
+      "delivery": "statement_credit",
+      "enrollment": "required",
+      "match": {
+        "keywords": ["One AP Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "One AP monthly fees; active bank-funded check/ACH usage required.",
+          "amount": "2400.00",
+          "period": "annual",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null,
+          "conditions": {
+            "minimum_spend": {
+              "amount": "250000.00",
+              "period": "previous_calendar_year"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "flight-spend",
+      "name": "Amex Travel Flight Credit",
+      "category": "travel",
+      "delivery": "statement_credit",
+      "enrollment": "none",
+      "match": {
+        "keywords": ["Amex Travel Flight Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-business-platinum-page",
+          "last_verified": "2026-10-28",
+          "notes": "AmexTravel.com flight purchases.",
+          "amount": "1200.00",
+          "period": "annual",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null,
+          "conditions": {
+            "minimum_spend": {
+              "amount": "250000.00",
+              "period": "previous_calendar_year"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

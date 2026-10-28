@@ -1,0 +1,101 @@
+{
+  "format_version": 1,
+  "id": "20261028T221039Z-106468617e94",
+  "product_id": "us-amex-blue-business-plus",
+  "recorded_at": "2026-10-28T22:10:39Z",
+  "reason": "Initial Phase 2 issuer-source research; unknown effective starts and incomplete coverage remain explicit.",
+  "content_sha256": "106468617e94cbba6376d26a96ffdc86364339a398af4e4e74701f0dd7ce6470",
+  "product": {
+    "id": "us-amex-blue-business-plus",
+    "issuer": "American Express",
+    "name": "Blue Business Plus",
+    "country": "US",
+    "currency": "USD",
+    "network": "amex",
+    "audience": "business",
+    "availability": "open",
+    "rewards": {
+      "program": "amex-membership-rewards",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-amex-blue-business-plus-page",
+        "url": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-blue-business-plus-credit-card-amex/",
+        "title": "Blue Business Plus official product information",
+        "accessed": "2026-10-28"
+      }
+    ],
+    "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "reviewed",
+      "credits": "reviewed",
+      "notes": "Reviewed listed ongoing benefits; merchant exclusions in notes remain part of eligibility. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-amex-blue-business-plus-page",
+        "last_verified": "2026-10-28",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "0.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": "0.00",
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "base",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-blue-business-plus-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible purchases; portal bonus purchases excluded from this cap.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": {
+              "amount": "50000.00",
+              "period": "annual",
+              "reset_basis": "calendar",
+              "rate_after_cap": "1"
+            }
+          }
+        ]
+      },
+      {
+        "id": "portal-travel",
+        "category": "travel",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-blue-business-plus-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible Amex Travel purchases; exclusions in benefit terms.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["issuer_portal"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

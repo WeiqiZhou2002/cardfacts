@@ -28,7 +28,7 @@ const errors = (card: Card) => cardErrors(card, issuer, earnCategories, creditCa
 test("production schema rejects bad dates, amounts, unknown fields and synthetic status", async (t) => {
   const directory = await mkdtemp(join(tmpdir(), "cardfacts-schema-"));
   try {
-    for (const item of ["data", "vocab", "schema", "maintenance", "vectors", "catalog.json"])
+    for (const item of ["data", "history", "vocab", "schema", "maintenance", "vectors", "catalog.json"])
       await cp(join(root, item), join(directory, item), { recursive: true });
     const file = join(directory, "data/us/amex/us-amex-platinum.json");
     const cases: [string, (card: Card) => void][] = [
@@ -237,11 +237,17 @@ test("build is reproducible, preserves source data, and hashes exact output byte
     const first = await readFile(join(directory, "cards.json"), "utf8");
     const min = await readFile(join(directory, "cards.min.json"), "utf8");
     const sums = await readFile(join(directory, "SHA256SUMS"), "utf8");
+    const history = await readFile(join(directory, "history.json"), "utf8");
     assert.deepEqual(JSON.parse(first), JSON.parse(min));
     assert.deepEqual(JSON.parse(first).products, catalog.cards);
-    assert.equal(sums, `${sha256(first)}  cards.json\n${sha256(min)}  cards.min.json\n`);
+    assert.deepEqual(JSON.parse(history).revisions, catalog.revisions);
+    assert.equal(
+      sums,
+      `${sha256(first)}  cards.json\n${sha256(min)}  cards.min.json\n${sha256(history)}  history.json\n`,
+    );
     await buildCatalog(catalog, directory);
     assert.equal(await readFile(join(directory, "cards.json"), "utf8"), first);
+    assert.equal(await readFile(join(directory, "history.json"), "utf8"), history);
     assert.equal(await readFile(join(directory, "SHA256SUMS"), "utf8"), sums);
   } finally {
     await rm(directory, { recursive: true, force: true });

@@ -1,3 +1,5 @@
+import type { Revision } from "./revisions.js";
+
 export interface Version {
   effective_from: string | null;
   effective_from_basis: "unknown" | "stated" | "detected";
@@ -21,6 +23,13 @@ export interface EarnVersion extends Version {
     region?: string;
     requires_activation?: boolean;
     prepaid?: boolean;
+    online_only?: boolean;
+    requires_payment?: boolean;
+    minimum_transaction_amount?: string;
+    selection?:
+      | { type: "top_spend"; count: number; period: "billing_cycle"; categories: string[] }
+      | { type: "rotating"; categories: string[]; merchants: string[] };
+    time_window?: { start_days: string[]; start: string; end: string; timezone: string };
   };
   cap: {
     amount: string;
@@ -34,11 +43,22 @@ export interface CreditVersion extends Version {
   amount: string | null;
   period: "monthly" | "quarterly" | "semiannual" | "annual" | "multi_year";
   period_years?: number;
-  reset_basis: "calendar" | "anniversary" | "anniversary_statement" | "since_last_credit";
+  reset_basis:
+    | "calendar"
+    | "anniversary"
+    | "anniversary_statement"
+    | "since_last_credit"
+    | "month_after_annual_fee"
+    | "qualifying_activity";
   period_boundaries: "stated" | "inferred";
   cap_excludes_tax?: boolean;
   per_transaction_cap?: string;
   max_posting_lag_days: number | null;
+  conditions?: {
+    minimum_spend?: { amount: string; period: "transaction" | "benefit_period" | "previous_calendar_year" };
+    minimum_nights?: number;
+    consecutive_months?: number;
+  };
 }
 export interface Source {
   id: string;
@@ -52,13 +72,19 @@ export interface Card {
   name: string;
   country: "US";
   currency: "USD";
-  network: "amex" | "visa" | "mastercard" | "discover";
+  network: "amex" | "visa" | "mastercard" | "discover" | null;
   audience: "personal" | "business";
   availability: "open" | "closed_to_new" | "discontinued";
   rewards: { program: string; unit: "points" | "miles" | "cash" };
   aliases: string[];
   sources: Source[];
   notes: string;
+  coverage?: {
+    fees: "partial" | "reviewed";
+    earn_rates: "partial" | "reviewed";
+    credits: "partial" | "reviewed";
+    notes: string;
+  };
   fees: FeeVersion[];
   earn_rates: { id: string; category: string; versions: EarnVersion[] }[];
   credits: {
@@ -88,4 +114,5 @@ export interface Catalog {
   metadata: { schema_version: number; catalog_version: string; license: "CC0-1.0" };
   cards: Card[];
   issuers: IssuerConfig;
+  revisions: Revision[];
 }

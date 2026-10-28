@@ -1,0 +1,233 @@
+{
+  "format_version": 1,
+  "id": "20261028T221039Z-9d00b0f7083d",
+  "product_id": "us-capital-one-venture-x",
+  "recorded_at": "2026-10-28T22:10:39Z",
+  "reason": "Add explicit coverage limits; Venture X also gains the issuer-confirmed entertainment earn rule. Preserve all prior terms.",
+  "content_sha256": "9d00b0f7083d23ab4e691dad971312ddf214e238e4c10e38df8be85a4d2b08fa",
+  "product": {
+    "id": "us-capital-one-venture-x",
+    "issuer": "Capital One",
+    "name": "Venture X",
+    "country": "US",
+    "currency": "USD",
+    "aliases": ["VENTURE X"],
+    "sources": [
+      {
+        "id": "capone-venture-x-page",
+        "url": "https://www.capitalone.com/credit-cards/venture-x/",
+        "title": "Venture X product page",
+        "accessed": "2026-10-28"
+      }
+    ],
+    "notes": "The rendered page on 2026-10-27 did not show the travel credit or the trusted-traveler amount (the values are filled by page templates). Every amount stays to_verify until a rendered issuer page or benefits guide is cited.",
+    "credits": [
+      {
+        "id": "travel",
+        "name": "Capital One Travel credit",
+        "family": "travel",
+        "delivery": "statement_credit",
+        "enrollment": "none",
+        "match": {
+          "keywords": ["CAPITAL ONE TRAVEL"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": null,
+            "status": "to_verify",
+            "amount": null,
+            "period": "annual",
+            "reset_basis": "anniversary",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null,
+            "source": "capone-venture-x-page",
+            "last_verified": "2026-10-27",
+            "notes": "Amount and reset basis to verify.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "travel"
+      },
+      {
+        "id": "trusted-traveler",
+        "name": "Global Entry or TSA PreCheck credit",
+        "family": "travel-program",
+        "delivery": "statement_credit",
+        "enrollment": "none",
+        "match": {
+          "keywords": ["GLOBAL ENTRY", "TSA PRECHECK"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": null,
+            "status": "to_verify",
+            "amount": null,
+            "period": "multi_year",
+            "period_years": 4,
+            "reset_basis": "since_last_credit",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": null,
+            "source": "capone-venture-x-page",
+            "last_verified": "2026-10-27",
+            "notes": "The page states one statement credit per account every four years, posting within two billing cycles; the amount is templated and not visible.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "trusted_traveler"
+      }
+    ],
+    "network": "visa",
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "capital-one-miles",
+      "unit": "miles"
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "capone-venture-x-page",
+        "last_verified": "2026-10-28",
+        "notes": "Annual fee verified. First-year fee is not separately stated; unknown optional fees remain null.",
+        "annual_fee": "395.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": "0"
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "portal-hotels",
+        "category": "hotels",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "capone-venture-x-page",
+            "last_verified": "2026-10-28",
+            "notes": "Bookings through Capital One Travel.",
+            "rate": "10",
+            "conditions": {
+              "channels": ["issuer_portal"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "portal-car-rental",
+        "category": "car_rental",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "capone-venture-x-page",
+            "last_verified": "2026-10-28",
+            "notes": "Bookings through Capital One Travel.",
+            "rate": "10",
+            "conditions": {
+              "channels": ["issuer_portal"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "portal-flights",
+        "category": "flights",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "capone-venture-x-page",
+            "last_verified": "2026-10-28",
+            "notes": "Bookings through Capital One Travel.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["issuer_portal"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "portal-vacation-rentals",
+        "category": "vacation_rentals",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "capone-venture-x-page",
+            "last_verified": "2026-10-28",
+            "notes": "Bookings through Capital One Travel.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["issuer_portal"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "capone-venture-x-page",
+            "last_verified": "2026-10-28",
+            "notes": "Base rate for other eligible purchases.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "capital-one-entertainment",
+        "category": "entertainment",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "capone-venture-x-page",
+            "last_verified": "2026-10-28",
+            "notes": "Capital One Entertainment ticketing purchases; excludes exclusive presales and direct Capital One Hall/Arena ticketing.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["any"],
+              "merchants": ["Capital One Entertainment"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Phase 1 seed retained; optional fees and some credit terms are still pending. Existing verification dates are unchanged."
+    }
+  }
+}

@@ -1,0 +1,444 @@
+{
+  "format_version": 1,
+  "id": "20261028T215710Z-52d5b76ee310",
+  "product_id": "us-amex-platinum",
+  "recorded_at": "2026-10-28T21:57:10Z",
+  "reason": "Preserve the Phase 1 catalog before Phase 2 changes; verification dates remain unchanged.",
+  "content_sha256": "52d5b76ee310040eae741faa01e3cd436a8c0f132f149a70e6e11bfaeb02ce07",
+  "product": {
+    "id": "us-amex-platinum",
+    "issuer": "American Express",
+    "name": "Platinum Card",
+    "country": "US",
+    "currency": "USD",
+    "aliases": ["AMEX PLATINUM", "PLATINUM CARD"],
+    "sources": [
+      {
+        "id": "amex-platinum-page",
+        "url": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+        "title": "Platinum Card product page",
+        "accessed": "2026-10-27"
+      },
+      {
+        "id": "amex-platinum-terms",
+        "url": "https://www.americanexpress.com/en-us/credit-cards/apply/terms/personal/platinum-card/25330-10-0/",
+        "title": "Platinum Card offer and benefit terms (URL carries an offer code and may change)",
+        "accessed": "2026-10-27"
+      }
+    ],
+    "notes": "effective_from of the current terms is not stated on the cited pages and is left null (to verify). The terms say the benefit period follows the date the merchant submits the eligible purchase, and credits can take up to 8 weeks to post (90 days for the hotel credit).",
+    "credits": [
+      {
+        "id": "hotel",
+        "name": "Hotel Credit",
+        "family": "hotel",
+        "delivery": "statement_credit",
+        "enrollment": "none",
+        "match": {
+          "keywords": ["FHR", "FINE HOTELS", "HOTEL COLLECTION", "HOTEL CREDIT"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": null,
+            "status": "verified",
+            "amount": "300.00",
+            "period": "semiannual",
+            "reset_basis": "calendar",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": 90,
+            "source": "amex-platinum-terms",
+            "last_verified": "2026-10-27",
+            "notes": "Up to $300 January to June and $300 July to December on prepaid Fine Hotels + Resorts, The Hotel Collection and Airbnb Luxe bookings through Amex Travel. From 2027-01-01 Fine Hotels + Resorts bookings also need a two-night minimum (eligibility change, not an amount change).",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "hotel"
+      },
+      {
+        "id": "resy",
+        "name": "Resy Credit",
+        "family": "dining",
+        "delivery": "statement_credit",
+        "enrollment": "required",
+        "match": {
+          "keywords": ["RESY"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": null,
+            "status": "verified",
+            "amount": "100.00",
+            "period": "quarterly",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": 56,
+            "source": "amex-platinum-terms",
+            "last_verified": "2026-10-27",
+            "notes": "Up to $100 each quarter, up to $400 per calendar year. Quarter boundaries are not spelled out; calendar quarters are inferred from the calendar-year total.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "dining"
+      },
+      {
+        "id": "digital-entertainment",
+        "name": "Digital Entertainment Credit",
+        "family": "entertainment",
+        "delivery": "statement_credit",
+        "enrollment": "required",
+        "match": {
+          "keywords": ["DIGITAL ENTERTAINMENT"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": null,
+            "status": "verified",
+            "amount": "25.00",
+            "period": "monthly",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": 56,
+            "source": "amex-platinum-terms",
+            "last_verified": "2026-10-27",
+            "notes": "Up to $25 each month at participating partners, up to $300 each calendar year.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "streaming_digital"
+      },
+      {
+        "id": "lululemon",
+        "name": "lululemon Credit",
+        "delivery": "statement_credit",
+        "enrollment": "required",
+        "match": {
+          "keywords": ["LULULEMON"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": null,
+            "status": "verified",
+            "amount": "75.00",
+            "period": "quarterly",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": 56,
+            "source": "amex-platinum-terms",
+            "last_verified": "2026-10-27",
+            "notes": "Up to $75 each quarter, up to $300 per calendar year, at U.S. lululemon stores (excluding outlets), lululemon.com and the app.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "shopping"
+      },
+      {
+        "id": "walmart-plus",
+        "name": "Walmart+ Credit",
+        "family": "shopping",
+        "delivery": "statement_credit",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": ["WALMART+"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": null,
+            "status": "verified",
+            "amount": "12.95",
+            "period": "monthly",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "cap_excludes_tax": true,
+            "max_posting_lag_days": null,
+            "source": "amex-platinum-page",
+            "last_verified": "2026-10-27",
+            "notes": "Up to $12.95 plus applicable taxes each month for one monthly Walmart+ membership. The cited terms page did not include this credit, so the posting lag is unknown.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "membership"
+      },
+      {
+        "id": "uber-one",
+        "name": "Uber One Credit",
+        "delivery": "statement_credit",
+        "enrollment": "none",
+        "match": {
+          "keywords": ["UBER ONE"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": null,
+            "status": "verified",
+            "amount": "120.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": null,
+            "source": "amex-platinum-terms",
+            "last_verified": "2026-10-27",
+            "notes": "Up to $120 per calendar year on monthly or annual Uber One membership fees.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "membership"
+      },
+      {
+        "id": "airline-fee",
+        "name": "Airline Fee Credit",
+        "family": "airline",
+        "delivery": "statement_credit",
+        "enrollment": "required",
+        "match": {
+          "keywords": ["AIRLINE FEE", "AIRLINE INCIDENTAL", "AIRLINE CREDIT"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": null,
+            "status": "verified",
+            "amount": "200.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": 56,
+            "source": "amex-platinum-terms",
+            "last_verified": "2026-10-27",
+            "notes": "Up to $200 per calendar year in incidental fees from one selected qualifying airline; the selection counts as enrollment.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "airline_incidental"
+      },
+      {
+        "id": "clear-plus",
+        "name": "CLEAR+ Credit",
+        "family": "travel-program",
+        "delivery": "statement_credit",
+        "enrollment": "none",
+        "match": {
+          "keywords": ["CLEAR"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": null,
+            "status": "verified",
+            "amount": "219.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": 56,
+            "source": "amex-platinum-terms",
+            "last_verified": "2026-10-27",
+            "notes": "Up to $219 per calendar year for an annual CLEAR+ membership.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "trusted_traveler"
+      },
+      {
+        "id": "oura",
+        "name": "Oura Ring Credit",
+        "delivery": "statement_credit",
+        "enrollment": "required",
+        "match": {
+          "keywords": ["OURA"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": null,
+            "status": "verified",
+            "amount": "200.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": null,
+            "source": "amex-platinum-terms",
+            "last_verified": "2026-10-27",
+            "notes": "Up to $200 each calendar year on Oura Ring purchases at ouraring.com; memberships and accessories excluded.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "fitness_wellness"
+      },
+      {
+        "id": "equinox",
+        "name": "Equinox Credit",
+        "family": "fitness",
+        "delivery": "statement_credit",
+        "enrollment": "required",
+        "match": {
+          "keywords": ["EQUINOX"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": null,
+            "status": "to_verify",
+            "amount": null,
+            "period": "annual",
+            "reset_basis": "calendar",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": null,
+            "source": "amex-platinum-terms",
+            "last_verified": "2026-10-27",
+            "notes": "The terms page lists $300 per calendar year, but the product page no longer shows this credit. Confirm it is still offered before filling the amount.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "fitness_wellness"
+      },
+      {
+        "id": "airbnb-experiences",
+        "name": "Airbnb Experiences Credit",
+        "delivery": "statement_credit",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": ["AIRBNB"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": null,
+            "status": "to_verify",
+            "amount": null,
+            "period": "annual",
+            "reset_basis": "calendar",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": 56,
+            "source": "amex-platinum-terms",
+            "last_verified": "2026-10-27",
+            "notes": "The terms page lists up to $250 per calendar year, unlocked only after a prepaid Airbnb Luxe booking; not on the product page. Conditional unlocks are not modelled yet.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "entertainment_events"
+      },
+      {
+        "id": "uber-cash",
+        "name": "Uber Cash",
+        "family": "rideshare",
+        "delivery": "issuer_wallet",
+        "enrollment": "required",
+        "match": {
+          "keywords": []
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_to": null,
+            "status": "verified",
+            "amount": "15.00",
+            "period": "monthly",
+            "reset_basis": "calendar",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": null,
+            "source": "amex-platinum-page",
+            "last_verified": "2026-10-27",
+            "notes": "$15 Uber Cash each month plus a $20 bonus in December, loaded into the Uber account rather than posted to the card, so it is never visible in card transactions.",
+            "effective_from_basis": "unknown"
+          }
+        ],
+        "category": "rideshare"
+      }
+    ],
+    "network": "amex",
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "amex-membership-rewards",
+      "unit": "points"
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "amex-platinum-page",
+        "last_verified": "2026-10-27",
+        "notes": "Annual fee verified. First-year fee is not separately stated; unknown optional fees remain null.",
+        "annual_fee": "895.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "flights",
+        "category": "flights",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "amex-platinum-page",
+            "last_verified": "2026-10-27",
+            "notes": "Direct airline or Amex Travel bookings; annual cap. Post-cap rate was not confirmed.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["direct", "issuer_portal"]
+            },
+            "cap": {
+              "amount": "500000.00",
+              "period": "annual",
+              "reset_basis": "calendar",
+              "rate_after_cap": null
+            }
+          }
+        ]
+      },
+      {
+        "id": "prepaid-hotels",
+        "category": "hotels",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "amex-platinum-page",
+            "last_verified": "2026-10-27",
+            "notes": "Prepaid hotels booked through Amex Travel.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["issuer_portal"],
+              "prepaid": true
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "amex-platinum-page",
+            "last_verified": "2026-10-27",
+            "notes": "Base rate for other eligible purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 # 开放信用卡数据项目提案（暂名 CardFacts）
 
-状态：Phase 1 已实现，数据仍为 draft，尚未发布稳定版本。实现约定以 [data-model.md](data-model.md) 为准，命令见 [tooling.md](tooling.md)。后续待决问题见 §10。
+状态：Phase 2 已实现，数据仍为 draft，尚未发布稳定版本。实现约定以 [data-model.md](data-model.md) 为准，命令见 [tooling.md](tooling.md)。后续待决问题见 §10。
 
 一句话：一个开源、结构化、每个数字都引用发卡机构公开条款的美国信用卡数据集（个人卡和商业卡），先覆盖**报销类权益（statement
 credit）、年费和返现/积分倍数**；配套从数据生成的 wiki 网站；由所有者服务器上的 agent 每日复核来源并提交
@@ -185,7 +185,7 @@ cardfacts/
   `authorized_user_fee`。
 - `earn_rates[].versions[].conditions`：`channels`（`direct`、`issuer_portal`、`any`）、`merchants`、
   `region`、`requires_activation` 和 `prepaid`。条件与上限随版本保存；资格条件的实质变化也要新建版本。
-  轮换日程和每账单周期自动选最高消费类别的详细结构，留待 Phase 2 根据实际商业卡条款设计。
+  Phase 2 已加入按季度的轮换日程、按账单周期选择消费最高类别，详见 [data-model.md](data-model.md)。
 - 上限可按卡年度重置（`cap.reset_basis: "anniversary"`），也可是多个类别合计（`cap.shared_with: [规则 id]`），商业卡
   常见。
 - `credits[]` 沿用原草稿的消费端字段，正式数据见 [data/us/](../data/us/)（说明见
@@ -304,12 +304,12 @@ CI 校验 ──> 所有者审核合并 ──> 发布 Release ──> 网站部
 | Chase Sapphire Reserve | $795，附属卡每张 $195 | Chase Travel（含 The Edit）8x、直订航班 4x、直订酒店 4x、餐饮 3x、其他 1x                   | 已核实 6 项，另有 2 项不在账单上入账              |
 | Capital One Venture X  | $395                  | Capital One Travel 酒店和租车 10x、航班和度假租赁 5x、其他 2x                               | 金额待核实                                        |
 
-其余候选（尚未研究，进入时逐项核实）：Amex Gold、Amex Green、Blue Cash Preferred、Chase Sapphire Preferred、
+最初的候选清单（实际 Phase 2 收录及证据限制见 [phase-2-catalog.md](phase-2-catalog.md)）：Amex Gold、Amex Green、Blue Cash Preferred、Chase Sapphire Preferred、
 Freedom Unlimited、Freedom Flex、Capital One Venture、Savor、Citi Strata Premier、Citi Strata Elite、
 Citi Double Cash、Citi Custom Cash、Wells Fargo Autograph、Autograph Journey、U.S. Bank Altitude 系列、
 Bilt、Discover it。
 
-商业卡候选（同样尚未研究）：Amex Business Platinum、Amex Business Gold、Blue Business Plus、Blue Business Cash、
+最初的商业卡候选：Amex Business Platinum、Amex Business Gold、Blue Business Plus、Blue Business Cash、
 Chase Ink Business Preferred、Ink Business Cash、Ink Business Unlimited、Capital One Venture X Business、
 Capital One Spark Cash Plus。
 
@@ -319,7 +319,7 @@ Capital One Spark Cash Plus。
 
 1. **已实现（draft）**：schema、词表、validate/build/sources/fetch-source/stale 脚本、`maintenance/` 配置、CI、贡献指南；
    迁入 3 张已研究的卡，保留测试向量和维护 skill。迁移与核实限制见 [phase-1-migration.md](phase-1-migration.md)。
-2. 补齐首批约 30 张卡，含商业卡（人工加 agent 辅助研究，全部走 PR）。
+2. **已实现（draft）**：30 张卡（20 张个人卡、10 张商业卡），含完整目录快照、按时间查询与版本对比。收录范围和待核实项目见 [phase-2-catalog.md](phase-2-catalog.md)，历史使用方式见 [history.md](history.md)。全部走 PR。
 3. 网站：卡片页、横向对比页、待复核列表、双语界面。
 4. 部署维护 agent：先只读运行两周（只出报告不开 PR），确认误报率后开启 PR。
 5. Asset Ledger 引用第一个正式版本；Sure Discussion 发出。
@@ -335,4 +335,4 @@ Capital One Spark Cash Plus。
 7. 网站先做中文还是中英同时上线。
 8. Asset Ledger 引用方式：复制 JSON 还是依赖 npm 包。
 9. 积分计划是否也做词表（例如 Membership Rewards、Ultimate Rewards），供以后可能的估值使用。
-10. 商业卡的员工卡、按账单周期自动选类别和合计上限是否在 v1 就完整建模，还是先只记录在 `notes`。
+10. Phase 2 已建模按账单周期自动选类别和合计上限；员工卡不同等级收费与剩余限制仍需核实。

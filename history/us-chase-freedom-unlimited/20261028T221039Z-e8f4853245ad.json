@@ -1,0 +1,136 @@
+{
+  "format_version": 1,
+  "id": "20261028T221039Z-e8f4853245ad",
+  "product_id": "us-chase-freedom-unlimited",
+  "recorded_at": "2026-10-28T22:10:39Z",
+  "reason": "Initial Phase 2 issuer-source research; unknown effective starts and incomplete coverage remain explicit.",
+  "content_sha256": "e8f4853245adaa6494ee6fca128f20aecfcc6e13bdeec151de79323661c9126a",
+  "product": {
+    "id": "us-chase-freedom-unlimited",
+    "issuer": "Chase",
+    "name": "Chase Freedom Unlimited",
+    "country": "US",
+    "currency": "USD",
+    "network": null,
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "chase-ultimate-rewards",
+      "unit": "cash"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-chase-freedom-unlimited-page",
+        "url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited",
+        "title": "Chase Freedom Unlimited official product information",
+        "accessed": "2026-10-28"
+      }
+    ],
+    "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "reviewed",
+      "credits": "partial",
+      "notes": "Ongoing earn rates reviewed; partner promotional benefits need separate term review."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-chase-freedom-unlimited-page",
+        "last_verified": "2026-10-28",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "0.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "base",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-freedom-unlimited-page",
+            "last_verified": "2026-10-28",
+            "notes": "Other eligible purchases.",
+            "rate": "1.5",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "portal-travel",
+        "category": "travel",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-freedom-unlimited-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible issuer-portal bookings.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["issuer_portal"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-freedom-unlimited-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible purchases; issuer exclusions apply.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "drugstores",
+        "category": "drugstores",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-freedom-unlimited-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible purchases; issuer exclusions apply.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "format_version": 1,
+  "id": "20261028T221039Z-ee2b760feb40",
+  "product_id": "us-wells-fargo-autograph",
+  "recorded_at": "2026-10-28T22:10:39Z",
+  "reason": "Initial Phase 2 issuer-source research; unknown effective starts and incomplete coverage remain explicit.",
+  "content_sha256": "ee2b760feb4092e93d2c92ac4e27f60239b8417c7e039d8d73d894719e7ebfac",
+  "product": {
+    "id": "us-wells-fargo-autograph",
+    "issuer": "Wells Fargo",
+    "name": "Wells Fargo Autograph",
+    "country": "US",
+    "currency": "USD",
+    "network": "visa",
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "wells-fargo-rewards",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-wells-fargo-autograph-page",
+        "url": "https://creditcards.wellsfargo.com/autograph-visa-credit-card/",
+        "title": "Wells Fargo Autograph official product information",
+        "accessed": "2026-10-28"
+      }
+    ],
+    "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "reviewed",
+      "credits": "reviewed",
+      "notes": "Reviewed listed ongoing benefits; merchant exclusions in notes remain part of eligibility. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-wells-fargo-autograph-page",
+        "last_verified": "2026-10-28",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "0.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "base",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-wells-fargo-autograph-page",
+            "last_verified": "2026-10-28",
+            "notes": "Other eligible purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-wells-fargo-autograph-page",
+            "last_verified": "2026-10-28",
+            "notes": "Issuer eligible categories; telecom limited to phone plans and streaming to select services.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "travel",
+        "category": "travel",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-wells-fargo-autograph-page",
+            "last_verified": "2026-10-28",
+            "notes": "Issuer eligible categories; telecom limited to phone plans and streaming to select services.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "gas",
+        "category": "gas",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-wells-fargo-autograph-page",
+            "last_verified": "2026-10-28",
+            "notes": "Issuer eligible categories; telecom limited to phone plans and streaming to select services.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "ev-charging",
+        "category": "ev_charging",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-wells-fargo-autograph-page",
+            "last_verified": "2026-10-28",
+            "notes": "Issuer eligible categories; telecom limited to phone plans and streaming to select services.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "transit",
+        "category": "transit",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-wells-fargo-autograph-page",
+            "last_verified": "2026-10-28",
+            "notes": "Issuer eligible categories; telecom limited to phone plans and streaming to select services.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "streaming",
+        "category": "streaming",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-wells-fargo-autograph-page",
+            "last_verified": "2026-10-28",
+            "notes": "Issuer eligible categories; telecom limited to phone plans and streaming to select services.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "telecom",
+        "category": "telecom",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-wells-fargo-autograph-page",
+            "last_verified": "2026-10-28",
+            "notes": "Issuer eligible categories; telecom limited to phone plans and streaming to select services.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

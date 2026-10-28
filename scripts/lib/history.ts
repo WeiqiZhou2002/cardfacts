@@ -1,6 +1,7 @@
 import { execFileSync } from "node:child_process";
 import { isDeepStrictEqual } from "node:util";
 import type { Card, Version } from "./types.js";
+import type { Revision } from "./revisions.js";
 
 function groups(card: Card) {
   return new Map<string, Version[]>([
@@ -44,13 +45,19 @@ export function historyErrors(before: Card[], after: Card[]): string[] {
   return errors;
 }
 export function readBaseCards(root: string, revision: string): Card[] {
+  return readBaseJson<Card>(root, revision, "data");
+}
+export function readBaseRevisions(root: string, revision: string): Revision[] {
+  return readBaseJson<Revision>(root, revision, "history");
+}
+function readBaseJson<T>(root: string, revision: string, directory: string): T[] {
   // Resolve user input to an object id before passing it to any git path/revision expression.
   const git = (args: string[]) =>
     execFileSync("git", args, { cwd: root, encoding: "utf8", maxBuffer: 20 * 1024 * 1024 });
   const commit = git(["rev-parse", "--verify", "--end-of-options", `${revision}^{commit}`]).trim();
-  const paths = git(["ls-tree", "-r", "--name-only", commit, "--", "data/"])
+  const paths = git(["ls-tree", "-r", "--name-only", commit, "--", `${directory}/`])
     .trim()
     .split("\n")
     .filter((p) => p.endsWith(".json"));
-  return paths.map((path) => JSON.parse(git(["show", `${commit}:${path}`])) as Card);
+  return paths.map((path) => JSON.parse(git(["show", `${commit}:${path}`])) as T);
 }
