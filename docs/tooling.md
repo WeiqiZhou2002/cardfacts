@@ -8,7 +8,7 @@ pnpm install --frozen-lockfile
 pnpm check
 ```
 
-`pnpm check` runs formatting, type checking, offline validation, tests and the data build. Tests use
+`pnpm check` runs formatting, type checking, offline validation, tests, the data build and the static website build. Tests use
 controlled source responses and temporary directories; they do not contact issuers. The shared progress
 vectors are intentionally excluded from automatic formatting so their original bytes are preserved.
 
@@ -26,11 +26,12 @@ For JSON-only stdout when invoking through pnpm, use `pnpm --silent sources --js
 commands), or invoke `node --import tsx scripts/cli.ts sources --json` directly.
 
 `stale` defaults to 90 days and the machine's local calendar date; scheduled jobs should pass `--as-of`
-explicitly. It reports versions, allowing a later site to group them by product. Staleness is not a
+explicitly. It reports versions, also exposed in the website review queue. Staleness is not a
 validation failure. `sources` includes attempted citations of null fields, so pending data remains
 discoverable. Resolve a returned field pointer against the product named in that record.
 
-Build and validation require no browser and no network. The tooling does not build or deploy a website,
+Build and validation require no browser and no network. `pnpm site:dev` previews the static wiki;
+`pnpm site:build` prepares `dist/site/` for GitHub Pages. See [the site guide](site.md). These commands do not
 publish a release, open issues or PRs, or run an unattended maintenance agent.
 
 ## Source fetcher
@@ -78,6 +79,7 @@ HTTP fixture. Run the same check locally with:
 
 ```sh
 CARDFACTS_BROWSER_TEST=1 node --import tsx --test tests/browser.test.ts
+pnpm test:site
 ```
 
 `maintenance/schedule.json` declares daily products and the rotation interval. `maintenance/leads.json`

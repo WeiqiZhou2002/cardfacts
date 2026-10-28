@@ -64,3 +64,9 @@ pnpm check
 `content_sha256` 对递归排序键后的卡片 JSON 计算 SHA-256，数组顺序保留。修改内容后重算哈希不能绕过 Git 基线不可变检查。
 
 这提供 wiki 历史页面需要的数据、时间查询与差异能力。网页端的时间选择器和历史页面属于 Phase 3；当前可通过 CLI 或导出的 JSON 查看。
+
+## Website history viewer
+
+Phase 3 exposes these same two time axes on each card page: select a terms date and a recorded revision,
+then compare any two snapshots in the history section. Deep links also accept `recorded_at` cutoffs.
+See [the site guide](site.md) for routes, query parameters and local preview instructions.
