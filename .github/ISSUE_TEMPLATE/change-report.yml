@@ -1,0 +1,38 @@
+name: Report changed card terms
+description: Report an issuer-confirmed change to a fee, earn rate, or credit.
+title: "[Change] "
+labels: [change-report]
+body:
+  - type: input
+    id: product
+    attributes:
+      label: Card or product ID
+      description: Include whether this is a personal or business card.
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: What changed?
+      description: Include the old and new terms if known. No personal account information.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Issuer source URL
+      description: A public issuer product page, terms page, or benefits guide.
+    validations:
+      required: true
+  - type: input
+    id: observed
+    attributes:
+      label: Date observed
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Other links may be leads but will not be treated as citations.

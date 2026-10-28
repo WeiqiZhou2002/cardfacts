@@ -1,7 +1,7 @@
 # Contributing
 
-Thanks for helping keep card data accurate. The project is in its design stage, so the most useful
-contributions right now are change reports and review of the proposal.
+Thanks for helping keep card data accurate. Phase 1 provides a schema, three seed cards and offline tooling.
+Useful contributions include issuer-confirmed change reports, schema review and additional cited cards.
 
 ## Reporting a change
 
@@ -30,3 +30,26 @@ confirms it.
 
 Pull requests labelled `bot` are opened by the scheduled agent. Review them like any other: check the
 evidence links before merging.
+
+## Local checks
+
+Use Node.js 24 LTS and the pnpm version in `package.json`. Run `pnpm install --frozen-lockfile`, then
+`pnpm check`. Before a data PR, also run `pnpm validate --base-ref origin/main` against an up-to-date base.
+CI repeats the history check against the PR base revision. Use `pnpm format` for formatting.
+
+Read [the data contract](docs/data-model.md) before adding fields. Unknown initial effective dates stay
+`null` with basis `unknown`; use `detected` only for an observed change. Earn conditions and caps belong
+inside versions. Keep source IDs globally unique and use a new source ID when a URL changes.
+
+A term or eligibility change closes the old version and appends a replacement. Editorial notes changes
+and re-verification timestamps can be updated in place; they must not conceal a term change. Historical
+numeric values, source URLs and closed effective intervals are protected by CI.
+
+Do not update `last_verified` merely because you migrated or reformatted a record. Existing pending
+records stay pending unless the cited issuer evidence resolves them. For unknown optional fee fields,
+keep null and explain the gap in notes. Preserve progress-vector expectations unless deliberately
+changing the consumer contract and its format version.
+
+New cards also need an issuer entry, allowed domains, and vocabulary categories. Follow the
+[tooling guide](docs/tooling.md) for manual-only issuer policy and source checks. Source snapshots belong
+outside the repository. A release version is explicit in `catalog.json`; do not derive it from build time.

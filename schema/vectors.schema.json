@@ -1,0 +1,607 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "format": {
+      "const": "card-benefit-progress-vectors"
+    },
+    "format_version": {
+      "const": 1
+    },
+    "constants": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tax_tolerance_rate": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+        }
+      },
+      "required": ["tax_tolerance_rate"]
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    },
+    "vectors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^bt-[0-9]{3}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "note": {
+            "type": "string",
+            "minLength": 1
+          },
+          "catalog": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+              },
+              "issuer": {
+                "type": "string",
+                "minLength": 1
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "currency": {
+                "type": "string",
+                "minLength": 1
+              },
+              "credits": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                    },
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "family": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                    },
+                    "match": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "keywords": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "minItems": 0,
+                          "uniqueItems": true
+                        },
+                        "exclude": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "minItems": 0,
+                          "uniqueItems": true
+                        }
+                      },
+                      "required": ["keywords"]
+                    },
+                    "versions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "amount": {
+                            "anyOf": [
+                              {
+                                "type": "string",
+                                "pattern": "^(0|[1-9][0-9]*)\\.[0-9]{2}$"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "period": {
+                            "enum": ["monthly", "quarterly", "semiannual", "annual", "multi_year"]
+                          },
+                          "period_years": {
+                            "type": "integer",
+                            "minimum": 1
+                          },
+                          "reset_basis": {
+                            "enum": ["calendar", "anniversary", "anniversary_statement", "since_last_credit"]
+                          },
+                          "cap_excludes_tax": {
+                            "type": "boolean"
+                          },
+                          "max_posting_lag_days": {
+                            "type": ["integer", "null"],
+                            "minimum": 0
+                          },
+                          "effective_from": {
+                            "anyOf": [
+                              {
+                                "type": "string",
+                                "format": "date"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "effective_to": {
+                            "anyOf": [
+                              {
+                                "type": "string",
+                                "format": "date"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "status": {
+                            "enum": ["synthetic", "to_verify"]
+                          }
+                        },
+                        "required": [
+                          "amount",
+                          "period",
+                          "reset_basis",
+                          "effective_from",
+                          "effective_to",
+                          "status",
+                          "max_posting_lag_days"
+                        ]
+                      },
+                      "minItems": 1
+                    }
+                  },
+                  "required": ["id", "name", "match", "versions"]
+                },
+                "minItems": 0
+              }
+            },
+            "required": ["id", "issuer", "name", "currency", "credits"]
+          },
+          "account": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "currency": {
+                "type": "string",
+                "minLength": 1
+              },
+              "product_id": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "anniversary": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "statement_close_day": {
+                "type": ["integer", "null"],
+                "minimum": 1,
+                "maximum": 31
+              },
+              "tracking_start": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": ["currency", "product_id", "anniversary", "statement_close_day", "tracking_start"]
+          },
+          "overrides": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "credit": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                },
+                "effective_from": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "amount": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "disabled": {
+                  "type": "boolean"
+                }
+              },
+              "required": ["credit"]
+            },
+            "minItems": 0
+          },
+          "entries": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "amount": {
+                  "type": "string",
+                  "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+                },
+                "currency": {
+                  "type": "string",
+                  "pattern": "^[A-Z]{3}$"
+                },
+                "description": {
+                  "type": ["string", "null"]
+                },
+                "merchant": {
+                  "type": ["string", "null"]
+                },
+                "family": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                },
+                "assigned_credit": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "assigned_period_start": {
+                  "type": "string",
+                  "format": "date"
+                }
+              },
+              "required": ["id", "date", "amount", "currency", "description"]
+            },
+            "minItems": 0
+          },
+          "as_of": {
+            "type": "string",
+            "format": "date"
+          },
+          "view_year": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9999
+          },
+          "expect": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "matches": {
+                "type": "object",
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "unmatched": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "entry": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                    },
+                    "reason": {
+                      "enum": [
+                        "no_product",
+                        "currency_mismatch",
+                        "owner_none",
+                        "no_effective_version",
+                        "ambiguous",
+                        "no_match",
+                        "credit_disabled"
+                      ]
+                    }
+                  },
+                  "required": ["entry", "reason"]
+                },
+                "minItems": 0
+              },
+              "instances": {
+                "type": "array",
+                "items": {
+                  "oneOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "credit": {
+                          "type": "string",
+                          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                        },
+                        "status": {
+                          "const": "ok"
+                        },
+                        "year": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "start": {
+                              "type": "string",
+                              "format": "date"
+                            },
+                            "end": {
+                              "type": "string",
+                              "format": "date"
+                            },
+                            "cap": {
+                              "type": "string",
+                              "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+                            },
+                            "used": {
+                              "type": "string",
+                              "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+                            },
+                            "expired_unused": {
+                              "type": "string",
+                              "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+                            },
+                            "available": {
+                              "type": "string",
+                              "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+                            },
+                            "upcoming": {
+                              "type": "string",
+                              "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+                            },
+                            "excess": {
+                              "type": "string",
+                              "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+                            }
+                          },
+                          "required": [
+                            "start",
+                            "end",
+                            "cap",
+                            "used",
+                            "expired_unused",
+                            "available",
+                            "upcoming",
+                            "excess"
+                          ]
+                        },
+                        "periods": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                              "start": {
+                                "type": "string",
+                                "format": "date"
+                              },
+                              "end": {
+                                "type": "string",
+                                "format": "date"
+                              },
+                              "cap": {
+                                "type": "string",
+                                "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+                              },
+                              "used": {
+                                "type": "string",
+                                "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+                              },
+                              "remaining": {
+                                "type": "string",
+                                "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+                              },
+                              "state": {
+                                "enum": ["upcoming", "unused", "partial", "full", "over"]
+                              },
+                              "entries": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "minLength": 1
+                                },
+                                "minItems": 0,
+                                "uniqueItems": true
+                              }
+                            },
+                            "required": ["start", "end", "cap", "used", "remaining", "state", "entries"]
+                          },
+                          "minItems": 0
+                        },
+                        "unplaced": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "minItems": 0,
+                          "uniqueItems": true
+                        }
+                      },
+                      "required": ["credit", "status", "year", "periods", "unplaced"]
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "credit": {
+                          "type": "string",
+                          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                        },
+                        "status": {
+                          "enum": ["needs_anniversary", "needs_statement_day", "to_verify"]
+                        },
+                        "entries": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "minItems": 0,
+                          "uniqueItems": true
+                        }
+                      },
+                      "required": ["credit", "status", "entries"]
+                    },
+                    {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "credit": {
+                          "type": "string",
+                          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                        },
+                        "status": {
+                          "const": "ok"
+                        },
+                        "eligible": {
+                          "type": "boolean"
+                        },
+                        "window": {
+                          "anyOf": [
+                            {
+                              "type": "object",
+                              "additionalProperties": false,
+                              "properties": {
+                                "start": {
+                                  "type": "string",
+                                  "format": "date"
+                                },
+                                "end": {
+                                  "type": "string",
+                                  "format": "date"
+                                },
+                                "cap": {
+                                  "type": "string",
+                                  "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+                                },
+                                "used": {
+                                  "type": "string",
+                                  "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+                                },
+                                "next_eligible_on": {
+                                  "type": "string",
+                                  "format": "date"
+                                }
+                              },
+                              "required": ["start", "end", "cap", "used", "next_eligible_on"]
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "entries": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "minItems": 0,
+                          "uniqueItems": true
+                        }
+                      },
+                      "required": ["credit", "status", "eligible", "window", "entries"]
+                    }
+                  ]
+                },
+                "minItems": 0
+              }
+            },
+            "required": ["matches", "unmatched", "instances"]
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "catalog",
+          "account",
+          "overrides",
+          "entries",
+          "as_of",
+          "view_year",
+          "expect"
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": ["format", "format_version", "constants", "notes", "vectors"]
+}

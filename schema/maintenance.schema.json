@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "issuers": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "issuers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "domains": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z]{2,}$"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "automation_review": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": ["id", "name", "domains", "automation_review"]
+          },
+          "minItems": 1
+        },
+        "manual_only": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "user_agent": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": ["issuers", "manual_only", "user_agent"]
+    },
+    "schedule": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "daily": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "minItems": 0,
+          "uniqueItems": true
+        },
+        "rotation_days": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": ["daily", "rotation_days"]
+    },
+    "leads": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "feeds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "products": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              }
+            },
+            "required": ["id", "url", "products"]
+          },
+          "minItems": 0
+        }
+      },
+      "required": ["feeds"]
+    }
+  }
+}

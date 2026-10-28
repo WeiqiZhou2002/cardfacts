@@ -37,10 +37,10 @@ Promotional or targeted fee offers are not fees; ignore them.
 - "U.S. supermarkets", "U.S. gas stations" → `region: "US"` on the condition, same category.
 - Business caps such as "on the first $X in combined purchases in these categories each account anniversary
   year" → one `cap` with `reset_basis: "anniversary"` and `shared_with` listing the rules that share it.
-- "Your top N eligible categories each billing cycle" → `selection: { type: "top_spend", count: N, from: [...] }`
-  listing exactly the categories the page names; flag it if the list is not on the page.
-- Quarterly activated rotating categories → `category: "rotating"` with the quarter's schedule only when the
-  issuer has published it; otherwise flag.
+- Put channel, merchant, region, activation and prepaid conditions inside each earn version
+  (`earn_rates[].versions[].conditions`), not on the rule itself.
+- Detailed rotating schedules and top-spend selection are deferred in Phase 1. Do not emit unsupported
+  fields; flag these rules for schema review before adding the affected cards.
 - Points versus cash comes from the product's `rewards.unit`; a page saying "5% cash back" on a points card
   is a mismatch to flag, not to fix.
 
@@ -69,12 +69,15 @@ Promotional or targeted fee offers are not fees; ignore them.
 - Pick `category` from `vocab/credit-categories.json`.
 - New credits need at least one `match.keywords` entry: the brand or program name in uppercase (`RESY`,
   `STUBHUB`). Never use text from anyone's statement.
-- An eligibility change with no amount change (for example a new minimum stay) is a `notes` update on the
-  current version, not a new version.
+- A real eligibility change (for example a new minimum stay) creates a new version, even if only notes
+  can express it. Only editorial corrections are in-place notes updates.
 
 ## Versioning
 
-When a value of a current version changes:
+For initial terms with no established historical start, use `effective_from: null` and
+`effective_from_basis: "unknown"`. Do not invent a start from a migration or verification date.
+
+When a value or eligibility condition of a current version changes:
 
 1. Determine the new start date. If the page states it, use it with `effective_from_basis: "stated"`.
    Otherwise use today's date with `effective_from_basis: "detected"`, and state in the pull request the
@@ -84,7 +87,8 @@ When a value of a current version changes:
 3. Append the new version with `status: "verified"`, `source`, `last_verified: today` and a `notes`
    paraphrase.
 4. If the new value is not readable, append the new version with `status: "to_verify"` and `amount: null`
-   (or `rate: null`) instead of guessing.
+   (or `rate: null` / `annual_fee: null`) instead of guessing. Optional fee fields may remain null
+   on an otherwise verified fee version; explain the gaps.
 
 When a future change is announced (stated start date after today), add the new version now with that
 `effective_from` and close the current version the day before; the data stays correct on both sides of the

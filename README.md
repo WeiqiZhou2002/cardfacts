@@ -4,8 +4,8 @@ Open, cited, versioned data on US credit cards, personal and business: **annual 
 statement credits**. Every number links to the issuer's own public terms and carries the date it was last
 checked.
 
-> **Status: design stage.** There is no stable data release yet. The schema, scripts and site are being
-> built; the files below are the design and the first drafts.
+> **Status: Phase 1 implemented; draft data.** Three seed cards, a schema, validation/build tools and CI
+> are available. There is no stable release yet. Card expansion, the site and scheduled maintenance come next.
 
 ## Why
 
@@ -24,22 +24,36 @@ aims to be the shared, machine-readable source with a clear trail back to the is
 
 ## What's here
 
-| Path                                                                               | Contents                                                                  |
-| ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| [docs/proposal.zh.md](docs/proposal.zh.md)                                         | Project proposal (Chinese): scope, data model, site, maintenance, roadmap |
-| [docs/credit-progress.md](docs/credit-progress.md)                                 | How apps map statement credits to this data and compute period progress   |
-| [vectors/credit-progress.json](vectors/credit-progress.json)                       | 23 synthetic test vectors for those rules                                 |
-| [drafts/catalog.sample.json](drafts/catalog.sample.json)                           | Draft credits for three cards, cited and checked on 2026-10-27            |
-| [.claude/skills/card-catalog-maintainer/](.claude/skills/card-catalog-maintainer/) | Skill for the maintenance agent                                           |
+| Path                                                                               | Contents                                                |
+| ---------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| [data/us/](data/us/)                                                               | Three cited seed products: fees, earn rates and credits |
+| [schema/card.schema.json](schema/card.schema.json)                                 | Production JSON Schema 2020-12                          |
+| [vocab/](vocab/)                                                                   | Bilingual earn and credit category vocabularies         |
+| [docs/data-model.md](docs/data-model.md)                                           | Data contract and versioning decisions                  |
+| [docs/tooling.md](docs/tooling.md)                                                 | Setup, commands, fetching and local state               |
+| [docs/phase-1-migration.md](docs/phase-1-migration.md)                             | Migration checks and evidence limitations               |
+| [docs/proposal.zh.md](docs/proposal.zh.md)                                         | Original proposal and roadmap (Chinese)                 |
+| [docs/credit-progress.md](docs/credit-progress.md)                                 | Consumer matching and progress contract                 |
+| [vectors/credit-progress.json](vectors/credit-progress.json)                       | 23 unchanged synthetic conformance vectors              |
+| [.claude/skills/card-catalog-maintainer/](.claude/skills/card-catalog-maintainer/) | Future maintenance-agent workflow                       |
 
-Planned layout once the schema lands: one JSON file per card under `data/us/<issuer>/`, vocabularies for
-earn and credit categories, a JSON Schema, validation and build scripts, and a static bilingual site
-generated from the data. See the proposal's roadmap (§9).
+## Development
+
+Use Node.js 24 LTS and the pnpm version pinned in `package.json`:
+
+```sh
+pnpm install --frozen-lockfile
+pnpm check
+```
+
+`pnpm build` produces `dist/cards.json`, `dist/cards.min.json`, and `dist/SHA256SUMS` deterministically.
+See [tooling](docs/tooling.md) for source listing, stale reporting, browser setup and history checks.
 
 ## Maintenance
 
-A scheduled agent re-checks issuer pages, and when something changes it opens a pull request with the
-evidence. It cannot push to `main` or merge; a human reviews every data change. The agent's rules are in
+The planned scheduled agent will re-check issuer pages and open evidence-backed pull requests. It is not
+deployed yet. All three seed issuers are manual-only until their automation terms are reviewed. The agent
+cannot push to `main` or merge; a human reviews every data change. Its rules are in
 the [skill](.claude/skills/card-catalog-maintainer/SKILL.md).
 
 ## Using the data
@@ -54,7 +68,7 @@ card name and a link to the issuer page that shows it.
 
 ## Licence
 
-- Data (all JSON under `data/`, `drafts/`, `vocab/` and `vectors/`): [CC0 1.0](DATA_LICENSE), no rights reserved.
+- Data (all JSON under `data/`, `vocab/` and `vectors/`): [CC0 1.0](DATA_LICENSE), no rights reserved.
 - Code, documentation and site: [MIT](LICENSE).
 
 CardFacts is not affiliated with any card issuer or network; names and trademarks belong to their owners.
@@ -63,5 +77,5 @@ Nothing here is financial advice. Always confirm terms with the issuer before re
 ## 中文简介
 
 CardFacts 是一个开源的美国信用卡数据项目，覆盖个人卡和商业卡的年费、返现/积分倍数和报销类权益。每个数字都引用
-发卡机构的公开条款并记录核实日期；条款改版保留历史版本；未核实的数值不填写。目前处于设计阶段，设计文档见
+发卡机构的公开条款并记录核实日期；条款改版保留历史版本；未核实的数值不填写。Phase 1 已实现三张卡的数据、schema、校验与构建工具及 CI，尚未发布稳定版本。设计文档见
 [docs/proposal.zh.md](docs/proposal.zh.md)。
