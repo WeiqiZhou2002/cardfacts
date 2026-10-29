@@ -321,7 +321,7 @@ Capital One Spark Cash Plus。
    迁入 3 张已研究的卡，保留测试向量和维护 skill。迁移与核实限制见 [phase-1-migration.md](phase-1-migration.md)。
 2. **已实现（draft）**：30 张卡（20 张个人卡、10 张商业卡），含完整目录快照、按时间查询与版本对比。收录范围和待核实项目见 [phase-2-catalog.md](phase-2-catalog.md)，历史使用方式见 [history.md](history.md)。全部走 PR。
 3. **已实现（draft）**：中英双语静态网站、卡片详情、条件筛选、最多 4 卡横向对比、待复核列表、完整历史浏览与版本对比。GitHub Pages 工作流已准备，合并并开启 Pages 后部署。使用方式见 [site.md](site.md)。
-4. 部署维护 agent：先只读运行两周（只出报告不开 PR），确认误报率后开启 PR。
+4. 部署维护 agent：先只读运行两周（只出报告不开 PR），确认误报率后开启 PR。实施计划见 [phase-4-plan.md](phase-4-plan.md)。
 5. Asset Ledger 引用第一个正式版本；Sure Discussion 发出。
 
 ## 10. 待决问题
