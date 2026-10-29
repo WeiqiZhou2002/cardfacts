@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — Phase 4 M1
+
+- Add deterministic daily/reverify run plans with priority deduplication, UTC rotation boundaries, source budgets and separate manual-only due lists.
+- Execute queued checks through the injected existing fetcher; atomically retain run reports, cache flags, confirmed-hash review status and repeated failures outside the repository.
+- Validate plans and persisted state, preserve fetch locking/rate limits, and distinguish local tool errors from source failures.
+- Add offline queue/batch/CLI tests. Keep all catalog data, snapshots, vocabularies and manual-only policy unchanged; later milestones remain unimplemented.
+
 ## Unreleased — Phase 3 website
 
 - Generate a Chinese/English static wiki with 30 card pages per language, sources and effective-dated terms.
