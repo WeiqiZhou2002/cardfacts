@@ -116,9 +116,9 @@ inbox/                         仅 M6：人工保存的网页文字
 ```
 
 - `reason` 的优先级：`change_report` > `daily`（`maintenance/schedule.json`）> `rotation`。同一来源只出现一次，保留最高优先级。
-- 轮换到期的条件：从未检查，或 `last_checked` 早于 `as_of - rotation_days`。从未检查的排最前，其余按最早检查时间排序。
+- 轮换到期的条件：从未检查，或距上次检查已满 `rotation_days` 天（`last_checked <= as_of - rotation_days`，即每 7 天一轮，不是 8 天）。从未检查的排最前，其余按最早检查时间排序。
 - `last_checked` 取自现有状态文件 `<sha256(url)>.json` 的 `checked_at`，失败的尝试也算。
-- `reverify` 模式的队列：`staleVersions(catalog, 7, as_of)` 涉及的、状态为 `verified` 的版本所引用的来源。
+- `reverify` 模式的队列：距上次核实已满 7 天的版本所引用的来源，版本须为 `verified` 且未结束（`effective_to` 为 `null` 或 ≥ `as_of`）。注意 `staleVersions` 是严格大于，要用 `staleVersions(catalog, 6, as_of)`；否则上周一复核过的版本本周一不会入队，每周复核会变成两周一次。
 - `manual_only` 机构的来源不进入队列、不占预算；若到期，放入 `manual_due`。
 - 超过 `--max` 的部分计入 `deferred`。
 - 纯函数，以 catalog、状态读取器和日期作为输入。
