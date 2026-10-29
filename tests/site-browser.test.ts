@@ -146,7 +146,7 @@ test(
       await page.locator(".language").click();
       await page.waitForSelector("html[data-ready=true]");
       assert.match(page.url(), /\/en\/review\/\?review_on=2027-02-01/);
-      assert.match(await page.locator("h1").innerText(), /Uncertainty/);
+      assert.match(await page.locator("h1").innerText(), /Review queue/);
       for (const width of [320, 390, 768, 1440]) {
         await page.setViewportSize({ width, height: 900 });
         for (const path of ["", "en/", "cards/us-capital-one-venture-x/", "review/", "about/"]) {
@@ -187,7 +187,7 @@ test(
       const response = await page.goto(base + "missing-page/");
       assert.equal(response!.status(), 404);
       await page.waitForSelector("html[data-ready=true]");
-      assert.match(await page.locator("h1").innerText(), /不在目录/);
+      assert.match(await page.locator("h1").innerText(), /页面不存在/);
       const noJS = await browser.newContext({ javaScriptEnabled: false });
       const staticPage = await noJS.newPage();
       await staticPage.goto(base);

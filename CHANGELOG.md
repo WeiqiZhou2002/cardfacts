@@ -7,6 +7,7 @@
 - Browse immutable snapshots, select effective dates and compare complete historical content.
 - Add project-path-safe builds, responsive browser tests and a main-only GitHub Pages workflow.
 - Preserve catalog version, all source data and all existing history snapshots.
+- Restyle the wiki as a plain reference site: system fonts, table-style lists, no card art or slogans, dark mode.
 
 ## 2026.10.28-phase2-draft
 
