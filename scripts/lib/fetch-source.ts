@@ -1,10 +1,19 @@
-import { appendFile, mkdir, readFile, realpath, rename, rm, writeFile } from "node:fs/promises";
-import { basename, dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
+import { appendFile, mkdir, rm, writeFile } from "node:fs/promises";
+import { join } from "node:path";
 import { setTimeout as delay } from "node:timers/promises";
 import { chromium } from "playwright";
 import robotsParserModule from "robots-parser";
 import { allowedUrl, listSources, sha256 } from "./catalog.js";
 import type { Catalog, Issuer } from "./types.js";
+
+import {
+  atomicJson,
+  externalStateDirectory,
+  MaintenanceStateError,
+  readFetchState,
+  readIssuerState,
+} from "./maintenance/state.js";
+export { externalStateDirectory } from "./maintenance/state.js";
 
 const robotsParser = robotsParserModule.default ?? robotsParserModule;
 
@@ -81,36 +90,6 @@ export const browserTransport: SourceTransport = {
   },
 };
 
-async function readState<T>(path: string): Promise<T | undefined> {
-  try {
-    return JSON.parse(await readFile(path, "utf8")) as T;
-  } catch (e) {
-    if ((e as NodeJS.ErrnoException).code === "ENOENT") return undefined;
-    throw new Error("Cannot read maintenance state; repair it before fetching", { cause: e });
-  }
-}
-async function atomicJson(path: string, value: unknown) {
-  const temporary = `${path}.${process.pid}.tmp`;
-  await writeFile(temporary, JSON.stringify(value, null, 2) + "\n", { mode: 0o600 });
-  await rename(temporary, path);
-}
-async function canonicalPath(path: string): Promise<string> {
-  try {
-    return await realpath(path);
-  } catch (e) {
-    if ((e as NodeJS.ErrnoException).code !== "ENOENT") throw e;
-    return join(await canonicalPath(dirname(path)), basename(path));
-  }
-}
-export async function externalStateDirectory(root: string, requested: string) {
-  const repo = await realpath(root);
-  const state = await canonicalPath(resolve(requested));
-  const path = relative(repo, state);
-  if (!path || (path !== ".." && !path.startsWith(`..${sep}`) && !isAbsolute(path)))
-    throw new Error("CARDFACTS_STATE_DIR must be outside the repository (including symlinks)");
-  await mkdir(state, { recursive: true, mode: 0o700 });
-  return state;
-}
 function safeFailure(error: unknown): string {
   // Never echo arbitrary browser error text: URLs may contain query credentials.
   if (error instanceof FetchFailure) return error.message;
@@ -169,13 +148,13 @@ async function fetchLocked(
   const transport = options.transport ?? browserTransport;
   const key = sha256(url);
   const statePath = join(stateDir, `${key}.json`);
-  const previous = await readState<FetchState>(statePath);
+  const previous = await readFetchState(stateDir, url);
   let checkedAt = now().toISOString();
   // Failed attempts are also cached: a retry loop must not hammer a blocked source.
   if (previous?.checked_at.slice(0, 10) === checkedAt.slice(0, 10))
     return { ...previous, source_id: sourceId, cached: true };
   const throttlePath = join(stateDir, `issuer-${issuer.id}.json`);
-  const throttle = await readState<{ requested_at: string }>(throttlePath);
+  const throttle = await readIssuerState(stateDir, issuer.id);
   const wait = throttle ? 10_000 - (now().getTime() - Date.parse(throttle.requested_at)) : 0;
   if (wait > 0) await sleep(wait);
   checkedAt = now().toISOString();
@@ -199,6 +178,7 @@ async function fetchLocked(
     return parser.isAllowed(candidate, catalog.issuers.user_agent) !== false;
   };
   let result: FetchState;
+  let pageText: string | undefined;
   try {
     if (!(await permitted(url))) throw new FetchFailure("robots.txt disallows this source");
     const parser = await robots.get(new URL(url).origin)!;
@@ -225,7 +205,7 @@ async function fetchLocked(
       throw new FetchFailure("Bot check or CAPTCHA detected; manual review required");
     const hash = sha256(text);
     const textFile = `${key}-${hash}.txt`;
-    await writeFile(join(stateDir, textFile), text, { mode: 0o600 });
+    pageText = text;
     result = {
       source_id: sourceId,
       url,
@@ -236,6 +216,7 @@ async function fetchLocked(
       consecutive_failures: 0,
     };
   } catch (error) {
+    if (error instanceof MaintenanceStateError) throw error;
     result = {
       source_id: sourceId,
       url,
@@ -247,6 +228,8 @@ async function fetchLocked(
       error: safeFailure(error),
     };
   }
+  if (pageText !== undefined && result.last_success)
+    await writeFile(join(stateDir, result.last_success.text_file), pageText, { mode: 0o600 });
   await atomicJson(statePath, result);
   await appendFile(join(stateDir, `${key}.checks.jsonl`), JSON.stringify(result) + "\n", { mode: 0o600 });
   return { ...result, cached: false };
