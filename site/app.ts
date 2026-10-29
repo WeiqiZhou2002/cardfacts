@@ -19,8 +19,8 @@ function showFilters() {
   if (button) {
     button.setAttribute("aria-expanded", String(filtersOpen));
     button.textContent = filtersOpen
-      ? t(ctx, "收起筛选条件 −", "Hide filters −")
-      : t(ctx, "展开筛选条件 +", "Show filters +");
+      ? t(ctx, "隐藏筛选条件", "Hide filters")
+      : t(ctx, "显示筛选条件", "Show filters");
   }
 }
 const main = document.querySelector<HTMLElement>("#main")!;

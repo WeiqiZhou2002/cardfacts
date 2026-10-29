@@ -209,11 +209,3 @@ export function category(ctx: Context, kind: "earn" | "credit", id: string) {
 export function reportLink(ctx: Context, card?: Card) {
   return `${ctx.data.repository}/issues/new?${new URLSearchParams({ template: "change-report.yml", title: `[Change] ${card?.name ?? "Card terms"}` })}`;
 }
-export function issuerClass(card: Card) {
-  return card.id
-    .replace(/^us-/, "")
-    .replace(
-      /-(?:platinum|gold|blue|business|sapphire|freedom|ink|venture|savor|quicksilver|spark|strata|double|autograph|active|it|altitude).*$/,
-      "",
-    );
-}
