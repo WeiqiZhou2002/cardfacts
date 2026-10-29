@@ -162,7 +162,8 @@ small {
 }
 .site-header nav {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 0 20px;
   font-size: 14px;
 }
 .site-header nav a {
@@ -394,6 +395,7 @@ small {
 }
 .results-toolbar {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
@@ -895,7 +897,7 @@ body.has-tray {
   .site-header nav {
     order: 3;
     width: 100%;
-    gap: 16px;
+    gap: 0 16px;
     padding-top: 4px;
   }
   .page-shell {
