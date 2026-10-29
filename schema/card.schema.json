@@ -1,0 +1,702 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardfacts.org/schema/card.schema.json",
+  "title": "CardFacts product",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "issuer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "country": {
+      "const": "US"
+    },
+    "currency": {
+      "const": "USD"
+    },
+    "network": {
+      "enum": ["amex", "visa", "mastercard", "discover"]
+    },
+    "audience": {
+      "enum": ["personal", "business"]
+    },
+    "availability": {
+      "enum": ["open", "closed_to_new", "discontinued"]
+    },
+    "rewards": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "program": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "unit": {
+          "enum": ["points", "miles", "cash"]
+        }
+      },
+      "required": ["program", "unit"]
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "accessed": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "required": ["id", "url", "title", "accessed"]
+      },
+      "minItems": 1
+    },
+    "notes": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fees": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/feeVersion"
+      },
+      "minItems": 1
+    },
+    "earn_rates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "category": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "versions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/earnVersion"
+            },
+            "minItems": 1
+          }
+        },
+        "required": ["id", "category", "versions"]
+      },
+      "minItems": 0
+    },
+    "credits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "category": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "family": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "delivery": {
+            "enum": ["statement_credit", "issuer_wallet", "in_app"]
+          },
+          "enrollment": {
+            "enum": ["required", "activation", "none", "unknown"]
+          },
+          "match": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "keywords": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 0,
+                "uniqueItems": true
+              },
+              "exclude": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "minItems": 0,
+                "uniqueItems": true
+              }
+            },
+            "required": ["keywords"]
+          },
+          "versions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/creditVersion"
+            },
+            "minItems": 1
+          }
+        },
+        "required": ["id", "name", "category", "delivery", "enrollment", "match", "versions"]
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "id",
+    "issuer",
+    "name",
+    "country",
+    "currency",
+    "network",
+    "audience",
+    "availability",
+    "rewards",
+    "aliases",
+    "sources",
+    "notes",
+    "fees",
+    "earn_rates",
+    "credits"
+  ],
+  "$defs": {
+    "creditVersion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "effective_from": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "effective_from_basis": {
+          "enum": ["unknown", "stated", "detected"]
+        },
+        "effective_to": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status": {
+          "enum": ["verified", "to_verify"]
+        },
+        "source": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "last_verified": {
+          "type": "string",
+          "format": "date"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "amount": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)\\.[0-9]{2}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "period": {
+          "enum": ["monthly", "quarterly", "semiannual", "annual", "multi_year"]
+        },
+        "period_years": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "reset_basis": {
+          "enum": ["calendar", "anniversary", "anniversary_statement", "since_last_credit"]
+        },
+        "period_boundaries": {
+          "enum": ["stated", "inferred"]
+        },
+        "cap_excludes_tax": {
+          "type": "boolean"
+        },
+        "per_transaction_cap": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.[0-9]{2}$"
+        },
+        "max_posting_lag_days": {
+          "type": ["integer", "null"],
+          "minimum": 0
+        }
+      },
+      "required": [
+        "effective_from",
+        "effective_from_basis",
+        "effective_to",
+        "status",
+        "source",
+        "last_verified",
+        "notes",
+        "amount",
+        "period",
+        "reset_basis",
+        "period_boundaries",
+        "max_posting_lag_days"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "to_verify"
+              }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "amount": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "amount": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "effective_from": {
+                "type": "null"
+              }
+            },
+            "required": ["effective_from"]
+          },
+          "then": {
+            "properties": {
+              "effective_from_basis": {
+                "const": "unknown"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "effective_from_basis": {
+                "enum": ["stated", "detected"]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "feeVersion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "effective_from": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "effective_from_basis": {
+          "enum": ["unknown", "stated", "detected"]
+        },
+        "effective_to": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status": {
+          "enum": ["verified", "to_verify"]
+        },
+        "source": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "last_verified": {
+          "type": "string",
+          "format": "date"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "annual_fee": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)\\.[0-9]{2}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "first_year_annual_fee": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)\\.[0-9]{2}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "authorized_user_fee": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)\\.[0-9]{2}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "foreign_transaction_fee_percent": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "effective_from",
+        "effective_from_basis",
+        "effective_to",
+        "status",
+        "source",
+        "last_verified",
+        "notes",
+        "annual_fee",
+        "first_year_annual_fee",
+        "authorized_user_fee",
+        "foreign_transaction_fee_percent"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "to_verify"
+              }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "annual_fee": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "annual_fee": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "effective_from": {
+                "type": "null"
+              }
+            },
+            "required": ["effective_from"]
+          },
+          "then": {
+            "properties": {
+              "effective_from_basis": {
+                "const": "unknown"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "effective_from_basis": {
+                "enum": ["stated", "detected"]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "earnVersion": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "effective_from": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "effective_from_basis": {
+          "enum": ["unknown", "stated", "detected"]
+        },
+        "effective_to": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "status": {
+          "enum": ["verified", "to_verify"]
+        },
+        "source": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "last_verified": {
+          "type": "string",
+          "format": "date"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "conditions": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "channels": {
+              "type": "array",
+              "items": {
+                "enum": ["any", "direct", "issuer_portal"]
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "merchants": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "region": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}$"
+            },
+            "requires_activation": {
+              "type": "boolean"
+            },
+            "prepaid": {
+              "type": "boolean"
+            }
+          },
+          "required": ["channels"]
+        },
+        "cap": {
+          "anyOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "amount": {
+                  "type": "string",
+                  "pattern": "^(0|[1-9][0-9]*)\\.[0-9]{2}$"
+                },
+                "period": {
+                  "enum": ["monthly", "quarterly", "semiannual", "annual"]
+                },
+                "reset_basis": {
+                  "enum": ["calendar", "anniversary"]
+                },
+                "rate_after_cap": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "shared_with": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                  },
+                  "minItems": 1,
+                  "uniqueItems": true
+                }
+              },
+              "required": ["amount", "period", "reset_basis", "rate_after_cap"]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "effective_from",
+        "effective_from_basis",
+        "effective_to",
+        "status",
+        "source",
+        "last_verified",
+        "notes",
+        "rate",
+        "conditions",
+        "cap"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "to_verify"
+              }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "rate": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "rate": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "effective_from": {
+                "type": "null"
+              }
+            },
+            "required": ["effective_from"]
+          },
+          "then": {
+            "properties": {
+              "effective_from_basis": {
+                "const": "unknown"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "effective_from_basis": {
+                "enum": ["stated", "detected"]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

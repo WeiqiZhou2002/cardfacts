@@ -1,0 +1,182 @@
+[
+  {
+    "id": "travel",
+    "name": {
+      "en": "Travel",
+      "zh": "通用旅行"
+    },
+    "definition": {
+      "en": "General travel reimbursements.",
+      "zh": "通用旅行报销。"
+    },
+    "family": "travel"
+  },
+  {
+    "id": "airline_incidental",
+    "name": {
+      "en": "Airline incidentals",
+      "zh": "航司杂费"
+    },
+    "definition": {
+      "en": "Eligible airline incidental charges.",
+      "zh": "符合条款的航司杂费。"
+    },
+    "family": "airline"
+  },
+  {
+    "id": "hotel",
+    "name": {
+      "en": "Hotels",
+      "zh": "酒店"
+    },
+    "definition": {
+      "en": "Eligible lodging reimbursements.",
+      "zh": "符合条款的住宿报销。"
+    },
+    "family": "hotel"
+  },
+  {
+    "id": "dining",
+    "name": {
+      "en": "Dining",
+      "zh": "餐饮"
+    },
+    "definition": {
+      "en": "Restaurant and dining program credits.",
+      "zh": "餐厅和餐饮项目报销。"
+    },
+    "family": "dining"
+  },
+  {
+    "id": "food_delivery",
+    "name": {
+      "en": "Food delivery",
+      "zh": "外卖"
+    },
+    "definition": {
+      "en": "Food delivery platform credits.",
+      "zh": "外卖平台报销。"
+    },
+    "family": "dining"
+  },
+  {
+    "id": "rideshare",
+    "name": {
+      "en": "Rideshare",
+      "zh": "打车出行"
+    },
+    "definition": {
+      "en": "Ride-hailing credits.",
+      "zh": "网约车报销。"
+    },
+    "family": "rideshare"
+  },
+  {
+    "id": "streaming_digital",
+    "name": {
+      "en": "Streaming and digital",
+      "zh": "流媒体与数字订阅"
+    },
+    "definition": {
+      "en": "Digital subscription reimbursements.",
+      "zh": "数字订阅报销。"
+    },
+    "family": "entertainment"
+  },
+  {
+    "id": "membership",
+    "name": {
+      "en": "Memberships",
+      "zh": "会员费"
+    },
+    "definition": {
+      "en": "Shopping, ride-hailing, or other membership fees.",
+      "zh": "购物、打车或其他会员费报销。"
+    },
+    "family": "generic"
+  },
+  {
+    "id": "shopping",
+    "name": {
+      "en": "Shopping",
+      "zh": "购物"
+    },
+    "definition": {
+      "en": "Credits for purchases at specified retailers.",
+      "zh": "指定零售商消费报销。"
+    },
+    "family": "shopping"
+  },
+  {
+    "id": "fitness_wellness",
+    "name": {
+      "en": "Fitness and wellness",
+      "zh": "健身与健康"
+    },
+    "definition": {
+      "en": "Fitness services and wellness products.",
+      "zh": "健身服务和健康产品报销。"
+    },
+    "family": "fitness"
+  },
+  {
+    "id": "trusted_traveler",
+    "name": {
+      "en": "Trusted traveler",
+      "zh": "快速通关"
+    },
+    "definition": {
+      "en": "Expedited security and border program fees.",
+      "zh": "快速安检和通关项目费用。"
+    },
+    "family": "travel-program"
+  },
+  {
+    "id": "entertainment_events",
+    "name": {
+      "en": "Events and tickets",
+      "zh": "票务娱乐"
+    },
+    "definition": {
+      "en": "Event and ticket platform credits.",
+      "zh": "活动和票务平台报销。"
+    },
+    "family": "generic"
+  },
+  {
+    "id": "wireless",
+    "name": {
+      "en": "Wireless",
+      "zh": "话费"
+    },
+    "definition": {
+      "en": "Eligible wireless service bills.",
+      "zh": "符合条款的无线通信账单。"
+    },
+    "family": "wireless"
+  },
+  {
+    "id": "business_services",
+    "name": {
+      "en": "Business services",
+      "zh": "商业服务"
+    },
+    "definition": {
+      "en": "Eligible business subscriptions and services.",
+      "zh": "符合条款的商业订阅和服务。"
+    },
+    "family": "generic"
+  },
+  {
+    "id": "other",
+    "name": {
+      "en": "Other",
+      "zh": "其他"
+    },
+    "definition": {
+      "en": "Credits not covered by another category.",
+      "zh": "未被其他类别覆盖的报销。"
+    },
+    "family": "generic"
+  }
+]

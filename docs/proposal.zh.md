@@ -1,14 +1,13 @@
 # 开放信用卡数据项目提案（暂名 CardFacts）
 
-状态：设计阶段。仓库已建（`WeiqiZhou2002/cardfacts`），尚无正式数据；许可等待决问题见 §10。
+状态：Phase 1 已实现，数据仍为 draft，尚未发布稳定版本。实现约定以 [data-model.md](data-model.md) 为准，命令见 [tooling.md](tooling.md)。后续待决问题见 §10。
 
 一句话：一个开源、结构化、每个数字都引用发卡机构公开条款的美国信用卡数据集（个人卡和商业卡），先覆盖**报销类权益（statement
 credit）、年费和返现/积分倍数**；配套从数据生成的 wiki 网站；由所有者服务器上的 agent 每日复核来源并提交
 带证据的 PR，人工审核后合并。Asset Ledger 和 Sure 固定版本引用这份数据。
 
 相关文件：[credit-progress.md](credit-progress.md)（报销权益的对应与进度计算规则，配套
-[测试向量](../vectors/credit-progress.json)）；[drafts/catalog.sample.json](../drafts/catalog.sample.json)（旧格式的
-首批数据草稿）；[.claude/skills/card-catalog-maintainer/](../.claude/skills/card-catalog-maintainer/)（维护 agent 的
+[测试向量](../vectors/credit-progress.json)）；[data/us/](../data/us/)（迁移后的首批三张卡）；[.claude/skills/card-catalog-maintainer/](../.claude/skills/card-catalog-maintainer/)（维护 agent 的
 skill）。
 
 ## 1. 为什么做
@@ -56,7 +55,7 @@ cardfacts/
   schema/card.schema.json              JSON Schema 2020-12
   vectors/credit-progress.json         权益进度测试向量（迁自 Asset Ledger 草稿）
   docs/credit-progress.md              报销权益对应与进度计算规则
-  drafts/                              正式 schema 建立前的数据草稿
+  catalog.json                         固定 schema 和数据版本号
   scripts/                             validate、build、sources、fetch-source、stale（TypeScript，pnpm）
   maintenance/issuer-domains.json      可引用的发卡机构域名；manual_only 列出只允许人工检查的机构
   maintenance/schedule.json            每日检查的热门卡列表
@@ -97,17 +96,17 @@ cardfacts/
 
 费用、返现规则和报销权益都以版本列表表示，每个版本带：
 
-| 字段                   | 含义                                                                |
-| ---------------------- | ------------------------------------------------------------------- |
-| `effective_from`       | 生效首日；未知为 `null`                                             |
-| `effective_from_basis` | `stated`（来源写明）或 `detected`（来源未写，填首次发现变化的日期） |
-| `effective_to`         | 最后生效日（含）；`null` 表示仍有效                                 |
-| `status`               | `verified`、`to_verify` 或 `synthetic`（仅测试）                    |
-| `source`               | 指向本卡 `sources[].id`，必须是发卡机构域名                         |
-| `last_verified`        | 最近一次由人或 agent 对照来源确认数值的日期                         |
-| `notes`                | 改写后的条款要点                                                    |
+| 字段                   | 含义                                                                             |
+| ---------------------- | -------------------------------------------------------------------------------- |
+| `effective_from`       | 生效首日；未知为 `null`                                                          |
+| `effective_from_basis` | `unknown`（初始历史未知）、`stated`（来源写明）或 `detected`（观察到变化的日期） |
+| `effective_to`         | 最后生效日（含）；`null` 表示仍有效                                              |
+| `status`               | 正式数据为 `verified`、`to_verify`；独立测试格式允许 `synthetic`                 |
+| `source`               | 指向本卡 `sources[].id`，必须是发卡机构域名                                      |
+| `last_verified`        | 最近一次由人或 agent 对照来源确认数值的日期                                      |
+| `notes`                | 改写后的条款要点                                                                 |
 
-改版时关闭旧版本（填 `effective_to`）、新增版本，从不改写历史数值。
+改版时关闭旧版本（填 `effective_to`）、新增版本，从不改写历史数值。初次迁移的未知日期不补造；实际资格条件变化也新建版本。
 
 ### 4.2 卡产品
 
@@ -116,6 +115,7 @@ cardfacts/
   "id": "us-amex-platinum",
   "issuer": "American Express",
   "name": "Platinum Card",
+  "country": "US",
   "network": "amex",
   "audience": "personal",
   "currency": "USD",
@@ -133,7 +133,7 @@ cardfacts/
   "fees": [
     {
       "effective_from": null,
-      "effective_from_basis": "stated",
+      "effective_from_basis": "unknown",
       "effective_to": null,
       "status": "verified",
       "annual_fee": "895.00",
@@ -141,21 +141,22 @@ cardfacts/
       "authorized_user_fee": null,
       "foreign_transaction_fee_percent": null,
       "source": "amex-platinum-page",
-      "last_verified": "2026-10-27"
+      "last_verified": "2026-10-27",
+      "notes": "Annual fee verified; optional fee fields were not confirmed."
     }
   ],
   "earn_rates": [
     {
       "id": "flights",
       "category": "flights",
-      "conditions": { "channels": ["direct", "issuer_portal"] },
       "versions": [
         {
           "effective_from": null,
-          "effective_from_basis": "stated",
+          "effective_from_basis": "unknown",
           "effective_to": null,
           "status": "verified",
           "rate": "5",
+          "conditions": { "channels": ["direct", "issuer_portal"] },
           "cap": {
             "amount": "500000.00",
             "period": "annual",
@@ -169,7 +170,8 @@ cardfacts/
       ]
     }
   ],
-  "credits": []
+  "credits": [],
+  "notes": "Illustrative product record; optional fees were not confirmed."
 }
 ```
 
@@ -181,13 +183,12 @@ cardfacts/
 - `rewards.unit`：`points`、`miles` 或 `cash`。`rate` 对 points/miles 表示每美元的倍数，对 cash 表示百分比。
 - 费用字段和 `rate_after_cap` 为 `null` 表示来源未写明或不适用，`notes` 说明是哪一种。商业卡的员工卡费记在
   `authorized_user_fee`。
-- `earn_rates[].conditions`：`channels`（`direct`、`issuer_portal`、`any`）、`merchants`（限定商户，例如
-  Amazon）、`region`（例如 `US`）、`requires_activation`、`selection`。轮换类别（例如每季度 5%）v1 用
-  `category: "rotating"` 加按季度的 `schedule` 表示；"每个账单周期自动适用消费最高的 N 个类别"用
-  `selection: { "type": "top_spend", "count": N, "from": [类别列表] }` 表示，细节在实现阶段定。
+- `earn_rates[].versions[].conditions`：`channels`（`direct`、`issuer_portal`、`any`）、`merchants`、
+  `region`、`requires_activation` 和 `prepaid`。条件与上限随版本保存；资格条件的实质变化也要新建版本。
+  轮换日程和每账单周期自动选最高消费类别的详细结构，留待 Phase 2 根据实际商业卡条款设计。
 - 上限可按卡年度重置（`cap.reset_basis: "anniversary"`），也可是多个类别合计（`cap.shared_with: [规则 id]`），商业卡
   常见。
-- `credits[]` 沿用 [drafts/catalog.sample.json](../drafts/catalog.sample.json) 的字段（说明见
+- `credits[]` 沿用原草稿的消费端字段，正式数据见 [data/us/](../data/us/)（说明见
   [credit-progress.md](credit-progress.md)），新增 `category`（见 §4.4）和版本的 `effective_from_basis`。
 
 ### 4.3 返现类别词表（`vocab/earn-categories.json`）
@@ -230,7 +231,7 @@ cardfacts/
 - 只有发卡机构域名（产品页、条款页、Guide to Benefits、持卡人协议）可以作为 `source`。博客、论坛、Reddit 只能
   作为线索，提醒去查，不能作为引用。
 - 未核实的数值留 `null` 并标 `to_verify`，不凭记忆或第三方文章填写。
-- 来源未写生效日期时，`effective_from_basis` 填 `detected`，日期为首次发现变化的日期，网站上标注"发现日期"。
+- 初始历史未明确时，生效日保持 `null`、basis 为 `unknown`。仅在观察到变化但来源未写日期时使用 `detected`，后续网站标注"发现日期"。
 - 关键词是匹配用的品牌或项目名，不能取自任何人的真实账单。
 - CI 检查：schema、id 唯一、来源可解析且为发卡机构域名、`amount` 与 `status` 一致、版本不重叠、词表取值合法、
   `last_verified` 超过 90 天的卡出现在站点的"待复核"列表。
@@ -295,7 +296,7 @@ CI 校验 ──> 所有者审核合并 ──> 发布 Release ──> 网站部
 ## 8. 首批收录
 
 已在 2026-10-27 从发卡机构页面核实的部分事实（详细出处见
-[drafts/catalog.sample.json](../drafts/catalog.sample.json)）：
+[data/us/](../data/us/)）：
 
 | 卡                     | 年费                  | 返现/积分                                                                                   | 报销                                              |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------- |
@@ -312,12 +313,12 @@ Bilt、Discover it。
 Chase Ink Business Preferred、Ink Business Cash、Ink Business Unlimited、Capital One Venture X Business、
 Capital One Spark Cash Plus。
 
-第一阶段目标约 30 张（个人卡约 20 张，商业卡约 10 张）。
+首批扩充目标约 30 张（个人卡约 20 张，商业卡约 10 张），属于下列路线图第 2 步。
 
 ## 9. 路线图
 
-1. 建仓库：schema、词表、validate/build/sources/fetch-source/stale 脚本、`maintenance/` 配置、CI、贡献指南；
-   迁入 3 张已研究的卡、测试向量和维护 skill。
+1. **已实现（draft）**：schema、词表、validate/build/sources/fetch-source/stale 脚本、`maintenance/` 配置、CI、贡献指南；
+   迁入 3 张已研究的卡，保留测试向量和维护 skill。迁移与核实限制见 [phase-1-migration.md](phase-1-migration.md)。
 2. 补齐首批约 30 张卡，含商业卡（人工加 agent 辅助研究，全部走 PR）。
 3. 网站：卡片页、横向对比页、待复核列表、双语界面。
 4. 部署维护 agent：先只读运行两周（只出报告不开 PR），确认误报率后开启 PR。

@@ -5,8 +5,8 @@ per-period progress. The [test vectors](../vectors/credit-progress.json) are the
 is correct when it reproduces every vector. Asset Ledger (TypeScript) and Sure (Ruby) are the first intended
 implementations; neither shares code with the other or with this repository.
 
-Product-level fields (fees, earn rates, audience) are described in the [proposal](proposal.zh.md) §4. Until
-the formal schema lands, the credit fields below match [drafts/catalog.sample.json](../drafts/catalog.sample.json).
+Product-level fields (fees, earn rates, audience) are described in the [proposal](proposal.zh.md) §4. Production
+records live in [data/us/](../data/us/); the authoritative additions are documented in [data-model.md](data-model.md).
 
 ## 1. Credit fields
 
@@ -30,6 +30,7 @@ Credit:
 | ------------ | -------- | ---------------------------------------------------------------------------------------------------------- |
 | `id`         | string   | Stable slug, unique within the product. Owner choices reference `product id + credit id`.                  |
 | `name`       | string   | Official credit name in the issuer's language.                                                             |
+| `category`   | string   | Credit vocabulary ID; does not replace a curated family fallback.                                          |
 | `family`     | string?  | Optional hint matching Asset Ledger's `BenefitFamily`; used only by the fallback in §2.3. Sure ignores it. |
 | `delivery`   | enum     | `statement_credit` (trackable), `issuer_wallet` (e.g. Uber Cash) or `in_app` (merchant-side promos).       |
 | `enrollment` | enum     | `required`, `activation`, `none` or `unknown`. Informational in v1.                                        |
@@ -38,22 +39,23 @@ Credit:
 
 Version:
 
-| Field                  | Type            | Meaning                                                                                                    |
-| ---------------------- | --------------- | ---------------------------------------------------------------------------------------------------------- |
-| `effective_from`       | date \| null    | First day these terms apply. `null` means not stated by a cited source; see §3.3.                          |
-| `effective_to`         | date \| null    | Last day these terms apply (inclusive); `null` means open-ended.                                           |
-| `status`               | enum            | `verified` (amount cited), `to_verify` (no progress computed), `synthetic` (test vectors only).            |
-| `amount`               | decimal string  | Cap per period in the product currency. `null` exactly when `status` is `to_verify`.                       |
-| `period`               | enum            | `monthly`, `quarterly`, `semiannual`, `annual` or `multi_year`.                                            |
-| `period_years`         | integer         | Only with `multi_year`, e.g. `4`.                                                                          |
-| `reset_basis`          | enum            | `calendar`, `anniversary`, `anniversary_statement` (annual only) or `since_last_credit` (multi-year only). |
-| `period_boundaries`    | enum            | `stated` when the source names the boundaries, `inferred` when only the cadence is stated.                 |
-| `cap_excludes_tax`     | boolean         | Default `false`. `true` when terms say "plus applicable taxes"; enables the tolerance in §3.4.             |
-| `per_transaction_cap`  | decimal string? | Informational (e.g. $250 per stay). Progress uses `amount` only.                                           |
-| `max_posting_lag_days` | integer \| null | Longest delay the issuer states between purchase and credit; `null` when not stated (treated as 0).        |
-| `source`               | string          | A product `sources[].id`.                                                                                  |
-| `last_verified`        | date            | When a person last checked the amount and period against the source.                                       |
-| `notes`                | string          | Paraphrase of the relevant terms. Never paste issuer text at length.                                       |
+| Field                  | Type            | Meaning                                                                                                                          |
+| ---------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `effective_from`       | date \| null    | First day these terms apply. `null` means not stated by a cited source; see §3.3.                                                |
+| `effective_from_basis` | enum            | `unknown` with null start; otherwise `stated` or `detected`. Production provenance metadata.                                     |
+| `effective_to`         | date \| null    | Last day these terms apply (inclusive); `null` means open-ended.                                                                 |
+| `status`               | enum            | `verified` (amount cited), `to_verify` (no progress computed), `synthetic` (compact test fixtures only, rejected in production). |
+| `amount`               | decimal string  | Cap per period in the product currency. `null` exactly when `status` is `to_verify`.                                             |
+| `period`               | enum            | `monthly`, `quarterly`, `semiannual`, `annual` or `multi_year`.                                                                  |
+| `period_years`         | integer         | Only with `multi_year`, e.g. `4`.                                                                                                |
+| `reset_basis`          | enum            | `calendar`, `anniversary`, `anniversary_statement` (annual only) or `since_last_credit` (multi-year only).                       |
+| `period_boundaries`    | enum            | `stated` when the source names the boundaries, `inferred` when only the cadence is stated.                                       |
+| `cap_excludes_tax`     | boolean         | Default `false`. `true` when terms say "plus applicable taxes"; enables the tolerance in §3.4.                                   |
+| `per_transaction_cap`  | decimal string? | Informational (e.g. $250 per stay). Progress uses `amount` only.                                                                 |
+| `max_posting_lag_days` | integer \| null | Longest delay the issuer states between purchase and credit; `null` when not stated (treated as 0).                              |
+| `source`               | string          | A product `sources[].id`.                                                                                                        |
+| `last_verified`        | date            | When a person or agent last checked the source; pending records retain their attempted-check date.                               |
+| `notes`                | string          | Paraphrase of the relevant terms. Never paste issuer text at length.                                                             |
 
 Invariants checked in CI: unique ids; `source` resolves; `amount` is `null` exactly for `to_verify`;
 `multi_year` pairs with `since_last_credit` and nothing else does; `anniversary_statement` only with
@@ -263,13 +265,17 @@ starting inside that benefit year.
 | Field       | Meaning                                                                                                                                                                              |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `id`        | `bt-NNN`, stable.                                                                                                                                                                    |
-| `catalog`   | One product in the §1 format, with `status: "synthetic"` versions and a fictional issuer.                                                                                            |
+| `catalog`   | A compact fictional product with synthetic/pending versions; metadata and provenance are intentionally omitted (see below).                                                          |
 | `account`   | `{ currency, product_id, anniversary, statement_close_day, tracking_start }`; `product_id: null` means no product selected.                                                          |
 | `overrides` | `[{ credit, effective_from, amount, disabled }]`.                                                                                                                                    |
 | `entries`   | Benefit credits: `{ id, date, amount, currency, description, merchant?, family?, assigned_credit?, assigned_period_start? }`. A present `assigned_credit: null` is an explicit none. |
 | `as_of`     | Owner-local today.                                                                                                                                                                   |
 | `view_year` | Selected calendar year (§3.8).                                                                                                                                                       |
 | `expect`    | `{ matches: { entryId: creditId \| null }, unmatched: [{ entry, reason }], instances: [...] }`, instances as in §3.7 or the multi-year form.                                         |
+
+Fixtures use [schema/vectors.schema.json](../schema/vectors.schema.json), not the production schema.
+Omitted delivery means `statement_credit`; fixture versions omit source, verification date and date basis.
+The test runner supplies no additional production metadata. These omissions do not relax production rules.
 
 Comparison rules: money as decimals; `unmatched` as a set; `entries` lists in `(date, id)` order;
 `instances` in catalog order.

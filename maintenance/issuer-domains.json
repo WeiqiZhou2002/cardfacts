@@ -1,0 +1,24 @@
+{
+  "issuers": [
+    {
+      "id": "amex",
+      "name": "American Express",
+      "domains": ["americanexpress.com"],
+      "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
+    },
+    {
+      "id": "chase",
+      "name": "Chase",
+      "domains": ["chase.com"],
+      "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
+    },
+    {
+      "id": "capital-one",
+      "name": "Capital One",
+      "domains": ["capitalone.com"],
+      "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
+    }
+  ],
+  "manual_only": ["amex", "chase", "capital-one"],
+  "user_agent": "CardFacts/0.1 (+https://github.com/WeiqiZhou2002/cardfacts)"
+}

@@ -1,0 +1,288 @@
+[
+  {
+    "id": "dining",
+    "name": {
+      "en": "Dining",
+      "zh": "餐饮"
+    },
+    "definition": {
+      "en": "Restaurants and eligible dining purchases.",
+      "zh": "餐厅及符合条款的餐饮消费。"
+    }
+  },
+  {
+    "id": "groceries",
+    "name": {
+      "en": "Groceries",
+      "zh": "超市"
+    },
+    "definition": {
+      "en": "Grocery stores and supermarkets; issuer exclusions apply.",
+      "zh": "杂货店和超市，适用发卡机构的排除条款。"
+    }
+  },
+  {
+    "id": "wholesale_clubs",
+    "name": {
+      "en": "Wholesale clubs",
+      "zh": "仓储会员店"
+    },
+    "definition": {
+      "en": "Purchases at warehouse membership clubs.",
+      "zh": "仓储会员店消费。"
+    }
+  },
+  {
+    "id": "gas",
+    "name": {
+      "en": "Gas",
+      "zh": "加油"
+    },
+    "definition": {
+      "en": "Vehicle fuel purchases at gas stations.",
+      "zh": "加油站的车辆燃油消费。"
+    }
+  },
+  {
+    "id": "ev_charging",
+    "name": {
+      "en": "EV charging",
+      "zh": "电动车充电"
+    },
+    "definition": {
+      "en": "Electric vehicle charging purchases.",
+      "zh": "电动车充电消费。"
+    }
+  },
+  {
+    "id": "travel",
+    "name": {
+      "en": "Travel",
+      "zh": "旅行"
+    },
+    "definition": {
+      "en": "Broad travel category or combined portal travel purchases.",
+      "zh": "通用旅行类别或旅行门户的合并类别。"
+    }
+  },
+  {
+    "id": "flights",
+    "name": {
+      "en": "Flights",
+      "zh": "航班"
+    },
+    "definition": {
+      "en": "Airline tickets.",
+      "zh": "机票消费。"
+    }
+  },
+  {
+    "id": "hotels",
+    "name": {
+      "en": "Hotels",
+      "zh": "酒店"
+    },
+    "definition": {
+      "en": "Hotel and other qualifying lodging purchases.",
+      "zh": "酒店及符合条款的住宿消费。"
+    }
+  },
+  {
+    "id": "car_rental",
+    "name": {
+      "en": "Car rental",
+      "zh": "租车"
+    },
+    "definition": {
+      "en": "Rental vehicle purchases.",
+      "zh": "租赁车辆消费。"
+    }
+  },
+  {
+    "id": "vacation_rentals",
+    "name": {
+      "en": "Vacation rentals",
+      "zh": "度假租赁"
+    },
+    "definition": {
+      "en": "Vacation home and short-term rental bookings.",
+      "zh": "度假屋和短期租赁预订。"
+    }
+  },
+  {
+    "id": "transit",
+    "name": {
+      "en": "Transit",
+      "zh": "公共交通"
+    },
+    "definition": {
+      "en": "Public and local transportation.",
+      "zh": "公共和本地交通消费。"
+    }
+  },
+  {
+    "id": "rideshare",
+    "name": {
+      "en": "Rideshare",
+      "zh": "打车出行"
+    },
+    "definition": {
+      "en": "Ride-hailing and taxi purchases.",
+      "zh": "网约车和出租车消费。"
+    }
+  },
+  {
+    "id": "streaming",
+    "name": {
+      "en": "Streaming",
+      "zh": "流媒体"
+    },
+    "definition": {
+      "en": "Eligible digital streaming subscriptions.",
+      "zh": "符合条款的数字流媒体订阅。"
+    }
+  },
+  {
+    "id": "drugstores",
+    "name": {
+      "en": "Drugstores",
+      "zh": "药店"
+    },
+    "definition": {
+      "en": "Drugstore purchases.",
+      "zh": "药店消费。"
+    }
+  },
+  {
+    "id": "online_retail",
+    "name": {
+      "en": "Online retail",
+      "zh": "网上零售"
+    },
+    "definition": {
+      "en": "Eligible online retail purchases.",
+      "zh": "符合条款的网上零售消费。"
+    }
+  },
+  {
+    "id": "home_improvement",
+    "name": {
+      "en": "Home improvement",
+      "zh": "家居装修"
+    },
+    "definition": {
+      "en": "Home improvement store purchases.",
+      "zh": "家居装修商店消费。"
+    }
+  },
+  {
+    "id": "entertainment",
+    "name": {
+      "en": "Entertainment",
+      "zh": "娱乐"
+    },
+    "definition": {
+      "en": "Eligible entertainment and ticket purchases.",
+      "zh": "符合条款的娱乐和票务消费。"
+    }
+  },
+  {
+    "id": "utilities",
+    "name": {
+      "en": "Utilities",
+      "zh": "公共事业"
+    },
+    "definition": {
+      "en": "Eligible household utility bills.",
+      "zh": "符合条款的公共事业账单。"
+    }
+  },
+  {
+    "id": "telecom",
+    "name": {
+      "en": "Telecommunications",
+      "zh": "通信"
+    },
+    "definition": {
+      "en": "Phone, internet, and cable services.",
+      "zh": "电话、互联网和有线电视服务。"
+    }
+  },
+  {
+    "id": "rent",
+    "name": {
+      "en": "Rent",
+      "zh": "房租"
+    },
+    "definition": {
+      "en": "Eligible rental housing payments.",
+      "zh": "符合条款的住房租金。"
+    }
+  },
+  {
+    "id": "rotating",
+    "name": {
+      "en": "Rotating categories",
+      "zh": "轮换类别"
+    },
+    "definition": {
+      "en": "Issuer categories that change by period; detailed schedules deferred.",
+      "zh": "发卡机构按周期调整的类别，详细日程暂未建模。"
+    }
+  },
+  {
+    "id": "everything_else",
+    "name": {
+      "en": "Other purchases",
+      "zh": "其他消费"
+    },
+    "definition": {
+      "en": "Base earning rule for purchases outside higher-rate rules.",
+      "zh": "不适用较高倍数规则的消费的基础积分规则。"
+    }
+  },
+  {
+    "id": "shipping",
+    "name": {
+      "en": "Shipping",
+      "zh": "运输快递"
+    },
+    "definition": {
+      "en": "Shipping and courier services.",
+      "zh": "运输和快递服务。"
+    }
+  },
+  {
+    "id": "advertising",
+    "name": {
+      "en": "Advertising",
+      "zh": "广告"
+    },
+    "definition": {
+      "en": "Eligible online and social-media advertising.",
+      "zh": "符合条款的网络和社交媒体广告。"
+    }
+  },
+  {
+    "id": "office_supplies",
+    "name": {
+      "en": "Office supplies",
+      "zh": "办公用品"
+    },
+    "definition": {
+      "en": "Office supply store purchases.",
+      "zh": "办公用品商店消费。"
+    }
+  },
+  {
+    "id": "software_cloud",
+    "name": {
+      "en": "Software and cloud",
+      "zh": "软件与云服务"
+    },
+    "definition": {
+      "en": "Eligible software, cloud services, and computer hardware.",
+      "zh": "符合条款的软件、云服务和计算机硬件。"
+    }
+  }
+]

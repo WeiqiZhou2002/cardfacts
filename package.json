@@ -1,0 +1,35 @@
+{
+  "name": "cardfacts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "packageManager": "pnpm@11.20.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "validate": "node --import tsx scripts/cli.ts validate",
+    "build": "node --import tsx scripts/cli.ts build",
+    "sources": "node --import tsx scripts/cli.ts sources",
+    "stale": "node --import tsx scripts/cli.ts stale",
+    "fetch-source": "node --import tsx scripts/cli.ts fetch-source",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "pnpm format:check && pnpm typecheck && pnpm validate && pnpm test && pnpm build"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1",
+    "playwright": "^1.64.1",
+    "robots-parser": "^3.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "prettier": "^3.9.10",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
