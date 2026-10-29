@@ -1,0 +1,338 @@
+{
+  "format_version": 1,
+  "id": "20261028T221039Z-1e6aca6b1352",
+  "product_id": "us-chase-sapphire-preferred",
+  "recorded_at": "2026-10-28T22:10:39Z",
+  "reason": "Initial Phase 2 issuer-source research; unknown effective starts and incomplete coverage remain explicit.",
+  "content_sha256": "1e6aca6b13527b4c4e00ead3ce67c068e5177639ae2a19cfbe997eddb92ca701",
+  "product": {
+    "id": "us-chase-sapphire-preferred",
+    "issuer": "Chase",
+    "name": "Chase Sapphire Preferred",
+    "country": "US",
+    "currency": "USD",
+    "network": null,
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "chase-ultimate-rewards",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-chase-sapphire-preferred-page",
+        "url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred",
+        "title": "Chase Sapphire Preferred official product information",
+        "accessed": "2026-10-28"
+      }
+    ],
+    "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "reviewed",
+      "notes": "Peloton promotion cap and exact vacation-rental merchant list require follow-up; optional fee details unconfirmed."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-chase-sapphire-preferred-page",
+        "last_verified": "2026-10-28",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "95.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "portal-travel",
+        "category": "travel",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-sapphire-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible issuer-portal bookings.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["issuer_portal"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-sapphire-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Issuer eligible category; streaming restricted to select services.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "gas",
+        "category": "gas",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-sapphire-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Issuer eligible category; streaming restricted to select services.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "ev-charging",
+        "category": "ev_charging",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-sapphire-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Issuer eligible category; streaming restricted to select services.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "streaming",
+        "category": "streaming",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-sapphire-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Issuer eligible category; streaming restricted to select services.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "online-groceries",
+        "category": "groceries",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-sapphire-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Online groceries; excludes Target, Walmart and wholesale clubs.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"],
+              "online_only": true
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "vacation-rentals",
+        "category": "vacation_rentals",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-sapphire-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Only issuer-designated vacation rental brands; consult current eligible list.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "other-travel",
+        "category": "travel",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-sapphire-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Travel outside higher-rate categories.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "base",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-sapphire-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Other eligible purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "lyft",
+        "category": "rideshare",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": "2027-09-30",
+            "status": "verified",
+            "source": "us-chase-sapphire-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible Lyft purchases.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["any"],
+              "merchants": ["Lyft"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": [
+      {
+        "id": "hotel",
+        "name": "Chase Travel Hotel Credit",
+        "category": "hotel",
+        "delivery": "statement_credit",
+        "enrollment": "none",
+        "match": {
+          "keywords": ["Chase Travel Hotel Credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-sapphire-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Hotel purchases through Chase Travel; credited purchases do not earn points.",
+            "amount": "100.00",
+            "period": "annual",
+            "reset_basis": "anniversary",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": null
+          }
+        ]
+      },
+      {
+        "id": "trusted-traveler",
+        "name": "Global Entry / TSA PreCheck / NEXUS",
+        "category": "trusted_traveler",
+        "delivery": "statement_credit",
+        "enrollment": "none",
+        "match": {
+          "keywords": ["GLOBAL ENTRY", "TSA PRECHECK", "NEXUS"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-sapphire-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "One application credit; shared across programs.",
+            "amount": "120.00",
+            "period": "multi_year",
+            "reset_basis": "since_last_credit",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null,
+            "period_years": 4
+          }
+        ]
+      },
+      {
+        "id": "doordash",
+        "name": "DoorDash Grocery/Retail Promo",
+        "category": "food_delivery",
+        "delivery": "in_app",
+        "enrollment": "activation",
+        "match": {
+          "keywords": ["DoorDash Grocery/Retail Promo"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": "2029-12-31",
+            "status": "verified",
+            "source": "us-chase-sapphire-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Requires activated DashPass; qualifying grocery/retail orders.",
+            "amount": "10.00",
+            "period": "monthly",
+            "reset_basis": "calendar",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": null
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping keep card data accurate. Phase 1 provides a schema, three seed cards and offline tooling.
+Thanks for helping keep card data accurate. The draft provides 30 cards, full product history and offline tooling.
 Useful contributions include issuer-confirmed change reports, schema review and additional cited cards.
 
 ## Reporting a change
@@ -42,7 +42,7 @@ Read [the data contract](docs/data-model.md) before adding fields. Unknown initi
 inside versions. Keep source IDs globally unique and use a new source ID when a URL changes.
 
 A term or eligibility change closes the old version and appends a replacement. Editorial notes changes
-and re-verification timestamps can be updated in place; they must not conceal a term change. Historical
+and re-verification timestamps can update the current card without a new effective interval; they must not conceal a term change. Every edit requires a new immutable snapshot via `pnpm snapshot PRODUCT_ID --recorded-at UTC_TIME --reason TEXT` before validation. See [history](docs/history.md). Historical
 numeric values, source URLs and closed effective intervals are protected by CI.
 
 Do not update `last_verified` merely because you migrated or reformatted a record. Existing pending
@@ -51,5 +51,5 @@ keep null and explain the gap in notes. Preserve progress-vector expectations un
 changing the consumer contract and its format version.
 
 New cards also need an issuer entry, allowed domains, and vocabulary categories. Follow the
-[tooling guide](docs/tooling.md) for manual-only issuer policy and source checks. Source snapshots belong
-outside the repository. A release version is explicit in `catalog.json`; do not derive it from build time.
+[tooling guide](docs/tooling.md) for manual-only issuer policy and source checks. Fetched issuer page snapshots belong
+outside the repository; structured product revisions belong in `history/`. A release version is explicit in `catalog.json`; do not derive it from build time.

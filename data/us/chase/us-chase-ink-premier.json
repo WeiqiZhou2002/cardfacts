@@ -1,0 +1,130 @@
+{
+  "id": "us-chase-ink-premier",
+  "issuer": "Chase",
+  "name": "Ink Business Premier",
+  "country": "US",
+  "currency": "USD",
+  "network": null,
+  "audience": "business",
+  "availability": "open",
+  "rewards": {
+    "program": "chase-ultimate-rewards",
+    "unit": "cash"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-chase-ink-premier-page",
+      "url": "https://creditcards.chase.com/business-credit-cards/ink/premier",
+      "title": "Ink Business Premier official product information",
+      "accessed": "2026-10-28"
+    }
+  ],
+  "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "reviewed",
+    "credits": "reviewed",
+    "notes": "Reviewed listed ongoing benefits; merchant exclusions in notes remain part of eligibility. Empty credits means none captured, not a guarantee of absence."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-chase-ink-premier-page",
+      "last_verified": "2026-10-28",
+      "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+      "annual_fee": "195.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "base",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-ink-premier-page",
+          "last_verified": "2026-10-28",
+          "notes": "Other eligible purchases.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "large-purchases",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-ink-premier-page",
+          "last_verified": "2026-10-28",
+          "notes": "Single posted purchase of at least $5,000.",
+          "rate": "2.5",
+          "conditions": {
+            "channels": ["any"],
+            "minimum_transaction_amount": "5000.00"
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "portal-travel",
+      "category": "travel",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-ink-premier-page",
+          "last_verified": "2026-10-28",
+          "notes": "Eligible issuer-portal bookings.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["issuer_portal"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "lyft",
+      "category": "rideshare",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": "2027-09-30",
+          "status": "verified",
+          "source": "us-chase-ink-premier-page",
+          "last_verified": "2026-10-28",
+          "notes": "Eligible Lyft purchases.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["any"],
+            "merchants": ["Lyft"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": []
+}

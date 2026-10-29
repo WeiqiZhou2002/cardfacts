@@ -1,0 +1,73 @@
+{
+  "id": "us-amex-blue-business-cash",
+  "issuer": "American Express",
+  "name": "Blue Business Cash",
+  "country": "US",
+  "currency": "USD",
+  "network": "amex",
+  "audience": "business",
+  "availability": "open",
+  "rewards": {
+    "program": "amex-cash-back",
+    "unit": "cash"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-amex-blue-business-cash-page",
+      "url": "https://www.americanexpress.com/en-us/business/credit-cards/blue-business-cash/",
+      "title": "Blue Business Cash official product information",
+      "accessed": "2026-10-28"
+    }
+  ],
+  "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "reviewed",
+    "credits": "reviewed",
+    "notes": "Reviewed listed ongoing benefits; merchant exclusions in notes remain part of eligibility. Empty credits means none captured, not a guarantee of absence."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-amex-blue-business-cash-page",
+      "last_verified": "2026-10-28",
+      "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+      "annual_fee": "0.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "base",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-amex-blue-business-cash-page",
+          "last_verified": "2026-10-28",
+          "notes": "Rebate credited automatically to statement.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": {
+            "amount": "50000.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "rate_after_cap": "1"
+          }
+        }
+      ]
+    }
+  ],
+  "credits": []
+}

@@ -1,0 +1,448 @@
+{
+  "format_version": 1,
+  "id": "20261028T221039Z-3b26cdd0fb78",
+  "product_id": "us-amex-business-gold",
+  "recorded_at": "2026-10-28T22:10:39Z",
+  "reason": "Initial Phase 2 issuer-source research; unknown effective starts and incomplete coverage remain explicit.",
+  "content_sha256": "3b26cdd0fb78f03b1294336070c1417082c1cc5686be1442794b10289569d444",
+  "product": {
+    "id": "us-amex-business-gold",
+    "issuer": "American Express",
+    "name": "American Express Business Gold",
+    "country": "US",
+    "currency": "USD",
+    "network": "amex",
+    "audience": "business",
+    "availability": "open",
+    "rewards": {
+      "program": "amex-membership-rewards",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-amex-business-gold-page",
+        "url": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-business-gold-card-amex/",
+        "title": "American Express Business Gold official product information",
+        "accessed": "2026-10-28"
+      }
+    ],
+    "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "reviewed",
+      "notes": "Future advertising/wireless merchant restrictions pending; total shared cap applies only to the two selected categories each billing cycle."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-amex-business-gold-page",
+        "last_verified": "2026-10-28",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "375.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "base",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-business-gold-page",
+            "last_verified": "2026-10-28",
+            "notes": "Other eligible purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "portal-flights",
+        "category": "flights",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-business-gold-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible issuer-portal bookings.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["issuer_portal"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "portal-hotels",
+        "category": "hotels",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-business-gold-page",
+            "last_verified": "2026-10-28",
+            "notes": "Amex Travel prepaid hotels.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["issuer_portal"],
+              "prepaid": true
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "advertising",
+        "category": "advertising",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": "2027-02-16",
+            "status": "verified",
+            "source": "us-amex-business-gold-page",
+            "last_verified": "2026-10-28",
+            "notes": "Select US media advertising.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["any"],
+              "selection": {
+                "type": "top_spend",
+                "count": 2,
+                "period": "billing_cycle",
+                "categories": ["advertising", "software_cloud", "dining", "gas", "transit", "telecom"]
+              },
+              "region": "US"
+            },
+            "cap": {
+              "amount": "150000.00",
+              "period": "annual",
+              "reset_basis": "calendar",
+              "rate_after_cap": "1",
+              "shared_with": ["software-cloud", "dining", "gas", "transit", "telecom"]
+            }
+          },
+          {
+            "effective_from": "2027-02-17",
+            "effective_from_basis": "stated",
+            "effective_to": null,
+            "status": "to_verify",
+            "source": "us-amex-business-gold-page",
+            "last_verified": "2026-10-28",
+            "notes": "Select-merchant restriction announced; merchant list still needs review.",
+            "rate": null,
+            "conditions": {
+              "channels": ["any"],
+              "selection": {
+                "type": "top_spend",
+                "count": 2,
+                "period": "billing_cycle",
+                "categories": ["advertising", "software_cloud", "dining", "gas", "transit", "telecom"]
+              },
+              "region": "US"
+            },
+            "cap": {
+              "amount": "150000.00",
+              "period": "annual",
+              "reset_basis": "calendar",
+              "rate_after_cap": "1",
+              "shared_with": ["software-cloud", "dining", "gas", "transit", "telecom"]
+            }
+          }
+        ]
+      },
+      {
+        "id": "software-cloud",
+        "category": "software_cloud",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-business-gold-page",
+            "last_verified": "2026-10-28",
+            "notes": "US electronic goods, software and cloud providers.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["any"],
+              "selection": {
+                "type": "top_spend",
+                "count": 2,
+                "period": "billing_cycle",
+                "categories": ["advertising", "software_cloud", "dining", "gas", "transit", "telecom"]
+              },
+              "region": "US"
+            },
+            "cap": {
+              "amount": "150000.00",
+              "period": "annual",
+              "reset_basis": "calendar",
+              "rate_after_cap": "1",
+              "shared_with": ["advertising", "dining", "gas", "transit", "telecom"]
+            }
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-business-gold-page",
+            "last_verified": "2026-10-28",
+            "notes": "US restaurants.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["any"],
+              "selection": {
+                "type": "top_spend",
+                "count": 2,
+                "period": "billing_cycle",
+                "categories": ["advertising", "software_cloud", "dining", "gas", "transit", "telecom"]
+              },
+              "region": "US"
+            },
+            "cap": {
+              "amount": "150000.00",
+              "period": "annual",
+              "reset_basis": "calendar",
+              "rate_after_cap": "1",
+              "shared_with": ["advertising", "software-cloud", "gas", "transit", "telecom"]
+            }
+          }
+        ]
+      },
+      {
+        "id": "gas",
+        "category": "gas",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-business-gold-page",
+            "last_verified": "2026-10-28",
+            "notes": "US gas stations.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["any"],
+              "selection": {
+                "type": "top_spend",
+                "count": 2,
+                "period": "billing_cycle",
+                "categories": ["advertising", "software_cloud", "dining", "gas", "transit", "telecom"]
+              },
+              "region": "US"
+            },
+            "cap": {
+              "amount": "150000.00",
+              "period": "annual",
+              "reset_basis": "calendar",
+              "rate_after_cap": "1",
+              "shared_with": ["advertising", "software-cloud", "dining", "transit", "telecom"]
+            }
+          }
+        ]
+      },
+      {
+        "id": "transit",
+        "category": "transit",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-business-gold-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible transit.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["any"],
+              "selection": {
+                "type": "top_spend",
+                "count": 2,
+                "period": "billing_cycle",
+                "categories": ["advertising", "software_cloud", "dining", "gas", "transit", "telecom"]
+              }
+            },
+            "cap": {
+              "amount": "150000.00",
+              "period": "annual",
+              "reset_basis": "calendar",
+              "rate_after_cap": "1",
+              "shared_with": ["advertising", "software-cloud", "dining", "gas", "telecom"]
+            }
+          }
+        ]
+      },
+      {
+        "id": "telecom",
+        "category": "telecom",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": "2027-02-16",
+            "status": "verified",
+            "source": "us-amex-business-gold-page",
+            "last_verified": "2026-10-28",
+            "notes": "Monthly US wireless bills paid directly.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["any"],
+              "selection": {
+                "type": "top_spend",
+                "count": 2,
+                "period": "billing_cycle",
+                "categories": ["advertising", "software_cloud", "dining", "gas", "transit", "telecom"]
+              },
+              "region": "US"
+            },
+            "cap": {
+              "amount": "150000.00",
+              "period": "annual",
+              "reset_basis": "calendar",
+              "rate_after_cap": "1",
+              "shared_with": ["advertising", "software-cloud", "dining", "gas", "transit"]
+            }
+          },
+          {
+            "effective_from": "2027-02-17",
+            "effective_from_basis": "stated",
+            "effective_to": null,
+            "status": "to_verify",
+            "source": "us-amex-business-gold-page",
+            "last_verified": "2026-10-28",
+            "notes": "Select-merchant restriction announced; merchant list still needs review.",
+            "rate": null,
+            "conditions": {
+              "channels": ["any"],
+              "selection": {
+                "type": "top_spend",
+                "count": 2,
+                "period": "billing_cycle",
+                "categories": ["advertising", "software_cloud", "dining", "gas", "transit", "telecom"]
+              },
+              "region": "US"
+            },
+            "cap": {
+              "amount": "150000.00",
+              "period": "annual",
+              "reset_basis": "calendar",
+              "rate_after_cap": "1",
+              "shared_with": ["advertising", "software-cloud", "dining", "gas", "transit"]
+            }
+          }
+        ]
+      }
+    ],
+    "credits": [
+      {
+        "id": "flexible-business",
+        "name": "Flexible Business Credit",
+        "category": "business_services",
+        "delivery": "statement_credit",
+        "enrollment": "required",
+        "match": {
+          "keywords": ["Flexible Business Credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-business-gold-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible US Grubhub, office supplies and UPS.com shipping.",
+            "amount": "20.00",
+            "period": "monthly",
+            "reset_basis": "calendar",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": null
+          }
+        ]
+      },
+      {
+        "id": "squarespace",
+        "name": "Squarespace Credit",
+        "category": "business_services",
+        "delivery": "statement_credit",
+        "enrollment": "required",
+        "match": {
+          "keywords": ["Squarespace Credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-business-gold-page",
+            "last_verified": "2026-10-28",
+            "notes": "US Squarespace purchases.",
+            "amount": "150.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": null
+          }
+        ]
+      },
+      {
+        "id": "walmart-plus",
+        "name": "Walmart+ Credit",
+        "category": "membership",
+        "delivery": "statement_credit",
+        "enrollment": "none",
+        "match": {
+          "keywords": ["Walmart+ Credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-business-gold-page",
+            "last_verified": "2026-10-28",
+            "notes": "Monthly Walmart+ plan; Plus Ups excluded.",
+            "amount": "12.95",
+            "period": "monthly",
+            "reset_basis": "calendar",
+            "period_boundaries": "stated",
+            "max_posting_lag_days": null,
+            "cap_excludes_tax": true
+          }
+        ]
+      }
+    ]
+  }
+}

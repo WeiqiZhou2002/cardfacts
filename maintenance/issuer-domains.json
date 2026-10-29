@@ -17,8 +17,32 @@
       "name": "Capital One",
       "domains": ["capitalone.com"],
       "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
+    },
+    {
+      "id": "citi",
+      "name": "Citi",
+      "domains": ["citi.com"],
+      "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
+    },
+    {
+      "id": "wells-fargo",
+      "name": "Wells Fargo",
+      "domains": ["wellsfargo.com"],
+      "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
+    },
+    {
+      "id": "discover",
+      "name": "Discover",
+      "domains": ["discover.com"],
+      "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
+    },
+    {
+      "id": "us-bank",
+      "name": "U.S. Bank",
+      "domains": ["usbank.com"],
+      "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
     }
   ],
-  "manual_only": ["amex", "chase", "capital-one"],
+  "manual_only": ["amex", "chase", "capital-one", "citi", "wells-fargo", "discover", "us-bank"],
   "user_agent": "CardFacts/0.1 (+https://github.com/WeiqiZhou2002/cardfacts)"
 }

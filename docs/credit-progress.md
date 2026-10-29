@@ -329,3 +329,11 @@ The expectations were computed by a throwaway reference script written from this
 hand (bt-001, 002, 003, 007, 008, 013, 014, 015, 021). The script is not committed; the vectors are the
 contract. Asset Ledger runs them in Vitest, Sure in Minitest, both reading the same vendored file. A
 behaviour change bumps `format_version` and lands in this repository first.
+
+## Phase 2 catalog compatibility
+
+The schema v2 catalog additionally contains `month_after_annual_fee` and `qualifying_activity` annual
+reset bases plus spend/stay/activity eligibility conditions. These are outside the original progress
+contract and its 23 vectors. Consumers must explicitly implement them, or report such benefits as
+unsupported/needs review; never silently substitute calendar or anniversary periods. See
+[data-model.md](data-model.md) and [phase-2-catalog.md](phase-2-catalog.md).

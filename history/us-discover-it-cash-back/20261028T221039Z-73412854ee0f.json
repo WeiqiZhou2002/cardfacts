@@ -1,0 +1,113 @@
+{
+  "format_version": 1,
+  "id": "20261028T221039Z-73412854ee0f",
+  "product_id": "us-discover-it-cash-back",
+  "recorded_at": "2026-10-28T22:10:39Z",
+  "reason": "Initial Phase 2 issuer-source research; unknown effective starts and incomplete coverage remain explicit.",
+  "content_sha256": "73412854ee0fd76fa1605a512f42aff2ddf1040efc75b1652393386923c41c6e",
+  "product": {
+    "id": "us-discover-it-cash-back",
+    "issuer": "Discover",
+    "name": "Discover it Cash Back",
+    "country": "US",
+    "currency": "USD",
+    "network": "discover",
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "discover-cashback",
+      "unit": "cash"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-discover-it-cash-back-page",
+        "url": "https://www.discover.com/credit-cards/cash-back/it-card/",
+        "title": "Discover it Cash Back official product information",
+        "accessed": "2026-10-28"
+      },
+      {
+        "id": "us-discover-it-cash-back-calendar",
+        "url": "https://www.discover.com/credit-cards/cash-back/cashback-calendar.html",
+        "title": "Discover quarterly cashback calendar",
+        "accessed": "2026-10-28"
+      }
+    ],
+    "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed. Discover is the product brand; verify current legal creditor separately.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "reviewed",
+      "notes": "Quarter category evidence came from an indexed official excerpt; live calendar rendered an error. Recheck categories before relying on the schedule."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-discover-it-cash-back-page",
+        "last_verified": "2026-10-28",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "0.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "base",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-discover-it-cash-back-page",
+            "last_verified": "2026-10-28",
+            "notes": "Other eligible purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "rotating",
+        "category": "rotating",
+        "versions": [
+          {
+            "effective_from": "2026-10-01",
+            "effective_from_basis": "stated",
+            "effective_to": "2026-12-31",
+            "status": "to_verify",
+            "source": "us-discover-it-cash-back-calendar",
+            "last_verified": "2026-10-28",
+            "notes": "Indexed official excerpt lists dining, entertainment and utilities for this quarter; live calendar unavailable, schedule pending direct verification.",
+            "rate": null,
+            "conditions": {
+              "channels": ["any"],
+              "requires_activation": true,
+              "selection": {
+                "type": "rotating",
+                "categories": ["dining", "entertainment", "utilities"],
+                "merchants": []
+              }
+            },
+            "cap": {
+              "amount": "1500.00",
+              "period": "quarterly",
+              "reset_basis": "calendar",
+              "rate_after_cap": "1"
+            }
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

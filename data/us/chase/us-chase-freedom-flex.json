@@ -1,0 +1,209 @@
+{
+  "id": "us-chase-freedom-flex",
+  "issuer": "Chase",
+  "name": "Chase Freedom Flex",
+  "country": "US",
+  "currency": "USD",
+  "network": null,
+  "audience": "personal",
+  "availability": "open",
+  "rewards": {
+    "program": "chase-ultimate-rewards",
+    "unit": "cash"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-chase-freedom-flex-page",
+      "url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex",
+      "title": "Chase Freedom Flex official product information",
+      "accessed": "2026-10-28"
+    }
+  ],
+  "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Ongoing earn rates reviewed; partner promotional benefits need separate term review. Quarterly 5% is the issuer-advertised rate; stacking with ongoing dining bonuses requires reward-agreement review and is not calculated."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-chase-freedom-flex-page",
+      "last_verified": "2026-10-28",
+      "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+      "annual_fee": "0.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": "0"
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "base",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-freedom-flex-page",
+          "last_verified": "2026-10-28",
+          "notes": "Other eligible purchases.",
+          "rate": "1",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "portal-travel",
+      "category": "travel",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-freedom-flex-page",
+          "last_verified": "2026-10-28",
+          "notes": "Eligible issuer-portal bookings.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["issuer_portal"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "dining",
+      "category": "dining",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-freedom-flex-page",
+          "last_verified": "2026-10-28",
+          "notes": "Eligible purchases; issuer exclusions apply.",
+          "rate": "3",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "drugstores",
+      "category": "drugstores",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-freedom-flex-page",
+          "last_verified": "2026-10-28",
+          "notes": "Eligible purchases; issuer exclusions apply.",
+          "rate": "3",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "rotating",
+      "category": "rotating",
+      "versions": [
+        {
+          "effective_from": "2026-07-01",
+          "effective_from_basis": "stated",
+          "effective_to": "2026-09-30",
+          "status": "verified",
+          "source": "us-chase-freedom-flex-page",
+          "last_verified": "2026-10-28",
+          "notes": "Entertainment restricted to select live events. Activation required. Total rate can differ where another bonus overlaps; see issuer terms.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["any"],
+            "requires_activation": true,
+            "selection": {
+              "type": "rotating",
+              "categories": ["gas", "transit", "ev_charging", "entertainment"],
+              "merchants": ["United Way"]
+            }
+          },
+          "cap": {
+            "amount": "1500.00",
+            "period": "quarterly",
+            "reset_basis": "calendar",
+            "rate_after_cap": "1"
+          }
+        },
+        {
+          "effective_from": "2026-10-01",
+          "effective_from_basis": "stated",
+          "effective_to": "2026-12-31",
+          "status": "verified",
+          "source": "us-chase-freedom-flex-page",
+          "last_verified": "2026-10-28",
+          "notes": "Groceries exclude Target and Walmart. Activation required. Total rate can differ where another bonus overlaps; see issuer terms.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["any"],
+            "requires_activation": true,
+            "selection": {
+              "type": "rotating",
+              "categories": ["groceries", "dining"],
+              "merchants": ["American Red Cross"]
+            }
+          },
+          "cap": {
+            "amount": "1500.00",
+            "period": "quarterly",
+            "reset_basis": "calendar",
+            "rate_after_cap": "1"
+          }
+        },
+        {
+          "effective_from": "2027-01-01",
+          "effective_from_basis": "stated",
+          "effective_to": "2027-03-31",
+          "status": "verified",
+          "source": "us-chase-freedom-flex-page",
+          "last_verified": "2026-10-28",
+          "notes": "Groceries exclude Target/Walmart; select streaming only. Activation required. Total rate can differ where another bonus overlaps; see issuer terms.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["any"],
+            "requires_activation": true,
+            "selection": {
+              "type": "rotating",
+              "categories": ["groceries", "streaming"],
+              "merchants": []
+            }
+          },
+          "cap": {
+            "amount": "1500.00",
+            "period": "quarterly",
+            "reset_basis": "calendar",
+            "rate_after_cap": "1"
+          }
+        }
+      ]
+    }
+  ],
+  "credits": []
+}

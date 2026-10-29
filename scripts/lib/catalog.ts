@@ -5,6 +5,7 @@ import { Ajv2020 } from "ajv/dist/2020.js";
 import addFormatsModule from "ajv-formats";
 import type { ValidateFunction } from "ajv";
 import type { Card, Catalog, CreditVersion, Issuer, IssuerConfig, Version } from "./types.js";
+import { loadRevisions } from "./revisions.js";
 
 // ajv-formats is CommonJS; its declared default is exposed differently by NodeNext.
 const addFormats = addFormatsModule.default ?? addFormatsModule;
@@ -110,6 +111,8 @@ export function creditTermsErrors(
     errors.push(`${path}: period_years is required only for multi_year`);
   if (v.reset_basis === "anniversary_statement" && v.period !== "annual")
     errors.push(`${path}: anniversary_statement requires annual`);
+  if (["month_after_annual_fee", "qualifying_activity"].includes(v.reset_basis) && v.period !== "annual")
+    errors.push(`${path}: ${v.reset_basis} requires annual`);
   return errors;
 }
 export function cardErrors(
@@ -160,19 +163,75 @@ export function cardErrors(
       errors.push(`/credits/${i}/match: statement credits require keywords`);
     normalized(c.match.keywords, `/credits/${i}/match/keywords`);
     normalized(c.match.exclude ?? [], `/credits/${i}/match/exclude`);
-    c.versions.forEach((v, j) => errors.push(...creditTermsErrors(v, `/credits/${i}/versions/${j}`)));
+    c.versions.forEach((v, j) => {
+      errors.push(...creditTermsErrors(v, `/credits/${i}/versions/${j}`));
+      if ((v.reset_basis === "qualifying_activity") !== (v.conditions?.consecutive_months !== undefined))
+        errors.push(
+          `/credits/${i}/versions/${j}: qualifying_activity requires consecutive_months, only for this reset basis`,
+        );
+    });
   });
   card.earn_rates.forEach((rule, i) => {
     if (!earnCategories.has(rule.category))
       errors.push(`/earn_rates/${i}/category: unknown category ${rule.category}`);
     rule.versions.forEach((v, j) => {
       const path = `/earn_rates/${i}/versions/${j}`;
+      const selection = v.conditions.selection;
+      if (selection) {
+        for (const category of selection.categories)
+          if (!earnCategories.has(category))
+            errors.push(`${path}/conditions/selection: unknown category ${category}`);
+        if (
+          selection.type === "top_spend" &&
+          (selection.count > selection.categories.length || !selection.categories.includes(rule.category))
+        )
+          errors.push(`${path}/conditions/selection: invalid top-spend count or rule category`);
+        if (
+          selection.type === "rotating" &&
+          (rule.category !== "rotating" ||
+            !v.effective_from ||
+            !v.effective_to ||
+            (!selection.categories.length && !selection.merchants.length))
+        )
+          errors.push(
+            `${path}/conditions/selection: rotating requires a dated window and eligible categories or merchants`,
+          );
+      }
+      if (v.conditions.time_window) {
+        try {
+          new Intl.DateTimeFormat("en", { timeZone: v.conditions.time_window.timezone });
+        } catch {
+          errors.push(`${path}/conditions/time_window: invalid timezone`);
+        }
+      }
       if (v.conditions.channels.includes("any") && v.conditions.channels.length !== 1)
         errors.push(`${path}/conditions/channels: any must stand alone`);
       if (v.cap?.shared_with) {
         for (const id of v.cap.shared_with) {
           if (id === rule.id || !card.earn_rates.some((r) => r.id === id))
             errors.push(`${path}/cap/shared_with: invalid rule ${id}`);
+          else {
+            const related = card.earn_rates
+              .find((r) => r.id === id)!
+              .versions.filter(
+                (other) =>
+                  (v.effective_from ?? "0000-01-01") <= (other.effective_to ?? "9999-12-31") &&
+                  (other.effective_from ?? "0000-01-01") <= (v.effective_to ?? "9999-12-31"),
+              );
+            const members = [rule.id, ...v.cap.shared_with].sort(compare).join(",");
+            if (
+              !related.length ||
+              related.some(
+                (other) =>
+                  !other.cap ||
+                  other.cap.amount !== v.cap!.amount ||
+                  other.cap.period !== v.cap!.period ||
+                  other.cap.reset_basis !== v.cap!.reset_basis ||
+                  [id, ...(other.cap.shared_with ?? [])].sort(compare).join(",") !== members,
+              )
+            )
+              errors.push(`${path}/cap/shared_with: inconsistent shared cap with ${id}`);
+          }
         }
       }
     });
@@ -180,7 +239,10 @@ export function cardErrors(
   return errors;
 }
 
-export async function loadCatalog(root: string): Promise<Catalog> {
+export async function loadCatalog(
+  root: string,
+  options: { allowUnrecorded?: boolean } = {},
+): Promise<Catalog> {
   const ajv = new Ajv2020({ allErrors: true, strict: true });
   addFormats(ajv);
   const compile = async <T>(file: string) => ajv.compile<T>((await readJson(join(root, file))) as object);
@@ -275,7 +337,7 @@ export async function loadCatalog(root: string): Promise<Catalog> {
       additionalProperties: false,
       required: ["schema_version", "catalog_version", "license"],
       properties: {
-        schema_version: { const: 1 },
+        schema_version: { const: 2 },
         catalog_version: { type: "string", pattern: "^[0-9]{4}\\.[0-9]{2}\\.[0-9]{2}(?:-[a-z0-9.-]+)?$" },
         license: { const: "CC0-1.0" },
       },
@@ -312,7 +374,19 @@ export async function loadCatalog(root: string): Promise<Catalog> {
   }
   if (errors.length) throw new Error(errors.join("\n"));
   cards.sort((a, b) => compare(a.id, b.id));
-  return { root, metadata, cards, issuers };
+  const revisions = await loadRevisions(root, cards, options.allowUnrecorded);
+  for (const revision of revisions) {
+    const issuer = issuers.issuers.find((i) => i.name === revision.product.issuer);
+    if (!issuer) errors.push(`history/${revision.id}: unknown issuer`);
+    else
+      errors.push(
+        ...cardErrors(revision.product, issuer, categories[0]!, categories[1]!).map(
+          (e) => `history/${revision.product_id}/${revision.id}${e}`,
+        ),
+      );
+  }
+  if (errors.length) throw new Error(errors.join("\n"));
+  return { root, metadata, cards, issuers, revisions };
 }
 
 export interface SourceRecord {
@@ -382,6 +456,7 @@ export async function buildCatalog(catalog: Catalog, directory = join(catalog.ro
   const files = {
     "cards.json": JSON.stringify(payload, null, 2) + "\n",
     "cards.min.json": JSON.stringify(payload) + "\n",
+    "history.json": JSON.stringify({ format_version: 1, revisions: catalog.revisions }, null, 2) + "\n",
   };
   await mkdir(directory, { recursive: true });
   for (const [name, content] of Object.entries(files)) await writeFile(join(directory, name), content);

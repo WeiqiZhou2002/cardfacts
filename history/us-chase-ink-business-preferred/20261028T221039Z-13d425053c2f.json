@@ -1,0 +1,228 @@
+{
+  "format_version": 1,
+  "id": "20261028T221039Z-13d425053c2f",
+  "product_id": "us-chase-ink-business-preferred",
+  "recorded_at": "2026-10-28T22:10:39Z",
+  "reason": "Initial Phase 2 issuer-source research; unknown effective starts and incomplete coverage remain explicit.",
+  "content_sha256": "13d425053c2f8bf65895369116e3d1ec1ace31411f10b87fc9a900862942f78a",
+  "product": {
+    "id": "us-chase-ink-business-preferred",
+    "issuer": "Chase",
+    "name": "Ink Business Preferred",
+    "country": "US",
+    "currency": "USD",
+    "network": null,
+    "audience": "business",
+    "availability": "open",
+    "rewards": {
+      "program": "chase-ultimate-rewards",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-chase-ink-business-preferred-page",
+        "url": "https://creditcards.chase.com/business-credit-cards/ink/business-preferred",
+        "title": "Ink Business Preferred official product information",
+        "accessed": "2026-10-28"
+      }
+    ],
+    "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "reviewed",
+      "credits": "reviewed",
+      "notes": "Reviewed listed ongoing benefits; merchant exclusions in notes remain part of eligibility. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-chase-ink-business-preferred-page",
+        "last_verified": "2026-10-28",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "95.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": "0.00",
+        "foreign_transaction_fee_percent": "0"
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "base",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-ink-business-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Other eligible purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "shipping",
+        "category": "shipping",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-ink-business-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Combined category cap; ads limited to search engines/social media, telecom includes internet/cable/phone.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": {
+              "amount": "150000.00",
+              "period": "annual",
+              "reset_basis": "anniversary",
+              "rate_after_cap": "1",
+              "shared_with": ["advertising", "telecom", "travel"]
+            }
+          }
+        ]
+      },
+      {
+        "id": "advertising",
+        "category": "advertising",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-ink-business-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Combined category cap; ads limited to search engines/social media, telecom includes internet/cable/phone.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": {
+              "amount": "150000.00",
+              "period": "annual",
+              "reset_basis": "anniversary",
+              "rate_after_cap": "1",
+              "shared_with": ["shipping", "telecom", "travel"]
+            }
+          }
+        ]
+      },
+      {
+        "id": "telecom",
+        "category": "telecom",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-ink-business-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Combined category cap; ads limited to search engines/social media, telecom includes internet/cable/phone.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": {
+              "amount": "150000.00",
+              "period": "annual",
+              "reset_basis": "anniversary",
+              "rate_after_cap": "1",
+              "shared_with": ["shipping", "advertising", "travel"]
+            }
+          }
+        ]
+      },
+      {
+        "id": "travel",
+        "category": "travel",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-ink-business-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Combined category cap; ads limited to search engines/social media, telecom includes internet/cable/phone.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": {
+              "amount": "150000.00",
+              "period": "annual",
+              "reset_basis": "anniversary",
+              "rate_after_cap": "1",
+              "shared_with": ["shipping", "advertising", "telecom"]
+            }
+          }
+        ]
+      },
+      {
+        "id": "lyft",
+        "category": "rideshare",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": "2027-09-30",
+            "status": "verified",
+            "source": "us-chase-ink-business-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible Lyft purchases.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["any"],
+              "merchants": ["Lyft"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": [
+      {
+        "id": "doordash",
+        "name": "DoorDash Grocery/Retail Promo",
+        "category": "food_delivery",
+        "delivery": "in_app",
+        "enrollment": "activation",
+        "match": {
+          "keywords": ["DoorDash Grocery/Retail Promo"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-ink-business-preferred-page",
+            "last_verified": "2026-10-28",
+            "notes": "Activated DashPass required; activate by 2027-12-31. Duration governed by membership terms.",
+            "amount": "10.00",
+            "period": "monthly",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,309 @@
+{
+  "id": "us-citi-strata-elite",
+  "issuer": "Citi",
+  "name": "Citi Strata Elite",
+  "country": "US",
+  "currency": "USD",
+  "network": null,
+  "audience": "personal",
+  "availability": "open",
+  "rewards": {
+    "program": "citi-thankyou",
+    "unit": "points"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-citi-strata-elite-page",
+      "url": "https://www.citi.com/credit-cards/citi-strata-elite-credit-card",
+      "title": "Citi Strata Elite official product information",
+      "accessed": "2026-10-28"
+    },
+    {
+      "id": "us-citi-strata-elite-annual-fee",
+      "url": "https://citigoldprivateclient.citi.com/financial/creditcards.html",
+      "title": "Citi product comparison: new-cardmember annual fee",
+      "accessed": "2026-10-28"
+    }
+  ],
+  "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "reviewed",
+    "credits": "partial",
+    "notes": "General benefits captured; targeted Citigold relationship credits excluded. Optional fee fields unconfirmed."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-citi-strata-elite-annual-fee",
+      "last_verified": "2026-10-28",
+      "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+      "annual_fee": "595.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "portal-hotels",
+      "category": "hotels",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-citi-strata-elite-page",
+          "last_verified": "2026-10-28",
+          "notes": "Eligible issuer-portal bookings.",
+          "rate": "12",
+          "conditions": {
+            "channels": ["issuer_portal"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "portal-car-rental",
+      "category": "car_rental",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-citi-strata-elite-page",
+          "last_verified": "2026-10-28",
+          "notes": "Eligible issuer-portal bookings.",
+          "rate": "12",
+          "conditions": {
+            "channels": ["issuer_portal"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "portal-attractions",
+      "category": "entertainment",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-citi-strata-elite-page",
+          "last_verified": "2026-10-28",
+          "notes": "Attractions through Citi Travel.",
+          "rate": "12",
+          "conditions": {
+            "channels": ["issuer_portal"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "portal-flights",
+      "category": "flights",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-citi-strata-elite-page",
+          "last_verified": "2026-10-28",
+          "notes": "Eligible issuer-portal bookings.",
+          "rate": "6",
+          "conditions": {
+            "channels": ["issuer_portal"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "base",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-citi-strata-elite-page",
+          "last_verified": "2026-10-28",
+          "notes": "Other eligible purchases.",
+          "rate": "1.5",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "dining",
+      "category": "dining",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-citi-strata-elite-page",
+          "last_verified": "2026-10-28",
+          "notes": "Eligible purchases; issuer exclusions apply.",
+          "rate": "3",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "citi-nights",
+      "category": "dining",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-citi-strata-elite-page",
+          "last_verified": "2026-10-28",
+          "notes": "Citi Nights; overnight windows begin Friday or Saturday, Eastern time.",
+          "rate": "6",
+          "conditions": {
+            "channels": ["any"],
+            "time_window": {
+              "start_days": ["friday", "saturday"],
+              "start": "18:00",
+              "end": "06:00",
+              "timezone": "America/New_York"
+            }
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "id": "hotel",
+      "name": "Citi Travel Hotel Benefit",
+      "category": "hotel",
+      "delivery": "in_app",
+      "enrollment": "none",
+      "match": {
+        "keywords": ["Citi Travel Hotel Benefit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-citi-strata-elite-page",
+          "last_verified": "2026-10-28",
+          "notes": "Citi Travel hotel stay; discount at booking.",
+          "amount": "300.00",
+          "period": "annual",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null,
+          "conditions": {
+            "minimum_nights": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "splurge",
+      "name": "Splurge Credit",
+      "category": "shopping",
+      "delivery": "statement_credit",
+      "enrollment": "activation",
+      "match": {
+        "keywords": ["Splurge Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-citi-strata-elite-page",
+          "last_verified": "2026-10-28",
+          "notes": "Choose up to two: 1stDibs, American Airlines, Best Buy, Future Personal Training, Live Nation; exclusions apply.",
+          "amount": "200.00",
+          "period": "annual",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null
+        }
+      ]
+    },
+    {
+      "id": "blacklane",
+      "name": "Blacklane Credit",
+      "category": "rideshare",
+      "delivery": "statement_credit",
+      "enrollment": "none",
+      "match": {
+        "keywords": ["Blacklane Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-citi-strata-elite-page",
+          "last_verified": "2026-10-28",
+          "notes": "Blacklane purchases; January–June and July–December.",
+          "amount": "100.00",
+          "period": "semiannual",
+          "reset_basis": "calendar",
+          "period_boundaries": "stated",
+          "max_posting_lag_days": null
+        }
+      ]
+    },
+    {
+      "id": "trusted-traveler",
+      "name": "Global Entry / TSA PreCheck",
+      "category": "trusted_traveler",
+      "delivery": "statement_credit",
+      "enrollment": "none",
+      "match": {
+        "keywords": ["GLOBAL ENTRY", "TSA PRECHECK"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-citi-strata-elite-page",
+          "last_verified": "2026-10-28",
+          "notes": "One application credit; shared across programs.",
+          "amount": "120.00",
+          "period": "multi_year",
+          "reset_basis": "since_last_credit",
+          "period_boundaries": "inferred",
+          "max_posting_lag_days": null,
+          "period_years": 4
+        }
+      ]
+    }
+  ]
+}
