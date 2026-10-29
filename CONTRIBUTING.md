@@ -53,3 +53,9 @@ changing the consumer contract and its format version.
 New cards also need an issuer entry, allowed domains, and vocabulary categories. Follow the
 [tooling guide](docs/tooling.md) for manual-only issuer policy and source checks. Fetched issuer page snapshots belong
 outside the repository; structured product revisions belong in `history/`. A release version is explicit in `catalog.json`; do not derive it from build time.
+
+## Website changes
+
+Run `pnpm site:dev` to preview the bilingual wiki. Keep all monetary facts in the validated catalog;
+website changes must not rewrite history or introduce uncited benefit values. Follow [the site guide](docs/site.md)
+and run `pnpm check` plus `pnpm test:site` for interaction or layout changes.

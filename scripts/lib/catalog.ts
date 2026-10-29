@@ -1,3 +1,5 @@
+import { compare, isDate } from "./primitives.js";
+export { compare, isDate } from "./primitives.js";
 import { createHash } from "node:crypto";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { join, relative } from "node:path";
@@ -9,7 +11,6 @@ import { loadRevisions } from "./revisions.js";
 
 // ajv-formats is CommonJS; its declared default is exposed differently by NodeNext.
 const addFormats = addFormatsModule.default ?? addFormatsModule;
-export const compare = (a: string, b: string) => (a < b ? -1 : a > b ? 1 : 0);
 export const sha256 = (text: string) => createHash("sha256").update(text).digest("hex");
 export const normalizeKeyword = (value: string) =>
   value
@@ -17,10 +18,6 @@ export const normalizeKeyword = (value: string) =>
     .toUpperCase()
     .replace(/[^\p{L}\p{N}+&]+/gu, " ")
     .trim();
-export const isDate = (value: string) =>
-  /^\d{4}-\d{2}-\d{2}$/.test(value) &&
-  !Number.isNaN(Date.parse(value)) &&
-  new Date(value).toISOString().slice(0, 10) === value;
 export const matchesDomain = (host: string, domain: string) => host === domain || host.endsWith(`.${domain}`);
 export function allowedUrl(value: string, issuer: Issuer): boolean {
   try {

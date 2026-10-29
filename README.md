@@ -4,9 +4,9 @@ Open, cited, versioned data on US credit cards, personal and business: **annual 
 statement credits**. Every number links to the issuer's own public terms and carries the date it was last
 checked.
 
-> **Status: Phase 2 implemented; draft data.** 30 cards (20 personal, 10 business), effective-dated terms,
-> full revision snapshots, history queries, validation/build tools and CI are available. Coverage gaps are
-> explicit. There is no stable release yet; the site and scheduled maintenance come next.
+> **Status: Phase 3 implemented; draft data.** 30 cards (20 personal, 10 business), effective-dated terms,
+> full revision snapshots, and a bilingual wiki with filters, comparison and a review queue. The site build
+> and Pages workflow are ready; hosting requires merging and enabling Pages. No stable data release yet.
 
 ## Why
 
@@ -26,21 +26,23 @@ aims to be the shared, machine-readable source with a clear trail back to the is
 
 ## What's here
 
-| Path                                                                               | Contents                                        |
-| ---------------------------------------------------------------------------------- | ----------------------------------------------- |
-| [data/us/](data/us/)                                                               | 30 cited products: fees, earn rates and credits |
-| [history/](history/)                                                               | Immutable complete product revisions            |
-| [docs/history.md](docs/history.md)                                                 | Query and compare historical content            |
-| [docs/phase-2-catalog.md](docs/phase-2-catalog.md)                                 | Phase 2 coverage and evidence limitations       |
-| [schema/card.schema.json](schema/card.schema.json)                                 | Production JSON Schema 2020-12                  |
-| [vocab/](vocab/)                                                                   | Bilingual earn and credit category vocabularies |
-| [docs/data-model.md](docs/data-model.md)                                           | Data contract and versioning decisions          |
-| [docs/tooling.md](docs/tooling.md)                                                 | Setup, commands, fetching and local state       |
-| [docs/phase-1-migration.md](docs/phase-1-migration.md)                             | Migration checks and evidence limitations       |
-| [docs/proposal.zh.md](docs/proposal.zh.md)                                         | Original proposal and roadmap (Chinese)         |
-| [docs/credit-progress.md](docs/credit-progress.md)                                 | Consumer matching and progress contract         |
-| [vectors/credit-progress.json](vectors/credit-progress.json)                       | 23 unchanged synthetic conformance vectors      |
-| [.claude/skills/card-catalog-maintainer/](.claude/skills/card-catalog-maintainer/) | Future maintenance-agent workflow               |
+| Path                                                                               | Contents                                            |
+| ---------------------------------------------------------------------------------- | --------------------------------------------------- |
+| [data/us/](data/us/)                                                               | 30 cited products: fees, earn rates and credits     |
+| [site/](site/)                                                                     | Bilingual static wiki and browser interactions      |
+| [docs/site.md](docs/site.md)                                                       | Website preview, history links and Pages deployment |
+| [history/](history/)                                                               | Immutable complete product revisions                |
+| [docs/history.md](docs/history.md)                                                 | Query and compare historical content                |
+| [docs/phase-2-catalog.md](docs/phase-2-catalog.md)                                 | Phase 2 coverage and evidence limitations           |
+| [schema/card.schema.json](schema/card.schema.json)                                 | Production JSON Schema 2020-12                      |
+| [vocab/](vocab/)                                                                   | Bilingual earn and credit category vocabularies     |
+| [docs/data-model.md](docs/data-model.md)                                           | Data contract and versioning decisions              |
+| [docs/tooling.md](docs/tooling.md)                                                 | Setup, commands, fetching and local state           |
+| [docs/phase-1-migration.md](docs/phase-1-migration.md)                             | Migration checks and evidence limitations           |
+| [docs/proposal.zh.md](docs/proposal.zh.md)                                         | Original proposal and roadmap (Chinese)             |
+| [docs/credit-progress.md](docs/credit-progress.md)                                 | Consumer matching and progress contract             |
+| [vectors/credit-progress.json](vectors/credit-progress.json)                       | 23 unchanged synthetic conformance vectors          |
+| [.claude/skills/card-catalog-maintainer/](.claude/skills/card-catalog-maintainer/) | Future maintenance-agent workflow                   |
 
 ## Development
 
@@ -52,7 +54,9 @@ pnpm check
 ```
 
 `pnpm build` produces `dist/cards.json`, `dist/cards.min.json`, `dist/history.json`, and `dist/SHA256SUMS` deterministically.
-See [tooling](docs/tooling.md) for source listing, stale reporting, browser setup and history checks.
+Use `pnpm site:dev` to preview the wiki at `http://127.0.0.1:4173/`; `pnpm site:build` creates `dist/site/`.
+See [the site guide](docs/site.md) for routes, history queries and Pages setup, and [tooling](docs/tooling.md)
+for source listing, stale reporting, browser setup and history checks.
 
 ## Maintenance
 
@@ -82,5 +86,5 @@ Nothing here is financial advice. Always confirm terms with the issuer before re
 ## 中文简介
 
 CardFacts 是一个开源的美国信用卡数据项目，覆盖个人卡和商业卡的年费、返现/积分倍数和报销类权益。每个数字都引用
-发卡机构的公开条款并记录核实日期；条款改版保留历史版本；未核实的数值不填写。Phase 2 已扩到 30 张卡，并提供完整历史快照、按生效日期／修订时间查询和版本对比，尚未发布稳定版本。设计文档见
+发卡机构的公开条款并记录核实日期；条款改版保留历史版本；未核实的数值不填写。Phase 3 已提供 30 张卡的中英双语网站、筛选对比、待复核队列，以及按生效日期／收录版本查看旧内容的历史页面。网站可本地预览，合并并开启 GitHub Pages 后部署；数据尚未发布稳定版本。设计文档见
 [docs/proposal.zh.md](docs/proposal.zh.md)。

@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — Phase 3 website
+
+- Generate a Chinese/English static wiki with 30 card pages per language, sources and effective-dated terms.
+- Add conditional filters, up to four-card comparison and the pending/stale review queue.
+- Browse immutable snapshots, select effective dates and compare complete historical content.
+- Add project-path-safe builds, responsive browser tests and a main-only GitHub Pages workflow.
+- Preserve catalog version, all source data and all existing history snapshots.
+
 ## 2026.10.28-phase2-draft
 
 - Expand to 30 products: 20 personal and 10 business, with explicit coverage limits and issuer citations.
