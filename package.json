@@ -24,7 +24,9 @@
     "site:build": "node --import tsx scripts/build-site.ts",
     "site:preview": "node --import tsx scripts/preview-site.ts",
     "site:dev": "pnpm site:build && pnpm site:preview",
-    "test:site": "CARDFACTS_SITE_TEST=1 node --import tsx --test tests/site-browser.test.ts"
+    "test:site": "CARDFACTS_SITE_TEST=1 node --import tsx --test tests/site-browser.test.ts",
+    "plan-run": "node --import tsx scripts/cli.ts plan-run",
+    "run-checks": "node --import tsx scripts/cli.ts run-checks"
   },
   "dependencies": {
     "ajv": "^8.20.0",
