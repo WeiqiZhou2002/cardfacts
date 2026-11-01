@@ -92,6 +92,29 @@ test("valid submissions pass; schema and catalog mismatches are rejected with pa
   await reject((s) => ((s as { extra?: number }).extra = 1), /must NOT have additional properties/);
   await reject((s) => (s.products[0]!.changes[0]!.set = { amount: "60" }), /pattern/);
   await reject((s) => s.products.push(gold()), /duplicate product/);
+  await reject(
+    (s) => (s.products[0]!.verified[0]!.source_id = "us-amex-gold-rewards"),
+    /not listed in sources/,
+  );
+  // A flag may name an unfetched source of the product, but not another product's source.
+  const unfetched = structuredClone(submission({ ...gold(), sources: [], verified: [], changes: [] }));
+  unfetched.products[0]!.flags.push({
+    kind: "unreadable",
+    source_id: "us-amex-gold-rewards",
+    target: null,
+    summary: "Source failed three checks in a row.",
+    evidence: null,
+  });
+  await validateSubmission(catalog, unfetched, now);
+  await reject((s) => {
+    s.products[0]!.flags.push({
+      kind: "unreadable",
+      source_id: "chase-csr-page",
+      target: null,
+      summary: "x",
+      evidence: null,
+    });
+  }, /not a source of us-amex-gold/);
 });
 
 test("a stated change closes the current version and appends a verified one; unchanged values re-verify", () => {

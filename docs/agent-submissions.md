@@ -36,12 +36,12 @@ curl -X POST https://api.github.com/repos/WeiqiZhou2002/cardfacts/dispatches \
 `format_version: 1`, a `submission_id`, the agent's name, version and model, `checked_at` (UTC, within
 the last 14 days), and up to 60 `products`. Each product lists:
 
-| Field      | Meaning                                                                                                       |
-| ---------- | ------------------------------------------------------------------------------------------------------------- |
-| `sources`  | Catalog sources fetched for this product: id, the exact catalog URL, `fetched_at` and the text SHA-256.       |
-| `verified` | Targets whose current values were found unchanged on the cited source.                                        |
-| `changes`  | Targets whose values differ: `set` fields, `effective_from` and its basis, a paraphrased `notes`, locator.    |
-| `flags`    | Findings that need a human: `new_entry`, `removal`, `conflict`, `unreadable`, `ambiguous`, `suspicious_page`. |
+| Field      | Meaning                                                                                                                                                                                                                                        |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sources`  | Catalog sources fetched for this product: id, the exact catalog URL, `fetched_at` and the text SHA-256. Verified entries and changes must cite one of these; a flag may name any source of the product, such as one that could not be fetched. |
+| `verified` | Targets whose current values were found unchanged on the cited source.                                                                                                                                                                         |
+| `changes`  | Targets whose values differ: `set` fields, `effective_from` and its basis, a paraphrased `notes`, locator.                                                                                                                                     |
+| `flags`    | Findings that need a human: `new_entry`, `removal`, `conflict`, `unreadable`, `ambiguous`, `suspicious_page`.                                                                                                                                  |
 
 A target is `/fees`, `/earn_rates/<rule-id>` or `/credits/<credit-id>`, and appears at most once per
 product. Changes may set these fields only:

@@ -175,7 +175,9 @@ export async function validateSubmission(catalog: Catalog, value: unknown, now: 
     });
     product.flags.forEach((f, j) => {
       const where = `${path}/flags/${j}`;
-      if (!sources.has(f.source_id)) errors.push(`${where}: source ${f.source_id} is not listed in sources`);
+      // A flag may concern a source this run could not fetch (for example one that keeps failing).
+      if (!card.sources.some((s) => s.id === f.source_id))
+        errors.push(`${where}: ${f.source_id} is not a source of ${card.id}`);
       if (f.target !== null && !resolveTarget(card, f.target))
         errors.push(`${where}: unknown target ${f.target}`);
     });
