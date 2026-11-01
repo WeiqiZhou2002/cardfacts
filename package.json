@@ -26,7 +26,8 @@
     "site:dev": "pnpm site:build && pnpm site:preview",
     "test:site": "CARDFACTS_SITE_TEST=1 node --import tsx --test tests/site-browser.test.ts",
     "plan-run": "node --import tsx scripts/cli.ts plan-run",
-    "run-checks": "node --import tsx scripts/cli.ts run-checks"
+    "run-checks": "node --import tsx scripts/cli.ts run-checks",
+    "api:serve": "node --import tsx scripts/api-server.ts"
   },
   "dependencies": {
     "ajv": "^8.20.0",

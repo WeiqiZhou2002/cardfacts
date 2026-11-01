@@ -176,3 +176,8 @@ or baseline state, lock conflicts and local persistence errors exit **1**. Tool 
 without a completed run report; any already completed source checks remain in the existing source logs.
 This differs from the single-source `fetch-source` exit codes. Reports contain hashes and safe failure
 messages, never fetched page text.
+
+## API
+
+`pnpm site:build` also writes the static API to `dist/site/api/v1/`. `pnpm api:serve` serves the same paths
+with query parameters (`HOST`, `PORT`, `SIGHUP` to reload). See [the API guide](api.md).

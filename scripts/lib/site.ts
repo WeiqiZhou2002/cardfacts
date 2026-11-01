@@ -1,6 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { build, transform } from "esbuild";
+import { apiContext, writeStaticApi } from "./api.js";
 import { buildCatalog, loadCatalog, readJson } from "./catalog.js";
 import { context, h, normalizeBase, scriptJson, t } from "../../site/model.js";
 import type { Category, Lang, Page, SiteData } from "../../site/model.js";
@@ -68,6 +69,7 @@ export async function buildSite(root: string, out: string, base = "/") {
     await page(lang, "404", `${prefix}404.html`);
   }
   await buildCatalog(catalog, join(out, "data"));
+  await writeStaticApi(await apiContext(root), join(out, "api/v1"));
   await mkdir(join(out, "data/history"), { recursive: true });
   for (const card of catalog.cards)
     await writeFile(
