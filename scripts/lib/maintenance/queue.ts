@@ -1,4 +1,4 @@
-import { listSources, staleVersions } from "../catalog.js";
+import { listSources, versionGroups } from "../catalog.js";
 import { compare, isDate } from "../primitives.js";
 import type { Catalog } from "../types.js";
 import type { FetchState } from "../fetch-source.js";
@@ -52,13 +52,19 @@ export async function planRun(
   for (const id of [...reports, ...schedule.daily])
     if (!catalog.cards.some((c) => c.id === id))
       throw new Error("Unknown product in change reports or schedule");
-  const stale = new Set(
-    mode === "reverify"
-      ? staleVersions(catalog, 7, asOf)
-          .filter((v) => v.status === "verified")
-          .map((v) => v.source)
-      : [],
-  );
+  // Weekly re-verification: a version checked exactly seven days ago is due again, and
+  // ended versions are skipped because re-verification never updates them.
+  const stale = new Set<string>();
+  if (mode === "reverify")
+    for (const card of catalog.cards)
+      for (const group of versionGroups(card))
+        for (const v of group.versions)
+          if (
+            v.status === "verified" &&
+            (v.effective_to === null || v.effective_to >= asOf) &&
+            Date.parse(asOf) - Date.parse(v.last_verified) >= 7 * 86400000
+          )
+            stale.add(v.source);
   const due: (QueueEntry & { manual: boolean; checkedAt: number })[] = [];
   for (const source of listSources(catalog)) {
     const state = await options.readState(source.url);
@@ -71,7 +77,7 @@ export async function planRun(
     else if (source.products.some((id) => schedule.daily.includes(id))) reason = "daily";
     else if (
       lastChecked === null ||
-      Date.parse(lastChecked) < Date.parse(asOf) - schedule.rotation_days * 86400000
+      Date.parse(lastChecked) <= Date.parse(asOf) - schedule.rotation_days * 86400000
     )
       reason = "rotation";
     else continue;

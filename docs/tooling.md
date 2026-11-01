@@ -131,14 +131,15 @@ when redirecting the plan. `plan-run` prints a plan; the caller chooses where to
 - Daily priority: `change_report` before `daily` before `rotation`. Each source ID appears once at its
   highest priority, even if several reasons apply. Repeating `--change-report PRODUCT_ID` and listing
   several IDs after one flag are both supported. Unknown IDs are errors. No issues or leads are fetched.
-- Daily products come from `maintenance/schedule.json`. Rotation is due when never checked or when the
-  last attempt's UTC date is **strictly earlier** than `as_of - rotation_days`; exactly on the boundary
-  is not due. Failed attempts count. Within each priority, never-checked sources come first, followed by
+- Daily products come from `maintenance/schedule.json`. Rotation is due when never checked or when at
+  least `rotation_days` have passed since the last attempt's UTC date (`last_checked <= as_of -
+rotation_days`), so a 7-day rotation repeats every 7 days. Failed attempts count. Within each priority, never-checked sources come first, followed by
   oldest UTC check timestamp and source ID as the deterministic tie-breaker. `last_checked` is that UTC date,
   or `null`. Daily and change-report sources are eligible regardless of rotation age; an already checked
   source is later served from the fetcher's same-day cache.
-- Reverify takes only sources cited by `verified` versions returned by `staleVersions(catalog, 7, as_of)`;
-  it includes ended and announced future versions. Entries have `reason: "reverify"`. Pending versions
+- Reverify takes only sources cited by `verified` versions that have not ended (`effective_to` is null
+  or on/after `as_of`) and were last verified at least 7 days before `as_of`, so a weekly run picks up
+  last week's re-verifications. Announced future versions qualify; ended versions never do. Entries have `reason: "reverify"`. Pending versions
   do not qualify; `--change-report` is rejected in this mode. This command only plans the checks.
 - Eligible manual-only sources go to `manual_due`, never `queue`, and do not consume the budget or count
   toward `deferred`. With the current seven manual-only issuers, the automatic queue is empty.

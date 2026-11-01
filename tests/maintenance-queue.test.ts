@@ -76,16 +76,17 @@ test("queue prioritizes reports then daily then rotation, deduplicates overlappi
     validatePlan(c, limited);
   }));
 
-test("rotation counts failed attempts, uses strict UTC date boundaries and puts never-checked sources before oldest attempts", async () =>
+test("rotation counts failed attempts, is due after exactly rotation_days and puts never-checked sources before oldest attempts", async () =>
   fixture(async (directory) => {
     const c = automated(),
       sources = listSources(c),
-      [old, newer, boundary, later, never] = sources;
+      [old, newer, boundary, inside, never] = sources;
     for (const source of sources) await checked(directory, source, "2026-11-09T00:00:00.000Z");
     await checked(directory, old!, "2026-11-01T23:00:00.000Z");
     await checked(directory, newer!, "2026-11-02T00:00:00Z");
-    await checked(directory, boundary!, "2026-11-03T00:00:00Z");
-    await checked(directory, later!, "2026-11-03T23:59:59Z");
+    // Checked on 2026-11-03 and planned for 2026-11-10: seven days have passed, so it is due.
+    await checked(directory, boundary!, "2026-11-03T23:59:59Z");
+    await checked(directory, inside!, "2026-11-04T00:00:00Z");
     await rm(join(directory, `${sha256(never!.url)}.json`));
     const result = await planRun(c, options(directory));
     assert.deepEqual(
@@ -94,15 +95,16 @@ test("rotation counts failed attempts, uses strict UTC date boundaries and puts 
         [never!.id, null],
         [old!.id, "2026-11-01"],
         [newer!.id, "2026-11-02"],
+        [boundary!.id, "2026-11-03"],
       ],
     );
     const short = await planRun(c, { ...options(directory), schedule: { daily: [], rotation_days: 1 } });
-    assert.ok(short.queue.some((e) => e.source_id === boundary!.id));
+    assert.ok(short.queue.some((e) => e.source_id === inside!.id));
     await checked(directory, old!, "2026-11-02T23:00:00Z");
     const sameDay = await planRun(c, options(directory));
     assert.deepEqual(
       sameDay.queue.map((e) => e.source_id),
-      [never!.id, newer!.id, old!.id],
+      [never!.id, newer!.id, old!.id, boundary!.id],
     );
   }));
 
@@ -136,23 +138,27 @@ test("manual-only sources are listed only when eligible and never consume the au
     assert.equal(catalog.issuers.manual_only.length, 7);
   }));
 
-test("reverify includes only sources cited by verified versions strictly older than seven days", async () =>
+test("reverify includes current verified versions checked at least seven days ago", async () =>
   fixture(async (directory) => {
     const c = automated();
     for (const card of c.cards)
-      for (const group of versionGroups(card)) for (const v of group.versions) v.last_verified = "2026-11-03";
+      for (const group of versionGroups(card)) for (const v of group.versions) v.last_verified = "2026-11-04";
     const gold = c.cards.find((c) => c.id === "us-amex-gold")!,
-      vx = c.cards.find((c) => c.id === "us-capital-one-venture-x")!;
-    gold.fees[0]!.last_verified = "2026-11-02";
-    gold.fees[0]!.effective_to = "2026-01-01";
-    gold.earn_rates[0]!.versions[0]!.last_verified = "2026-11-02";
+      vx = c.cards.find((c) => c.id === "us-capital-one-venture-x")!,
+      csr = c.cards.find((c) => c.id === "us-chase-sapphire-reserve")!;
+    // Re-verified last Monday (2026-11-03): due again on Monday 2026-11-10.
+    gold.earn_rates[0]!.versions[0]!.last_verified = "2026-11-03";
+    // Ended versions are never re-verified, however old.
+    csr.fees[0]!.last_verified = "2026-01-01";
+    csr.fees[0]!.effective_to = "2026-01-01";
     vx.fees[0]!.last_verified = "2026-01-01";
     vx.fees[0]!.status = "to_verify";
     const result = await planRun(c, { ...options(directory), mode: "reverify" });
     assert.deepEqual(
       result.queue.map((e) => e.source_id),
-      [...new Set([gold.fees[0]!.source, gold.earn_rates[0]!.versions[0]!.source])].sort(),
+      [gold.earn_rates[0]!.versions[0]!.source],
     );
+    assert.ok(!result.queue.some((e) => e.source_id === csr.fees[0]!.source));
     assert.ok(result.queue.every((e) => e.reason === "reverify"));
     assert.ok(!result.queue.some((e) => e.source_id === vx.fees[0]!.source));
     c.issuers.manual_only = ["amex"];
