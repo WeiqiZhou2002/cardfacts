@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — Phase 4 agent submission intake
+
+- Add `schema/submission.schema.json` and a `repository_dispatch` intake workflow for the private collection agent.
+- Apply findings under the versioning rules: unchanged values move `last_verified` forward; changed values close the current version and append a verified one; contradictions become conflict flags.
+- Open one data-change PR per product and one rolling re-verification PR; report flags and rejected submissions on issues.
+- Add `pnpm submission-check` and `pnpm check-reverify-diff`; CI rejects re-verification PRs that change anything but verification dates.
+- Fix the M1 rotation and weekly re-verification boundaries (due after exactly 7 days).
+
 ## Unreleased — Phase 4 M1
 
 - Add deterministic daily/reverify run plans with priority deduplication, UTC rotation boundaries, source budgets and separate manual-only due lists.

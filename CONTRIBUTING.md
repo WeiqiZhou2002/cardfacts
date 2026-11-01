@@ -28,8 +28,9 @@ confirms it.
 
 ## Pull requests from the maintenance agent
 
-Pull requests labelled `bot` are opened by the scheduled agent. Review them like any other: check the
-evidence links before merging.
+Pull requests labelled `bot` are opened by the agent submission intake. Review them like any other: check the
+evidence links before merging. `data-change` PRs change terms for one product; `reverify` PRs may only move
+verification dates forward, which CI enforces. See [agent submissions](docs/agent-submissions.md).
 
 ## Local checks
 

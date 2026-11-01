@@ -1,6 +1,25 @@
 # Phase 4 实施计划：部署维护 agent
 
-状态：计划，未实现。读者是实现者（按里程碑逐个 PR 实现）和仓库所有者（第 2 节的决定，以及第 7 节的上线操作）。
+状态：M1 已合并（PR #5）。2026-11-01 所有者调整了架构，见下一节；第 1–8 节保留为原始计划，凡与"架构调整"冲突的，以调整为准。
+
+## 架构调整（2026-11-01）
+
+所有者的决定：
+
+- **agent 放在所有者自己部署的私人仓库 `cardfacts-agent`**，全自动收集，不依赖人工打开网页（不做 M6）。是否抓取某家机构由私人部署的配置决定；本仓库的 `manual_only` 名单只约束本仓库自带的 `fetch-source` 工具。
+- **LLM 用 OpenAI API**（Responses API + 结构化输出），只负责把页面文字读成结构化结果，不编辑文件、不执行命令。不再使用 Claude Code headless（原 D2）。
+- **本仓库提供提交接口**：agent 通过 `repository_dispatch` 把结果发给 `.github/workflows/agent-submission.yml`。由本仓库的代码套用版本规则、追加快照、校验并开 PR，规则只在这一处实现。格式与流程见 [agent-submissions.md](agent-submissions.md)。
+
+对原里程碑的影响：
+
+| 里程碑 | 现在的去向                                                                                                  |
+| ------ | ----------------------------------------------------------------------------------------------------------- |
+| M1     | 已合并，留作本仓库的工具；私人 agent 实现自己的队列（同样采用"满 7 天到期"的口径）                          |
+| M2     | 由提交接口取代：核实日期由 intake 更新；`check-reverify-diff` 与 CI 守卫已实现；已核实基线保存在 agent 一侧 |
+| M3     | 提议格式由 `schema/submission.schema.json` 取代；运行摘要和试运行统计放在 agent 一侧                        |
+| M4     | 拆成两半：抓取、提取和提交在 agent 仓库；开分支、开 PR、维护 issue 在本仓库的 intake                        |
+| M5     | 部署包在 agent 仓库；本仓库只需第 [agent-submissions.md](agent-submissions.md#repository-setup) 节的设置    |
+| M6     | 不做                                                                                                        |
 
 路线图第 4 步（[proposal.zh.md](proposal.zh.md) §9）：部署维护 agent，先只读运行两周，只出报告不开 PR；确认误报率后再开启 PR。
 流程、权限与合并策略的原始设计见 proposal §6；agent 的工作规则见
