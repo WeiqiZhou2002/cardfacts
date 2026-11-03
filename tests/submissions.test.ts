@@ -295,3 +295,163 @@ test("re-verification diffs allow only forward verification and access dates", (
   backwards.fees[0]!.last_verified = "2026-01-01";
   assert.match(reverifyDiffErrors(catalog.cards, [backwards]).join(), /moved backwards/);
 });
+
+const flexTerms = {
+  source_id: "us-chase-freedom-flex-terms",
+  url: "https://applynow.chase.com/FlexAppWeb/pricing.do?CELL=6TKV",
+  title: "Freedom Flex pricing and terms",
+  fetched_at: "2026-11-01T06:05:00Z",
+  text_sha256: hash,
+};
+const flex = (networks: ProductSubmission["networks"]): ProductSubmission => ({
+  product_id: "us-chase-freedom-flex",
+  sources: [],
+  verified: [],
+  changes: [],
+  flags: [],
+  new_sources: [flexTerms],
+  networks,
+});
+const csr = (values: ("visa" | "mastercard")[], source = "chase-csr-page"): ProductSubmission => ({
+  product_id: "us-chase-sapphire-reserve",
+  sources: [
+    {
+      source_id: "chase-csr-page",
+      url: "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+      fetched_at: "2026-11-01T06:00:00Z",
+      text_sha256: hash,
+    },
+  ],
+  verified: [],
+  changes: [],
+  flags: [],
+  networks: { source_id: source, values, notes: "Visa Infinite card.", evidence: "Card features" },
+});
+
+test("network findings and new issuer sources are validated against the catalog", async () => {
+  const ok = flex({
+    source_id: flexTerms.source_id,
+    values: ["mastercard"],
+    notes: "World Elite Mastercard.",
+    evidence: "Card network",
+  });
+  await validateSubmission(catalog, submission(ok), now);
+  const reject = async (product: ProductSubmission, pattern: RegExp) =>
+    assert.rejects(validateSubmission(catalog, submission(product), now), pattern);
+  await reject(
+    { ...ok, new_sources: [{ ...flexTerms, url: "https://example.com/terms" }] },
+    /HTTPS on a Chase domain/,
+  );
+  await reject({ ...ok, new_sources: [{ ...flexTerms, source_id: "chase-csr-page" }] }, /already exists/);
+  await reject(
+    {
+      ...ok,
+      new_sources: [
+        { ...flexTerms, url: "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex" },
+      ],
+    },
+    /already cited/,
+  );
+  await reject(
+    { ...ok, networks: { ...ok.networks!, source_id: "nowhere" } },
+    /not listed in sources or new_sources/,
+  );
+  await reject({ ...ok, networks: { ...ok.networks!, values: ["visa", "mastercard"] } }, /alphabetical/);
+  await reject({ ...ok, networks: { ...ok.networks!, values: [] } }, /submission/);
+});
+
+test("a pending network is filled from a new issuer source; matching networks re-verify", async () => {
+  const filled = applyProductSubmission(
+    card("us-chase-freedom-flex"),
+    flex({
+      source_id: flexTerms.source_id,
+      values: ["mastercard"],
+      notes: "World Elite Mastercard.",
+      evidence: "Card network",
+    }),
+  );
+  assert.deepEqual(filled.card.networks, {
+    values: ["mastercard"],
+    status: "verified",
+    source: "us-chase-freedom-flex-terms",
+    last_verified: "2026-11-01",
+    notes: "World Elite Mastercard.",
+  });
+  assert.deepEqual(filled.card.sources.at(-1), {
+    id: "us-chase-freedom-flex-terms",
+    url: flexTerms.url,
+    title: flexTerms.title,
+    accessed: "2026-11-01",
+  });
+  assert.deepEqual(
+    filled.result.changes.map((c) => [c.label, c.before, c.after, c.versioned]),
+    [["networks", null, "mastercard", false]],
+  );
+  const { body } = describeProduct(filled.card, submission(flex(undefined)), flex(undefined), filled.result);
+  assert.match(body, /\| networks\.values \| — \(pending\) \| mastercard \| not effective-dated \|/);
+  assert.match(body, /New source "Freedom Flex pricing and terms"/);
+  // An unused new source is not added.
+  assert.equal(applyProductSubmission(card("us-chase-freedom-flex"), flex(undefined)).card.sources.length, 1);
+
+  const same = applyProductSubmission(card("us-chase-sapphire-reserve"), csr(["visa"]));
+  assert.equal(same.card.networks.last_verified, "2026-11-01");
+  assert.deepEqual(same.result.changes, []);
+  const after = catalog.cards.map((c) => (c.id === same.card.id ? same.card : c));
+  assert.deepEqual(reverifyDiffErrors(catalog.cards, after), []);
+  assert.ok(reverifySummary(catalog.cards, after).some((e) => e.label === "networks"));
+
+  const elsewhere = applyProductSubmission(card("us-chase-sapphire-reserve"), {
+    ...csr(["visa"], flexTerms.source_id.replace("freedom-flex", "sapphire-reserve")),
+    new_sources: [
+      { ...flexTerms, source_id: "us-chase-sapphire-reserve-terms", url: "https://applynow.chase.com/x" },
+    ],
+  });
+  assert.deepEqual(elsewhere.result.skipped, [
+    { target: "/networks", reason: "the recorded networks cite chase-csr-page" },
+  ]);
+  assert.equal(elsewhere.card.sources.length, card("us-chase-sapphire-reserve").sources.length);
+
+  const changed = applyProductSubmission(card("us-chase-sapphire-reserve"), csr(["mastercard"]));
+  assert.deepEqual(
+    changed.result.changes.map((c) => [c.before, c.after]),
+    [["visa", "mastercard"]],
+  );
+  assert.deepEqual(
+    applyProductSubmission(card("us-chase-sapphire-reserve"), csr(["mastercard"]), { changes: false }).result
+      .changes,
+    [],
+  );
+});
+
+test("an applied network finding passes catalog validation and history protection", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "cardfacts-networks-"));
+  try {
+    for (const path of ["catalog.json", "data", "history", "maintenance", "schema", "vectors", "vocab"])
+      await cp(join(root, path), join(dir, path), { recursive: true });
+    const { card: next } = applyProductSubmission(
+      card("us-chase-freedom-flex"),
+      flex({
+        source_id: flexTerms.source_id,
+        values: ["mastercard"],
+        notes: "World Elite Mastercard.",
+        evidence: "Card network",
+      }),
+    );
+    await writeFile(
+      join(dir, "data/us/chase/us-chase-freedom-flex.json"),
+      JSON.stringify(next, null, 2) + "\n",
+    );
+    const latest = catalog.revisions.filter((r) => r.product_id === next.id).at(-1)!.recorded_at;
+    await recordRevision(
+      await loadCatalog(dir, { allowUnrecorded: true }),
+      next.id,
+      new Date(Date.parse(latest) + 60_000).toISOString().replace(".000Z", "Z"),
+      "Test.",
+    );
+    const after = await loadCatalog(dir);
+    assert.deepEqual(historyErrors(catalog.cards, after.cards), []);
+    assert.deepEqual(revisionErrors(catalog.revisions, after.revisions), []);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
