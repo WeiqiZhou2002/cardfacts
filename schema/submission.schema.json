@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/WeiqiZhou2002/cardfacts/schema/submission.schema.json",
+  "title": "CardFacts agent submission",
+  "description": "Findings an external collection agent sends to the intake workflow. Values must come from issuer pages fetched in the run; the intake applies them under the catalog's versioning rules and opens a pull request for human review.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format_version", "submission_id", "agent", "checked_at", "products"],
+  "properties": {
+    "format_version": { "const": 1 },
+    "submission_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,119}$" },
+    "agent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "model"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "version": { "type": "string", "minLength": 1, "maxLength": 40 },
+        "model": { "anyOf": [{ "type": "string", "minLength": 1, "maxLength": 80 }, { "type": "null" }] }
+      }
+    },
+    "checked_at": { "$ref": "#/$defs/timestamp" },
+    "products": { "type": "array", "minItems": 1, "maxItems": 60, "items": { "$ref": "#/$defs/product" } }
+  },
+  "$defs": {
+    "timestamp": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$" },
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "target": { "type": "string", "pattern": "^/(?:fees|(?:earn_rates|credits)/[a-z0-9]+(?:-[a-z0-9]+)*)$" },
+    "money": { "type": "string", "pattern": "^(0|[1-9][0-9]*)\\.[0-9]{2}$" },
+    "decimal": { "type": "string", "pattern": "^(0|[1-9][0-9]*)(\\.[0-9]+)?$" },
+    "text": { "type": "string", "minLength": 1, "maxLength": 500 },
+    "locator": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "product": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["product_id", "sources", "verified", "changes", "flags"],
+      "properties": {
+        "product_id": { "$ref": "#/$defs/id" },
+        "sources": { "type": "array", "maxItems": 10, "items": { "$ref": "#/$defs/source" } },
+        "verified": { "type": "array", "maxItems": 200, "items": { "$ref": "#/$defs/verified" } },
+        "changes": { "type": "array", "maxItems": 100, "items": { "$ref": "#/$defs/change" } },
+        "flags": { "type": "array", "maxItems": 100, "items": { "$ref": "#/$defs/flag" } }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "url", "fetched_at", "text_sha256"],
+      "properties": {
+        "source_id": { "$ref": "#/$defs/id" },
+        "url": { "type": "string", "format": "uri", "maxLength": 500 },
+        "fetched_at": { "$ref": "#/$defs/timestamp" },
+        "text_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "verified": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target", "source_id"],
+      "properties": { "target": { "$ref": "#/$defs/target" }, "source_id": { "$ref": "#/$defs/id" } }
+    },
+    "change": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target",
+        "source_id",
+        "set",
+        "effective_from",
+        "effective_from_basis",
+        "notes",
+        "evidence"
+      ],
+      "properties": {
+        "target": { "$ref": "#/$defs/target" },
+        "source_id": { "$ref": "#/$defs/id" },
+        "set": {
+          "type": "object",
+          "additionalProperties": false,
+          "minProperties": 1,
+          "properties": {
+            "annual_fee": { "$ref": "#/$defs/money" },
+            "first_year_annual_fee": { "$ref": "#/$defs/money" },
+            "authorized_user_fee": { "$ref": "#/$defs/money" },
+            "foreign_transaction_fee_percent": { "$ref": "#/$defs/decimal" },
+            "rate": { "$ref": "#/$defs/decimal" },
+            "cap_amount": { "$ref": "#/$defs/money" },
+            "rate_after_cap": { "$ref": "#/$defs/decimal" },
+            "amount": { "$ref": "#/$defs/money" },
+            "per_transaction_cap": { "$ref": "#/$defs/money" }
+          }
+        },
+        "effective_from": { "anyOf": [{ "type": "string", "format": "date" }, { "type": "null" }] },
+        "effective_from_basis": { "enum": ["stated", "detected"] },
+        "notes": { "$ref": "#/$defs/text" },
+        "evidence": { "$ref": "#/$defs/locator" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "effective_from_basis": { "const": "stated" } } },
+          "then": { "properties": { "effective_from": { "type": "string" } } },
+          "else": { "properties": { "effective_from": { "type": "null" } } }
+        }
+      ]
+    },
+    "flag": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "source_id", "target", "summary", "evidence"],
+      "properties": {
+        "kind": {
+          "enum": ["new_entry", "removal", "conflict", "unreadable", "ambiguous", "suspicious_page"]
+        },
+        "source_id": { "$ref": "#/$defs/id" },
+        "target": { "anyOf": [{ "$ref": "#/$defs/target" }, { "type": "null" }] },
+        "summary": { "$ref": "#/$defs/text" },
+        "evidence": { "anyOf": [{ "$ref": "#/$defs/locator" }, { "type": "null" }] }
+      }
+    }
+  }
+}

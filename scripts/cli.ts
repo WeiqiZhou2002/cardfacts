@@ -10,6 +10,7 @@ import type { Schedule } from "./lib/maintenance/queue.js";
 import { externalStateDirectory, readFetchState } from "./lib/maintenance/state.js";
 import { historyErrors, readBaseCards, readBaseRevisions } from "./lib/history.js";
 import { recordRevision, revisionAt, revisionDiff, revisionErrors, termsAt } from "./lib/revisions.js";
+import { applyProductSubmission, reverifyDiffErrors, validateSubmission } from "./lib/submissions.js";
 
 async function main() {
   const [command, ...args] = process.argv.slice(2);
@@ -43,10 +44,12 @@ async function main() {
     "history",
     "plan-run",
     "run-checks",
+    "submission-check",
+    "check-reverify-diff",
   ];
   if (values.help) {
     console.log(
-      "pnpm validate [--base-ref REV]\npnpm build\npnpm sources --json\npnpm stale [--days 90] [--as-of YYYY-MM-DD] --json\npnpm fetch-source SOURCE_ID [--json]\npnpm snapshot PRODUCT --recorded-at TIME --reason TEXT\npnpm history PRODUCT [--as-of DATE] [--recorded-at TIME] [--from REV --to REV] --json\npnpm plan-run --mode daily|reverify --as-of DATE [--max N] [--change-report PRODUCT ...] --json\npnpm run-checks --plan FILE --json",
+      "pnpm validate [--base-ref REV]\npnpm build\npnpm sources --json\npnpm stale [--days 90] [--as-of YYYY-MM-DD] --json\npnpm fetch-source SOURCE_ID [--json]\npnpm snapshot PRODUCT --recorded-at TIME --reason TEXT\npnpm history PRODUCT [--as-of DATE] [--recorded-at TIME] [--from REV --to REV] --json\npnpm plan-run --mode daily|reverify --as-of DATE [--max N] [--change-report PRODUCT ...] --json\npnpm run-checks --plan FILE --json\npnpm submission-check FILE --json\npnpm check-reverify-diff --base-ref REV",
     );
     return;
   }
@@ -61,6 +64,8 @@ async function main() {
     history: ["as-of", "recorded-at", "from", "to", "json"],
     "plan-run": ["mode", "as-of", "max", "change-report", "json"],
     "run-checks": ["plan", "json"],
+    "submission-check": ["json"],
+    "check-reverify-diff": ["base-ref"],
   };
   for (const key of Object.keys(values))
     if (!permitted[command]!.includes(key)) throw new Error(`--${key} is not supported by ${command}`);
@@ -70,7 +75,8 @@ async function main() {
   if (positionals.some((p) => !p.trim())) throw new Error("Positional arguments cannot be empty");
   if (
     !(command === "plan-run" && values["change-report"]) &&
-    positionals.length !== (["fetch-source", "snapshot", "history"].includes(command) ? 1 : 0)
+    positionals.length !==
+      (["fetch-source", "snapshot", "history", "submission-check"].includes(command) ? 1 : 0)
   )
     throw new Error(`${command}: unexpected or missing positional argument`);
   const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
@@ -134,6 +140,27 @@ async function main() {
     );
     if (values.json) print(records);
     else console.log(records.map((v) => `${v.product}${v.path}\t${v.age_days} days\t${v.source}`).join("\n"));
+  } else if (command === "submission-check") {
+    // Dry run against the working tree: validates the file and shows what the intake would apply.
+    const submission = await validateSubmission(
+      catalog,
+      await readJson(resolve(positionals[0]!)),
+      new Date(),
+    );
+    print(
+      submission.products.map(
+        (p) =>
+          applyProductSubmission(
+            catalog.cards.find((c) => c.id === p.product_id)!,
+            p,
+          ).result,
+      ),
+    );
+  } else if (command === "check-reverify-diff") {
+    if (!values["base-ref"]) throw new Error("check-reverify-diff requires --base-ref REV");
+    const errors = reverifyDiffErrors(readBaseCards(root, values["base-ref"]), catalog.cards);
+    if (errors.length) throw new Error(errors.join("\n"));
+    console.log("Only verification and access dates changed.");
   } else if (command === "plan-run" || command === "run-checks") {
     const requested = process.env.CARDFACTS_STATE_DIR ?? join(homedir(), ".local/state/cardfacts");
     if (!requested.trim()) throw new Error("CARDFACTS_STATE_DIR cannot be empty");

@@ -19,11 +19,17 @@ jobs:
           cache: true
           require-lockfile: true
       - run: pnpm check
+      # Intake branches pushed with the workflow token are checked through workflow_dispatch.
       - name: Protect published history
-        if: github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request' || startsWith(github.ref_name, 'bot/')
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-        run: pnpm validate --base-ref "$BASE_SHA"
+          BASE_REF: ${{ github.event.pull_request.base.sha || 'origin/main' }}
+        run: pnpm validate --base-ref "$BASE_REF"
+      - name: Re-verification changes only verification dates
+        if: startsWith(github.head_ref, 'bot/reverify') || startsWith(github.ref_name, 'bot/reverify')
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.sha || 'origin/main' }}
+        run: pnpm check-reverify-diff --base-ref "$BASE_REF"
       - name: Install browser for local fixture tests
         run: pnpm exec playwright install --with-deps chromium
       - name: Verify browser transport

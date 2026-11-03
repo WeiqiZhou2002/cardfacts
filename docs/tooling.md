@@ -23,6 +23,8 @@ vectors are intentionally excluded from automatic formatting so their original b
 | `pnpm fetch-source SOURCE_ID [--json]`                                                             | Render a permitted public source, persist local state, and print its normalized-text SHA-256 or structured outcome                    |
 | `pnpm plan-run --mode daily\|reverify --as-of DATE [--max N] [--change-report PRODUCT ...] --json` | Deterministic source queue, manual-only due list and deferred count; no fetching                                                      |
 | `pnpm run-checks --plan FILE --json`                                                               | Check queued sources sequentially, persist an external run report, and print JSON                                                     |
+| `pnpm submission-check FILE --json`                                                                | Validate an agent submission against the schema and catalog, and print what the intake would apply                                    |
+| `pnpm check-reverify-diff --base-ref REV`                                                          | Fail unless only `last_verified` and source `accessed` dates moved forward since REV                                                  |
 
 For JSON-only stdout when invoking through pnpm, use `pnpm --silent sources --json` (similarly for other
 commands), or invoke `node --import tsx scripts/cli.ts sources --json` directly.
@@ -176,6 +178,12 @@ or baseline state, lock conflicts and local persistence errors exit **1**. Tool 
 without a completed run report; any already completed source checks remain in the existing source logs.
 This differs from the single-source `fetch-source` exit codes. Reports contain hashes and safe failure
 messages, never fetched page text.
+
+## Agent submissions
+
+The private collection agent sends findings through `repository_dispatch`; the intake workflow applies
+them and opens pull requests. See [agent submissions](agent-submissions.md) for the format, the
+versioning rules it applies and the repository settings it needs.
 
 ## API
 

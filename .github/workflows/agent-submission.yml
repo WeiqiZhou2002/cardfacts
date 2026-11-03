@@ -1,0 +1,51 @@
+name: Agent submission intake
+# The private collection agent sends its findings here with a repository_dispatch event
+# (event_type "cardfacts-submission", client_payload {"submission": {...}}). The intake validates
+# them against schema/submission.schema.json, applies them under the versioning rules and opens
+# pull requests for human review. It never pushes to main.
+on:
+  repository_dispatch:
+    types: [cardfacts-submission]
+  workflow_dispatch:
+    inputs:
+      submission:
+        description: Submission JSON (schema/submission.schema.json), for manual testing
+        required: true
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+  actions: write
+concurrency:
+  group: agent-submission-${{ github.event.client_payload.submission.submission_id || github.run_id }}
+  cancel-in-progress: false
+jobs:
+  intake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.CARDFACTS_BOT_TOKEN || github.token }}
+      - uses: pnpm/setup@v3
+        with:
+          runtime: node@24
+          cache: true
+          require-lockfile: true
+      # Untrusted text reaches the job only through environment variables, never the script source.
+      - name: Save submission
+        env:
+          DISPATCH_SUBMISSION: ${{ toJSON(github.event.client_payload.submission) }}
+          INPUT_SUBMISSION: ${{ inputs.submission }}
+        run: >-
+          node -e 'require("fs").writeFileSync(process.env.RUNNER_TEMP + "/submission.json",
+          process.env.INPUT_SUBMISSION || process.env.DISPATCH_SUBMISSION || "null")'
+      - name: Apply submission and open pull requests
+        env:
+          GH_TOKEN: ${{ secrets.CARDFACTS_BOT_TOKEN || github.token }}
+          # Pushes made with the workflow token start no CI run, so the intake dispatches one.
+          CARDFACTS_DISPATCH_CI: ${{ secrets.CARDFACTS_BOT_TOKEN == '' }}
+          CARDFACTS_AUTOMERGE_REVERIFY: ${{ vars.CARDFACTS_AUTOMERGE_REVERIFY || 'false' }}
+        run: node --import tsx scripts/intake.ts "$RUNNER_TEMP/submission.json"

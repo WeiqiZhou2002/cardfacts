@@ -27,6 +27,8 @@
     "test:site": "CARDFACTS_SITE_TEST=1 node --import tsx --test tests/site-browser.test.ts",
     "plan-run": "node --import tsx scripts/cli.ts plan-run",
     "run-checks": "node --import tsx scripts/cli.ts run-checks",
+    "submission-check": "node --import tsx scripts/cli.ts submission-check",
+    "check-reverify-diff": "node --import tsx scripts/cli.ts check-reverify-diff",
     "api:serve": "node --import tsx scripts/api-server.ts"
   },
   "dependencies": {
