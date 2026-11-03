@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — structured API
+
+- Publish a static JSON API under `/api/v1/` with the website: card summaries, full records, terms in force, revision history and snapshots, issuers and categories, OpenAPI 3.1 and JSON Schemas.
+- Add `pnpm api:serve`, a read-only server for the same paths that also accepts filters, terms dates, recorded times and revision diffs; Docker file in `deploy/api.Dockerfile`.
+- Link the API from the website footer.
+
 ## Unreleased — Phase 4 agent submission intake
 
 - Add `schema/submission.schema.json` and a `repository_dispatch` intake workflow for the private collection agent.

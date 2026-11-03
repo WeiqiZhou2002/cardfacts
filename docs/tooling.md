@@ -184,3 +184,8 @@ messages, never fetched page text.
 The private collection agent sends findings through `repository_dispatch`; the intake workflow applies
 them and opens pull requests. See [agent submissions](agent-submissions.md) for the format, the
 versioning rules it applies and the repository settings it needs.
+
+## API
+
+`pnpm site:build` also writes the static API to `dist/site/api/v1/`. `pnpm api:serve` serves the same paths
+with query parameters (`HOST`, `PORT`, `SIGHUP` to reload). See [the API guide](api.md).

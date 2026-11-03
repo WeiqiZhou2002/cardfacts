@@ -31,6 +31,7 @@ aims to be the shared, machine-readable source with a clear trail back to the is
 | [data/us/](data/us/)                                                               | 30 cited products: fees, earn rates and credits     |
 | [site/](site/)                                                                     | Bilingual static wiki and browser interactions      |
 | [docs/site.md](docs/site.md)                                                       | Website preview, history links and Pages deployment |
+| [docs/api.md](docs/api.md)                                                         | JSON API for software: static files and a server    |
 | [history/](history/)                                                               | Immutable complete product revisions                |
 | [docs/history.md](docs/history.md)                                                 | Query and compare historical content                |
 | [docs/phase-2-catalog.md](docs/phase-2-catalog.md)                                 | Phase 2 coverage and evidence limitations           |
