@@ -4,7 +4,13 @@
   "name": "Discover it Cash Back",
   "country": "US",
   "currency": "USD",
-  "network": "discover",
+  "networks": {
+    "values": ["discover"],
+    "status": "verified",
+    "source": "us-discover-it-cash-back-page",
+    "last_verified": "2026-10-28",
+    "notes": "Carried over from the earlier network field, which the catalog review confirmed from issuer material for this product."
+  },
   "audience": "personal",
   "availability": "open",
   "rewards": {

@@ -60,6 +60,13 @@ export interface CreditVersion extends Version {
     consecutive_months?: number;
   };
 }
+export interface Networks {
+  values: ("amex" | "discover" | "mastercard" | "visa")[];
+  status: "verified" | "to_verify";
+  source: string;
+  last_verified: string;
+  notes: string;
+}
 export interface Source {
   id: string;
   url: string;
@@ -72,7 +79,9 @@ export interface Card {
   name: string;
   country: "US";
   currency: "USD";
-  network: "amex" | "visa" | "mastercard" | "discover" | null;
+  // Revisions recorded before schema 3 have `network` instead of `networks`.
+  network?: "amex" | "visa" | "mastercard" | "discover" | null;
+  networks: Networks;
   audience: "personal" | "business";
   availability: "open" | "closed_to_new" | "discontinued";
   rewards: { program: string; unit: "points" | "miles" | "cash" };

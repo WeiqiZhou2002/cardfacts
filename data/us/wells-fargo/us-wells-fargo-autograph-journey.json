@@ -4,7 +4,13 @@
   "name": "Wells Fargo Autograph Journey",
   "country": "US",
   "currency": "USD",
-  "network": "visa",
+  "networks": {
+    "values": ["visa"],
+    "status": "verified",
+    "source": "us-wells-fargo-autograph-journey-page",
+    "last_verified": "2026-10-28",
+    "notes": "Carried over from the earlier network field, which the catalog review confirmed from issuer material for this product."
+  },
   "audience": "personal",
   "availability": "open",
   "rewards": {

@@ -56,6 +56,16 @@ test("server-only filters select cards by audience, fees, earn and credit catego
     "us-capital-one-venture-x",
     "us-capital-one-venture-x-business",
   ]);
+  assert.ok(ids("cards.json", "network=visa").includes("us-chase-sapphire-reserve"));
+  assert.ok(
+    !ids("cards.json", "network=visa").includes("us-chase-freedom-flex"),
+    "pending networks never match",
+  );
+  const summary = (
+    get("cards.json").body as { data: { cards: { id: string; networks: { values: string[] } }[] } }
+  ).data.cards;
+  assert.deepEqual(summary.find((c) => c.id === "us-amex-gold")!.networks.values, ["amex"]);
+  assert.ok(summary.every((c) => !("network" in c)));
   const flex = (get("categories/earn/rotating.json").body as Body).data.cards.map((c) => c.id);
   assert.ok(flex.includes("us-chase-freedom-flex"));
 });
@@ -101,6 +111,7 @@ test("bad requests get JSON errors with specific codes", () => {
   assert.deepEqual(code("cards.json", "as_of=2026-02-30"), [400, "invalid_date"]);
   assert.deepEqual(code("cards.json", "issuer=Chase&issuer=Citi"), [400, "repeated_parameter"]);
   assert.deepEqual(code("cards.json", "annual_fee_max=cheap"), [400, "invalid_number"]);
+  assert.deepEqual(code("cards.json", "network=unionpay"), [400, "invalid_network"]);
   assert.deepEqual(code("cards/us-amex-gold/terms.json", "recorded_at=yesterday"), [400, "invalid_time"]);
   assert.deepEqual(code("cards/us-amex-gold/diff.json"), [400, "invalid_revision"]);
   assert.deepEqual(code("cards/us-nope.json"), [404, "not_found"]);

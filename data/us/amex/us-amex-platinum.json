@@ -343,7 +343,13 @@
       "category": "rideshare"
     }
   ],
-  "network": "amex",
+  "networks": {
+    "values": ["amex"],
+    "status": "verified",
+    "source": "amex-platinum-page",
+    "last_verified": "2026-10-27",
+    "notes": "Carried over from the earlier network field, which the catalog review confirmed from issuer material for this product."
+  },
   "audience": "personal",
   "availability": "open",
   "rewards": {

@@ -258,7 +258,11 @@ test("applied submissions pass catalog validation and history protection", async
     await recordRevision(
       await loadCatalog(dir, { allowUnrecorded: true }),
       next.id,
-      "2026-11-01T06:11:00Z",
+      new Date(
+        Date.parse(catalog.revisions.filter((r) => r.product_id === next.id).at(-1)!.recorded_at) + 60_000,
+      )
+        .toISOString()
+        .replace(".000Z", "Z"),
       "Test.",
     );
     const after = await loadCatalog(dir);

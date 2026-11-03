@@ -138,6 +138,14 @@ export function cardErrors(
   card.sources.forEach((s, i) => {
     if (!allowedUrl(s.url, issuer)) errors.push(`/sources/${i}/url: HTTPS issuer domain required`);
   });
+  if (card.networks) {
+    const source = sources.get(card.networks.source);
+    if (!source) errors.push(`/networks/source: unresolved ${card.networks.source}`);
+    else if (source.accessed < card.networks.last_verified)
+      errors.push("/networks/last_verified: later than source.accessed");
+    if (card.networks.values.join() !== [...card.networks.values].sort(compare).join())
+      errors.push("/networks/values: list networks in alphabetical order");
+  }
   for (const group of versionGroups(card)) {
     errors.push(...intervalErrors(group.versions, group.path));
     group.versions.forEach((v, i) => {
@@ -284,6 +292,8 @@ export async function loadCatalog(
     const path = relative(root, file).replaceAll("\\", "/");
     const value = await readJson(file);
     assertSchema(validateCard, value, path);
+    // The schema still accepts `network` so that older recorded revisions stay valid.
+    if (!value.networks) errors.push(`${path}: use networks; network appears only in pre-schema-3 revisions`);
     const issuer = issuers.issuers.find((i) => i.name === value.issuer);
     if (!issuer) {
       errors.push(`${path}/issuer: unknown issuer`);
@@ -334,7 +344,7 @@ export async function loadCatalog(
       additionalProperties: false,
       required: ["schema_version", "catalog_version", "license"],
       properties: {
-        schema_version: { const: 2 },
+        schema_version: { const: 3 },
         catalog_version: { type: "string", pattern: "^[0-9]{4}\\.[0-9]{2}\\.[0-9]{2}(?:-[a-z0-9.-]+)?$" },
         license: { const: "CC0-1.0" },
       },

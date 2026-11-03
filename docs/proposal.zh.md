@@ -116,7 +116,13 @@ cardfacts/
   "issuer": "American Express",
   "name": "Platinum Card",
   "country": "US",
-  "network": "amex",
+  "networks": {
+    "values": ["amex"],
+    "status": "verified",
+    "source": "amex-platinum-page",
+    "last_verified": "2026-10-27",
+    "notes": "American Express issues the card on its own network."
+  },
   "audience": "personal",
   "currency": "USD",
   "availability": "open",
