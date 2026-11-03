@@ -167,7 +167,8 @@ test("a term change opens one data-change pull request with evidence, flags and 
     );
     const snapshots = Object.keys(commit.files).filter((f) => f.startsWith("history/us-amex-gold/"));
     assert.equal(snapshots.length, 1);
-    assert.match(snapshots[0]!, /20261101T070000Z-/);
+    // Recorded at the run time, or just after the product's latest snapshot if that is later.
+    assert.match(snapshots[0]!, /^history\/us-amex-gold\/\d{8}T\d{6}Z-[a-f0-9]{12}\.json$/);
     const create = calls.find((c) => c[0] === "gh" && c[1] === "pr" && c[2] === "create")!;
     assert.match(
       create[create.indexOf("--title") + 1]!,

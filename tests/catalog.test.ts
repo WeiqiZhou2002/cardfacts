@@ -316,3 +316,61 @@ test("CLI emits parseable JSON and rejects unsupported or malformed options", ()
   assert.throws(() => run("validate", "unexpected"));
   assert.doesNotThrow(() => readBaseCards(root, "HEAD"));
 });
+
+test("networks are cited lists: verified entries name networks, pending ones none; data may not use network", async (t) => {
+  assert.deepEqual(amex.networks.values, ["amex"]);
+  const pending = catalog.cards.filter((c) => c.networks.status === "to_verify");
+  assert.ok(pending.every((c) => c.networks.values.length === 0));
+  const semantic: [string, (card: Card) => void, RegExp][] = [
+    ["unknown source", (c) => (c.networks.source = "nope"), /networks\/source: unresolved/],
+    ["verified after access", (c) => (c.networks.last_verified = "2027-01-01"), /later than source.accessed/],
+    ["unsorted", (c) => (c.networks.values = ["visa", "mastercard"]), /alphabetical/],
+  ];
+  for (const [name, mutate, pattern] of semantic)
+    await t.test(name, () => {
+      const card = structuredClone(amex);
+      mutate(card);
+      assert.match(errors(card).join("\n"), pattern);
+    });
+  const multi = structuredClone(amex);
+  multi.networks.values = ["mastercard", "visa"];
+  assert.deepEqual(errors(multi), []);
+  const directory = await mkdtemp(join(tmpdir(), "cardfacts-networks-"));
+  try {
+    for (const item of ["data", "history", "vocab", "schema", "maintenance", "vectors", "catalog.json"])
+      await cp(join(root, item), join(directory, item), { recursive: true });
+    const file = join(directory, "data/us/amex/us-amex-platinum.json");
+    const shapes: [string, (card: Record<string, unknown>) => void, RegExp][] = [
+      ["legacy field in data", (c) => (delete c.networks, (c.network = "amex")), /use networks/],
+      ["both fields", (c) => (c.network = "amex"), /data\/us\/amex/],
+      [
+        "pending with values",
+        (c) => ((c.networks as { status: string }).status = "to_verify"),
+        /data\/us\/amex/,
+      ],
+      [
+        "verified without values",
+        (c) => ((c.networks as { values: string[] }).values = []),
+        /data\/us\/amex/,
+      ],
+      [
+        "unknown network",
+        (c) => ((c.networks as { values: string[] }).values = ["unionpay"]),
+        /data\/us\/amex/,
+      ],
+    ];
+    for (const [name, mutate, pattern] of shapes)
+      await t.test(name, async () => {
+        const card = structuredClone(amex) as unknown as Record<string, unknown>;
+        mutate(card);
+        await writeFile(file, JSON.stringify(card));
+        await assert.rejects(loadCatalog(directory), pattern);
+      });
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+  // Snapshots recorded before schema 3 keep their single network and still load.
+  const legacy = catalog.revisions.filter((r) => r.product.network !== undefined);
+  assert.ok(legacy.length >= 33);
+  assert.ok(legacy.every((r) => r.product.networks === undefined));
+});

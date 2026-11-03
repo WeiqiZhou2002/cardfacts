@@ -52,6 +52,26 @@ curl "http://localhost:8787/api/v1/cards/us-amex-business-platinum/terms.json?as
 curl "http://localhost:8787/api/v1/categories/earn/groceries.json?as_of=2027-01-01"
 ```
 
+## Payment networks
+
+Every card record and summary has `networks` (see the [data model](data-model.md#payment-networks-schema-3)):
+
+```json
+"networks": {
+  "values": ["visa"],
+  "status": "verified",
+  "source": "chase-csr-page",
+  "last_verified": "2026-10-28",
+  "notes": "..."
+}
+```
+
+`values` can hold more than one network; a pending entry (`"status": "to_verify"`) has an empty list and
+means the network is not yet confirmed, not that there is none. The `network` query parameter matches
+verified values only. This field replaced the earlier single `network` value on 2026-11-03, and its shape
+is stable from here on in `api_version` 1. Revisions recorded before that date are returned as recorded and
+still contain `network`.
+
 ## Certainty
 
 Each term returned by `terms.json` and the category endpoints carries a `certainty`:

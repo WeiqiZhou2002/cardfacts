@@ -58,7 +58,7 @@ function summary(card: Card, asOf: string) {
     name: card.name,
     issuer: card.issuer,
     audience: card.audience,
-    network: card.network,
+    networks: card.networks,
     availability: card.availability,
     rewards: card.rewards,
     aliases: card.aliases,
@@ -143,6 +143,8 @@ function listCards(ctx: ApiContext, query: URLSearchParams): ApiResult {
   for (const key of ["annual_fee_min", "annual_fee_max", "min_rate"])
     if (query.has(key) && decimal(query.get(key)) === null)
       return fail(400, "invalid_number", `${key} must be a non-negative decimal number.`);
+  if (query.has("network") && !["amex", "discover", "mastercard", "visa"].includes(query.get("network")!))
+    return fail(400, "invalid_network", "network must be amex, discover, mastercard or visa.");
   const text = query.get("q")?.normalize("NFKC").toLowerCase().trim();
   const feeMin = decimal(query.get("annual_fee_min"));
   const feeMax = decimal(query.get("annual_fee_max"));
@@ -160,7 +162,13 @@ function listCards(ctx: ApiContext, query: URLSearchParams): ApiResult {
       !match("unit", card.rewards.unit)
     )
       return false;
-    if (!match("network", card.network) || !match("availability", card.availability)) return false;
+    if (!match("availability", card.availability)) return false;
+    const network = query.get("network");
+    if (
+      network !== null &&
+      !(card.networks.status === "verified" && (card.networks.values as string[]).includes(network))
+    )
+      return false;
     if (feeMin !== null || feeMax !== null) {
       const fee = terms.fees?.version.status === "verified" ? Number(terms.fees.version.annual_fee) : null;
       if (fee === null || (feeMin !== null && fee < feeMin) || (feeMax !== null && fee > feeMax))
@@ -450,7 +458,9 @@ function openapi() {
           param("q", "Text in the name, issuer, id or aliases."),
           param("issuer", "Exact issuer name, for example Chase."),
           param("audience", "personal or business.", { enum: ["personal", "business"] }),
-          param("network", "Card network.", { enum: ["amex", "visa", "mastercard", "discover"] }),
+          param("network", "Cards whose verified networks include this one.", {
+            enum: ["amex", "discover", "mastercard", "visa"],
+          }),
           param("availability", "open, closed_to_new or discontinued.", {
             enum: ["open", "closed_to_new", "discontinued"],
           }),

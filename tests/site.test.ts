@@ -157,8 +157,11 @@ test("static build is reproducible, contains all bilingual pages, and resolves e
     const payload = JSON.parse(
       detail.match(/<script id="site-data" type="application\/json">(.*?)<\/script>/s)![1]!,
     );
-    assert.equal(payload.data.revisions.length, 2);
-    assert.equal(payload.data.asOf, "2026-10-28");
+    assert.equal(
+      payload.data.revisions.length,
+      catalog.revisions.filter((r) => r.product_id === "us-capital-one-venture-x").length,
+    );
+    assert.equal(payload.data.asOf, catalog.metadata.catalog_version.slice(0, 10).replaceAll(".", "-"));
   } finally {
     await rm(tmp, { recursive: true, force: true });
   }

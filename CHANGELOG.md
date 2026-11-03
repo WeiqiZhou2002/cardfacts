@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026.11.03-draft — schema 3: cited payment networks
+
+- Replace the single nullable `network` with `networks`: a sorted list of networks plus `status`, `source`, `last_verified` and `notes`, so a product issued on more than one network can say so and every network value is cited.
+- Migrate the 15 known networks with their product-page sources; mark the other 15 cards (Capital One, Chase, Citi) `to_verify` until issuer terms are cited.
+- API: summaries and records expose `networks`; the `network` filter matches verified values only and rejects unknown networks. The shape is stable from this version on.
+- Revisions recorded earlier keep `network`; the schema accepts it there only. 30 new snapshots record the migration.
+
 ## Unreleased — structured API
 
 - Publish a static JSON API under `/api/v1/` with the website: card summaries, full records, terms in force, revision history and snapshots, issuers and categories, OpenAPI 3.1 and JSON Schemas.

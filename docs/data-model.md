@@ -79,9 +79,33 @@ progress implementation.
 product preserve their curated order. There are no build timestamps. Update the catalog version when
 preparing a release; build never chooses a date from the machine clock.
 
+## Payment networks (schema 3)
+
+`networks` records which payment networks a product is issued on, cited like any other term:
+
+```json
+"networks": {
+  "values": ["mastercard", "visa"],
+  "status": "verified",
+  "source": "us-capital-one-venture-terms",
+  "last_verified": "2026-11-05",
+  "notes": "Issued on Visa or Mastercard depending on when the account was opened."
+}
+```
+
+- `values` lists `amex`, `discover`, `mastercard` or `visa` in alphabetical order. A product issued on more
+  than one network lists each; consumers should not treat the list as a single certain network.
+- `verified` needs at least one value; `to_verify` has none, and its `source` and `last_verified` record the
+  page last checked. `source` must be one of the product's sources, accessed on or after `last_verified`.
+- Product pages often omit the network. Pricing and terms, cardmember agreements and the Guide to Benefits
+  usually name it and are valid issuer sources.
+
+`networks` replaced the single nullable `network` in schema 3 (catalog `2026.11.03-draft`). Revisions recorded
+before then still contain `network`; the schema accepts it only there, and current data must use `networks`.
+
 ## Phase 2 conditions and snapshots
 
-`network: null` means not confirmed. Optional `coverage` describes review scope for fees, earn rates and
+Optional `coverage` describes review scope for fees, earn rates and
 credits (`reviewed` or `partial`); omitted coverage is unknown, not complete.
 
 Earn conditions additionally support `online_only`, `requires_payment`, `minimum_transaction_amount`,

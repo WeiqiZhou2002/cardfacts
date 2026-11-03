@@ -4,7 +4,13 @@
   "name": "Blue Business Plus",
   "country": "US",
   "currency": "USD",
-  "network": "amex",
+  "networks": {
+    "values": ["amex"],
+    "status": "verified",
+    "source": "us-amex-blue-business-plus-page",
+    "last_verified": "2026-10-28",
+    "notes": "Carried over from the earlier network field, which the catalog review confirmed from issuer material for this product."
+  },
   "audience": "business",
   "availability": "open",
   "rewards": {

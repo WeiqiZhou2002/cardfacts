@@ -4,7 +4,13 @@
   "name": "Venture Rewards",
   "country": "US",
   "currency": "USD",
-  "network": null,
+  "networks": {
+    "values": [],
+    "status": "to_verify",
+    "source": "us-capital-one-venture-page",
+    "last_verified": "2026-10-28",
+    "notes": "The cited product page does not name the network. Check the issuer's pricing and terms, cardmember agreement or Guide to Benefits."
+  },
   "audience": "personal",
   "availability": "open",
   "rewards": {

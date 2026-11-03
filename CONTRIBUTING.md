@@ -25,6 +25,9 @@ confirms it.
 5. **No personal data.** Keywords are brand or program names. Never copy text from a real statement, and
    never include account details, screenshots or anything from your own records.
 6. **One card per pull request**, with the source links in the description.
+7. **Networks are cited too.** `networks` lists every payment network the product is issued on, with the issuer
+   source that names them (pricing and terms, cardmember agreement or Guide to Benefits when the product page
+   does not). Leave it `to_verify` with no values rather than inferring a network from the issuer.
 
 ## Pull requests from the maintenance agent
 

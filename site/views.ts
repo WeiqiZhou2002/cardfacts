@@ -383,6 +383,21 @@ function historyBlock(ctx: Context) {
       "",
     )}</ol>${difference}<p><a href="${h(ctx.data.base)}data/history/${h(ctx.productId)}.json" download>${label(ctx, "下载这张卡的完整历史（JSON）", "Download this card’s full history (JSON)")}</a></p>`;
 }
+// Revisions recorded before schema 3 carry a single `network` instead of `networks`.
+function networkText(ctx: Context, card: Card) {
+  const values = card.networks
+    ? card.networks.status === "verified"
+      ? card.networks.values
+      : []
+    : card.network
+      ? [card.network]
+      : [];
+  return values.length
+    ? values
+        .map((n) => (n === "amex" ? "American Express" : n.charAt(0).toUpperCase() + n.slice(1)))
+        .join(" / ")
+    : t(ctx, "待核实", "Pending verification");
+}
 export function cardPage(ctx: Context) {
   const current = ctx.data.cards.find((c) => c.id === ctx.productId);
   if (!current) return notFound(ctx);
@@ -406,7 +421,7 @@ export function cardPage(ctx: Context) {
     !revision
       ? `<section class="empty-state"><h2>${label(ctx, "此时间点尚无记录", "No record at this time")}</h2><p>${label(ctx, "第一条快照之前的内容无法还原，或者指定的版本不存在。", "The requested revision is missing or predates the first snapshot.")}</p><a class="button secondary" href="${h(href(ctx, `cards/${ctx.productId}/`))}">${label(ctx, "查看最新记录", "View latest record")}</a></section>`
       : `
-  <div class="card-layout"><aside class="infobox"><dl><dt>${label(ctx, "年费", "Annual fee")}</dt><dd>${fee == null ? label(ctx, "未确认", "Unconfirmed") : dollars(fee)}</dd><dt>${label(ctx, "卡组织", "Network")}</dt><dd>${h(card.network?.toUpperCase() ?? t(ctx, "未确认", "Unconfirmed"))}</dd><dt>${label(ctx, "奖励", "Rewards")}</dt><dd>${unit}</dd><dt>${label(ctx, "申请状态", "Availability")}</dt><dd>${label(ctx, card.availability === "open" ? "开放申请" : card.availability === "closed_to_new" ? "停止新申请" : "已停用", card.availability === "open" ? "Open" : card.availability === "closed_to_new" ? "Closed to new applicants" : "Discontinued")}</dd><dt>${label(ctx, "条款日期", "Terms date")}</dt><dd>${h(ctx.asOf)}</dd><dt>${label(ctx, "收录时间", "Recorded")}</dt><dd>${h(revision.recorded_at.replace("T", " ").replace("Z", " UTC"))}</dd></dl><p>${label(ctx, "金额已核实，不代表适用条件已完整收录。", "A verified amount does not mean every eligibility condition is recorded.")}</p><details><summary>${label(ctx, "收录范围与备注", "Coverage and notes")}</summary><p lang="en">${h(card.coverage?.notes ?? "")}</p><p lang="en">${h(card.notes)}</p></details></aside>
+  <div class="card-layout"><aside class="infobox"><dl><dt>${label(ctx, "年费", "Annual fee")}</dt><dd>${fee == null ? label(ctx, "未确认", "Unconfirmed") : dollars(fee)}</dd><dt>${label(ctx, "卡组织", "Network")}</dt><dd>${h(networkText(ctx, card))}</dd><dt>${label(ctx, "奖励", "Rewards")}</dt><dd>${unit}</dd><dt>${label(ctx, "申请状态", "Availability")}</dt><dd>${label(ctx, card.availability === "open" ? "开放申请" : card.availability === "closed_to_new" ? "停止新申请" : "已停用", card.availability === "open" ? "Open" : card.availability === "closed_to_new" ? "Closed to new applicants" : "Discontinued")}</dd><dt>${label(ctx, "条款日期", "Terms date")}</dt><dd>${h(ctx.asOf)}</dd><dt>${label(ctx, "收录时间", "Recorded")}</dt><dd>${h(revision.recorded_at.replace("T", " ").replace("Z", " UTC"))}</dd></dl><p>${label(ctx, "金额已核实，不代表适用条件已完整收录。", "A verified amount does not mean every eligibility condition is recorded.")}</p><details><summary>${label(ctx, "收录范围与备注", "Coverage and notes")}</summary><p lang="en">${h(card.coverage?.notes ?? "")}</p><p lang="en">${h(card.notes)}</p></details></aside>
   <div class="card-sections"><nav class="section-nav" aria-label="${label(ctx, "本页目录", "On this page")}">${[
     ["fees", "费用", "Fees"],
     ["earn", "返现与积分", "Earn rates"],
