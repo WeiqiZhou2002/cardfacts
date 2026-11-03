@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased — agent network findings
+
+- Submissions may carry `networks` and up to three `new_sources` (issuer documents such as pricing and terms). The intake fills pending networks or replaces different ones in a data-change PR, adds the cited new source to the product, and re-verifies unchanged networks.
+- Re-verification PRs may move `networks.last_verified` forward; nothing else about networks.
+
 ## 2026.11.03-draft — schema 3: cited payment networks
 
 - Replace the single nullable `network` with `networks`: a sorted list of networks plus `status`, `source`, `last_verified` and `notes`, so a product issued on more than one network can say so and every network value is cited.

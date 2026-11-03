@@ -269,3 +269,38 @@ test("invalid submissions stop before any branch, push or pull request", () =>
     await assert.rejects(runIntake({ root: dir, submission: bad, exec, now }), SubmissionError);
     assert.ok(!calls.some((c) => ["push", "commit"].includes(c[1]!) || c[2] === "create"));
   }));
+
+test("a filled network opens a data-change pull request that adds the new issuer source", () =>
+  sandbox(async ({ dir, exec, commits, bodies }) => {
+    const flex: ProductSubmission = {
+      product_id: "us-chase-freedom-flex",
+      sources: [],
+      verified: [],
+      changes: [],
+      flags: [],
+      new_sources: [
+        {
+          source_id: "us-chase-freedom-flex-terms",
+          url: "https://applynow.chase.com/FlexAppWeb/pricing.do?CELL=6TKV",
+          title: "Freedom Flex pricing and terms",
+          fetched_at: "2026-11-01T06:05:00Z",
+          text_sha256: hash,
+        },
+      ],
+      networks: {
+        source_id: "us-chase-freedom-flex-terms",
+        values: ["mastercard"],
+        notes: "World Elite Mastercard.",
+        evidence: "Card network",
+      },
+    };
+    const report = await runIntake({ root: dir, submission: submission(flex), exec, now });
+    assert.deepEqual(
+      report.pull_requests.map((p) => [p.kind, p.branch]),
+      [["data-change", "bot/us-chase-freedom-flex/2026-11-01"]],
+    );
+    const card = JSON.parse(commits[0]!.files["data/us/chase/us-chase-freedom-flex.json"]!);
+    assert.deepEqual(card.networks.values, ["mastercard"]);
+    assert.equal(card.sources.at(-1).id, "us-chase-freedom-flex-terms");
+    assert.match(bodies[0]!, /networks\.values \| — \(pending\) \| mastercard/);
+  }));

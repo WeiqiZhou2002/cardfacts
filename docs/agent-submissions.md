@@ -52,6 +52,16 @@ product. Changes may set these fields only:
 | `/earn_rates` | `rate`, `cap_amount`, `rate_after_cap` (only when the rule already has a structured cap)        |
 | `/credits`    | `amount`, `per_transaction_cap`                                                                 |
 
+Two optional product fields cover payment networks:
+
+| Field         | Meaning                                                                                                                                                |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `networks`    | `source_id`, `values` (alphabetical: `amex`, `discover`, `mastercard`, `visa`), a paraphrased `notes` and a locator. Only what the page names.         |
+| `new_sources` | Up to three issuer documents not yet in the catalog (id, URL, title, fetch time, text hash), such as pricing and terms. Only `networks` may cite them. |
+
+A new source must be HTTPS on the product issuer's domains, use an id no catalog source has, and not repeat
+a URL the product already cites. It is added to the product only when the applied network finding cites it.
+
 Periods, reset rules, conditions, new benefits and removals are flags, not changes. Money uses two
 decimals (`"60.00"`), rates and percentages are decimal strings.
 
@@ -67,6 +77,10 @@ The version that applies on the source's fetch date is the current version.
   the issuer's date; `detected` uses the fetch date and the PR shows the window since the old value was
   last verified. A pending version is resolved the same way once its main value (`annual_fee`, `rate` or
   `amount`) is supplied.
+- **Networks**: the same values from the source already cited move the networks' `last_verified` forward;
+  the same values from a different source are left as recorded and reported. A pending entry, or different
+  values, are replaced by the finding (status `verified`) in a data-change PR. Networks are not effective-dated;
+  the snapshot keeps the earlier list.
 - The source's `accessed` date moves forward for every source used.
 
 A change is **not applied**, and is reported as a `conflict` flag instead, when a later version is

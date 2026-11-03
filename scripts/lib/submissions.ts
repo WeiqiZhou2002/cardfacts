@@ -3,9 +3,9 @@ import { isDeepStrictEqual } from "node:util";
 import { Ajv2020 } from "ajv/dist/2020.js";
 import type { ValidateFunction } from "ajv";
 import addFormatsModule from "ajv-formats";
-import { readJson } from "./catalog.js";
-import { isDate, isTimestamp } from "./primitives.js";
-import type { Card, Catalog, EarnVersion, Version } from "./types.js";
+import { allowedUrl, readJson } from "./catalog.js";
+import { compare, isDate, isTimestamp } from "./primitives.js";
+import type { Card, Catalog, EarnVersion, Networks, Version } from "./types.js";
 
 export type FlagKind = "new_entry" | "removal" | "conflict" | "unreadable" | "ambiguous" | "suspicious_page";
 export interface SubmissionSource {
@@ -36,6 +36,9 @@ export interface ProductSubmission {
   verified: { target: string; source_id: string }[];
   changes: SubmissionChange[];
   flags: SubmissionFlag[];
+  // Issuer documents not yet in the catalog; only `networks` may cite them.
+  new_sources?: (SubmissionSource & { title: string })[];
+  networks?: { source_id: string; values: Networks["values"]; notes: string; evidence: string };
 }
 export interface Submission {
   format_version: 1;
@@ -56,6 +59,8 @@ export interface AppliedChange {
   // For a detected change: the old value was last verified on this date.
   detected_after: string | null;
   evidence: string;
+  // Networks are not effective-dated; their change replaces the recorded list.
+  versioned: boolean;
 }
 export interface ProductResult {
   product_id: string;
@@ -154,6 +159,31 @@ export async function validateSubmission(catalog: Catalog, value: unknown, now: 
       if (!isTimestamp(source.fetched_at) || fetched > checked || fetched < checked - 7 * DAY)
         errors.push(`${path}: ${source.source_id} fetched_at must be within 7 days before checked_at`);
     }
+    const issuer = catalog.issuers.issuers.find((i) => i.name === card.issuer)!;
+    const added = new Set<string>();
+    (product.new_sources ?? []).forEach((source, j) => {
+      const where = `${path}/new_sources/${j}`;
+      if (sources.has(source.source_id) || added.has(source.source_id))
+        errors.push(`${where}: duplicate source ${source.source_id}`);
+      added.add(source.source_id);
+      // Source ids are unique across the whole catalog.
+      if (catalog.cards.some((c) => c.sources.some((s) => s.id === source.source_id)))
+        errors.push(`${where}: source id ${source.source_id} already exists`);
+      if (!allowedUrl(source.url, issuer))
+        errors.push(`${where}: URL must be HTTPS on a ${card.issuer} domain`);
+      if (card.sources.some((s) => s.url === source.url))
+        errors.push(`${where}: URL is already cited as another source`);
+      const fetched = Date.parse(source.fetched_at);
+      if (!isTimestamp(source.fetched_at) || fetched > checked || fetched < checked - 7 * DAY)
+        errors.push(`${where}: fetched_at must be within 7 days before checked_at`);
+    });
+    if (product.networks) {
+      const where = `${path}/networks`;
+      if (!sources.has(product.networks.source_id) && !added.has(product.networks.source_id))
+        errors.push(`${where}: source ${product.networks.source_id} is not listed in sources or new_sources`);
+      if (product.networks.values.join() !== [...product.networks.values].sort(compare).join())
+        errors.push(`${where}: list networks in alphabetical order`);
+    }
     const targets = new Set<string>();
     const entry = (target: string, sourceId: string, where: string) => {
       if (!sources.has(sourceId)) errors.push(`${where}: source ${sourceId} is not listed in sources`);
@@ -203,7 +233,12 @@ export function applyProductSubmission(
     skipped: [],
     flags: [...submission.flags],
   };
-  const fetched = new Map(submission.sources.map((s) => [s.source_id, s.fetched_at.slice(0, 10)]));
+  const fetched = new Map(
+    [...submission.sources, ...(submission.new_sources ?? [])].map((s) => [
+      s.source_id,
+      s.fetched_at.slice(0, 10),
+    ]),
+  );
   const used = new Set<string>();
   const verify = (target: string, sourceId: string) => {
     const day = fetched.get(sourceId)!;
@@ -297,14 +332,60 @@ export function applyProductSubmission(
           basis: change.effective_from_basis,
           detected_after: change.effective_from_basis === "detected" ? current.last_verified : null,
           evidence: change.evidence,
+          versioned: true,
         });
       current.effective_to = addDays(start, -1);
       group.versions.push(added);
       used.add(change.source_id);
     }
   for (const v of submission.verified) verify(v.target, v.source_id);
+  if (submission.networks) {
+    const found = submission.networks;
+    const day = fetched.get(found.source_id)!;
+    const current = next.networks;
+    const same = current.status === "verified" && current.values.join() === found.values.join();
+    if (same && current.source === found.source_id) {
+      if (day > current.last_verified) current.last_verified = day;
+      result.verified.push({
+        target: "/networks",
+        source_id: found.source_id,
+        last_verified: current.last_verified,
+      });
+      used.add(found.source_id);
+    } else if (same)
+      result.skipped.push({ target: "/networks", reason: `the recorded networks cite ${current.source}` });
+    else if (options.changes !== false) {
+      result.changes.push({
+        target: "/networks",
+        label: "networks",
+        source_id: found.source_id,
+        field: "values",
+        before: current.status === "verified" ? current.values.join(", ") : null,
+        after: found.values.join(", "),
+        effective_from: day,
+        basis: "detected",
+        detected_after: null,
+        evidence: found.evidence,
+        versioned: false,
+      });
+      next.networks = {
+        values: found.values,
+        status: "verified",
+        source: found.source_id,
+        last_verified: day,
+        notes: found.notes,
+      };
+      used.add(found.source_id);
+    }
+  }
   for (const id of used) {
-    const source = next.sources.find((s) => s.id === id)!;
+    let source = next.sources.find((s) => s.id === id);
+    if (!source) {
+      // A new issuer document enters the catalog only when an applied finding cites it.
+      const added = submission.new_sources!.find((s) => s.source_id === id)!;
+      source = { id, url: added.url, title: added.title, accessed: fetched.get(id)! };
+      next.sources.push(source);
+    }
     if (fetched.get(id)! > source.accessed) source.accessed = fetched.get(id)!;
   }
   return { card: next, result };
@@ -316,11 +397,13 @@ export function reverifyDiffErrors(before: Card[], after: Card[]): string[] {
   const strip = (card: Card) => {
     const copy = structuredClone(card) as unknown as {
       sources: Record<string, unknown>[];
+      networks?: Record<string, unknown>;
       fees: Record<string, unknown>[];
       earn_rates: { versions: Record<string, unknown>[] }[];
       credits: { versions: Record<string, unknown>[] }[];
     };
     for (const s of copy.sources) delete s.accessed;
+    if (copy.networks) delete copy.networks.last_verified;
     for (const v of [
       ...copy.fees,
       ...copy.earn_rates.flatMap((r) => r.versions),
@@ -331,6 +414,7 @@ export function reverifyDiffErrors(before: Card[], after: Card[]): string[] {
   };
   const dates = (card: Card) => [
     ...card.sources.map((s) => s.accessed),
+    card.networks?.last_verified ?? "",
     ...[card.fees, ...card.earn_rates.map((r) => r.versions), ...card.credits.map((c) => c.versions)].flatMap(
       (g) => g.map((v) => v.last_verified),
     ),
@@ -357,13 +441,27 @@ export function reverifySummary(before: Card[], after: Card[]) {
       ...c.credits.map((x) => ({ label: `credits.${x.id}`, versions: x.versions })),
     ];
     const old = groups(base);
-    return groups(card).flatMap((g, i) =>
-      g.versions.flatMap((v, j) => {
-        const from = old[i]?.versions[j]?.last_verified;
-        return from && from !== v.last_verified
-          ? [{ product_id: card.id, label: g.label, source: v.source, from, to: v.last_verified }]
-          : [];
-      }),
+    const networks =
+      base.networks && card.networks && base.networks.last_verified !== card.networks.last_verified
+        ? [
+            {
+              product_id: card.id,
+              label: "networks",
+              source: card.networks.source,
+              from: base.networks.last_verified,
+              to: card.networks.last_verified,
+            },
+          ]
+        : [];
+    return networks.concat(
+      groups(card).flatMap((g, i) =>
+        g.versions.flatMap((v, j) => {
+          const from = old[i]?.versions[j]?.last_verified;
+          return from && from !== v.last_verified
+            ? [{ product_id: card.id, label: g.label, source: v.source, from, to: v.last_verified }]
+            : [];
+        }),
+      ),
     );
   });
 }
@@ -387,17 +485,23 @@ export function describeProduct(
   const rows = result.changes.map(
     (c) =>
       `| ${c.label}.${c.field} | ${c.before ?? "— (pending)"} | ${c.after} | ${
-        c.basis === "stated"
-          ? `${c.effective_from} (stated)`
-          : `between ${c.detected_after} and ${c.effective_from} (detected)`
+        !c.versioned
+          ? "not effective-dated"
+          : c.basis === "stated"
+            ? `${c.effective_from} (stated)`
+            : `between ${c.detected_after} and ${c.effective_from} (detected)`
       } |`,
   );
-  const evidence = product.sources.map((s) => {
+  const cited: (SubmissionSource & { title?: string })[] = [
+    ...product.sources,
+    ...(product.new_sources ?? []).filter((s) => result.changes.some((c) => c.source_id === s.source_id)),
+  ];
+  const evidence = cited.map((s) => {
     const notes = result.changes
       .filter((c) => c.source_id === s.source_id)
       .map((c) => `  - ${c.label}.${c.field}: ${inline(c.evidence)}`);
     return [
-      `- Source: ${s.url} (\`${s.source_id}\`), fetched ${s.fetched_at.replace("T", " ").replace("Z", " UTC")}.`,
+      `- ${s.title ? `New source "${inline(s.title)}"` : "Source"}: ${s.url} (\`${s.source_id}\`), fetched ${s.fetched_at.replace("T", " ").replace("Z", " UTC")}.`,
       ...new Set(notes),
     ].join("\n");
   });
