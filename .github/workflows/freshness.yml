@@ -1,0 +1,29 @@
+name: Data freshness
+# Opens (or refreshes) one issue when verified terms have gone unchecked for too long, which means the
+# collection agent stopped or its re-verification pull requests were not merged. Closes it once current.
+on:
+  schedule:
+    - cron: "17 15 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: freshness
+  cancel-in-progress: false
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/setup@v3
+        with:
+          runtime: node@24
+          cache: true
+          require-lockfile: true
+      - name: Report terms past their re-verification window
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CARDFACTS_STALE_DAYS: ${{ vars.CARDFACTS_STALE_DAYS || '21' }}
+        run: node --import tsx scripts/freshness.ts

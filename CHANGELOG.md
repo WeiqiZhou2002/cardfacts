@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — publishing, releases and freshness
+
+- The site and static API show the terms in effect on the day they are published: the Pages workflow now also runs daily and passes the terms date to the build, instead of using the date in `catalog_version`. The API server defaults `as_of` to the current UTC date. Local builds are unchanged and reproducible.
+- A publish that changes the data gets a new `catalog_version` (`YYYY.MM.DD-draft`, with `.2` for a second change that day) and a `catalog-<version>` GitHub release with `cards.json`, `cards.min.json`, `history.json` and `SHA256SUMS`, so applications can pin a version. `pnpm release-plan` shows what a publish would ship.
+- A weekly **Data freshness** workflow keeps one issue listing verified values unchecked for more than 21 days (`CARDFACTS_STALE_DAYS`), and closes it once they are current.
+- API: credits in card summaries and category lists include `delivery` (`statement_credit`, `issuer_wallet` or `in_app`), already present in full records. Docs explain the three kinds.
+- Docs: README status and maintenance, API examples.
+
 ## Unreleased — agent network findings
 
 - Submissions may carry `networks` and up to three `new_sources` (issuer documents such as pricing and terms). The intake fills pending networks or replaces different ones in a data-change PR, adds the cited new source to the product, and re-verifies unchanged networks.

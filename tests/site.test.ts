@@ -166,3 +166,26 @@ test("static build is reproducible, contains all bilingual pages, and resolves e
     await rm(tmp, { recursive: true, force: true });
   }
 });
+
+test("a published build carries its catalog version and terms date into pages, data and API", async () => {
+  const out = await mkdtemp(join(tmpdir(), "cardfacts-site-stamp-"));
+  try {
+    const result = await buildSite(root, out, "/cardfacts/", {
+      catalog_version: "2026.12.01-draft",
+      as_of: "2026-12-15",
+    });
+    assert.equal(result.version, "2026.12.01-draft");
+    assert.equal(result.asOf, "2026-12-15");
+    const config = JSON.parse(await readFile(join(out, "site-config.json"), "utf8"));
+    assert.deepEqual(config, { base: "/cardfacts/", version: "2026.12.01-draft", asOf: "2026-12-15" });
+    const cards = JSON.parse(await readFile(join(out, "data/cards.json"), "utf8"));
+    assert.equal(cards.catalog_version, "2026.12.01-draft");
+    const api = JSON.parse(await readFile(join(out, "api/v1/cards.json"), "utf8"));
+    assert.equal(api.catalog_version, "2026.12.01-draft");
+    assert.equal(api.data.as_of, "2026-12-15");
+    const html = await readFile(join(out, "index.html"), "utf8");
+    assert.ok(html.includes("2026.12.01-draft"));
+  } finally {
+    await rm(out, { recursive: true, force: true });
+  }
+});

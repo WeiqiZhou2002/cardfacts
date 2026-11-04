@@ -3,21 +3,23 @@ import { join } from "node:path";
 import { build, transform } from "esbuild";
 import { apiContext, writeStaticApi } from "./api.js";
 import { buildCatalog, loadCatalog, readJson } from "./catalog.js";
+import { stampCatalog } from "./publication.js";
+import type { Stamp } from "./publication.js";
 import { context, h, normalizeBase, scriptJson, t } from "../../site/model.js";
 import type { Category, Lang, Page, SiteData } from "../../site/model.js";
 import { footer, header, renderPage, title } from "../../site/views.js";
 
 // The caller supplies a fresh output directory; never remove arbitrary paths here.
-export async function buildSite(root: string, out: string, base = "/") {
+export async function buildSite(root: string, out: string, base = "/", stamp: Stamp = {}) {
   normalizeBase(base);
-  const catalog = await loadCatalog(root);
+  const { catalog, asOf } = stampCatalog(await loadCatalog(root), stamp);
   const data: SiteData = {
     cards: catalog.cards,
     revisions: [],
     earnCategories: (await readJson(join(root, "vocab/earn-categories.json"))) as Category[],
     creditCategories: (await readJson(join(root, "vocab/credit-categories.json"))) as Category[],
     version: catalog.metadata.catalog_version,
-    asOf: catalog.metadata.catalog_version.slice(0, 10).replaceAll(".", "-"),
+    asOf,
     base,
     repository: "https://github.com/WeiqiZhou2002/cardfacts",
   };
@@ -69,7 +71,7 @@ export async function buildSite(root: string, out: string, base = "/") {
     await page(lang, "404", `${prefix}404.html`);
   }
   await buildCatalog(catalog, join(out, "data"));
-  await writeStaticApi(await apiContext(root), join(out, "api/v1"));
+  await writeStaticApi(await apiContext(root, stamp), join(out, "api/v1"));
   await mkdir(join(out, "data/history"), { recursive: true });
   for (const card of catalog.cards)
     await writeFile(
@@ -85,5 +87,5 @@ export async function buildSite(root: string, out: string, base = "/") {
     join(out, "site-config.json"),
     JSON.stringify({ base, version: data.version, asOf: data.asOf }) + "\n",
   );
-  return { pages, cards: catalog.cards.length, base };
+  return { pages, cards: catalog.cards.length, base, version: data.version, asOf };
 }

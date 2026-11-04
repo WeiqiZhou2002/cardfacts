@@ -17,7 +17,7 @@ and revision formats are published as JSON Schema under `schema/`.
 Every successful response is an envelope:
 
 ```json
-{ "api_version": 1, "catalog_version": "2026.10.28-phase2-draft", "license": "CC0-1.0", "data": { ... } }
+{ "api_version": 1, "catalog_version": "2026.11.04-draft", "license": "CC0-1.0", "data": { ... } }
 ```
 
 Errors use HTTP status codes and a JSON body such as
@@ -41,8 +41,8 @@ to the API root.
 | `categories/earn/{category_id}.json`      | Cards with a current earn rule in the category                             | `as_of`                                                                                                                                                   |
 | `categories/credits/{category_id}.json`   | Cards with a current credit in the category                                | `as_of`                                                                                                                                                   |
 
-Static files describe terms as of the catalog version date (`as_of` in each response). Use the server's
-`as_of` for another date. Fee filters and rate filters consider verified values only; a missing value is
+Static files are rebuilt every day and describe the terms in effect on that day (`as_of` in each
+response). The server uses the current UTC date unless the request sets `as_of`. Fee filters and rate filters consider verified values only; a missing value is
 unknown, not zero.
 
 ```sh
@@ -72,6 +72,21 @@ verified values only. This field replaced the earlier single `network` value on 
 is stable from here on in `api_version` 1. Revisions recorded before that date are returned as recorded and
 still contain `network`.
 
+## Credit delivery
+
+Every credit, in card records, summaries and category lists, has `delivery`, which says how the value
+reaches the cardholder:
+
+| Value              | Meaning                                                                        | Example                                     |
+| ------------------ | ------------------------------------------------------------------------------ | ------------------------------------------- |
+| `statement_credit` | Pay with the card; the issuer posts a credit to the card statement             | Amex Platinum Resy credit                   |
+| `issuer_wallet`    | A monthly or yearly allowance loaded into an account at the merchant           | Amex Uber Cash                              |
+| `in_app`           | Applied inside a merchant's app or a booking portal, not as a statement credit | Chase DoorDash promos, portal hotel credits |
+
+Only `statement_credit` can be tracked from card transactions; the [credit progress
+contract](credit-progress.md) leaves the other two out. A card can have both kinds for one merchant: Amex
+Platinum lists Uber Cash (`issuer_wallet`) and the Uber One membership credit (`statement_credit`).
+
 ## Certainty
 
 Each term returned by `terms.json` and the category endpoints carries a `certainty`:
@@ -91,7 +106,9 @@ HOST=0.0.0.0 PORT=8787 pnpm api:serve
 ```
 
 or with Docker: `docker build -f deploy/api.Dockerfile -t cardfacts-api . && docker run -p 8787:8787 cardfacts-api`.
-The server reads the catalog from its checkout at start; `kill -HUP` reloads it after a `git pull`. It is
+The server reads the catalog from its checkout at start; `kill -HUP` reloads it after a `git pull`.
+`CARDFACTS_AS_OF` fixes the default terms date and `CARDFACTS_CATALOG_VERSION` sets the version it reports
+(for example the release it was built from). It is
 read-only (GET, HEAD and OPTIONS), caches responses for five minutes and answers `If-None-Match` with 304.
 Put it behind your own TLS proxy or platform for public use.
 
@@ -99,3 +116,11 @@ Put it behind your own TLS proxy or platform for public use.
 
 `api_version` 1 is additive: new fields and endpoints may appear, existing ones keep their meaning. The
 data is still a draft; applications should pin a `catalog_version` they have checked.
+
+Each publish that changes the data gets a new `catalog_version`, dated the day it is published
+(`2026.11.04-draft`, then `2026.11.04-draft.2` for a second change that day), and a GitHub release tagged
+`catalog-<version>`. The release holds that version's `cards.json` (every card with its full terms
+history), `cards.min.json`, `history.json` and `SHA256SUMS`. Pin a version by downloading from
+`https://github.com/WeiqiZhou2002/cardfacts/releases/download/catalog-<version>/cards.json`; the static
+API and the site always serve the latest version. Code-only changes and the daily rebuild keep the
+version.

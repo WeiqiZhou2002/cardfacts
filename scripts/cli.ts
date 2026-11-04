@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -11,6 +12,7 @@ import { externalStateDirectory, readFetchState } from "./lib/maintenance/state.
 import { historyErrors, readBaseCards, readBaseRevisions } from "./lib/history.js";
 import { recordRevision, revisionAt, revisionDiff, revisionErrors, termsAt } from "./lib/revisions.js";
 import { applyProductSubmission, reverifyDiffErrors, validateSubmission } from "./lib/submissions.js";
+import { DATA_PATHS, TAG_PREFIX, planPublication } from "./lib/publication.js";
 
 async function main() {
   const [command, ...args] = process.argv.slice(2);
@@ -46,10 +48,11 @@ async function main() {
     "run-checks",
     "submission-check",
     "check-reverify-diff",
+    "release-plan",
   ];
   if (values.help) {
     console.log(
-      "pnpm validate [--base-ref REV]\npnpm build\npnpm sources --json\npnpm stale [--days 90] [--as-of YYYY-MM-DD] --json\npnpm fetch-source SOURCE_ID [--json]\npnpm snapshot PRODUCT --recorded-at TIME --reason TEXT\npnpm history PRODUCT [--as-of DATE] [--recorded-at TIME] [--from REV --to REV] --json\npnpm plan-run --mode daily|reverify --as-of DATE [--max N] [--change-report PRODUCT ...] --json\npnpm run-checks --plan FILE --json\npnpm submission-check FILE --json\npnpm check-reverify-diff --base-ref REV",
+      "pnpm validate [--base-ref REV]\npnpm build\npnpm sources --json\npnpm stale [--days 90] [--as-of YYYY-MM-DD] --json\npnpm fetch-source SOURCE_ID [--json]\npnpm snapshot PRODUCT --recorded-at TIME --reason TEXT\npnpm history PRODUCT [--as-of DATE] [--recorded-at TIME] [--from REV --to REV] --json\npnpm plan-run --mode daily|reverify --as-of DATE [--max N] [--change-report PRODUCT ...] --json\npnpm run-checks --plan FILE --json\npnpm submission-check FILE --json\npnpm check-reverify-diff --base-ref REV\npnpm release-plan [--as-of YYYY-MM-DD] [--json]",
     );
     return;
   }
@@ -66,6 +69,7 @@ async function main() {
     "run-checks": ["plan", "json"],
     "submission-check": ["json"],
     "check-reverify-diff": ["base-ref"],
+    "release-plan": ["as-of", "json"],
   };
   for (const key of Object.keys(values))
     if (!permitted[command]!.includes(key)) throw new Error(`--${key} is not supported by ${command}`);
@@ -93,6 +97,43 @@ async function main() {
     console.log(
       `Validated ${catalog.cards.length} cards, vocabularies, maintenance configuration, and progress fixtures.`,
     );
+  } else if (command === "release-plan") {
+    // Run by the Pages workflow on main with tags fetched; prints GitHub step outputs.
+    const asOf = values["as-of"] ?? new Date().toISOString().slice(0, 10);
+    const git = (args: string[]) =>
+      execFileSync("git", args, { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }).trim();
+    const published = git(["tag", "--list", `${TAG_PREFIX}*`])
+      .split("\n")
+      .filter(Boolean)
+      .map((t) => t.slice(TAG_PREFIX.length));
+    let latest: string | null = null;
+    try {
+      latest = git(["describe", "--tags", "--match", `${TAG_PREFIX}*`, "--abbrev=0", "HEAD"]).slice(
+        TAG_PREFIX.length,
+      );
+    } catch {
+      latest = null;
+    }
+    const changed =
+      latest !== null &&
+      git(["diff", "--name-only", `${TAG_PREFIX}${latest}`, "HEAD", "--", ...DATA_PATHS]) !== "";
+    const plan = {
+      ...planPublication({
+        label: catalog.metadata.catalog_version,
+        today: asOf,
+        latest,
+        changed,
+        published,
+      }),
+      as_of: asOf,
+    };
+    if (values.json) print(plan);
+    else
+      console.log(
+        Object.entries(plan)
+          .map(([key, value]) => `${key}=${value}`)
+          .join("\n"),
+      );
   } else if (command === "build") {
     await buildCatalog(catalog);
     console.log(`Built ${catalog.cards.length} cards and ${catalog.revisions.length} revisions in dist/.`);

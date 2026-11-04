@@ -2,6 +2,9 @@ name: Deploy wiki to GitHub Pages
 on:
   push:
     branches: [main]
+  # Rebuilt daily so the site and static API show the terms in effect today, even without a data change.
+  schedule:
+    - cron: "41 7 * * *"
   workflow_dispatch:
 permissions:
   contents: read
@@ -15,22 +18,46 @@ jobs:
     permissions:
       contents: read
       pages: read
+    outputs:
+      catalog_version: ${{ steps.plan.outputs.catalog_version }}
+      created: ${{ steps.plan.outputs.created }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          # Release tags decide whether the data changed since the last published catalog version.
+          fetch-depth: 0
       - uses: pnpm/setup@v3
         with:
           runtime: node@24
           cache: true
           require-lockfile: true
       - run: pnpm check
+      - name: Choose the catalog version
+        id: plan
+        # An explicit bash shell runs with pipefail, so a failed plan fails the step despite tee.
+        shell: bash
+        run: node --import tsx scripts/cli.ts release-plan | tee -a "$GITHUB_OUTPUT"
       - uses: actions/configure-pages@v5
       - name: Build the project site
         env:
           SITE_BASE_PATH: /${{ github.event.repository.name }}/
+          CARDFACTS_CATALOG_VERSION: ${{ steps.plan.outputs.catalog_version }}
+          CARDFACTS_AS_OF: ${{ steps.plan.outputs.as_of }}
         run: pnpm site:build
       - uses: actions/upload-pages-artifact@v4
         with:
           path: dist/site
+      - name: Keep the dataset for the release
+        if: steps.plan.outputs.created == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-data
+          if-no-files-found: error
+          path: |
+            dist/site/data/cards.json
+            dist/site/data/cards.min.json
+            dist/site/data/history.json
+            dist/site/data/SHA256SUMS
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -44,3 +71,28 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+  # A new catalog version gets a tag and a release with its dataset, so applications can pin it.
+  release:
+    needs: [build, deploy]
+    if: needs.build.outputs.created == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: catalog-data
+          path: catalog-data
+      - name: Publish the catalog release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ needs.build.outputs.catalog_version }}
+        run: |
+          flags=()
+          if [[ "$VERSION" == *-* ]]; then flags+=(--prerelease); fi
+          gh release create "catalog-$VERSION" catalog-data/* \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "Catalog $VERSION" \
+            --notes "CardFacts catalog \`$VERSION\` (data CC0-1.0). \`cards.json\` holds every card with its full terms history and \`catalog_version\` set to this version; \`history.json\` holds the revision snapshots; \`SHA256SUMS\` lists their hashes." \
+            "${flags[@]}"
