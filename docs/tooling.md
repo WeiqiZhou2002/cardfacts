@@ -25,6 +25,7 @@ vectors are intentionally excluded from automatic formatting so their original b
 | `pnpm run-checks --plan FILE --json`                                                               | Check queued sources sequentially, persist an external run report, and print JSON                                                     |
 | `pnpm submission-check FILE --json`                                                                | Validate an agent submission against the schema and catalog, and print what the intake would apply                                    |
 | `pnpm check-reverify-diff --base-ref REV`                                                          | Fail unless only `last_verified` and source `accessed` dates moved forward since REV                                                  |
+| `pnpm release-plan [--as-of DATE] [--json]`                                                        | Print the catalog version a publish of this commit ships, whether it is new, and the terms date                                       |
 
 For JSON-only stdout when invoking through pnpm, use `pnpm --silent sources --json` (similarly for other
 commands), or invoke `node --import tsx scripts/cli.ts sources --json` directly.
@@ -37,6 +38,21 @@ discoverable. Resolve a returned field pointer against the product named in that
 Build and validation require no browser and no network. `pnpm site:dev` previews the static wiki;
 `pnpm site:build` prepares `dist/site/` for GitHub Pages. See [the site guide](site.md). These commands do not
 publish a release, open issues or PRs, or run an unattended maintenance agent.
+
+## Publishing and freshness
+
+The Pages workflow runs on every push to `main` and once a day. `release-plan` compares this commit with the
+nearest `catalog-*` tag: when `catalog.json`, `data/`, `history/`, `schema/` or `vocab/` changed, it dates a
+new version (`YYYY.MM.DD` plus the label suffix from `catalog.json`, such as `-draft`). The site build then
+reads `CARDFACTS_CATALOG_VERSION` and `CARDFACTS_AS_OF`, so pages, `data/cards.json` and the static API
+carry that version and today's terms. After a successful deploy, a new version is tagged and released
+with its dataset. Without those variables, local builds use the version in `catalog.json` and its date, so
+they stay reproducible.
+
+The **Data freshness** workflow runs every Monday (and on demand). It lists verified values in effect
+whose `last_verified` is more than `CARDFACTS_STALE_DAYS` days old (repository variable, default 21),
+including `networks`, and keeps one `Terms not re-verified` issue up to date; the issue closes itself once
+every value is current. Pending values and closed versions are not counted.
 
 ## Source fetcher
 

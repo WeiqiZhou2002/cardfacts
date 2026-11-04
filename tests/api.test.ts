@@ -156,3 +156,39 @@ test("the server serves the static bytes, query parameters, CORS, ETags and read
     await new Promise<void>((done) => server.close(() => done()));
   }
 });
+
+test("credit lists say how each credit is delivered", () => {
+  const card = (get("cards.json").body as { data: { cards: Record<string, unknown>[] } }).data.cards.find(
+    (c) => c.id === "us-amex-platinum",
+  ) as { credits: { id: string; delivery: string }[] };
+  assert.equal(card.credits.find((c) => c.id === "uber-cash")!.delivery, "issuer_wallet");
+  assert.equal(card.credits.find((c) => c.id === "uber-one")!.delivery, "statement_credit");
+  const rideshare = get("categories/credits/rideshare.json").body as {
+    data: { cards: { id: string; credits: { delivery: string }[] }[] };
+  };
+  assert.ok(rideshare.data.cards.length > 0);
+  assert.ok(rideshare.data.cards.every((c) => c.credits.every((x) => typeof x.delivery === "string")));
+});
+
+test("a published context carries its stamp, and the server can read today's terms", async () => {
+  const stamped = await apiContext(resolve(import.meta.dirname, ".."), {
+    catalog_version: "2026.12.01-draft",
+    as_of: "2026-12-15",
+  });
+  const index = handle(stamped, "cards.json").body as { catalog_version: string; data: { as_of: string } };
+  assert.equal(index.catalog_version, "2026.12.01-draft");
+  assert.equal(index.data.as_of, "2026-12-15");
+  const server = apiServer(() => stamped, { today: () => "2027-01-02" }).listen(0, "127.0.0.1");
+  await once(server, "listening");
+  const base = `http://127.0.0.1:${(server.address() as AddressInfo).port}/api/v1`;
+  try {
+    assert.equal((await (await fetch(`${base}/cards.json`)).json()).data.as_of, "2027-01-02");
+    assert.equal(
+      (await (await fetch(`${base}/cards.json?as_of=2026-11-01`)).json()).data.as_of,
+      "2026-11-01",
+    );
+  } finally {
+    server.closeAllConnections();
+    await new Promise<void>((done) => server.close(() => done()));
+  }
+});

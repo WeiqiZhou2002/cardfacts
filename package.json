@@ -29,6 +29,7 @@
     "run-checks": "node --import tsx scripts/cli.ts run-checks",
     "submission-check": "node --import tsx scripts/cli.ts submission-check",
     "check-reverify-diff": "node --import tsx scripts/cli.ts check-reverify-diff",
+    "release-plan": "node --import tsx scripts/cli.ts release-plan",
     "api:serve": "node --import tsx scripts/api-server.ts"
   },
   "dependencies": {

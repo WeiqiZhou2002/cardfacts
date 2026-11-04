@@ -2,6 +2,8 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { loadCatalog, readJson } from "./catalog.js";
 import { compare, isDate, isTimestamp } from "./primitives.js";
+import { stampCatalog } from "./publication.js";
+import type { Stamp } from "./publication.js";
 import { revisionAt, revisionDiff, termsAt } from "./temporal.js";
 import type { Card, Catalog } from "./types.js";
 
@@ -26,13 +28,13 @@ export interface ApiResult {
 export const WIKI = "https://weiqizhou2002.github.io/cardfacts/";
 const SCHEMAS = ["card", "revision"];
 
-export async function apiContext(root: string): Promise<ApiContext> {
-  const catalog = await loadCatalog(root);
+export async function apiContext(root: string, stamp: Stamp = {}): Promise<ApiContext> {
+  const { catalog, asOf } = stampCatalog(await loadCatalog(root), stamp);
   return {
     catalog,
     earn: (await readJson(join(root, "vocab/earn-categories.json"))) as Category[],
     credit: (await readJson(join(root, "vocab/credit-categories.json"))) as Category[],
-    asOf: catalog.metadata.catalog_version.slice(0, 10).replaceAll(".", "-"),
+    asOf,
     schemas: Object.fromEntries(
       await Promise.all(SCHEMAS.map(async (s) => [s, await readJson(join(root, `schema/${s}.schema.json`))])),
     ),
@@ -80,6 +82,7 @@ function summary(card: Card, asOf: string) {
       id: c.id,
       name: c.name,
       category: c.category,
+      delivery: c.delivery,
       amount: c.version.amount,
       period: c.version.period,
       status: c.version.status,
@@ -233,6 +236,7 @@ function categoryCards(ctx: ApiContext, kind: "earn" | "credits", id: string, as
             credits: credits.map((c) => ({
               id: c.id,
               name: c.name,
+              delivery: c.delivery,
               amount: c.version.amount,
               period: c.version.period,
               reset_basis: c.version.reset_basis,
@@ -423,7 +427,11 @@ function openapi() {
     "path",
     true,
   );
-  const asOf = param("as_of", "Terms date (server only). Defaults to the catalog version date.", date);
+  const asOf = param(
+    "as_of",
+    "Terms date (server only). Defaults to today (UTC); static files use their publish date.",
+    date,
+  );
   const json = (description: string, schema: object = { $ref: "#/components/schemas/Envelope" }) => ({
     description,
     content: { "application/json": { schema } },

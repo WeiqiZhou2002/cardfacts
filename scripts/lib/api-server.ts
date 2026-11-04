@@ -4,8 +4,9 @@ import { handle, serialize } from "./api.js";
 import type { ApiContext } from "./api.js";
 
 const PREFIX = "/api/v1/";
-// Read-only JSON over the same paths as the static files, plus query parameters.
-export function apiServer(context: () => ApiContext) {
+// Read-only JSON over the same paths as the static files, plus query parameters. With `today`, a
+// request without as_of reads the terms in effect on that date instead of the context's fixed date.
+export function apiServer(context: () => ApiContext, options: { today?: () => string } = {}) {
   return createServer((request, response) => {
     response.setHeader("Access-Control-Allow-Origin", "*");
     response.setHeader("Access-Control-Allow-Methods", "GET, HEAD, OPTIONS");
@@ -35,7 +36,12 @@ export function apiServer(context: () => ApiContext) {
     }
     if (!url.pathname.startsWith(PREFIX)) return error(404, "not_found", `The API lives under ${PREFIX}.`);
     // Paths are matched literally (no decoding), so encoded separators cannot reach other resources.
-    const result = handle(context(), url.pathname.slice(PREFIX.length), url.searchParams);
+    const ctx = context();
+    const result = handle(
+      options.today ? { ...ctx, asOf: options.today() } : ctx,
+      url.pathname.slice(PREFIX.length),
+      url.searchParams,
+    );
     send(result.status, result.body);
   });
 }

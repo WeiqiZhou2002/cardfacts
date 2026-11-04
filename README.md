@@ -4,9 +4,11 @@ Open, cited, versioned data on US credit cards, personal and business: **annual 
 statement credits**. Every number links to the issuer's own public terms and carries the date it was last
 checked.
 
-> **Status: Phase 3 implemented; draft data.** 30 cards (20 personal, 10 business), effective-dated terms,
-> full revision snapshots, and a bilingual wiki with filters, comparison and a review queue. The site build
-> and Pages workflow are ready; hosting requires merging and enabling Pages. No stable data release yet.
+> **Status: Phase 4 in progress; draft data.** 30 cards (20 personal, 10 business), effective-dated terms,
+> full revision snapshots, a bilingual [wiki](https://weiqizhou2002.github.io/cardfacts/) with filters,
+> comparison and a review queue, a [JSON API](docs/api.md), and an intake for agent submissions. The
+> collection agent is not deployed yet. Each data change is published as a `catalog-*` release; all are
+> drafts so far.
 
 ## Why
 
@@ -61,14 +63,18 @@ for source listing, stale reporting, browser setup and history checks.
 
 ## Maintenance
 
-The planned scheduled agent will re-check issuer pages and open evidence-backed pull requests. It is not
-deployed yet. All seven catalog issuer brands are manual-only until their automation terms are reviewed. The agent
-cannot push to `main` or merge; a human reviews every data change. Its rules are in
-the [skill](.claude/skills/card-catalog-maintainer/SKILL.md).
+A collection agent, kept in a separate private repository, re-checks issuer pages and sends structured
+findings to the [submission intake](docs/agent-submissions.md). The intake opens pull requests: re-verifications
+that only move dates forward, and data changes, which a human reviews before they merge. Neither can push
+to `main`. The agent is not deployed yet. The fetch tooling in this repository treats all seven issuer
+brands as manual-only until their website terms are reviewed. A weekly
+[freshness check](docs/tooling.md#publishing-and-freshness) opens an issue when verified values go
+unchecked for 21 days. Maintenance rules are in the [skill](.claude/skills/card-catalog-maintainer/SKILL.md).
 
 ## Using the data
 
-Applications should copy a pinned release into their own repository instead of fetching at runtime.
+Applications should copy a pinned [release](https://github.com/WeiqiZhou2002/cardfacts/releases) into
+their own repository instead of fetching at runtime; see [API stability](docs/api.md#stability).
 [Asset Ledger](https://github.com/WeiqiZhou2002/AssetLedger) is the first planned consumer.
 
 ## Contributing
@@ -87,5 +93,5 @@ Nothing here is financial advice. Always confirm terms with the issuer before re
 ## 中文简介
 
 CardFacts 是一个开源的美国信用卡数据项目，覆盖个人卡和商业卡的年费、返现/积分倍数和报销类权益。每个数字都引用
-发卡机构的公开条款并记录核实日期；条款改版保留历史版本；未核实的数值不填写。Phase 3 已提供 30 张卡的中英双语网站、筛选对比、待复核队列，以及按生效日期／收录版本查看旧内容的历史页面。网站可本地预览，合并并开启 GitHub Pages 后部署；数据尚未发布稳定版本。设计文档见
+发卡机构的公开条款并记录核实日期；条款改版保留历史版本；未核实的数值不填写。目前有 30 张卡的中英双语网站（已部署在 GitHub Pages）、筛选对比、待复核队列，以及按生效日期／收录版本查看旧内容的历史页面，并提供 JSON API。每次数据变更都会发布一个 `catalog-*` release，目前均为草稿版本；自动收集 agent 尚未部署。设计文档见
 [docs/proposal.zh.md](docs/proposal.zh.md)。

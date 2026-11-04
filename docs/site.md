@@ -63,7 +63,8 @@ error. An unknown effective start remains explicitly marked; it does not establi
 Sources link to the issuer's current page, not an archived website copy. Full snapshots are downloadable
 at `data/history/PRODUCT_ID.json`; the complete history and catalog have aggregate SHA-256 manifests.
 
-The pre-rendered date comes from `catalog_version`, making builds reproducible. With JavaScript enabled,
+The pre-rendered date is the publish date, which the daily Pages build sets; local builds use the
+`catalog_version` date, making them reproducible. With JavaScript enabled,
 the default terms/review date is today's UTC date; explicit query dates always take precedence. Without
 JavaScript, pages remain readable at the catalog's build reference date, with a visible explanation.
 Interactive filters, historical selection and comparison require JavaScript.
@@ -98,7 +99,9 @@ PR CI validates and browser-tests the website but does not publish it. To enable
 2. Merge the data and website PRs in dependency order into `main`.
 3. Let the Pages workflow run, or dispatch it from `main` if settings were enabled after the merge.
 
-The expected project URL is `https://weiqizhou2002.github.io/cardfacts/` once deployment succeeds. This
-PR prepares the workflow; it does not enable Pages settings or establish a live deployment. Custom
-hosting at `/` should build with `SITE_BASE_PATH=/`; custom domains require their own Pages configuration.
-The maintenance agent remains Phase 4 work.
+The site is live at `https://weiqizhou2002.github.io/cardfacts/`. The workflow also runs once a day, so
+pre-rendered pages and the static API show the terms in effect that day; see
+[publishing](tooling.md#publishing-and-freshness) for how catalog versions and releases are assigned.
+GitHub pauses scheduled workflows in a public repository after 60 days without activity; re-enable it
+under **Actions** if that happens. Custom hosting at `/` should build with `SITE_BASE_PATH=/`; custom
+domains require their own Pages configuration.
