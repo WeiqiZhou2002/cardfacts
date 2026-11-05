@@ -455,3 +455,53 @@ test("an applied network finding passes catalog validation and history protectio
     await rm(dir, { recursive: true, force: true });
   }
 });
+
+test("a benefit guide enters the catalog with its kind, and unknown kinds are refused", async () => {
+  const guide = {
+    ...flexTerms,
+    source_id: "us-chase-freedom-flex-guide",
+    url: "https://www.chase.com/content/dam/chase-ux/documents/freedom-flex-guide-to-benefits.pdf",
+    title: "Guide to Benefits",
+    kind: "benefit_guide" as const,
+  };
+  const product: ProductSubmission = {
+    ...flex({
+      source_id: guide.source_id,
+      values: ["mastercard"],
+      notes: "World Elite Mastercard.",
+      evidence: "Guide cover",
+    }),
+    new_sources: [guide],
+  };
+  await validateSubmission(catalog, submission(product), now);
+  const filled = applyProductSubmission(card("us-chase-freedom-flex"), product);
+  assert.deepEqual(filled.card.sources.at(-1), {
+    id: guide.source_id,
+    url: guide.url,
+    title: guide.title,
+    kind: "benefit_guide",
+    accessed: "2026-11-01",
+  });
+  // The card schema accepts the kind: the applied card loads as part of a catalog.
+  const dir = await mkdtemp(join(tmpdir(), "cardfacts-guide-"));
+  try {
+    for (const path of ["catalog.json", "data", "history", "maintenance", "schema", "vectors", "vocab"])
+      await cp(join(root, path), join(dir, path), { recursive: true });
+    await writeFile(
+      join(dir, "data/us/chase/us-chase-freedom-flex.json"),
+      JSON.stringify(filled.card, null, 2) + "\n",
+    );
+    const loaded = await loadCatalog(dir, { allowUnrecorded: true });
+    assert.equal(loaded.cards.find((c) => c.id === filled.card.id)!.sources.at(-1)!.kind, "benefit_guide");
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+  await assert.rejects(
+    validateSubmission(
+      catalog,
+      submission({ ...product, new_sources: [{ ...guide, kind: "brochure" as "other" }] }),
+      now,
+    ),
+    /submission/,
+  );
+});

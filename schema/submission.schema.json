@@ -324,6 +324,10 @@
           "minLength": 1,
           "maxLength": 120
         },
+        "kind": {
+          "type": "string",
+          "enum": ["product_page", "pricing_terms", "benefit_guide", "cardmember_agreement", "other"]
+        },
         "fetched_at": {
           "$ref": "#/$defs/timestamp"
         },

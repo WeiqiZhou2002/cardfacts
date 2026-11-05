@@ -67,10 +67,13 @@ export interface Networks {
   last_verified: string;
   notes: string;
 }
+export type SourceKind =
+  "product_page" | "pricing_terms" | "benefit_guide" | "cardmember_agreement" | "other";
 export interface Source {
   id: string;
   url: string;
   title: string;
+  kind?: SourceKind;
   accessed: string;
 }
 export interface Card {

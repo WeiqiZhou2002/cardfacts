@@ -54,10 +54,10 @@ product. Changes may set these fields only:
 
 Two optional product fields cover payment networks:
 
-| Field         | Meaning                                                                                                                                                |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `networks`    | `source_id`, `values` (alphabetical: `amex`, `discover`, `mastercard`, `visa`), a paraphrased `notes` and a locator. Only what the page names.         |
-| `new_sources` | Up to three issuer documents not yet in the catalog (id, URL, title, fetch time, text hash), such as pricing and terms. Only `networks` may cite them. |
+| Field         | Meaning                                                                                                                                                                                        |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `networks`    | `source_id`, `values` (alphabetical: `amex`, `discover`, `mastercard`, `visa`), a paraphrased `notes` and a locator. Only what the page names.                                                 |
+| `new_sources` | Up to three issuer documents not yet in the catalog (id, URL, title, optional `kind`, fetch time, text hash), such as pricing and terms or a Guide to Benefits. Only `networks` may cite them. |
 
 A new source must be HTTPS on the product issuer's domains, use an id no catalog source has, and not repeat
 a URL the product already cites. It is added to the product only when the applied network finding cites it.

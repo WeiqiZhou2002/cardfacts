@@ -5,7 +5,7 @@ import type { ValidateFunction } from "ajv";
 import addFormatsModule from "ajv-formats";
 import { allowedUrl, readJson } from "./catalog.js";
 import { compare, isDate, isTimestamp } from "./primitives.js";
-import type { Card, Catalog, EarnVersion, Networks, Version } from "./types.js";
+import type { Card, Catalog, EarnVersion, Networks, SourceKind, Version } from "./types.js";
 
 export type FlagKind = "new_entry" | "removal" | "conflict" | "unreadable" | "ambiguous" | "suspicious_page";
 export interface SubmissionSource {
@@ -37,7 +37,7 @@ export interface ProductSubmission {
   changes: SubmissionChange[];
   flags: SubmissionFlag[];
   // Issuer documents not yet in the catalog; only `networks` may cite them.
-  new_sources?: (SubmissionSource & { title: string })[];
+  new_sources?: (SubmissionSource & { title: string; kind?: SourceKind })[];
   networks?: { source_id: string; values: Networks["values"]; notes: string; evidence: string };
 }
 export interface Submission {
@@ -383,7 +383,13 @@ export function applyProductSubmission(
     if (!source) {
       // A new issuer document enters the catalog only when an applied finding cites it.
       const added = submission.new_sources!.find((s) => s.source_id === id)!;
-      source = { id, url: added.url, title: added.title, accessed: fetched.get(id)! };
+      source = {
+        id,
+        url: added.url,
+        title: added.title,
+        ...(added.kind ? { kind: added.kind } : {}),
+        accessed: fetched.get(id)!,
+      };
       next.sources.push(source);
     }
     if (fetched.get(id)! > source.accessed) source.accessed = fetched.get(id)!;

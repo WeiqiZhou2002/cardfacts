@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — benefit guides
+
+- Sources may carry an optional `kind`: `product_page`, `pricing_terms`, `benefit_guide`, `cardmember_agreement` or `other`. Agent submissions may set it on `new_sources`, and the intake keeps it.
+- Card pages show a **Benefit guide** row linking to the issuer's own document, and the source list marks benefit guides and PDFs. CardFacts links to issuer documents and does not host copies.
+- API: card summaries include `benefit_guides` (source id, title, issuer URL, accessed date).
+
 ## Unreleased — publishing, releases and freshness
 
 - The site and static API show the terms in effect on the day they are published: the Pages workflow now also runs daily and passes the terms date to the build, instead of using the date in `catalog_version`. The API server defaults `as_of` to the current UTC date. Local builds are unchanged and reproducible.
