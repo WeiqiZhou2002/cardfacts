@@ -40,6 +40,12 @@ within the product and use an HTTPS domain belonging to that issuer, not merely 
 `accessed` date cannot precede a referencing version's `last_verified`. For pending records, the date
 records the last attempted verification; status still prevents use as confirmed terms.
 
+A source may say what kind of document it is with the optional `kind`: `product_page`, `pricing_terms`,
+`benefit_guide` (the card's Guide to Benefits), `cardmember_agreement` or `other`. Sources recorded before
+the field existed have none. A source's `url` is always the issuer's own copy: CardFacts links to issuer
+documents, including PDFs, and does not host or republish them. The collection agent may keep a private
+copy of what it read as evidence; that copy is never published.
+
 Earn `conditions` and `cap` live inside each version. Conditions support channel, merchants, region,
 activation and prepaid bookings. `cap: null` means no structured cap is recorded; it does not prove
 unlimited earning. Shared caps reference existing sibling rule IDs; all participating rules must be

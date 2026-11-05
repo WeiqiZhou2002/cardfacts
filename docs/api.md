@@ -72,6 +72,13 @@ verified values only. This field replaced the earlier single `network` value on 
 is stable from here on in `api_version` 1. Revisions recorded before that date are returned as recorded and
 still contain `network`.
 
+## Benefit guides
+
+Card summaries have `benefit_guides`, the card's sources of kind `benefit_guide`, as
+`{ "source", "title", "url", "accessed" }`; the list is empty when none is recorded. Full records keep every
+source with its optional `kind`. The `url` is the issuer's own copy, often a PDF: CardFacts does not host
+these files, so a link can stop working when the issuer replaces the document.
+
 ## Credit delivery
 
 Every credit, in card records, summaries and category lists, has `delivery`, which says how the value

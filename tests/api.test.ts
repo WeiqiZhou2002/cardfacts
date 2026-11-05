@@ -192,3 +192,23 @@ test("a published context carries its stamp, and the server can read today's ter
     await new Promise<void>((done) => server.close(() => done()));
   }
 });
+
+test("card summaries list benefit guides by the issuer's URL", () => {
+  const guide = {
+    id: "us-chase-freedom-flex-guide",
+    url: "https://www.chase.com/content/dam/guide-to-benefits.pdf",
+    title: "Guide to Benefits",
+    kind: "benefit_guide" as const,
+    accessed: "2026-11-05",
+  };
+  const cards = structuredClone(ctx.catalog.cards);
+  cards.find((c) => c.id === "us-chase-freedom-flex")!.sources.push(guide);
+  const body = handle({ ...ctx, catalog: { ...ctx.catalog, cards } }, "cards.json").body as {
+    data: { cards: { id: string; benefit_guides: unknown[] }[] };
+  };
+  const flex = body.data.cards.find((c) => c.id === "us-chase-freedom-flex")!;
+  assert.deepEqual(flex.benefit_guides, [
+    { source: guide.id, title: guide.title, url: guide.url, accessed: guide.accessed },
+  ]);
+  assert.ok(body.data.cards.filter((c) => c.id !== flex.id).every((c) => c.benefit_guides.length === 0));
+});

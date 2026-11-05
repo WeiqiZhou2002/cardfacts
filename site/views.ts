@@ -356,8 +356,10 @@ function creditBlock(ctx: Context, card: Card) {
     })
     .join("")}</div>`;
 }
+const isPdf = (url: string) => /\.pdf$/i.test(new URL(url).pathname);
+const guides = (card: Card) => card.sources.filter((s) => s.kind === "benefit_guide");
 function sourceBlock(ctx: Context, card: Card) {
-  return `<ol class="source-list">${card.sources.map((s) => `<li id="source-${h(s.id)}"><a href="${h(s.url)}" target="_blank" rel="noopener noreferrer">${h(s.title)}${external}</a> <span class="muted">${h(new URL(s.url).hostname)} · ${label(ctx, "访问于", "accessed")} <time>${h(s.accessed)}</time></span></li>`).join("")}</ol><p class="section-note">${label(ctx, "链接指向发卡机构的当前页面。修订历史保存的是当时记录的事实和说明，不是网页副本。", "Links open the issuer’s current page. Revisions preserve the facts and notes recorded at the time, not copies of the page.")}</p>`;
+  return `<ol class="source-list">${card.sources.map((s) => `<li id="source-${h(s.id)}"><a href="${h(s.url)}" target="_blank" rel="noopener noreferrer">${h(s.title)}${external}</a>${s.kind === "benefit_guide" ? ` ${tag(t(ctx, "福利指南", "Benefit guide"))}` : ""}${isPdf(s.url) ? ` ${tag("PDF")}` : ""} <span class="muted">${h(new URL(s.url).hostname)} · ${label(ctx, "访问于", "accessed")} <time>${h(s.accessed)}</time></span></li>`).join("")}</ol><p class="section-note">${label(ctx, "链接指向发卡机构的当前页面或文件，CardFacts 不保存、不转发这些文件。修订历史保存的是当时记录的事实和说明。", "Links open the issuer’s current page or document; CardFacts does not host copies. Revisions preserve the facts and notes recorded at the time.")}</p>`;
 }
 function historyBlock(ctx: Context) {
   const revisions = ctx.data.revisions.filter((r) => r.product_id === ctx.productId);
@@ -421,7 +423,16 @@ export function cardPage(ctx: Context) {
     !revision
       ? `<section class="empty-state"><h2>${label(ctx, "此时间点尚无记录", "No record at this time")}</h2><p>${label(ctx, "第一条快照之前的内容无法还原，或者指定的版本不存在。", "The requested revision is missing or predates the first snapshot.")}</p><a class="button secondary" href="${h(href(ctx, `cards/${ctx.productId}/`))}">${label(ctx, "查看最新记录", "View latest record")}</a></section>`
       : `
-  <div class="card-layout"><aside class="infobox"><dl><dt>${label(ctx, "年费", "Annual fee")}</dt><dd>${fee == null ? label(ctx, "未确认", "Unconfirmed") : dollars(fee)}</dd><dt>${label(ctx, "卡组织", "Network")}</dt><dd>${h(networkText(ctx, card))}</dd><dt>${label(ctx, "奖励", "Rewards")}</dt><dd>${unit}</dd><dt>${label(ctx, "申请状态", "Availability")}</dt><dd>${label(ctx, card.availability === "open" ? "开放申请" : card.availability === "closed_to_new" ? "停止新申请" : "已停用", card.availability === "open" ? "Open" : card.availability === "closed_to_new" ? "Closed to new applicants" : "Discontinued")}</dd><dt>${label(ctx, "条款日期", "Terms date")}</dt><dd>${h(ctx.asOf)}</dd><dt>${label(ctx, "收录时间", "Recorded")}</dt><dd>${h(revision.recorded_at.replace("T", " ").replace("Z", " UTC"))}</dd></dl><p>${label(ctx, "金额已核实，不代表适用条件已完整收录。", "A verified amount does not mean every eligibility condition is recorded.")}</p><details><summary>${label(ctx, "收录范围与备注", "Coverage and notes")}</summary><p lang="en">${h(card.coverage?.notes ?? "")}</p><p lang="en">${h(card.notes)}</p></details></aside>
+  <div class="card-layout"><aside class="infobox"><dl><dt>${label(ctx, "年费", "Annual fee")}</dt><dd>${fee == null ? label(ctx, "未确认", "Unconfirmed") : dollars(fee)}</dd><dt>${label(ctx, "卡组织", "Network")}</dt><dd>${h(networkText(ctx, card))}</dd>${
+    guides(card).length
+      ? `<dt>${label(ctx, "福利指南", "Benefit guide")}</dt><dd>${guides(card)
+          .map(
+            (s) =>
+              `<a href="${h(s.url)}" target="_blank" rel="noopener noreferrer">${label(ctx, "发卡机构官方文件", "Issuer’s document")}${external}</a> <span class="muted">${label(ctx, "核对于", "checked")} <time>${h(s.accessed)}</time></span>`,
+          )
+          .join("<br>")}</dd>`
+      : ""
+  }<dt>${label(ctx, "奖励", "Rewards")}</dt><dd>${unit}</dd><dt>${label(ctx, "申请状态", "Availability")}</dt><dd>${label(ctx, card.availability === "open" ? "开放申请" : card.availability === "closed_to_new" ? "停止新申请" : "已停用", card.availability === "open" ? "Open" : card.availability === "closed_to_new" ? "Closed to new applicants" : "Discontinued")}</dd><dt>${label(ctx, "条款日期", "Terms date")}</dt><dd>${h(ctx.asOf)}</dd><dt>${label(ctx, "收录时间", "Recorded")}</dt><dd>${h(revision.recorded_at.replace("T", " ").replace("Z", " UTC"))}</dd></dl><p>${label(ctx, "金额已核实，不代表适用条件已完整收录。", "A verified amount does not mean every eligibility condition is recorded.")}</p><details><summary>${label(ctx, "收录范围与备注", "Coverage and notes")}</summary><p lang="en">${h(card.coverage?.notes ?? "")}</p><p lang="en">${h(card.notes)}</p></details></aside>
   <div class="card-sections"><nav class="section-nav" aria-label="${label(ctx, "本页目录", "On this page")}">${[
     ["fees", "费用", "Fees"],
     ["earn", "返现与积分", "Earn rates"],

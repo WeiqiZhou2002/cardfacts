@@ -61,6 +61,10 @@ function summary(card: Card, asOf: string) {
     issuer: card.issuer,
     audience: card.audience,
     networks: card.networks,
+    // The issuer's own copies; CardFacts links to them and never hosts one.
+    benefit_guides: card.sources
+      .filter((s) => s.kind === "benefit_guide")
+      .map((s) => ({ source: s.id, title: s.title, url: s.url, accessed: s.accessed })),
     availability: card.availability,
     rewards: card.rewards,
     aliases: card.aliases,

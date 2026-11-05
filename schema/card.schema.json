@@ -77,6 +77,11 @@
             "type": "string",
             "minLength": 1
           },
+          "kind": {
+            "description": "What the document is. benefit_guide is the card's Guide to Benefits; CardFacts links to the issuer's copy and never hosts one.",
+            "type": "string",
+            "enum": ["product_page", "pricing_terms", "benefit_guide", "cardmember_agreement", "other"]
+          },
           "accessed": {
             "type": "string",
             "format": "date"

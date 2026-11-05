@@ -189,3 +189,37 @@ test("a published build carries its catalog version and terms date into pages, d
     await rm(out, { recursive: true, force: true });
   }
 });
+
+test("card pages link a benefit guide to the issuer's own copy", () => {
+  const product = "us-chase-freedom-flex";
+  const guide = {
+    id: "us-chase-freedom-flex-guide",
+    url: "https://www.chase.com/content/dam/guide-to-benefits.pdf",
+    title: "Guide to Benefits",
+    kind: "benefit_guide" as const,
+    accessed: "2026-11-05",
+  };
+  const revisions = structuredClone(catalog.revisions);
+  revisions
+    .filter((r) => r.product_id === product)
+    .at(-1)!
+    .product.sources.push(guide);
+  const cards = structuredClone(catalog.cards);
+  cards.find((c) => c.id === product)!.sources.push(guide);
+  const html = renderPage(
+    context({ ...data, cards, revisions }, "card", "en", new URLSearchParams(), product),
+  );
+  assert.match(
+    html,
+    /<dt>Benefit guide<\/dt><dd><a href="https:\/\/www\.chase\.com\/content\/dam\/guide-to-benefits\.pdf" target="_blank" rel="noopener noreferrer">Issuer’s document/,
+  );
+  assert.match(
+    html,
+    /Guide to Benefits<span class="ext"[^>]*>↗<\/span><\/a> <span class="tag">Benefit guide<\/span> <span class="tag">PDF<\/span>/,
+  );
+  assert.match(html, /CardFacts does not host copies/);
+  assert.doesNotMatch(
+    renderPage(context(data, "card", "en", new URLSearchParams(), product)),
+    /<dt>Benefit guide/,
+  );
+});
