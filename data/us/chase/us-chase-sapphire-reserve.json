@@ -10,7 +10,7 @@
       "id": "chase-csr-page",
       "url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
       "title": "Chase Sapphire Reserve product page, including its offer details overlay",
-      "accessed": "2026-10-28"
+      "accessed": "2026-11-04"
     }
   ],
   "notes": "Complimentary subscriptions (Apple TV, Apple Music, DashPass) are memberships, not credits, and are omitted. effective_from of the 2025 refresh is not stated on the cited page and is left null (to verify).",
@@ -35,7 +35,7 @@
           "period_boundaries": "stated",
           "max_posting_lag_days": 28,
           "source": "chase-csr-page",
-          "last_verified": "2026-10-27",
+          "last_verified": "2026-11-04",
           "notes": "The year runs from account opening to the first statement date after the account-open anniversary, then every 12 billing cycles. Credits are issued for the year in which the purchase posts; they post within 3 business days but may take up to 4 weeks.",
           "effective_from_basis": "unknown"
         }
@@ -77,7 +77,7 @@
           "per_transaction_cap": "250.00",
           "max_posting_lag_days": 28,
           "source": "chase-csr-page",
-          "last_verified": "2026-10-27",
+          "last_verified": "2026-11-04",
           "notes": "Starting 2026-01-01, up to $250 per qualifying prepaid stay of two nights or more, up to $500 each calendar year.",
           "effective_from_basis": "stated"
         }
@@ -104,7 +104,7 @@
           "period_boundaries": "stated",
           "max_posting_lag_days": null,
           "source": "chase-csr-page",
-          "last_verified": "2026-10-27",
+          "last_verified": "2026-11-04",
           "notes": "Up to $150 from January 1 through June 30 and $150 from July 1 through December 31 at Sapphire Reserve Exclusive Tables restaurants on OpenTable.",
           "effective_from_basis": "unknown"
         }
@@ -130,7 +130,7 @@
           "period_boundaries": "stated",
           "max_posting_lag_days": null,
           "source": "chase-csr-page",
-          "last_verified": "2026-10-27",
+          "last_verified": "2026-11-04",
           "notes": "Up to $150 January through June and $150 July through December for StubHub and viagogo purchases, through 2027-12-31. One-time activation required.",
           "effective_from_basis": "unknown"
         }
@@ -156,7 +156,7 @@
           "period_boundaries": "inferred",
           "max_posting_lag_days": null,
           "source": "chase-csr-page",
-          "last_verified": "2026-10-27",
+          "last_verified": "2026-11-04",
           "notes": "$10 in statement credits per month on eligible Peloton memberships through 2027-12-31, up to $120 annually. Activation required.",
           "effective_from_basis": "unknown"
         }
@@ -184,7 +184,7 @@
           "period_boundaries": "stated",
           "max_posting_lag_days": null,
           "source": "chase-csr-page",
-          "last_verified": "2026-10-27",
+          "last_verified": "2026-11-04",
           "notes": "One statement credit of up to $120 every four years for the application fee.",
           "effective_from_basis": "unknown"
         }
@@ -211,7 +211,7 @@
           "period_boundaries": "inferred",
           "max_posting_lag_days": null,
           "source": "chase-csr-page",
-          "last_verified": "2026-10-27",
+          "last_verified": "2026-11-04",
           "notes": "Up to $10 in monthly in-app Lyft credits through 2027-09-30; never posted to the card.",
           "effective_from_basis": "unknown"
         }
@@ -238,7 +238,7 @@
           "period_boundaries": "inferred",
           "max_posting_lag_days": null,
           "source": "chase-csr-page",
-          "last_verified": "2026-10-27",
+          "last_verified": "2026-11-04",
           "notes": "Up to $35 each month in DashPass promos ($15 plus two $10) through 2029-12-31; applied in the DoorDash app, never posted to the card.",
           "effective_from_basis": "unknown"
         }
@@ -266,7 +266,7 @@
       "effective_to": null,
       "status": "verified",
       "source": "chase-csr-page",
-      "last_verified": "2026-10-28",
+      "last_verified": "2026-11-04",
       "notes": "Annual fee verified. First-year fee is not separately stated; unknown optional fees remain null.",
       "annual_fee": "795.00",
       "first_year_annual_fee": null,
@@ -285,7 +285,7 @@
           "effective_to": null,
           "status": "verified",
           "source": "chase-csr-page",
-          "last_verified": "2026-10-28",
+          "last_verified": "2026-11-04",
           "notes": "Purchases through Chase Travel, including The Edit. Consult reward terms for exclusions.",
           "rate": "8",
           "conditions": {
@@ -305,7 +305,7 @@
           "effective_to": null,
           "status": "verified",
           "source": "chase-csr-page",
-          "last_verified": "2026-10-28",
+          "last_verified": "2026-11-04",
           "notes": "Flights booked directly with airlines.",
           "rate": "4",
           "conditions": {
@@ -325,7 +325,7 @@
           "effective_to": null,
           "status": "verified",
           "source": "chase-csr-page",
-          "last_verified": "2026-10-28",
+          "last_verified": "2026-11-04",
           "notes": "Hotels booked directly.",
           "rate": "4",
           "conditions": {
@@ -345,7 +345,7 @@
           "effective_to": null,
           "status": "verified",
           "source": "chase-csr-page",
-          "last_verified": "2026-10-28",
+          "last_verified": "2026-11-04",
           "notes": "Eligible restaurant dining worldwide.",
           "rate": "3",
           "conditions": {
@@ -365,7 +365,7 @@
           "effective_to": null,
           "status": "verified",
           "source": "chase-csr-page",
-          "last_verified": "2026-10-28",
+          "last_verified": "2026-11-04",
           "notes": "Base rate for other eligible purchases.",
           "rate": "1",
           "conditions": {
