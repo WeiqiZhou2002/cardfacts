@@ -5,11 +5,11 @@
   "country": "US",
   "currency": "USD",
   "networks": {
-    "values": [],
-    "status": "to_verify",
-    "source": "us-capital-one-venture-x-business-page",
-    "last_verified": "2026-10-28",
-    "notes": "The cited product page does not name the network. Check the issuer's pricing and terms, cardmember agreement or Guide to Benefits."
+    "values": ["mastercard"],
+    "status": "verified",
+    "source": "us-capital-one-venture-x-business-benefits-guides",
+    "last_verified": "2026-11-15",
+    "notes": "Capital One's benefits guides page lists a World Elite Mastercard for Business guide named for Venture X Business."
   },
   "audience": "business",
   "availability": "open",
@@ -24,6 +24,13 @@
       "url": "https://www.capitalone.com/small-business/credit-cards/venture-x-business/",
       "title": "Venture X Business official product information",
       "accessed": "2026-10-28"
+    },
+    {
+      "id": "us-capital-one-venture-x-business-benefits-guides",
+      "url": "https://www.capitalone.com/credit-cards/benefits-guide/",
+      "title": "Capital One cardholder benefits guides",
+      "accessed": "2026-11-15",
+      "kind": "benefit_guide"
     }
   ],
   "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
