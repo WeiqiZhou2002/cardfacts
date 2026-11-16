@@ -1,0 +1,103 @@
+{
+  "format_version": 1,
+  "id": "20261116T231902Z-e62c62df4c14",
+  "product_id": "us-us-bank-cash-plus",
+  "recorded_at": "2026-11-16T23:19:02Z",
+  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-16).",
+  "content_sha256": "e62c62df4c14f9a42c4e0a6c0d77441e20ad9eeb95c43d2bf29ff50ba30317f9",
+  "product": {
+    "id": "us-us-bank-cash-plus",
+    "issuer": "U.S. Bank",
+    "name": "U.S. Bank Cash+ Visa Signature Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["visa"],
+      "status": "verified",
+      "source": "us-us-bank-cash-plus-page",
+      "last_verified": "2026-11-16",
+      "notes": "The product name on the issuer page names Visa."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "us-bank-cash-back",
+      "unit": "cash"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-us-bank-cash-plus-page",
+        "url": "https://www.usbank.com/credit-cards/cash-plus-visa-signature-credit-card.html",
+        "title": "U.S. Bank Cash+ Visa Signature Card product page",
+        "accessed": "2026-11-16"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-us-bank-cash-plus-page",
+        "last_verified": "2026-11-16",
+        "notes": "No annual fee.",
+        "annual_fee": "0.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "travel-center",
+        "category": "travel",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-cash-plus-page",
+            "last_verified": "2026-11-16",
+            "notes": "Prepaid air, hotel and car reservations booked directly in the U.S. Bank Travel Center.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["issuer_portal"],
+              "prepaid": true
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-cash-plus-page",
+            "last_verified": "2026-11-16",
+            "notes": "All other eligible purchases. The cardholder-chosen 5% and 2% quarterly categories are not structured: 5% on the first $2,000 a quarter in two chosen categories and 2% in one chosen everyday category.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — catalog expansion
+
+- Add 92 products (72 personal, 20 business), including airline, hotel and retail co-brand cards, for 122 in total. Each value is cited to the issuer's own product page, checked 2026-11-15 or 2026-11-16.
+- New issuers: Barclays, Bank of America, Bilt and Apple. All four are manual-only pending a review of their website terms.
+- New entries are marked `partial` in `coverage`. Values that could not be read from the page are left `to_verify` or described in notes, never guessed. Free night awards, companion certificates and elite status are not recorded as credits.
+
 ## Unreleased — benefit guides
 
 - Sources may carry an optional `kind`: `product_page`, `pricing_terms`, `benefit_guide`, `cardmember_agreement` or `other`. Agent submissions may set it on `new_sources`, and the intake keeps it.

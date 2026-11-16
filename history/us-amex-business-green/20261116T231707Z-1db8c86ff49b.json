@@ -1,0 +1,102 @@
+{
+  "format_version": 1,
+  "id": "20261116T231707Z-1db8c86ff49b",
+  "product_id": "us-amex-business-green",
+  "recorded_at": "2026-11-16T23:17:07Z",
+  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-15/16).",
+  "content_sha256": "1db8c86ff49ba394217505e392c0589b432e40ad5f6c7a1d1ea5f735cec36f63",
+  "product": {
+    "id": "us-amex-business-green",
+    "issuer": "American Express",
+    "name": "Business Green Rewards Card from American Express",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["amex"],
+      "status": "verified",
+      "source": "us-amex-business-green-page",
+      "last_verified": "2026-11-15",
+      "notes": "American Express issues and runs the network for its own cards."
+    },
+    "audience": "business",
+    "availability": "open",
+    "rewards": {
+      "program": "amex-membership-rewards",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-amex-business-green-page",
+        "url": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-business-green-card-amex/",
+        "title": "Business Green Rewards Card from American Express product page",
+        "accessed": "2026-11-15"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-amex-business-green-page",
+        "last_verified": "2026-11-15",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "95.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "amex-travel",
+        "category": "travel",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-business-green-page",
+            "last_verified": "2026-11-15",
+            "notes": "Flights and prepaid hotels booked on AmexTravel.com or the Amex Travel app.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["issuer_portal"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-business-green-page",
+            "last_verified": "2026-11-15",
+            "notes": "Other eligible purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

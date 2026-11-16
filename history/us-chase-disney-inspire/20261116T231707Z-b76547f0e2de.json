@@ -1,0 +1,175 @@
+{
+  "format_version": 1,
+  "id": "20261116T231707Z-b76547f0e2de",
+  "product_id": "us-chase-disney-inspire",
+  "recorded_at": "2026-11-16T23:17:07Z",
+  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-15/16).",
+  "content_sha256": "b76547f0e2deac101c074b972e6eeda3b35f400586f9da2bab503885a27ec043",
+  "product": {
+    "id": "us-chase-disney-inspire",
+    "issuer": "Chase",
+    "name": "Disney Inspire Visa Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["visa"],
+      "status": "verified",
+      "source": "us-chase-disney-inspire-visa-list",
+      "last_verified": "2026-11-15",
+      "notes": "Listed on Chase's Visa credit cards page."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "disney-rewards-dollars",
+      "unit": "cash"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-chase-disney-inspire-page",
+        "url": "https://creditcards.chase.com/rewards-credit-cards/disney/inspire",
+        "title": "Disney Inspire Visa Card product page",
+        "accessed": "2026-11-15"
+      },
+      {
+        "accessed": "2026-11-15",
+        "id": "us-chase-disney-inspire-visa-list",
+        "url": "https://creditcards.chase.com/visa-credit-cards",
+        "title": "Chase Visa credit cards list",
+        "kind": "other"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-chase-disney-inspire-page",
+        "last_verified": "2026-11-15",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "149.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "disney-streaming",
+        "category": "streaming",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-disney-inspire-page",
+            "last_verified": "2026-11-15",
+            "notes": "Purchases made directly at DisneyPlus.com, including Disney+, Hulu and ESPN subscriptions.",
+            "rate": "10",
+            "conditions": {
+              "channels": ["direct"],
+              "merchants": ["DisneyPlus.com"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-disney-inspire-page",
+            "last_verified": "2026-11-15",
+            "notes": "Standard rate on card purchases; other bonus categories were not captured.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": [
+      {
+        "id": "disney-streaming",
+        "name": "Disney streaming credit",
+        "category": "streaming_digital",
+        "delivery": "statement_credit",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": ["Disney streaming credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-disney-inspire-page",
+            "last_verified": "2026-11-15",
+            "notes": "A $10 statement credit each month after $10 or more on qualifying subscriptions bought directly at DisneyPlus.com.",
+            "amount": "10.00",
+            "period": "monthly",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null,
+            "conditions": {
+              "minimum_spend": {
+                "amount": "10.00",
+                "period": "benefit_period"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "theme-park",
+        "name": "Disney theme park ticket credit",
+        "category": "entertainment_events",
+        "delivery": "statement_credit",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": ["Disney theme park ticket credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-disney-inspire-page",
+            "last_verified": "2026-11-15",
+            "notes": "A $100 statement credit after $200 in qualifying purchases each anniversary year.",
+            "amount": "100.00",
+            "period": "annual",
+            "reset_basis": "anniversary",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null,
+            "conditions": {
+              "minimum_spend": {
+                "amount": "200.00",
+                "period": "benefit_period"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

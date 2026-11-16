@@ -1,0 +1,82 @@
+{
+  "format_version": 1,
+  "id": "20261116T231707Z-e659a3fea074",
+  "product_id": "us-citi-aadvantage-business",
+  "recorded_at": "2026-11-16T23:17:07Z",
+  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-15/16).",
+  "content_sha256": "e659a3fea07460ac8c0ba1ea8dee2aa3fcea33aee05bf02293d26aadd8115414",
+  "product": {
+    "id": "us-citi-aadvantage-business",
+    "issuer": "Citi",
+    "name": "CitiBusiness / AAdvantage Platinum Select Mastercard",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": [],
+      "status": "to_verify",
+      "source": "us-citi-aadvantage-business-page",
+      "last_verified": "2026-11-15",
+      "notes": "The cited product page does not name the network."
+    },
+    "audience": "business",
+    "availability": "open",
+    "rewards": {
+      "program": "aadvantage",
+      "unit": "miles"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-citi-aadvantage-business-page",
+        "url": "https://www.citi.com/credit-cards/citi-aadvantage-business-credit-card",
+        "title": "CitiBusiness / AAdvantage Platinum Select Mastercard product page",
+        "accessed": "2026-11-15"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "to_verify",
+        "source": "us-citi-aadvantage-business-page",
+        "last_verified": "2026-11-15",
+        "notes": "The issuer page fills the annual fee in dynamically and it was not captured.",
+        "annual_fee": null,
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-citi-aadvantage-business-page",
+            "last_verified": "2026-11-15",
+            "notes": "Other purchases; bonus categories were not captured.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "format_version": 1,
+  "id": "20261116T231902Z-0531d2f9aaed",
+  "product_id": "us-wells-fargo-choice-privileges",
+  "recorded_at": "2026-11-16T23:19:02Z",
+  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-16).",
+  "content_sha256": "0531d2f9aaed4de0b8014ca51e8de757767e04a9762361b3a8adf5052ea52985",
+  "product": {
+    "id": "us-wells-fargo-choice-privileges",
+    "issuer": "Wells Fargo",
+    "name": "Choice Privileges Mastercard",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["mastercard"],
+      "status": "verified",
+      "source": "us-wells-fargo-choice-privileges-page",
+      "last_verified": "2026-11-16",
+      "notes": "The product name on the issuer page names Mastercard."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "choice-privileges",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-wells-fargo-choice-privileges-page",
+        "url": "https://creditcards.wellsfargo.com/choice-hotel-privileges-mastercard/",
+        "title": "Choice Privileges Mastercard product page",
+        "accessed": "2026-11-16"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-wells-fargo-choice-privileges-page",
+        "last_verified": "2026-11-16",
+        "notes": "No annual fee.",
+        "annual_fee": "0.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "choice-hotels",
+        "category": "hotels",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-wells-fargo-choice-privileges-page",
+            "last_verified": "2026-11-16",
+            "notes": "Stays at participating Choice Hotels properties and Choice Privileges point purchases; other category rates were not captured.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["any"],
+              "merchants": ["Choice Hotels"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "format_version": 1,
+  "id": "20261116T231902Z-c81a029573d4",
+  "product_id": "us-bank-of-america-air-france-klm",
+  "recorded_at": "2026-11-16T23:19:02Z",
+  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-16).",
+  "content_sha256": "c81a029573d4cdb59fe89f61d473ca4d14888afcd11d4635e3505476de9fe90c",
+  "product": {
+    "id": "us-bank-of-america-air-france-klm",
+    "issuer": "Bank of America",
+    "name": "Air France KLM Visa Signature Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["visa"],
+      "status": "verified",
+      "source": "us-bank-of-america-air-france-klm-page",
+      "last_verified": "2026-11-16",
+      "notes": "The product name on the issuer page names Visa."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "flying-blue",
+      "unit": "miles"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-bank-of-america-air-france-klm-page",
+        "url": "https://www.bankofamerica.com/credit-cards/products/air-france-credit-card/",
+        "title": "Air France KLM Visa Signature Card product page",
+        "accessed": "2026-11-16"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-bank-of-america-air-france-klm-page",
+        "last_verified": "2026-11-16",
+        "notes": "$89 annual fee; no foreign transaction fees.",
+        "annual_fee": "89.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": "0"
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "skyteam",
+        "category": "flights",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-air-france-klm-page",
+            "last_verified": "2026-11-16",
+            "notes": "Eligible Air France, KLM and SkyTeam member airline purchases.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"],
+              "merchants": ["Air France", "KLM", "SkyTeam airlines"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-air-france-klm-page",
+            "last_verified": "2026-11-16",
+            "notes": "Eligible dining.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-air-france-klm-page",
+            "last_verified": "2026-11-16",
+            "notes": "All other purchases.",
+            "rate": "1.5",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

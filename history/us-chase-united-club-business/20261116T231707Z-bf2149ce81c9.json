@@ -1,0 +1,117 @@
+{
+  "format_version": 1,
+  "id": "20261116T231707Z-bf2149ce81c9",
+  "product_id": "us-chase-united-club-business",
+  "recorded_at": "2026-11-16T23:17:07Z",
+  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-15/16).",
+  "content_sha256": "bf2149ce81c980a13cdec41e9db3c61adb007e5ab5263df0bae53e442c9965ac",
+  "product": {
+    "id": "us-chase-united-club-business",
+    "issuer": "Chase",
+    "name": "United Club Business Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["visa"],
+      "status": "verified",
+      "source": "us-chase-united-club-business-visa-list",
+      "last_verified": "2026-11-15",
+      "notes": "Listed on Chase's Visa credit cards page."
+    },
+    "audience": "business",
+    "availability": "open",
+    "rewards": {
+      "program": "united-mileageplus",
+      "unit": "miles"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-chase-united-club-business-page",
+        "url": "https://creditcards.chase.com/business-credit-cards/united/united-club-business",
+        "title": "United Club Business Card product page",
+        "accessed": "2026-11-15"
+      },
+      {
+        "accessed": "2026-11-15",
+        "id": "us-chase-united-club-business-visa-list",
+        "url": "https://creditcards.chase.com/visa-credit-cards",
+        "title": "Chase Visa credit cards list",
+        "kind": "other"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-chase-united-club-business-page",
+        "last_verified": "2026-11-15",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "695.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "united",
+        "category": "flights",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-united-club-business-page",
+            "last_verified": "2026-11-15",
+            "notes": "United tickets and select United purchases; other rates were not captured.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["direct"],
+              "merchants": ["United"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": [
+      {
+        "id": "renowned-hotels",
+        "name": "Renowned Hotels and Resorts credit",
+        "category": "hotel",
+        "delivery": "statement_credit",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": ["Renowned Hotels and Resorts credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-united-club-business-page",
+            "last_verified": "2026-11-15",
+            "notes": "Up to $200 each anniversary year on prepaid Renowned Hotels and Resorts stays.",
+            "amount": "200.00",
+            "period": "annual",
+            "reset_basis": "anniversary",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "format_version": 1,
+  "id": "20261116T231707Z-52561eb826b7",
+  "product_id": "us-chase-southwest-plus",
+  "recorded_at": "2026-11-16T23:17:07Z",
+  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-15/16).",
+  "content_sha256": "52561eb826b70b67176f077032d507c9ff893b5354f27e9ac273ca7b1f2ceb9e",
+  "product": {
+    "id": "us-chase-southwest-plus",
+    "issuer": "Chase",
+    "name": "Southwest Rapid Rewards Plus Credit Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["visa"],
+      "status": "verified",
+      "source": "us-chase-southwest-plus-visa-list",
+      "last_verified": "2026-11-15",
+      "notes": "Listed on Chase's Visa credit cards page."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "southwest-rapid-rewards",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-chase-southwest-plus-page",
+        "url": "https://creditcards.chase.com/travel-credit-cards/southwest/plus",
+        "title": "Southwest Rapid Rewards Plus Credit Card product page",
+        "accessed": "2026-11-15"
+      },
+      {
+        "accessed": "2026-11-15",
+        "id": "us-chase-southwest-plus-visa-list",
+        "url": "https://creditcards.chase.com/visa-credit-cards",
+        "title": "Chase Visa credit cards list",
+        "kind": "other"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-chase-southwest-plus-page",
+        "last_verified": "2026-11-15",
+        "notes": "Annual fee billed on the first statement; no foreign transaction fees.",
+        "annual_fee": "99.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": "0"
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "southwest",
+        "category": "flights",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-southwest-plus-page",
+            "last_verified": "2026-11-15",
+            "notes": "Purchases made directly with Southwest Airlines.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["direct"],
+              "merchants": ["Southwest Airlines"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "gas",
+        "category": "gas",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-southwest-plus-page",
+            "last_verified": "2026-11-15",
+            "notes": "Gas stations; 2X applies to the first $5,000 a year in combined gas and grocery purchases. The reset basis is not structured.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "groceries",
+        "category": "groceries",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-southwest-plus-page",
+            "last_verified": "2026-11-15",
+            "notes": "Grocery stores; 2X applies to the first $5,000 a year in combined gas and grocery purchases.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "lyft",
+        "category": "rideshare",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": "2027-12-31",
+            "status": "verified",
+            "source": "us-chase-southwest-plus-page",
+            "last_verified": "2026-11-15",
+            "notes": "Lyft products bought in the Lyft app.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"],
+              "merchants": ["Lyft"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-southwest-plus-page",
+            "last_verified": "2026-11-15",
+            "notes": "All other purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": [
+      {
+        "id": "instacart",
+        "name": "Instacart credit",
+        "category": "food_delivery",
+        "delivery": "in_app",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": []
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-southwest-plus-page",
+            "last_verified": "2026-11-15",
+            "notes": "A $10 Instacart credit each month for purchases made directly through Instacart.",
+            "amount": "10.00",
+            "period": "monthly",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null
+          }
+        ]
+      }
+    ]
+  }
+}

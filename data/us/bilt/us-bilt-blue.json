@@ -1,0 +1,134 @@
+{
+  "id": "us-bilt-blue",
+  "issuer": "Bilt",
+  "name": "Bilt Blue Card",
+  "country": "US",
+  "currency": "USD",
+  "networks": {
+    "values": [],
+    "status": "to_verify",
+    "source": "us-bilt-blue-page",
+    "last_verified": "2026-11-16",
+    "notes": "The card comparison page does not name the network."
+  },
+  "audience": "personal",
+  "availability": "open",
+  "rewards": {
+    "program": "bilt-rewards",
+    "unit": "points"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-bilt-blue-page",
+      "url": "https://www.bilt.com/card",
+      "title": "Bilt card comparison page",
+      "accessed": "2026-11-16"
+    }
+  ],
+  "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Initial entry from the issuer's card comparison page. Housing rewards on rent and mortgage (up to 1.25X, depending on other card spend) are not structured. Bilt partner restaurant rates (up to 4X) are not structured."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-bilt-blue-page",
+      "last_verified": "2026-11-16",
+      "notes": "No annual fee; no foreign transaction fees.",
+      "annual_fee": "0.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": "0"
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "portal-hotels",
+      "category": "hotels",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-bilt-blue-page",
+          "last_verified": "2026-11-16",
+          "notes": "Hotels booked on the Bilt Travel Portal.",
+          "rate": "3",
+          "conditions": {
+            "channels": ["issuer_portal"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "portal-flights",
+      "category": "flights",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-bilt-blue-page",
+          "last_verified": "2026-11-16",
+          "notes": "Flights booked on the Bilt Travel Portal.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["issuer_portal"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "travel",
+      "category": "travel",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-bilt-blue-page",
+          "last_verified": "2026-11-16",
+          "notes": "Other travel.",
+          "rate": "1",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "everything-else",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-bilt-blue-page",
+          "last_verified": "2026-11-16",
+          "notes": "Other everyday purchases.",
+          "rate": "1",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": []
+}
