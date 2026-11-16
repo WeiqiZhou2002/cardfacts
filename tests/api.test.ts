@@ -58,7 +58,7 @@ test("server-only filters select cards by audience, fees, earn and credit catego
   ]);
   assert.ok(ids("cards.json", "network=visa").includes("us-chase-sapphire-reserve"));
   assert.ok(
-    !ids("cards.json", "network=visa").includes("us-chase-freedom-flex"),
+    !ids("cards.json", "network=visa").includes("us-capital-one-savor"),
     "pending networks never match",
   );
   const summary = (
@@ -210,5 +210,9 @@ test("card summaries list benefit guides by the issuer's URL", () => {
   assert.deepEqual(flex.benefit_guides, [
     { source: guide.id, title: guide.title, url: guide.url, accessed: guide.accessed },
   ]);
-  assert.ok(body.data.cards.filter((c) => c.id !== flex.id).every((c) => c.benefit_guides.length === 0));
+  assert.ok(
+    body.data.cards
+      .filter((c) => c.id !== flex.id)
+      .every((c) => !c.benefit_guides.some((g) => (g as { source: string }).source === guide.id)),
+  );
 });

@@ -187,6 +187,17 @@
     }
   },
   {
+    "id": "fitness_wellness",
+    "name": {
+      "en": "Fitness and wellness",
+      "zh": "健身与健康"
+    },
+    "definition": {
+      "en": "Fitness equipment, services and wellness purchases.",
+      "zh": "健身器材、健身服务和健康类消费。"
+    }
+  },
+  {
     "id": "utilities",
     "name": {
       "en": "Utilities",

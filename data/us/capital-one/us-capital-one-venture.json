@@ -5,11 +5,11 @@
   "country": "US",
   "currency": "USD",
   "networks": {
-    "values": [],
-    "status": "to_verify",
-    "source": "us-capital-one-venture-page",
-    "last_verified": "2026-10-28",
-    "notes": "The cited product page does not name the network. Check the issuer's pricing and terms, cardmember agreement or Guide to Benefits."
+    "values": ["mastercard", "visa"],
+    "status": "verified",
+    "source": "us-capital-one-venture-benefits-guides",
+    "last_verified": "2026-11-15",
+    "notes": "Issued on Visa or Mastercard depending on the account. The benefits guides page says the network varies by account and offers both Visa and Mastercard guides; it does not name this product, and the owner confirmed both networks."
   },
   "audience": "personal",
   "availability": "open",
@@ -30,6 +30,13 @@
       "url": "https://www.capitalone.com/help-center/credit-cards/tsa-precheck-global-entry-benefits/",
       "title": "Global Entry and TSA PreCheck reimbursement terms",
       "accessed": "2026-10-28"
+    },
+    {
+      "id": "us-capital-one-venture-benefits-guides",
+      "url": "https://www.capitalone.com/credit-cards/benefits-guide/",
+      "title": "Capital One cardholder benefits guides",
+      "accessed": "2026-11-15",
+      "kind": "benefit_guide"
     }
   ],
   "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",

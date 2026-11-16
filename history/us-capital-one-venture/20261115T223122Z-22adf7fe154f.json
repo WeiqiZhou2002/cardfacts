@@ -1,0 +1,204 @@
+{
+  "format_version": 1,
+  "id": "20261115T223122Z-22adf7fe154f",
+  "product_id": "us-capital-one-venture",
+  "recorded_at": "2026-11-15T22:31:22Z",
+  "reason": "Cite payment networks from issuer pages checked 2026-11-15 (issue #8).",
+  "content_sha256": "22adf7fe154fa8744e0bbe2bf48b19f2ad9770484a9e513f10473e2510a39481",
+  "product": {
+    "id": "us-capital-one-venture",
+    "issuer": "Capital One",
+    "name": "Venture Rewards",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["mastercard", "visa"],
+      "status": "verified",
+      "source": "us-capital-one-venture-benefits-guides",
+      "last_verified": "2026-11-15",
+      "notes": "Issued on Visa or Mastercard depending on the account. The benefits guides page says the network varies by account and offers both Visa and Mastercard guides; it does not name this product, and the owner confirmed both networks."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "capital-one-miles",
+      "unit": "miles"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-capital-one-venture-page",
+        "url": "https://www.capitalone.com/credit-cards/venture/",
+        "title": "Venture Rewards official product information",
+        "accessed": "2026-10-28"
+      },
+      {
+        "id": "us-capital-one-venture-trusted-traveler",
+        "url": "https://www.capitalone.com/help-center/credit-cards/tsa-precheck-global-entry-benefits/",
+        "title": "Global Entry and TSA PreCheck reimbursement terms",
+        "accessed": "2026-10-28"
+      },
+      {
+        "id": "us-capital-one-venture-benefits-guides",
+        "url": "https://www.capitalone.com/credit-cards/benefits-guide/",
+        "title": "Capital One cardholder benefits guides",
+        "accessed": "2026-11-15",
+        "kind": "benefit_guide"
+      }
+    ],
+    "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "reviewed",
+      "credits": "reviewed",
+      "notes": "Reviewed listed ongoing benefits; merchant exclusions in notes remain part of eligibility. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-capital-one-venture-page",
+        "last_verified": "2026-10-28",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "95.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": "0"
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "base",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-capital-one-venture-page",
+            "last_verified": "2026-10-28",
+            "notes": "Other eligible purchases.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "portal-hotels",
+        "category": "hotels",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-capital-one-venture-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible issuer-portal bookings.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["issuer_portal"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "portal-car-rental",
+        "category": "car_rental",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-capital-one-venture-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible issuer-portal bookings.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["issuer_portal"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "portal-vacation-rentals",
+        "category": "vacation_rentals",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-capital-one-venture-page",
+            "last_verified": "2026-10-28",
+            "notes": "Eligible issuer-portal bookings.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["issuer_portal"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "capital-one-entertainment",
+        "category": "entertainment",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-capital-one-venture-page",
+            "last_verified": "2026-10-28",
+            "notes": "Capital One Entertainment purchases.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["any"],
+              "merchants": ["Capital One Entertainment"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": [
+      {
+        "id": "trusted-traveler",
+        "name": "Global Entry / TSA PreCheck",
+        "category": "trusted_traveler",
+        "delivery": "statement_credit",
+        "enrollment": "none",
+        "match": {
+          "keywords": ["GLOBAL ENTRY", "TSA PRECHECK"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-capital-one-venture-trusted-traveler",
+            "last_verified": "2026-10-28",
+            "notes": "One application credit; shared across programs.",
+            "amount": "120.00",
+            "period": "multi_year",
+            "reset_basis": "since_last_credit",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null,
+            "period_years": 4
+          }
+        ]
+      }
+    ]
+  }
+}

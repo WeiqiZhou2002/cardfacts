@@ -5,11 +5,11 @@
   "country": "US",
   "currency": "USD",
   "networks": {
-    "values": [],
-    "status": "to_verify",
-    "source": "us-chase-freedom-flex-page",
-    "last_verified": "2026-10-28",
-    "notes": "The cited product page does not name the network. Check the issuer's pricing and terms, cardmember agreement or Guide to Benefits."
+    "values": ["mastercard"],
+    "status": "verified",
+    "source": "us-chase-freedom-flex-mastercard-list",
+    "last_verified": "2026-11-15",
+    "notes": "Listed on Chase's Mastercard credit cards page."
   },
   "audience": "personal",
   "availability": "open",
@@ -24,6 +24,13 @@
       "url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex",
       "title": "Chase Freedom Flex official product information",
       "accessed": "2026-10-28"
+    },
+    {
+      "id": "us-chase-freedom-flex-mastercard-list",
+      "url": "https://creditcards.chase.com/mastercard-credit-cards",
+      "title": "Chase Mastercard credit cards list",
+      "accessed": "2026-11-15",
+      "kind": "other"
     }
   ],
   "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
