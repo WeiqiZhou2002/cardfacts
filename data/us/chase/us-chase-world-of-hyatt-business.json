@@ -57,6 +57,26 @@
   ],
   "earn_rates": [
     {
+      "id": "fitness",
+      "category": "fitness_wellness",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-world-of-hyatt-business-page",
+          "last_verified": "2026-11-15",
+          "notes": "Fitness club and gym memberships.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
       "id": "everything-else",
       "category": "everything_else",
       "versions": [

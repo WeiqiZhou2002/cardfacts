@@ -1,10 +1,10 @@
 {
   "format_version": 1,
-  "id": "20261116T231707Z-5330f083fe34",
+  "id": "20261116T232834Z-a9fb36adea80",
   "product_id": "us-chase-world-of-hyatt",
-  "recorded_at": "2026-11-16T23:17:07Z",
-  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-15/16).",
-  "content_sha256": "5330f083fe3430f553f784e3cd47ecbb3eed09387d4c9a6b93a9978033be7680",
+  "recorded_at": "2026-11-16T23:28:34Z",
+  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-15).",
+  "content_sha256": "a9fb36adea80173ab2ab7463ae691d5fd061f4ae4c164ff1efc5eb2d700bd6fc",
   "product": {
     "id": "us-chase-world-of-hyatt",
     "issuer": "Chase",
@@ -145,6 +145,26 @@
         ]
       },
       {
+        "id": "fitness",
+        "category": "fitness_wellness",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-world-of-hyatt-page",
+            "last_verified": "2026-11-15",
+            "notes": "Fitness club and gym memberships.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
         "id": "everything-else",
         "category": "everything_else",
         "versions": [
@@ -155,7 +175,7 @@
             "status": "verified",
             "source": "us-chase-world-of-hyatt-page",
             "last_verified": "2026-11-15",
-            "notes": "All other purchases. Fitness club and gym memberships also earn 2X.",
+            "notes": "All other purchases.",
             "rate": "1",
             "conditions": {
               "channels": ["any"]

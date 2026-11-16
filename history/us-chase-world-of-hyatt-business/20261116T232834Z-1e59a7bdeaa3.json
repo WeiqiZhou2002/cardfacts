@@ -1,10 +1,10 @@
 {
   "format_version": 1,
-  "id": "20261116T231707Z-de07ca5a7e6f",
+  "id": "20261116T232834Z-1e59a7bdeaa3",
   "product_id": "us-chase-world-of-hyatt-business",
-  "recorded_at": "2026-11-16T23:17:07Z",
-  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-15/16).",
-  "content_sha256": "de07ca5a7e6f2cf1d7b64394bcd626cc46aba61b8f03279fb25086b0326f35e9",
+  "recorded_at": "2026-11-16T23:28:34Z",
+  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-15).",
+  "content_sha256": "1e59a7bdeaa32d2fac97a6a6e12b3d30b63e39ba2b75f832281479f41d820261",
   "product": {
     "id": "us-chase-world-of-hyatt-business",
     "issuer": "Chase",
@@ -63,6 +63,26 @@
       }
     ],
     "earn_rates": [
+      {
+        "id": "fitness",
+        "category": "fitness_wellness",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-world-of-hyatt-business-page",
+            "last_verified": "2026-11-15",
+            "notes": "Fitness club and gym memberships.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
       {
         "id": "everything-else",
         "category": "everything_else",
