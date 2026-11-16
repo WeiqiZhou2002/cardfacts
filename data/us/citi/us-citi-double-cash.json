@@ -5,11 +5,11 @@
   "country": "US",
   "currency": "USD",
   "networks": {
-    "values": [],
-    "status": "to_verify",
+    "values": ["mastercard"],
+    "status": "verified",
     "source": "us-citi-double-cash-page",
-    "last_verified": "2026-10-28",
-    "notes": "The cited product page does not name the network. Check the issuer's pricing and terms, cardmember agreement or Guide to Benefits."
+    "last_verified": "2026-11-15",
+    "notes": "The product page FAQ says the card is a Mastercard."
   },
   "audience": "personal",
   "availability": "open",
@@ -23,7 +23,7 @@
       "id": "us-citi-double-cash-page",
       "url": "https://www.citi.com/credit-cards/citi-double-cash-credit-card",
       "title": "Citi Double Cash official product information",
-      "accessed": "2026-10-28"
+      "accessed": "2026-11-15"
     }
   ],
   "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",

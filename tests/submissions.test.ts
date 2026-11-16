@@ -297,14 +297,14 @@ test("re-verification diffs allow only forward verification and access dates", (
 });
 
 const flexTerms = {
-  source_id: "us-chase-freedom-flex-terms",
-  url: "https://applynow.chase.com/FlexAppWeb/pricing.do?CELL=6TKV",
-  title: "Freedom Flex pricing and terms",
+  source_id: "us-capital-one-savor-terms",
+  url: "https://www.capitalone.com/credit-cards/savor/pricing/",
+  title: "Savor pricing and terms",
   fetched_at: "2026-11-01T06:05:00Z",
   text_sha256: hash,
 };
 const flex = (networks: ProductSubmission["networks"]): ProductSubmission => ({
-  product_id: "us-chase-freedom-flex",
+  product_id: "us-capital-one-savor",
   sources: [],
   verified: [],
   changes: [],
@@ -340,15 +340,13 @@ test("network findings and new issuer sources are validated against the catalog"
     assert.rejects(validateSubmission(catalog, submission(product), now), pattern);
   await reject(
     { ...ok, new_sources: [{ ...flexTerms, url: "https://example.com/terms" }] },
-    /HTTPS on a Chase domain/,
+    /HTTPS on a Capital One domain/,
   );
   await reject({ ...ok, new_sources: [{ ...flexTerms, source_id: "chase-csr-page" }] }, /already exists/);
   await reject(
     {
       ...ok,
-      new_sources: [
-        { ...flexTerms, url: "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex" },
-      ],
+      new_sources: [{ ...flexTerms, url: "https://www.capitalone.com/credit-cards/savor/" }],
     },
     /already cited/,
   );
@@ -362,7 +360,7 @@ test("network findings and new issuer sources are validated against the catalog"
 
 test("a pending network is filled from a new issuer source; matching networks re-verify", async () => {
   const filled = applyProductSubmission(
-    card("us-chase-freedom-flex"),
+    card("us-capital-one-savor"),
     flex({
       source_id: flexTerms.source_id,
       values: ["mastercard"],
@@ -373,12 +371,12 @@ test("a pending network is filled from a new issuer source; matching networks re
   assert.deepEqual(filled.card.networks, {
     values: ["mastercard"],
     status: "verified",
-    source: "us-chase-freedom-flex-terms",
+    source: "us-capital-one-savor-terms",
     last_verified: "2026-11-01",
     notes: "World Elite Mastercard.",
   });
   assert.deepEqual(filled.card.sources.at(-1), {
-    id: "us-chase-freedom-flex-terms",
+    id: "us-capital-one-savor-terms",
     url: flexTerms.url,
     title: flexTerms.title,
     accessed: "2026-11-01",
@@ -389,9 +387,9 @@ test("a pending network is filled from a new issuer source; matching networks re
   );
   const { body } = describeProduct(filled.card, submission(flex(undefined)), flex(undefined), filled.result);
   assert.match(body, /\| networks\.values \| — \(pending\) \| mastercard \| not effective-dated \|/);
-  assert.match(body, /New source "Freedom Flex pricing and terms"/);
+  assert.match(body, /New source "Savor pricing and terms"/);
   // An unused new source is not added.
-  assert.equal(applyProductSubmission(card("us-chase-freedom-flex"), flex(undefined)).card.sources.length, 1);
+  assert.equal(applyProductSubmission(card("us-capital-one-savor"), flex(undefined)).card.sources.length, 1);
 
   const same = applyProductSubmission(card("us-chase-sapphire-reserve"), csr(["visa"]));
   assert.equal(same.card.networks.last_verified, "2026-11-01");
@@ -401,7 +399,7 @@ test("a pending network is filled from a new issuer source; matching networks re
   assert.ok(reverifySummary(catalog.cards, after).some((e) => e.label === "networks"));
 
   const elsewhere = applyProductSubmission(card("us-chase-sapphire-reserve"), {
-    ...csr(["visa"], flexTerms.source_id.replace("freedom-flex", "sapphire-reserve")),
+    ...csr(["visa"], flexTerms.source_id.replace("capital-one-savor", "chase-sapphire-reserve")),
     new_sources: [
       { ...flexTerms, source_id: "us-chase-sapphire-reserve-terms", url: "https://applynow.chase.com/x" },
     ],
@@ -429,7 +427,7 @@ test("an applied network finding passes catalog validation and history protectio
     for (const path of ["catalog.json", "data", "history", "maintenance", "schema", "vectors", "vocab"])
       await cp(join(root, path), join(dir, path), { recursive: true });
     const { card: next } = applyProductSubmission(
-      card("us-chase-freedom-flex"),
+      card("us-capital-one-savor"),
       flex({
         source_id: flexTerms.source_id,
         values: ["mastercard"],
@@ -438,7 +436,7 @@ test("an applied network finding passes catalog validation and history protectio
       }),
     );
     await writeFile(
-      join(dir, "data/us/chase/us-chase-freedom-flex.json"),
+      join(dir, "data/us/capital-one/us-capital-one-savor.json"),
       JSON.stringify(next, null, 2) + "\n",
     );
     const latest = catalog.revisions.filter((r) => r.product_id === next.id).at(-1)!.recorded_at;
@@ -459,8 +457,8 @@ test("an applied network finding passes catalog validation and history protectio
 test("a benefit guide enters the catalog with its kind, and unknown kinds are refused", async () => {
   const guide = {
     ...flexTerms,
-    source_id: "us-chase-freedom-flex-guide",
-    url: "https://www.chase.com/content/dam/chase-ux/documents/freedom-flex-guide-to-benefits.pdf",
+    source_id: "us-capital-one-savor-guide",
+    url: "https://ecm.capitalone.com/WCM/card/mc-world-gtb_english.pdf",
     title: "Guide to Benefits",
     kind: "benefit_guide" as const,
   };
@@ -474,7 +472,7 @@ test("a benefit guide enters the catalog with its kind, and unknown kinds are re
     new_sources: [guide],
   };
   await validateSubmission(catalog, submission(product), now);
-  const filled = applyProductSubmission(card("us-chase-freedom-flex"), product);
+  const filled = applyProductSubmission(card("us-capital-one-savor"), product);
   assert.deepEqual(filled.card.sources.at(-1), {
     id: guide.source_id,
     url: guide.url,
@@ -488,7 +486,7 @@ test("a benefit guide enters the catalog with its kind, and unknown kinds are re
     for (const path of ["catalog.json", "data", "history", "maintenance", "schema", "vectors", "vocab"])
       await cp(join(root, path), join(dir, path), { recursive: true });
     await writeFile(
-      join(dir, "data/us/chase/us-chase-freedom-flex.json"),
+      join(dir, "data/us/capital-one/us-capital-one-savor.json"),
       JSON.stringify(filled.card, null, 2) + "\n",
     );
     const loaded = await loadCatalog(dir, { allowUnrecorded: true });

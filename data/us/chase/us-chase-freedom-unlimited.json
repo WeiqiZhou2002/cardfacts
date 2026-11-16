@@ -5,11 +5,11 @@
   "country": "US",
   "currency": "USD",
   "networks": {
-    "values": [],
-    "status": "to_verify",
-    "source": "us-chase-freedom-unlimited-page",
-    "last_verified": "2026-10-28",
-    "notes": "The cited product page does not name the network. Check the issuer's pricing and terms, cardmember agreement or Guide to Benefits."
+    "values": ["visa"],
+    "status": "verified",
+    "source": "us-chase-freedom-unlimited-visa-list",
+    "last_verified": "2026-11-15",
+    "notes": "Listed on Chase's Visa credit cards page."
   },
   "audience": "personal",
   "availability": "open",
@@ -24,6 +24,13 @@
       "url": "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited",
       "title": "Chase Freedom Unlimited official product information",
       "accessed": "2026-10-28"
+    },
+    {
+      "id": "us-chase-freedom-unlimited-visa-list",
+      "url": "https://creditcards.chase.com/visa-credit-cards",
+      "title": "Chase Visa credit cards list",
+      "accessed": "2026-11-15",
+      "kind": "other"
     }
   ],
   "notes": "General US product terms; excludes welcome offers, insurance and account-specific offers. Null optional fees or network are unconfirmed.",
