@@ -10,7 +10,7 @@
       "id": "chase-csr-page",
       "url": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
       "title": "Chase Sapphire Reserve product page, including its offer details overlay",
-      "accessed": "2026-11-04"
+      "accessed": "2026-11-06"
     }
   ],
   "notes": "Complimentary subscriptions (Apple TV, Apple Music, DashPass) are memberships, not credits, and are omitted. effective_from of the 2025 refresh is not stated on the cited page and is left null (to verify).",
@@ -370,6 +370,50 @@
           "rate": "1",
           "conditions": {
             "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "lyft",
+      "category": "rideshare",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": "2027-09-30",
+          "status": "verified",
+          "source": "chase-csr-page",
+          "last_verified": "2026-11-06",
+          "notes": "Lyft products bought in the Lyft app, including rides, bike and scooter rides and memberships. Gift cards, car rentals and some other Lyft charges do not qualify.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["any"],
+            "merchants": ["Lyft"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "peloton",
+      "category": "fitness_wellness",
+      "versions": [
+        {
+          "effective_from": "2025-04-01",
+          "effective_from_basis": "stated",
+          "effective_to": "2027-12-31",
+          "status": "verified",
+          "source": "chase-csr-page",
+          "last_verified": "2026-11-06",
+          "notes": "Peloton equipment and accessories bought directly from Peloton (website, phone or showroom), each purchase over $150. The bonus applies to the first $5,000 of qualifying purchases across the whole offer period; that limit is not a periodic cap, so it is not structured here. Apparel, gift cards, HSA/FSA checkout through Truemed and purchases outside the US do not qualify.",
+          "rate": "10",
+          "conditions": {
+            "channels": ["direct"],
+            "merchants": ["Peloton"],
+            "region": "US",
+            "minimum_transaction_amount": "150.01"
           },
           "cap": null
         }
