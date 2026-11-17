@@ -1,0 +1,81 @@
+{
+  "id": "us-synchrony-paypal-cashback-mastercard",
+  "issuer": "Synchrony",
+  "name": "PayPal Cashback Mastercard",
+  "country": "US",
+  "currency": "USD",
+  "networks": {
+    "values": ["mastercard"],
+    "status": "verified",
+    "source": "us-synchrony-paypal-cashback-mastercard-credit-services",
+    "last_verified": "2026-11-17",
+    "notes": "PayPal's credit services page says Synchrony Bank issues the card under a Mastercard license."
+  },
+  "audience": "personal",
+  "availability": "open",
+  "rewards": {
+    "program": "paypal-cash-back",
+    "unit": "cash"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-synchrony-paypal-cashback-mastercard-page",
+      "url": "https://www.paypal.com/us/digital-wallet/manage-money/paypal-cashback-mastercard",
+      "title": "PayPal Cashback Mastercard product page",
+      "accessed": "2026-11-17"
+    },
+    {
+      "accessed": "2026-11-17",
+      "id": "us-synchrony-paypal-cashback-mastercard-credit-services",
+      "url": "https://www.paypal.com/us/digital-wallet/ways-to-pay/credit-services",
+      "title": "PayPal cards and credit options page",
+      "kind": "other"
+    }
+  ],
+  "notes": "General US product terms from the issuer or partner product page; the page says Synchrony Bank issues the card. Excludes welcome offers, insurance and account-specific offers.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Initial entry. 3% when paying with PayPal and 5% on a chosen monthly category (up to $1,000 a month) are not structured."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-synchrony-paypal-cashback-mastercard-page",
+      "last_verified": "2026-11-17",
+      "notes": "No annual fee.",
+      "annual_fee": "0.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "everything-else",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-synchrony-paypal-cashback-mastercard-page",
+          "last_verified": "2026-11-17",
+          "notes": "1.5% cash back on all other purchases where Mastercard is accepted.",
+          "rate": "1.5",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": []
+}

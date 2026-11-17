@@ -1,0 +1,163 @@
+{
+  "format_version": 1,
+  "id": "20261117T090701Z-fc737d7ba00c",
+  "product_id": "us-synchrony-verizon-visa",
+  "recorded_at": "2026-11-17T09:07:01Z",
+  "reason": "Initial entry from the issuer or partner product page (checked 2026-11-17).",
+  "content_sha256": "fc737d7ba00c6726b26dfa3161b314b53b90066e6c7c2a8e5a90ca6f78d116cc",
+  "product": {
+    "id": "us-synchrony-verizon-visa",
+    "issuer": "Synchrony",
+    "name": "Verizon Visa Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["visa"],
+      "status": "verified",
+      "source": "us-synchrony-verizon-visa-page",
+      "last_verified": "2026-11-17",
+      "notes": "The page says Synchrony Bank issues the card under a license from Visa USA."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "verizon-dollars",
+      "unit": "cash"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-synchrony-verizon-visa-page",
+        "url": "https://www.verizon.com/financial-services/verizon-visa-card/",
+        "title": "Verizon Visa Card product page",
+        "accessed": "2026-11-17"
+      }
+    ],
+    "notes": "General US product terms from the issuer or partner product page; the page says Synchrony Bank issues the card. Excludes welcome offers, insurance and account-specific offers.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "to_verify",
+        "source": "us-synchrony-verizon-visa-page",
+        "last_verified": "2026-11-17",
+        "notes": "The annual fee was not captured.",
+        "annual_fee": null,
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "gas",
+        "category": "gas",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-synchrony-verizon-visa-page",
+            "last_verified": "2026-11-17",
+            "notes": "Gas.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "groceries",
+        "category": "groceries",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-synchrony-verizon-visa-page",
+            "last_verified": "2026-11-17",
+            "notes": "Grocery stores.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-synchrony-verizon-visa-page",
+            "last_verified": "2026-11-17",
+            "notes": "Dining.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "verizon",
+        "category": "telecom",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-synchrony-verizon-visa-page",
+            "last_verified": "2026-11-17",
+            "notes": "Verizon store purchases, excluding bill payment.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["any"],
+              "merchants": ["Verizon"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-synchrony-verizon-visa-page",
+            "last_verified": "2026-11-17",
+            "notes": "All other purchases. Verizon Loyalty rewards on bill payments are not structured.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

@@ -32,7 +32,7 @@ const data: SiteData = {
 const query = (q = "") => context(data, "catalog", "zh", new URLSearchParams(q));
 
 test("filters combine audience, units and conditional earn categories without valuing points", () => {
-  assert.equal(filterCards(query()).length, 144);
+  assert.equal(filterCards(query()).length, 149);
   assert.equal(filterCards(query("audience=business")).length, 41);
   const cash = filterCards(query("unit=cash&earn=groceries&min_rate=3"));
   assert.ok(cash.length > 0);
@@ -64,7 +64,7 @@ test("quarterly filters use only applicable rotations; review queue uses a stric
   const category = version.conditions.selection!.categories[1]!;
   assert.ok(filterCards(query(`q=freedom+flex&earn=${category}&min_rate=5&asof=2026-12-31`)).length > 0);
   assert.equal(filterCards(query(`q=freedom+flex&earn=${category}&min_rate=5&asof=2027-01-01`)).length, 0);
-  assert.equal(reviewItems(catalog.cards, "2026-10-28").filter((x) => x.pending).length, 24);
+  assert.equal(reviewItems(catalog.cards, "2026-10-28").filter((x) => x.pending).length, 25);
   const card = structuredClone(catalog.cards[0]!);
   card.earn_rates = [];
   card.credits = [];
@@ -130,7 +130,7 @@ test("static build is reproducible, contains all bilingual pages, and resolves e
       right = join(tmp, "two");
     const result = await buildSite(root, left, "/cardfacts/");
     await buildSite(root, right, "/cardfacts/");
-    assert.equal(result.pages.length, 298);
+    assert.equal(result.pages.length, 308);
     const files = await readdir(left, { recursive: true, withFileTypes: true });
     for (const entry of files.filter((e) => e.isFile())) {
       const relative = join(entry.parentPath, entry.name).slice(left.length + 1);
@@ -150,7 +150,7 @@ test("static build is reproducible, contains all bilingual pages, and resolves e
       }
     }
     const html = await readFile(join(left, "index.html"), "utf8");
-    assert.equal((html.match(/class="catalog-row"/g) ?? []).length, 144);
+    assert.equal((html.match(/class="catalog-row"/g) ?? []).length, 149);
     const detail = await readFile(join(left, "en/cards/us-capital-one-venture-x/index.html"), "utf8");
     assert.match(detail, /id="history"/);
     assert.match(detail, /id="sources"/);

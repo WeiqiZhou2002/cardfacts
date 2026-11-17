@@ -22,7 +22,7 @@ test("static files cover every parameter-free resource and their links resolve",
     const cards = JSON.parse(await readFile(join(out, "cards.json"), "utf8"));
     assert.equal(cards.api_version, 1);
     assert.equal(cards.license, "CC0-1.0");
-    assert.equal(cards.data.count, 144);
+    assert.equal(cards.data.count, 149);
     for (const card of cards.data.cards)
       for (const link of [card.links.self, card.links.terms, card.links.history])
         await assert.doesNotReject(readFile(join(out, link)), link);
@@ -42,7 +42,7 @@ test("static files cover every parameter-free resource and their links resolve",
 });
 
 test("server-only filters select cards by audience, fees, earn and credit categories", () => {
-  assert.equal(ids("cards.json").length, 144);
+  assert.equal(ids("cards.json").length, 149);
   assert.equal(ids("cards.json", "audience=business").length, 41);
   assert.ok(ids("cards.json", "issuer=Chase").every((id) => id.startsWith("us-chase-")));
   assert.ok(ids("cards.json", "earn_category=groceries&min_rate=4").includes("us-amex-gold"));

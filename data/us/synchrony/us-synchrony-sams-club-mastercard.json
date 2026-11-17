@@ -1,0 +1,155 @@
+{
+  "id": "us-synchrony-sams-club-mastercard",
+  "issuer": "Synchrony",
+  "name": "Sam's Club Mastercard",
+  "country": "US",
+  "currency": "USD",
+  "networks": {
+    "values": ["mastercard"],
+    "status": "verified",
+    "source": "us-synchrony-sams-club-mastercard-page",
+    "last_verified": "2026-11-17",
+    "notes": "The product name on the page names Mastercard."
+  },
+  "audience": "personal",
+  "availability": "open",
+  "rewards": {
+    "program": "sams-cash",
+    "unit": "cash"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-synchrony-sams-club-mastercard-page",
+      "url": "https://www.samsclub.com/credit",
+      "title": "Sam's Club Mastercard product page",
+      "accessed": "2026-11-17"
+    }
+  ],
+  "notes": "General US product terms from the issuer or partner product page; the page says Synchrony Bank issues the card. Excludes welcome offers, insurance and account-specific offers.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-synchrony-sams-club-mastercard-page",
+      "last_verified": "2026-11-17",
+      "notes": "No annual fee; a Sam's Club membership is required.",
+      "annual_fee": "0.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "gas",
+      "category": "gas",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-synchrony-sams-club-mastercard-page",
+          "last_verified": "2026-11-17",
+          "notes": "Gas; 5% on the first $6,000 a year in combined gas and EV charging, then 1%.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "ev-charging",
+      "category": "ev_charging",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-synchrony-sams-club-mastercard-page",
+          "last_verified": "2026-11-17",
+          "notes": "EV charging; shares the $6,000-a-year limit with gas, then 1%.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "sams-club",
+      "category": "wholesale_clubs",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-synchrony-sams-club-mastercard-page",
+          "last_verified": "2026-11-17",
+          "notes": "Sam's Club purchases for Plus members; Club members earn 1%.",
+          "rate": "3",
+          "conditions": {
+            "channels": ["any"],
+            "merchants": ["Sam's Club"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "dining",
+      "category": "dining",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-synchrony-sams-club-mastercard-page",
+          "last_verified": "2026-11-17",
+          "notes": "Dining and takeout.",
+          "rate": "3",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "everything-else",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-synchrony-sams-club-mastercard-page",
+          "last_verified": "2026-11-17",
+          "notes": "Other purchases.",
+          "rate": "1",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": []
+}
