@@ -1,0 +1,143 @@
+{
+  "format_version": 1,
+  "id": "20261117T212205Z-123e6e3702d7",
+  "product_id": "us-barclays-jetblue-business",
+  "recorded_at": "2026-11-17T21:22:05Z",
+  "reason": "Resolve pending fees, networks or earning from issuer terms and product pages (checked 2026-11-17).",
+  "content_sha256": "123e6e3702d7cfb4225383df4e2b5e56048454ac6c29e47e0bc9a2bdeffdbee3",
+  "product": {
+    "id": "us-barclays-jetblue-business",
+    "issuer": "Barclays",
+    "name": "JetBlue Business Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["mastercard"],
+      "status": "verified",
+      "source": "us-barclays-jetblue-business-page",
+      "last_verified": "2026-11-17",
+      "notes": "The product page says Barclays Bank Delaware issues the card under a license from Mastercard."
+    },
+    "audience": "business",
+    "availability": "open",
+    "rewards": {
+      "program": "jetblue-trueblue",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-barclays-jetblue-business-page",
+        "url": "https://cards.barclaycardus.com/banking/cards/jetblue-business-card/",
+        "title": "JetBlue Business Card product page",
+        "accessed": "2026-11-17"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-barclays-jetblue-business-page",
+        "last_verified": "2026-11-16",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "99.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "jetblue",
+        "category": "flights",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-barclays-jetblue-business-page",
+            "last_verified": "2026-11-16",
+            "notes": "Eligible JetBlue purchases.",
+            "rate": "6",
+            "conditions": {
+              "channels": ["direct"],
+              "merchants": ["JetBlue"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-barclays-jetblue-business-page",
+            "last_verified": "2026-11-16",
+            "notes": "Restaurants.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "office-supplies",
+        "category": "office_supplies",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-barclays-jetblue-business-page",
+            "last_verified": "2026-11-16",
+            "notes": "Office supply stores.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-barclays-jetblue-business-page",
+            "last_verified": "2026-11-16",
+            "notes": "All other purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "format_version": 1,
+  "id": "20261117T212205Z-6b7fce212a34",
+  "product_id": "us-bank-of-america-premium-rewards",
+  "recorded_at": "2026-11-17T21:22:05Z",
+  "reason": "Resolve pending fees, networks or earning from issuer terms and product pages (checked 2026-11-17).",
+  "content_sha256": "6b7fce212a34c36525fbb6a1e0c6978fd416638aa8a6f25ee5a1778a05039dab",
+  "product": {
+    "id": "us-bank-of-america-premium-rewards",
+    "issuer": "Bank of America",
+    "name": "Bank of America Premium Rewards Credit Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["visa"],
+      "status": "verified",
+      "source": "us-bank-of-america-premium-rewards-terms",
+      "last_verified": "2026-11-17",
+      "notes": "The product's terms and conditions say Visa and Visa Signature trademarks are used by the issuer under license from Visa."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "bank-of-america-rewards",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-bank-of-america-premium-rewards-page",
+        "url": "https://www.bankofamerica.com/credit-cards/products/premium-rewards-credit-card/",
+        "title": "Bank of America Premium Rewards Credit Card product page",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "us-bank-of-america-premium-rewards-terms",
+        "url": "https://www.bankofamerica.com/credit-cards/terms-and-conditions/?campaignid=4079485&productoffercode=UN&locale=en_US",
+        "title": "Terms and Conditions for Bank of America Premium Rewards",
+        "accessed": "2026-11-17"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-bank-of-america-premium-rewards-page",
+        "last_verified": "2026-11-16",
+        "notes": "$95 annual fee; no foreign transaction fees.",
+        "annual_fee": "95.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": "0"
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "travel",
+        "category": "travel",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-premium-rewards-page",
+            "last_verified": "2026-11-16",
+            "notes": "Travel purchases.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-premium-rewards-page",
+            "last_verified": "2026-11-16",
+            "notes": "Dining purchases.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-premium-rewards-page",
+            "last_verified": "2026-11-16",
+            "notes": "All other purchases. Preferred Rewards bonuses are not included.",
+            "rate": "1.5",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": [
+      {
+        "id": "airline-incidental",
+        "name": "Airline Incidental Statement Credit",
+        "category": "airline_incidental",
+        "delivery": "statement_credit",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": ["Airline Incidental Statement Credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-premium-rewards-page",
+            "last_verified": "2026-11-16",
+            "notes": "Up to $100 a year for qualifying airline purchases such as seat upgrades, bag fees, inflight services and lounge fees.",
+            "amount": "100.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null
+          }
+        ]
+      },
+      {
+        "id": "airport-security",
+        "name": "Airport Security Statement Credit",
+        "category": "trusted_traveler",
+        "delivery": "statement_credit",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": ["Airport Security Statement Credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-premium-rewards-page",
+            "last_verified": "2026-11-16",
+            "notes": "Up to $100 every four years toward a TSA PreCheck or Global Entry application fee.",
+            "amount": "100.00",
+            "period": "multi_year",
+            "period_years": 4,
+            "reset_basis": "since_last_credit",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null
+          }
+        ]
+      }
+    ]
+  }
+}

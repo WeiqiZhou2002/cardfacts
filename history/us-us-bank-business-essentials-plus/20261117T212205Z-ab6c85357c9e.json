@@ -1,0 +1,95 @@
+{
+  "format_version": 1,
+  "id": "20261117T212205Z-ab6c85357c9e",
+  "product_id": "us-us-bank-business-essentials-plus",
+  "recorded_at": "2026-11-17T21:22:05Z",
+  "reason": "Resolve pending fees, networks or earning from issuer terms and product pages (checked 2026-11-17).",
+  "content_sha256": "ab6c85357c9e974e79efc0924f07c7d04e9e5056e02ee3d3aa0769027fae1217",
+  "product": {
+    "id": "us-us-bank-business-essentials-plus",
+    "issuer": "U.S. Bank",
+    "name": "U.S. Bank Business Essentials Plus Credit Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["visa"],
+      "status": "verified",
+      "source": "us-us-bank-business-essentials-plus-page",
+      "last_verified": "2026-11-17",
+      "notes": "The product page title names the card the Business Essentials Plus Visa Card."
+    },
+    "audience": "business",
+    "availability": "open",
+    "rewards": {
+      "program": "us-bank-cash-back",
+      "unit": "cash"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-us-bank-business-essentials-plus-page",
+        "url": "https://www.usbank.com/business-banking/business-credit-cards/business-essentials-plus-credit-card.html",
+        "title": "U.S. Bank Business Essentials Plus Credit Card product page",
+        "accessed": "2026-11-17"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": "2026-11-16",
+        "status": "to_verify",
+        "source": "us-us-bank-business-essentials-plus-page",
+        "last_verified": "2026-11-16",
+        "notes": "The page mentions both a $295 fee and no annual fee; the applicable terms were not confirmed.",
+        "annual_fee": null,
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      },
+      {
+        "effective_from": "2026-11-17",
+        "effective_from_basis": "detected",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-us-bank-business-essentials-plus-page",
+        "last_verified": "2026-11-17",
+        "notes": "The product page states a $295 annual fee.",
+        "annual_fee": "295.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-business-essentials-plus-page",
+            "last_verified": "2026-11-16",
+            "notes": "2% cash back on every purchase. Higher rates that depend on qualifying business checking balances are not structured.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

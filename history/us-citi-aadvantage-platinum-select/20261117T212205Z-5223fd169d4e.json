@@ -1,0 +1,162 @@
+{
+  "format_version": 1,
+  "id": "20261117T212205Z-5223fd169d4e",
+  "product_id": "us-citi-aadvantage-platinum-select",
+  "recorded_at": "2026-11-17T21:22:05Z",
+  "reason": "Resolve pending fees, networks or earning from issuer terms and product pages (checked 2026-11-17).",
+  "content_sha256": "5223fd169d4e4d4340de60200187f3b4a55dbd0fd24f9455012f0282eec33000",
+  "product": {
+    "id": "us-citi-aadvantage-platinum-select",
+    "issuer": "Citi",
+    "name": "Citi / AAdvantage Platinum Select World Elite Mastercard",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["mastercard"],
+      "status": "verified",
+      "source": "us-citi-aadvantage-platinum-select-page",
+      "last_verified": "2026-11-15",
+      "notes": "The product name on the issuer page names Mastercard."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "aadvantage",
+      "unit": "miles"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-citi-aadvantage-platinum-select-page",
+        "url": "https://www.citi.com/credit-cards/citi-aadvantage-platinum-select-world-elite-mastercard",
+        "title": "Citi / AAdvantage Platinum Select World Elite Mastercard product page",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "us-citi-aadvantage-platinum-select-terms",
+        "url": "https://online.citi.com/US/nga/cards/displayterms?app=UNSOL&HKOP=ac2bf87088ba62cdbbf7f972bf5de8bf7dd03daf16bd2258fe5cceb219f3e34b",
+        "title": "Citi / AAdvantage Platinum Select complete terms and conditions",
+        "accessed": "2026-11-17"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": "2026-11-16",
+        "status": "to_verify",
+        "source": "us-citi-aadvantage-platinum-select-page",
+        "last_verified": "2026-11-15",
+        "notes": "The fee is waived for the first year; the ongoing amount is filled in dynamically and was not captured. No foreign transaction fees.",
+        "annual_fee": null,
+        "first_year_annual_fee": "0.00",
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": "0"
+      },
+      {
+        "effective_from": "2026-11-17",
+        "effective_from_basis": "detected",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-citi-aadvantage-platinum-select-terms",
+        "last_verified": "2026-11-17",
+        "notes": "From the issuer's complete terms and conditions page. No foreign purchase fee. The product page says the fee is waived for the first year; that is not recorded on this version.",
+        "annual_fee": "99.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": "0"
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "american-airlines",
+        "category": "flights",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-citi-aadvantage-platinum-select-page",
+            "last_verified": "2026-11-15",
+            "notes": "Eligible American Airlines purchases.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["direct"],
+              "merchants": ["American Airlines"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-citi-aadvantage-platinum-select-page",
+            "last_verified": "2026-11-15",
+            "notes": "Restaurants, including takeout.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "gas",
+        "category": "gas",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-citi-aadvantage-platinum-select-page",
+            "last_verified": "2026-11-15",
+            "notes": "Gas stations.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-citi-aadvantage-platinum-select-page",
+            "last_verified": "2026-11-15",
+            "notes": "All other purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

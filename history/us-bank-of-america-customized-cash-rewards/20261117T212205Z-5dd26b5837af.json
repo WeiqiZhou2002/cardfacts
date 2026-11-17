@@ -1,0 +1,128 @@
+{
+  "format_version": 1,
+  "id": "20261117T212205Z-5dd26b5837af",
+  "product_id": "us-bank-of-america-customized-cash-rewards",
+  "recorded_at": "2026-11-17T21:22:05Z",
+  "reason": "Resolve pending fees, networks or earning from issuer terms and product pages (checked 2026-11-17).",
+  "content_sha256": "5dd26b5837af4d1c121e5b90a2105936441ed614cef2aa3f3e1151519850e630",
+  "product": {
+    "id": "us-bank-of-america-customized-cash-rewards",
+    "issuer": "Bank of America",
+    "name": "Bank of America Customized Cash Rewards Credit Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["visa"],
+      "status": "verified",
+      "source": "us-bank-of-america-customized-cash-rewards-terms",
+      "last_verified": "2026-11-17",
+      "notes": "The product's terms and conditions say Visa and Visa Signature trademarks are used by the issuer under license from Visa."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "bank-of-america-cash-rewards",
+      "unit": "cash"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-bank-of-america-customized-cash-rewards-page",
+        "url": "https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card/",
+        "title": "Bank of America Customized Cash Rewards Credit Card product page",
+        "accessed": "2026-11-16"
+      },
+      {
+        "id": "us-bank-of-america-customized-cash-rewards-terms",
+        "url": "https://www.bankofamerica.com/credit-cards/terms-and-conditions/?campaignid=4079537&productoffercode=8H&locale=en_US",
+        "title": "Terms and Conditions for Bank of America Customized Cash Rewards",
+        "accessed": "2026-11-17"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-bank-of-america-customized-cash-rewards-page",
+        "last_verified": "2026-11-16",
+        "notes": "No annual fee.",
+        "annual_fee": "0.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "groceries",
+        "category": "groceries",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-customized-cash-rewards-page",
+            "last_verified": "2026-11-16",
+            "notes": "Grocery stores. The combined quarterly limit for bonus categories was not captured.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "wholesale-clubs",
+        "category": "wholesale_clubs",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-customized-cash-rewards-page",
+            "last_verified": "2026-11-16",
+            "notes": "Wholesale clubs. The combined quarterly limit for bonus categories was not captured.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-customized-cash-rewards-page",
+            "last_verified": "2026-11-16",
+            "notes": "All other purchases. The cardholder-chosen category (6% in the first year, then 3%) is not structured.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

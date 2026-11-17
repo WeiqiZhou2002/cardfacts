@@ -23,7 +23,7 @@
       "id": "us-citi-costco-anywhere-page",
       "url": "https://www.citi.com/credit-cards/citi-costco-anywhere-visa-credit-card",
       "title": "Costco Anywhere Visa Card by Citi product page",
-      "accessed": "2026-11-15"
+      "accessed": "2026-11-17"
     }
   ],
   "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
@@ -37,12 +37,25 @@
     {
       "effective_from": null,
       "effective_from_basis": "unknown",
-      "effective_to": null,
+      "effective_to": "2026-11-16",
       "status": "to_verify",
       "source": "us-citi-costco-anywhere-page",
       "last_verified": "2026-11-15",
       "notes": "Requires a Costco membership; the card's own fee was not captured.",
       "annual_fee": null,
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    },
+    {
+      "effective_from": "2026-11-17",
+      "effective_from_basis": "detected",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-citi-costco-anywhere-page",
+      "last_verified": "2026-11-17",
+      "notes": "The product page says there is no annual fee with a paid Costco membership.",
+      "annual_fee": "0.00",
       "first_year_annual_fee": null,
       "authorized_user_fee": null,
       "foreign_transaction_fee_percent": null

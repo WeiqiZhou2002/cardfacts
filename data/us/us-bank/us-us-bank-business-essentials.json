@@ -5,11 +5,11 @@
   "country": "US",
   "currency": "USD",
   "networks": {
-    "values": [],
-    "status": "to_verify",
+    "values": ["visa"],
+    "status": "verified",
     "source": "us-us-bank-business-essentials-page",
-    "last_verified": "2026-11-16",
-    "notes": "The cited product page does not name the network."
+    "last_verified": "2026-11-17",
+    "notes": "The product page title names the card the Business Essentials Visa Card."
   },
   "audience": "business",
   "availability": "open",
@@ -23,7 +23,7 @@
       "id": "us-us-bank-business-essentials-page",
       "url": "https://www.usbank.com/business-banking/business-credit-cards/business-essentials-credit-card.html",
       "title": "U.S. Bank Business Essentials Credit Card product page",
-      "accessed": "2026-11-16"
+      "accessed": "2026-11-17"
     }
   ],
   "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",

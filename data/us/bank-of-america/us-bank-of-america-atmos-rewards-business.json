@@ -5,11 +5,11 @@
   "country": "US",
   "currency": "USD",
   "networks": {
-    "values": [],
-    "status": "to_verify",
+    "values": ["visa"],
+    "status": "verified",
     "source": "us-bank-of-america-atmos-rewards-business-page",
     "last_verified": "2026-11-17",
-    "notes": "The cited product page does not name the network."
+    "notes": "The product page names the card the Atmos Rewards Visa Signature Business Card."
   },
   "audience": "business",
   "availability": "open",
@@ -31,7 +31,7 @@
     "fees": "partial",
     "earn_rates": "partial",
     "credits": "partial",
-    "notes": "Initial entry: the earning rates were not captured from the issuer page."
+    "notes": "Initial entry from the issuer page."
   },
   "fees": [
     {
@@ -48,6 +48,128 @@
       "foreign_transaction_fee_percent": null
     }
   ],
-  "earn_rates": [],
+  "earn_rates": [
+    {
+      "id": "alaska-hawaiian",
+      "category": "flights",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-bank-of-america-atmos-rewards-business-page",
+          "last_verified": "2026-11-17",
+          "notes": "Eligible Alaska Airlines and Hawaiian Airlines purchases.",
+          "rate": "3",
+          "conditions": {
+            "channels": ["direct"],
+            "merchants": ["Alaska Airlines", "Hawaiian Airlines"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "gas",
+      "category": "gas",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-bank-of-america-atmos-rewards-business-page",
+          "last_verified": "2026-11-17",
+          "notes": "Eligible gas.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "ev-charging",
+      "category": "ev_charging",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-bank-of-america-atmos-rewards-business-page",
+          "last_verified": "2026-11-17",
+          "notes": "EV charging stations.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "shipping",
+      "category": "shipping",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-bank-of-america-atmos-rewards-business-page",
+          "last_verified": "2026-11-17",
+          "notes": "Shipping.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "transit",
+      "category": "transit",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-bank-of-america-atmos-rewards-business-page",
+          "last_verified": "2026-11-17",
+          "notes": "Local transit, including rideshare.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "everything-else",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-bank-of-america-atmos-rewards-business-page",
+          "last_verified": "2026-11-17",
+          "notes": "All other purchases.",
+          "rate": "1",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
   "credits": []
 }

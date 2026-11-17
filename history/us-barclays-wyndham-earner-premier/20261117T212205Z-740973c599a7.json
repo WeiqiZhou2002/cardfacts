@@ -1,0 +1,163 @@
+{
+  "format_version": 1,
+  "id": "20261117T212205Z-740973c599a7",
+  "product_id": "us-barclays-wyndham-earner-premier",
+  "recorded_at": "2026-11-17T21:22:05Z",
+  "reason": "Resolve pending fees, networks or earning from issuer terms and product pages (checked 2026-11-17).",
+  "content_sha256": "740973c599a784d7cc5b75c0c57e4abc100dc91216b7dbf2566c4279e124aedd",
+  "product": {
+    "id": "us-barclays-wyndham-earner-premier",
+    "issuer": "Barclays",
+    "name": "Wyndham Rewards Earner Premier Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["visa"],
+      "status": "verified",
+      "source": "us-barclays-wyndham-earner-premier-page",
+      "last_verified": "2026-11-17",
+      "notes": "The product page says Barclays Bank Delaware issues the card under a license from Visa."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "wyndham-rewards",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-barclays-wyndham-earner-premier-page",
+        "url": "https://cards.barclaycardus.com/banking/cards/wyndham-rewards-earner-premier-card/",
+        "title": "Wyndham Rewards Earner Premier Card product page",
+        "accessed": "2026-11-17"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-barclays-wyndham-earner-premier-page",
+        "last_verified": "2026-11-16",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "395.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "wyndham",
+        "category": "hotels",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-barclays-wyndham-earner-premier-page",
+            "last_verified": "2026-11-16",
+            "notes": "Eligible purchases at Hotels by Wyndham, including Wyndham Travel Bundles.",
+            "rate": "8",
+            "conditions": {
+              "channels": ["any"],
+              "merchants": ["Hotels by Wyndham"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-barclays-wyndham-earner-premier-page",
+            "last_verified": "2026-11-16",
+            "notes": "Eligible dining.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "groceries",
+        "category": "groceries",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-barclays-wyndham-earner-premier-page",
+            "last_verified": "2026-11-16",
+            "notes": "Grocery stores, excluding Target and Walmart.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "travel",
+        "category": "travel",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-barclays-wyndham-earner-premier-page",
+            "last_verified": "2026-11-16",
+            "notes": "Travel purchases, including eligible Wyndham Vacation Club purchases.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-barclays-wyndham-earner-premier-page",
+            "last_verified": "2026-11-16",
+            "notes": "All other purchases, excluding Wyndham Vacation Club down payments.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

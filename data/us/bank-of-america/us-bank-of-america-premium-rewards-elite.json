@@ -5,11 +5,11 @@
   "country": "US",
   "currency": "USD",
   "networks": {
-    "values": [],
-    "status": "to_verify",
-    "source": "us-bank-of-america-premium-rewards-elite-page",
-    "last_verified": "2026-11-16",
-    "notes": "The cited product page does not name the network."
+    "values": ["visa"],
+    "status": "verified",
+    "source": "us-bank-of-america-premium-rewards-elite-terms",
+    "last_verified": "2026-11-17",
+    "notes": "The product's terms and conditions say Visa and Visa Infinite trademarks are used by the issuer under license from Visa."
   },
   "audience": "personal",
   "availability": "open",
@@ -24,6 +24,12 @@
       "url": "https://www.bankofamerica.com/credit-cards/products/premium-rewards-elite-credit-card/",
       "title": "Bank of America Premium Rewards Elite Credit Card product page",
       "accessed": "2026-11-16"
+    },
+    {
+      "id": "us-bank-of-america-premium-rewards-elite-terms",
+      "url": "https://www.bankofamerica.com/credit-cards/terms-and-conditions/?campaignid=4079322&productoffercode=R9&locale=en_US",
+      "title": "Terms and Conditions for Bank of America Premium Rewards Elite",
+      "accessed": "2026-11-17"
     }
   ],
   "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
