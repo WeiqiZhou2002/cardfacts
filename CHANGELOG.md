@@ -2,7 +2,9 @@
 
 ## Unreleased — pending values resolved
 
-- Resolve 9 pending annual fees and 20 pending networks from issuer terms pages and product pages, checked 2026-11-17: five Citi AAdvantage cards and the Costco Anywhere card, Delta SkyMiles Gold, two U.S. Bank business cards, seven Bank of America cards, seven Barclays cards and four U.S. Bank business cards.
+- Resolve 9 pending annual fees and 19 pending networks from issuer terms pages and product pages, checked 2026-11-17.
+  - Fees: five Citi AAdvantage cards, the Costco Anywhere card, Delta SkyMiles Gold and two U.S. Bank business cards.
+  - Networks: Citi / AAdvantage Business, seven Bank of America cards, seven Barclays cards and four U.S. Bank business cards.
 - Fees use the intake's method: the pending version ends the day before the check, and a verified version starts on the check date with basis `detected`.
 - Add the earning rates for the Atmos Rewards Visa Signature Business Card.
 
