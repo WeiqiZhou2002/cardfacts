@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for helping keep card data accurate. The draft provides 140 cards, full product history and offline tooling.
+Thanks for helping keep card data accurate. The draft provides 144 cards, full product history and offline tooling.
 Useful contributions include issuer-confirmed change reports, schema review and additional cited cards.
 
 ## Reporting a change

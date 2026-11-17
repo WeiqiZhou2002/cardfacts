@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased — First Electronic Bank cards, Bilt network
+
+- Add four cards issued by First Electronic Bank and serviced by Cardless: Qatar Airways Privilege Club Signature and Infinite, and avianca lifemiles American Express and Elite. The issuer is registered with the partner domains that host the product pages (qatarairways.com, lifemiles.com) and cardless.com, and is manual-only.
+- Bilt cards: cite the Mastercard network and note that Column N.A. issues and Cardless services them. Their IDs and issuer entry are unchanged.
+
 ## Unreleased — catalog expansion, second batch
 
 - Add 18 products (7 personal, 11 business), for 140 in total: Amex Delta SkyMiles business cards, Capital One Venture and VentureOne Business, four Bank of America business cards, the Costco Anywhere Visa Business Card, Robinhood Gold and Platinum, three PenFed cards, Fidelity Rewards and two FNBO Evergreen cards. Values come from the issuer's product pages, checked 2026-11-17.

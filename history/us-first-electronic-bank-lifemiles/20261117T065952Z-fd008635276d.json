@@ -1,0 +1,61 @@
+{
+  "format_version": 1,
+  "id": "20261117T065952Z-fd008635276d",
+  "product_id": "us-first-electronic-bank-lifemiles",
+  "recorded_at": "2026-11-17T06:59:52Z",
+  "reason": "Initial entry from the partner's product page (checked 2026-11-17).",
+  "content_sha256": "fd008635276d00af2c18ac3c2c4a8290880e1d88aaeb50fe2a34f5bb6e45c6f5",
+  "product": {
+    "id": "us-first-electronic-bank-lifemiles",
+    "issuer": "First Electronic Bank",
+    "name": "avianca lifemiles American Express Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["amex"],
+      "status": "verified",
+      "source": "us-first-electronic-bank-lifemiles-page",
+      "last_verified": "2026-11-17",
+      "notes": "The product name on the page names American Express."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "lifemiles",
+      "unit": "miles"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-first-electronic-bank-lifemiles-page",
+        "url": "https://www.lifemiles.com/discover/landing-page/avianca-lifemiles-creditcard",
+        "title": "avianca lifemiles credit cards page",
+        "accessed": "2026-11-17"
+      }
+    ],
+    "notes": "General US product terms from the partner's product page; the page says First Electronic Bank issues the card and Cardless services it. Excludes welcome offers, insurance and account-specific offers.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry. The page shows earning rates in a grid whose rows and columns could not be matched to categories and cards reliably, so no earn rules are recorded."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-first-electronic-bank-lifemiles-page",
+        "last_verified": "2026-11-17",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "99.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [],
+    "credits": []
+  }
+}

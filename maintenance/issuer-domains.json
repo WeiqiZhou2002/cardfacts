@@ -89,6 +89,12 @@
       "name": "FNBO",
       "domains": ["fnbo.com"],
       "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
+    },
+    {
+      "id": "first-electronic-bank",
+      "name": "First Electronic Bank",
+      "domains": ["qatarairways.com", "lifemiles.com", "cardless.com"],
+      "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
     }
   ],
   "manual_only": [
@@ -106,7 +112,8 @@
     "robinhood",
     "penfed",
     "elan",
-    "fnbo"
+    "fnbo",
+    "first-electronic-bank"
   ],
   "user_agent": "CardFacts/0.1 (+https://github.com/WeiqiZhou2002/cardfacts)"
 }
