@@ -1,0 +1,155 @@
+{
+  "id": "us-barclays-wyndham-earner-plus",
+  "issuer": "Barclays",
+  "name": "Wyndham Rewards Earner Plus Card",
+  "country": "US",
+  "currency": "USD",
+  "networks": {
+    "values": [],
+    "status": "to_verify",
+    "source": "us-barclays-wyndham-earner-plus-page",
+    "last_verified": "2026-11-16",
+    "notes": "The cited product page does not name the network."
+  },
+  "audience": "personal",
+  "availability": "open",
+  "rewards": {
+    "program": "wyndham-rewards",
+    "unit": "points"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-barclays-wyndham-earner-plus-page",
+      "url": "https://cards.barclaycardus.com/banking/cards/wyndham-rewards-earner-plus-card/",
+      "title": "Wyndham Rewards Earner Plus Card product page",
+      "accessed": "2026-11-16"
+    }
+  ],
+  "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-barclays-wyndham-earner-plus-page",
+      "last_verified": "2026-11-16",
+      "notes": "$0 introductory fee for the first year, then $95.",
+      "annual_fee": "95.00",
+      "first_year_annual_fee": "0.00",
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "wyndham",
+      "category": "hotels",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-barclays-wyndham-earner-plus-page",
+          "last_verified": "2026-11-16",
+          "notes": "Eligible purchases at Hotels by Wyndham, including Wyndham Travel Bundles.",
+          "rate": "6",
+          "conditions": {
+            "channels": ["any"],
+            "merchants": ["Hotels by Wyndham"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "dining",
+      "category": "dining",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-barclays-wyndham-earner-plus-page",
+          "last_verified": "2026-11-16",
+          "notes": "Eligible dining.",
+          "rate": "4",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "groceries",
+      "category": "groceries",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-barclays-wyndham-earner-plus-page",
+          "last_verified": "2026-11-16",
+          "notes": "Grocery stores, excluding Target and Walmart.",
+          "rate": "4",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "travel",
+      "category": "travel",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-barclays-wyndham-earner-plus-page",
+          "last_verified": "2026-11-16",
+          "notes": "Travel purchases.",
+          "rate": "4",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "everything-else",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-barclays-wyndham-earner-plus-page",
+          "last_verified": "2026-11-16",
+          "notes": "All other purchases, excluding Wyndham Vacation Club down payments.",
+          "rate": "1",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": []
+}

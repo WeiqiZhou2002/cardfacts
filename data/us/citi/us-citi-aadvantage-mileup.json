@@ -1,0 +1,75 @@
+{
+  "id": "us-citi-aadvantage-mileup",
+  "issuer": "Citi",
+  "name": "American Airlines AAdvantage MileUp Card",
+  "country": "US",
+  "currency": "USD",
+  "networks": {
+    "values": [],
+    "status": "to_verify",
+    "source": "us-citi-aadvantage-mileup-page",
+    "last_verified": "2026-11-15",
+    "notes": "The cited product page does not name the network."
+  },
+  "audience": "personal",
+  "availability": "open",
+  "rewards": {
+    "program": "aadvantage",
+    "unit": "miles"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-citi-aadvantage-mileup-page",
+      "url": "https://www.citi.com/credit-cards/aadvantage-mile-up-credit-card",
+      "title": "American Airlines AAdvantage MileUp Card product page",
+      "accessed": "2026-11-15"
+    }
+  ],
+  "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "to_verify",
+      "source": "us-citi-aadvantage-mileup-page",
+      "last_verified": "2026-11-15",
+      "notes": "The issuer page fills the annual fee in dynamically and it was not captured.",
+      "annual_fee": null,
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "american-airlines",
+      "category": "flights",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-citi-aadvantage-mileup-page",
+          "last_verified": "2026-11-15",
+          "notes": "Eligible American Airlines purchases; other rates were not captured.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["direct"],
+            "merchants": ["American Airlines"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": []
+}

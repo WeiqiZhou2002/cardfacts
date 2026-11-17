@@ -1,0 +1,123 @@
+{
+  "id": "us-bank-of-america-atmos-rewards-summit",
+  "issuer": "Bank of America",
+  "name": "Atmos Rewards Summit Visa Infinite Credit Card",
+  "country": "US",
+  "currency": "USD",
+  "networks": {
+    "values": ["visa"],
+    "status": "verified",
+    "source": "us-bank-of-america-atmos-rewards-summit-page",
+    "last_verified": "2026-11-16",
+    "notes": "The product name on the issuer page names Visa."
+  },
+  "audience": "personal",
+  "availability": "open",
+  "rewards": {
+    "program": "atmos-rewards",
+    "unit": "points"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-bank-of-america-atmos-rewards-summit-page",
+      "url": "https://www.bankofamerica.com/credit-cards/products/alaska-airlines-infinite-credit-card/",
+      "title": "Atmos Rewards Summit Visa Infinite Credit Card product page",
+      "accessed": "2026-11-16"
+    }
+  ],
+  "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-bank-of-america-atmos-rewards-summit-page",
+      "last_verified": "2026-11-16",
+      "notes": "$395 annual fee; no foreign transaction fees.",
+      "annual_fee": "395.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": "0"
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "alaska-hawaiian",
+      "category": "flights",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-bank-of-america-atmos-rewards-summit-page",
+          "last_verified": "2026-11-16",
+          "notes": "Eligible Alaska Airlines and Hawaiian Airlines purchases.",
+          "rate": "3",
+          "conditions": {
+            "channels": ["direct"],
+            "merchants": ["Alaska Airlines", "Hawaiian Airlines"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "dining",
+      "category": "dining",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-bank-of-america-atmos-rewards-summit-page",
+          "last_verified": "2026-11-16",
+          "notes": "Eligible dining. Purchases in foreign currencies also earn 3 points; that rule is not structured.",
+          "rate": "3",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "id": "airport-security",
+      "name": "Airport Security Statement Credit",
+      "category": "trusted_traveler",
+      "delivery": "statement_credit",
+      "enrollment": "unknown",
+      "match": {
+        "keywords": ["Airport Security Statement Credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-bank-of-america-atmos-rewards-summit-page",
+          "last_verified": "2026-11-16",
+          "notes": "Up to $120 every four years toward a TSA PreCheck or Global Entry application fee.",
+          "amount": "120.00",
+          "period": "multi_year",
+          "period_years": 4,
+          "reset_basis": "since_last_credit",
+          "period_boundaries": "inferred",
+          "max_posting_lag_days": null
+        }
+      ]
+    }
+  ]
+}

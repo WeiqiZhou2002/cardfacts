@@ -1,0 +1,203 @@
+{
+  "format_version": 1,
+  "id": "20261116T231902Z-28510f1cdf57",
+  "product_id": "us-us-bank-business-triple-cash",
+  "recorded_at": "2026-11-16T23:19:02Z",
+  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-16).",
+  "content_sha256": "28510f1cdf57b80b48d6dbbe787778f55e76b0217b9513c04db5a4295542f36c",
+  "product": {
+    "id": "us-us-bank-business-triple-cash",
+    "issuer": "U.S. Bank",
+    "name": "U.S. Bank Triple Cash Rewards Business Credit Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": [],
+      "status": "to_verify",
+      "source": "us-us-bank-business-triple-cash-page",
+      "last_verified": "2026-11-16",
+      "notes": "The cited product page does not name the network."
+    },
+    "audience": "business",
+    "availability": "open",
+    "rewards": {
+      "program": "us-bank-cash-back",
+      "unit": "cash"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-us-bank-business-triple-cash-page",
+        "url": "https://www.usbank.com/business-banking/business-credit-cards/business-triple-cash-back-credit-card.html",
+        "title": "U.S. Bank Triple Cash Rewards Business Credit Card product page",
+        "accessed": "2026-11-16"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-us-bank-business-triple-cash-page",
+        "last_verified": "2026-11-16",
+        "notes": "No annual fee.",
+        "annual_fee": "0.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "travel-center",
+        "category": "travel",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-business-triple-cash-page",
+            "last_verified": "2026-11-16",
+            "notes": "Prepaid hotels and car rentals booked directly in the U.S. Bank Travel Center.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["issuer_portal"],
+              "prepaid": true
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "gas",
+        "category": "gas",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-business-triple-cash-page",
+            "last_verified": "2026-11-16",
+            "notes": "Gas stations, on transactions of $200 or less.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "ev-charging",
+        "category": "ev_charging",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-business-triple-cash-page",
+            "last_verified": "2026-11-16",
+            "notes": "EV charging stations, on transactions of $200 or less.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "office-supplies",
+        "category": "office_supplies",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-business-triple-cash-page",
+            "last_verified": "2026-11-16",
+            "notes": "Office supply stores.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "telecom",
+        "category": "telecom",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-business-triple-cash-page",
+            "last_verified": "2026-11-16",
+            "notes": "Cell phone service providers.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-business-triple-cash-page",
+            "last_verified": "2026-11-16",
+            "notes": "Restaurants.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-business-triple-cash-page",
+            "last_verified": "2026-11-16",
+            "notes": "All other eligible purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

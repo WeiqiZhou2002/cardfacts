@@ -1,0 +1,270 @@
+{
+  "format_version": 1,
+  "id": "20261116T231707Z-17813dcfeab5",
+  "product_id": "us-amex-hilton-honors-aspire",
+  "recorded_at": "2026-11-16T23:17:07Z",
+  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-15/16).",
+  "content_sha256": "17813dcfeab5d4ffcabdb74d8261f2324e1186c1289c72e0dc6bf173cec46987",
+  "product": {
+    "id": "us-amex-hilton-honors-aspire",
+    "issuer": "American Express",
+    "name": "Hilton Honors American Express Aspire Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["amex"],
+      "status": "verified",
+      "source": "us-amex-hilton-honors-aspire-page",
+      "last_verified": "2026-11-15",
+      "notes": "American Express issues and runs the network for its own cards."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "hilton-honors",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-amex-hilton-honors-aspire-page",
+        "url": "https://www.americanexpress.com/us/credit-cards/card/hilton-honors-aspire/",
+        "title": "Hilton Honors American Express Aspire Card product page",
+        "accessed": "2026-11-15"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-amex-hilton-honors-aspire-page",
+        "last_verified": "2026-11-15",
+        "notes": "Standard annual fee; no foreign transaction fees from American Express.",
+        "annual_fee": "550.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": "0"
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "hilton",
+        "category": "hotels",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-hilton-honors-aspire-page",
+            "last_verified": "2026-11-15",
+            "notes": "Purchases made directly with hotels and resorts in the Hilton portfolio.",
+            "rate": "14",
+            "conditions": {
+              "channels": ["direct"],
+              "merchants": ["Hilton"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "flights",
+        "category": "flights",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-hilton-honors-aspire-page",
+            "last_verified": "2026-11-15",
+            "notes": "Flights booked directly with airlines or through AmexTravel.com.",
+            "rate": "7",
+            "conditions": {
+              "channels": ["direct", "issuer_portal"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "car-rental",
+        "category": "car_rental",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-hilton-honors-aspire-page",
+            "last_verified": "2026-11-15",
+            "notes": "Car rentals booked directly with select car rental companies.",
+            "rate": "7",
+            "conditions": {
+              "channels": ["direct"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-hilton-honors-aspire-page",
+            "last_verified": "2026-11-15",
+            "notes": "US restaurants, including takeout and delivery.",
+            "rate": "7",
+            "conditions": {
+              "channels": ["any"],
+              "region": "US"
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-hilton-honors-aspire-page",
+            "last_verified": "2026-11-15",
+            "notes": "Other eligible purchases.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": [
+      {
+        "id": "hilton-resort",
+        "name": "Hilton Resort Credit",
+        "category": "hotel",
+        "delivery": "statement_credit",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": ["Hilton Resort Credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-hilton-honors-aspire-page",
+            "last_verified": "2026-11-15",
+            "notes": "Up to $200 twice a year, $400 a year, on eligible purchases made directly with participating Hilton Resorts.",
+            "amount": "200.00",
+            "period": "semiannual",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null
+          }
+        ]
+      },
+      {
+        "id": "flight",
+        "name": "Flight Credit",
+        "category": "travel",
+        "family": "travel",
+        "delivery": "statement_credit",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": ["Flight Credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-hilton-honors-aspire-page",
+            "last_verified": "2026-11-15",
+            "notes": "Up to $50 each quarter, $200 a year, on flights bought directly from an airline or through Amex Travel.",
+            "amount": "50.00",
+            "period": "quarterly",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null
+          }
+        ]
+      },
+      {
+        "id": "clear-plus",
+        "name": "CLEAR+ Credit",
+        "category": "trusted_traveler",
+        "delivery": "statement_credit",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": ["CLEAR+ Credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-amex-hilton-honors-aspire-page",
+            "last_verified": "2026-11-15",
+            "notes": "Up to $219 per calendar year toward a CLEAR+ membership paid with the card.",
+            "amount": "219.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null
+          }
+        ]
+      },
+      {
+        "id": "waldorf-conrad",
+        "name": "Waldorf Astoria and Conrad property credit",
+        "category": "hotel",
+        "delivery": "statement_credit",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": ["Waldorf Astoria and Conrad property credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "to_verify",
+            "source": "us-amex-hilton-honors-aspire-page",
+            "last_verified": "2026-11-15",
+            "notes": "Up to $100 for qualifying charges on a stay of at least 2 nights booked with the Aspire Card rate; the per-stay or per-year basis is not captured. Free night awards and elite status are not recorded as credits.",
+            "amount": null,
+            "period": "annual",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null
+          }
+        ]
+      }
+    ]
+  }
+}

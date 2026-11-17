@@ -1,0 +1,75 @@
+{
+  "id": "us-apple-card",
+  "issuer": "Apple",
+  "name": "Apple Card",
+  "country": "US",
+  "currency": "USD",
+  "networks": {
+    "values": [],
+    "status": "to_verify",
+    "source": "us-apple-card-page",
+    "last_verified": "2026-11-16",
+    "notes": "The cited product page does not name the network."
+  },
+  "audience": "personal",
+  "availability": "open",
+  "rewards": {
+    "program": "apple-daily-cash",
+    "unit": "cash"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-apple-card-page",
+      "url": "https://www.apple.com/apple-card/",
+      "title": "Apple Card product page",
+      "accessed": "2026-11-16"
+    }
+  ],
+  "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Initial entry. 2% Daily Cash with Apple Pay, 3% at select merchants with Apple Pay and the base rate on the physical card depend on the payment method and are not structured."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-apple-card-page",
+      "last_verified": "2026-11-16",
+      "notes": "The issuer page says Apple Card has no fees.",
+      "annual_fee": "0.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": "0"
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "apple",
+      "category": "online_retail",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-apple-card-page",
+          "last_verified": "2026-11-16",
+          "notes": "Purchases at Apple.",
+          "rate": "3",
+          "conditions": {
+            "channels": ["any"],
+            "merchants": ["Apple"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": []
+}

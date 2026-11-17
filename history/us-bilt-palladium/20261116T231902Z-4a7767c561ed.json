@@ -1,0 +1,88 @@
+{
+  "format_version": 1,
+  "id": "20261116T231902Z-4a7767c561ed",
+  "product_id": "us-bilt-palladium",
+  "recorded_at": "2026-11-16T23:19:02Z",
+  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-16).",
+  "content_sha256": "4a7767c561edfdb727fff2f2498288b5e6372f9a96a8daf5524e31dfdcbb2404",
+  "product": {
+    "id": "us-bilt-palladium",
+    "issuer": "Bilt",
+    "name": "Bilt Palladium Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": [],
+      "status": "to_verify",
+      "source": "us-bilt-palladium-page",
+      "last_verified": "2026-11-16",
+      "notes": "The card comparison page does not name the network."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "bilt-rewards",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-bilt-palladium-page",
+        "url": "https://www.bilt.com/card",
+        "title": "Bilt card comparison page",
+        "accessed": "2026-11-16"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's card comparison page; earning rates were not captured. Housing rewards on rent and mortgage (up to 1.25X, depending on other card spend) are not structured."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-bilt-palladium-page",
+        "last_verified": "2026-11-16",
+        "notes": "$495 annual fee; no foreign transaction fees.",
+        "annual_fee": "495.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": "0"
+      }
+    ],
+    "earn_rates": [],
+    "credits": [
+      {
+        "id": "bilt-travel-hotel",
+        "name": "Bilt Travel Hotel credit",
+        "category": "hotel",
+        "delivery": "statement_credit",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": ["Bilt Travel Hotel credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bilt-palladium-page",
+            "last_verified": "2026-11-16",
+            "notes": "Applied twice a year as a statement credit for qualifying Bilt Travel Portal hotel bookings.",
+            "amount": "200.00",
+            "period": "semiannual",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null
+          }
+        ]
+      }
+    ]
+  }
+}

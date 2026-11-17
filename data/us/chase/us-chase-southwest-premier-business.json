@@ -1,0 +1,154 @@
+{
+  "id": "us-chase-southwest-premier-business",
+  "issuer": "Chase",
+  "name": "Southwest Rapid Rewards Premier Business Credit Card",
+  "country": "US",
+  "currency": "USD",
+  "networks": {
+    "values": ["visa"],
+    "status": "verified",
+    "source": "us-chase-southwest-premier-business-visa-list",
+    "last_verified": "2026-11-15",
+    "notes": "Listed on Chase's Visa credit cards page."
+  },
+  "audience": "business",
+  "availability": "open",
+  "rewards": {
+    "program": "southwest-rapid-rewards",
+    "unit": "points"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-chase-southwest-premier-business-page",
+      "url": "https://creditcards.chase.com/business-credit-cards/southwest/premier-business",
+      "title": "Southwest Rapid Rewards Premier Business Credit Card product page",
+      "accessed": "2026-11-15"
+    },
+    {
+      "accessed": "2026-11-15",
+      "id": "us-chase-southwest-premier-business-visa-list",
+      "url": "https://creditcards.chase.com/visa-credit-cards",
+      "title": "Chase Visa credit cards list",
+      "kind": "other"
+    }
+  ],
+  "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-chase-southwest-premier-business-page",
+      "last_verified": "2026-11-15",
+      "notes": "Annual fee billed on the first statement.",
+      "annual_fee": "149.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "southwest",
+      "category": "flights",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-southwest-premier-business-page",
+          "last_verified": "2026-11-15",
+          "notes": "Purchases made directly with Southwest, including flights, inflight, gift cards and Getaways packages.",
+          "rate": "3",
+          "conditions": {
+            "channels": ["direct"],
+            "merchants": ["Southwest Airlines"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "gas",
+      "category": "gas",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-southwest-premier-business-page",
+          "last_verified": "2026-11-15",
+          "notes": "Gas stations; shares an $8,000 cap each account anniversary year with dining.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": {
+            "amount": "8000.00",
+            "period": "annual",
+            "reset_basis": "anniversary",
+            "rate_after_cap": "1",
+            "shared_with": ["dining"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "dining",
+      "category": "dining",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-southwest-premier-business-page",
+          "last_verified": "2026-11-15",
+          "notes": "Restaurants; shares an $8,000 cap each account anniversary year with gas.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": {
+            "amount": "8000.00",
+            "period": "annual",
+            "reset_basis": "anniversary",
+            "rate_after_cap": "1",
+            "shared_with": ["gas"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "everything-else",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-southwest-premier-business-page",
+          "last_verified": "2026-11-15",
+          "notes": "All other purchases.",
+          "rate": "1",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": []
+}

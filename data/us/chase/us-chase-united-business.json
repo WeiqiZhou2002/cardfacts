@@ -1,0 +1,129 @@
+{
+  "id": "us-chase-united-business",
+  "issuer": "Chase",
+  "name": "United Business Card",
+  "country": "US",
+  "currency": "USD",
+  "networks": {
+    "values": ["visa"],
+    "status": "verified",
+    "source": "us-chase-united-business-visa-list",
+    "last_verified": "2026-11-15",
+    "notes": "Listed on Chase's Visa credit cards page."
+  },
+  "audience": "business",
+  "availability": "open",
+  "rewards": {
+    "program": "united-mileageplus",
+    "unit": "miles"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-chase-united-business-page",
+      "url": "https://creditcards.chase.com/business-credit-cards/united/united-business-card",
+      "title": "United Business Card product page",
+      "accessed": "2026-11-15"
+    },
+    {
+      "accessed": "2026-11-15",
+      "id": "us-chase-united-business-visa-list",
+      "url": "https://creditcards.chase.com/visa-credit-cards",
+      "title": "Chase Visa credit cards list",
+      "kind": "other"
+    }
+  ],
+  "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-chase-united-business-page",
+      "last_verified": "2026-11-15",
+      "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+      "annual_fee": "150.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "united",
+      "category": "flights",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-united-business-page",
+          "last_verified": "2026-11-15",
+          "notes": "United tickets and select United purchases such as upgrades, inflight purchases and fees.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["direct"],
+            "merchants": ["United"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "everything-else",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-united-business-page",
+          "last_verified": "2026-11-15",
+          "notes": "All other purchases; other bonus categories were not captured.",
+          "rate": "1",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "id": "instacart",
+      "name": "Instacart credit",
+      "category": "food_delivery",
+      "delivery": "in_app",
+      "enrollment": "unknown",
+      "match": {
+        "keywords": []
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-united-business-page",
+          "last_verified": "2026-11-15",
+          "notes": "A $10 Instacart credit each month for purchases made directly through Instacart.",
+          "amount": "10.00",
+          "period": "monthly",
+          "reset_basis": "calendar",
+          "period_boundaries": "inferred",
+          "max_posting_lag_days": null
+        }
+      ]
+    }
+  ]
+}

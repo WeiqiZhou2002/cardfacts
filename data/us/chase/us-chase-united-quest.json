@@ -1,0 +1,184 @@
+{
+  "id": "us-chase-united-quest",
+  "issuer": "Chase",
+  "name": "United Quest Card",
+  "country": "US",
+  "currency": "USD",
+  "networks": {
+    "values": ["visa"],
+    "status": "verified",
+    "source": "us-chase-united-quest-visa-list",
+    "last_verified": "2026-11-15",
+    "notes": "Listed on Chase's Visa credit cards page."
+  },
+  "audience": "personal",
+  "availability": "open",
+  "rewards": {
+    "program": "united-mileageplus",
+    "unit": "miles"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-chase-united-quest-page",
+      "url": "https://creditcards.chase.com/travel-credit-cards/united/united-quest",
+      "title": "United Quest Card product page",
+      "accessed": "2026-11-15"
+    },
+    {
+      "accessed": "2026-11-15",
+      "id": "us-chase-united-quest-visa-list",
+      "url": "https://creditcards.chase.com/visa-credit-cards",
+      "title": "Chase Visa credit cards list",
+      "kind": "other"
+    }
+  ],
+  "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-chase-united-quest-page",
+      "last_verified": "2026-11-15",
+      "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+      "annual_fee": "350.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "united",
+      "category": "flights",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-united-quest-page",
+          "last_verified": "2026-11-15",
+          "notes": "Eligible United purchases. Card earning only; MileagePlus member earning on United fares is not included.",
+          "rate": "4",
+          "conditions": {
+            "channels": ["direct"],
+            "merchants": ["United"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "renowned-hotels",
+      "category": "hotels",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-united-quest-page",
+          "last_verified": "2026-11-15",
+          "notes": "Hotel stays prepaid directly through Renowned Hotels and Resorts.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["any"],
+            "merchants": ["Renowned Hotels and Resorts for United Cardmembers"],
+            "prepaid": true
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "travel",
+      "category": "travel",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-united-quest-page",
+          "last_verified": "2026-11-15",
+          "notes": "Other travel, including airfare, trains, transit, cruises, hotels, car rentals, taxis, rideshare and tolls.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "dining",
+      "category": "dining",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-united-quest-page",
+          "last_verified": "2026-11-15",
+          "notes": "Dining, including eligible delivery services.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "streaming",
+      "category": "streaming",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-united-quest-page",
+          "last_verified": "2026-11-15",
+          "notes": "Select streaming services.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "everything-else",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-united-quest-page",
+          "last_verified": "2026-11-15",
+          "notes": "All other purchases.",
+          "rate": "1",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": []
+}

@@ -22,9 +22,9 @@ const catalog = await loadCatalog(root);
 const card = (id: string) => catalog.cards.find((c) => c.id === id)!;
 const latest = (id: string) => revisionAt(catalog.revisions, id)!;
 
-test("catalog has 20 personal and 10 business cards, each fully preserved in a latest snapshot", () => {
-  assert.equal(catalog.cards.filter((c) => c.audience === "personal").length, 20);
-  assert.equal(catalog.cards.filter((c) => c.audience === "business").length, 10);
+test("catalog has 92 personal and 30 business cards, each fully preserved in a latest snapshot", () => {
+  assert.equal(catalog.cards.filter((c) => c.audience === "personal").length, 92);
+  assert.equal(catalog.cards.filter((c) => c.audience === "business").length, 30);
   for (const product of catalog.cards) assert.deepEqual(latest(product.id).product, product);
 });
 

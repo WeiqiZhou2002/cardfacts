@@ -41,8 +41,44 @@
       "name": "U.S. Bank",
       "domains": ["usbank.com"],
       "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
+    },
+    {
+      "id": "barclays",
+      "name": "Barclays",
+      "domains": ["barclaycardus.com"],
+      "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
+    },
+    {
+      "id": "bank-of-america",
+      "name": "Bank of America",
+      "domains": ["bankofamerica.com"],
+      "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
+    },
+    {
+      "id": "bilt",
+      "name": "Bilt",
+      "domains": ["bilt.com"],
+      "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
+    },
+    {
+      "id": "apple",
+      "name": "Apple",
+      "domains": ["apple.com"],
+      "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
     }
   ],
-  "manual_only": ["amex", "chase", "capital-one", "citi", "wells-fargo", "discover", "us-bank"],
+  "manual_only": [
+    "amex",
+    "chase",
+    "capital-one",
+    "citi",
+    "wells-fargo",
+    "discover",
+    "us-bank",
+    "barclays",
+    "bank-of-america",
+    "bilt",
+    "apple"
+  ],
   "user_agent": "CardFacts/0.1 (+https://github.com/WeiqiZhou2002/cardfacts)"
 }

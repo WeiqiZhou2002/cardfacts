@@ -1,0 +1,235 @@
+{
+  "format_version": 1,
+  "id": "20261116T231902Z-da8941ee0bff",
+  "product_id": "us-us-bank-altitude-connect",
+  "recorded_at": "2026-11-16T23:19:02Z",
+  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-16).",
+  "content_sha256": "da8941ee0bffed4dc2fd2c03c1a32245bc84ba37ab8eefac77bd5e1d62304cbf",
+  "product": {
+    "id": "us-us-bank-altitude-connect",
+    "issuer": "U.S. Bank",
+    "name": "U.S. Bank Altitude Connect Visa Signature Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["visa"],
+      "status": "verified",
+      "source": "us-us-bank-altitude-connect-page",
+      "last_verified": "2026-11-16",
+      "notes": "The product name on the issuer page names Visa."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "us-bank-altitude",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-us-bank-altitude-connect-page",
+        "url": "https://www.usbank.com/credit-cards/altitude-connect-visa-signature-credit-card.html",
+        "title": "U.S. Bank Altitude Connect Visa Signature Card product page",
+        "accessed": "2026-11-16"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-us-bank-altitude-connect-page",
+        "last_verified": "2026-11-16",
+        "notes": "No annual fee.",
+        "annual_fee": "0.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "travel-center",
+        "category": "travel",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-altitude-connect-page",
+            "last_verified": "2026-11-16",
+            "notes": "Prepaid hotels and car rentals booked directly in the U.S. Bank Travel Center.",
+            "rate": "5",
+            "conditions": {
+              "channels": ["issuer_portal"],
+              "prepaid": true
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "travel",
+        "category": "travel",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-altitude-connect-page",
+            "last_verified": "2026-11-16",
+            "notes": "Travel.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "gas",
+        "category": "gas",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-altitude-connect-page",
+            "last_verified": "2026-11-16",
+            "notes": "Gas stations; 4X on the first $1,000 each quarter, shared with EV charging.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": {
+              "amount": "1000.00",
+              "period": "quarterly",
+              "reset_basis": "calendar",
+              "rate_after_cap": "1",
+              "shared_with": ["ev-charging"]
+            }
+          }
+        ]
+      },
+      {
+        "id": "ev-charging",
+        "category": "ev_charging",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-altitude-connect-page",
+            "last_verified": "2026-11-16",
+            "notes": "EV charging stations; 4X on the first $1,000 each quarter, shared with gas.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": {
+              "amount": "1000.00",
+              "period": "quarterly",
+              "reset_basis": "calendar",
+              "rate_after_cap": "1",
+              "shared_with": ["gas"]
+            }
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-altitude-connect-page",
+            "last_verified": "2026-11-16",
+            "notes": "Dining.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "streaming",
+        "category": "streaming",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-altitude-connect-page",
+            "last_verified": "2026-11-16",
+            "notes": "Streaming services.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "groceries",
+        "category": "groceries",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-altitude-connect-page",
+            "last_verified": "2026-11-16",
+            "notes": "Grocery stores.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-us-bank-altitude-connect-page",
+            "last_verified": "2026-11-16",
+            "notes": "All other eligible purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "format_version": 1,
+  "id": "20261116T231707Z-d1614d06f661",
+  "product_id": "us-chase-southwest-performance-business",
+  "recorded_at": "2026-11-16T23:17:07Z",
+  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-15/16).",
+  "content_sha256": "d1614d06f661a9a6dca09e8d7744cae9baf5d197dbc5743c8a1345a893f0123d",
+  "product": {
+    "id": "us-chase-southwest-performance-business",
+    "issuer": "Chase",
+    "name": "Southwest Rapid Rewards Performance Business Credit Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["visa"],
+      "status": "verified",
+      "source": "us-chase-southwest-performance-business-visa-list",
+      "last_verified": "2026-11-15",
+      "notes": "Listed on Chase's Visa credit cards page."
+    },
+    "audience": "business",
+    "availability": "open",
+    "rewards": {
+      "program": "southwest-rapid-rewards",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-chase-southwest-performance-business-page",
+        "url": "https://creditcards.chase.com/business-credit-cards/southwest/performance-business",
+        "title": "Southwest Rapid Rewards Performance Business Credit Card product page",
+        "accessed": "2026-11-15"
+      },
+      {
+        "accessed": "2026-11-15",
+        "id": "us-chase-southwest-performance-business-visa-list",
+        "url": "https://creditcards.chase.com/visa-credit-cards",
+        "title": "Chase Visa credit cards list",
+        "kind": "other"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-chase-southwest-performance-business-page",
+        "last_verified": "2026-11-15",
+        "notes": "Annual fee billed on the first statement.",
+        "annual_fee": "299.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "southwest",
+        "category": "flights",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-southwest-performance-business-page",
+            "last_verified": "2026-11-15",
+            "notes": "Purchases made directly with Southwest, including flights, inflight, gift cards and Getaways packages.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["direct"],
+              "merchants": ["Southwest Airlines"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "gas",
+        "category": "gas",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-southwest-performance-business-page",
+            "last_verified": "2026-11-15",
+            "notes": "Gas stations.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-southwest-performance-business-page",
+            "last_verified": "2026-11-15",
+            "notes": "Restaurants.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "hotels",
+        "category": "hotels",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-southwest-performance-business-page",
+            "last_verified": "2026-11-15",
+            "notes": "Hotels booked directly with the hotel.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["direct"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "transit",
+        "category": "transit",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-southwest-performance-business-page",
+            "last_verified": "2026-11-15",
+            "notes": "Local transit and commuting.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-chase-southwest-performance-business-page",
+            "last_verified": "2026-11-15",
+            "notes": "All other purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

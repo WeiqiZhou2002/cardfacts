@@ -1,0 +1,231 @@
+{
+  "format_version": 1,
+  "id": "20261116T231707Z-c13da6c1afdc",
+  "product_id": "us-citi-aadvantage-executive",
+  "recorded_at": "2026-11-16T23:17:07Z",
+  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-15/16).",
+  "content_sha256": "c13da6c1afdc0200779509c8c0d4b63b6631999ee74fc0817d5e5c0f29a1137c",
+  "product": {
+    "id": "us-citi-aadvantage-executive",
+    "issuer": "Citi",
+    "name": "Citi / AAdvantage Executive World Legend Mastercard",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["mastercard"],
+      "status": "verified",
+      "source": "us-citi-aadvantage-executive-page",
+      "last_verified": "2026-11-15",
+      "notes": "The product name on the issuer page names Mastercard."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "aadvantage",
+      "unit": "miles"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-citi-aadvantage-executive-page",
+        "url": "https://www.citi.com/credit-cards/citi-aadvantage-executive-world-legend-mastercard",
+        "title": "Citi / AAdvantage Executive World Legend Mastercard product page",
+        "accessed": "2026-11-15"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "to_verify",
+        "source": "us-citi-aadvantage-executive-page",
+        "last_verified": "2026-11-15",
+        "notes": "The issuer page fills the annual fee in dynamically and it was not captured.",
+        "annual_fee": null,
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "american-airlines",
+        "category": "flights",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-citi-aadvantage-executive-page",
+            "last_verified": "2026-11-15",
+            "notes": "Eligible American Airlines purchases.",
+            "rate": "4",
+            "conditions": {
+              "channels": ["direct"],
+              "merchants": ["American Airlines"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "aadvantage-hotels",
+        "category": "hotels",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-citi-aadvantage-executive-page",
+            "last_verified": "2026-11-15",
+            "notes": "Eligible hotels booked through aadvantagehotels.com.",
+            "rate": "12",
+            "conditions": {
+              "channels": ["issuer_portal"],
+              "merchants": ["AAdvantage Hotels"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-citi-aadvantage-executive-page",
+            "last_verified": "2026-11-15",
+            "notes": "All other purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": [
+      {
+        "id": "aa-vacations",
+        "name": "American Airlines Vacations credit",
+        "category": "travel",
+        "family": "travel",
+        "delivery": "statement_credit",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": ["American Airlines Vacations credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-citi-aadvantage-executive-page",
+            "last_verified": "2026-11-15",
+            "notes": "Up to $500 each calendar year on eligible American Airlines Vacations packages or experiences.",
+            "amount": "500.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null
+          }
+        ]
+      },
+      {
+        "id": "lyft",
+        "name": "Lyft credit",
+        "category": "rideshare",
+        "delivery": "in_app",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": []
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-citi-aadvantage-executive-page",
+            "last_verified": "2026-11-15",
+            "notes": "A $15 Lyft credit after 3 eligible rides in a calendar month, up to $180 a year.",
+            "amount": "15.00",
+            "period": "monthly",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null
+          }
+        ]
+      },
+      {
+        "id": "avis-budget",
+        "name": "Avis and Budget credit",
+        "category": "travel",
+        "family": "travel",
+        "delivery": "statement_credit",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": ["Avis and Budget credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-citi-aadvantage-executive-page",
+            "last_verified": "2026-11-15",
+            "notes": "Up to $120 each calendar year on eligible prepaid Avis and Budget rentals booked directly.",
+            "amount": "120.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null
+          }
+        ]
+      },
+      {
+        "id": "inflight",
+        "name": "Inflight and Admirals Club purchase credit",
+        "category": "airline_incidental",
+        "delivery": "statement_credit",
+        "enrollment": "unknown",
+        "match": {
+          "keywords": ["Inflight and Admirals Club purchase credit"]
+        },
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-citi-aadvantage-executive-page",
+            "last_verified": "2026-11-15",
+            "notes": "Up to $100 each calendar year on inflight and eligible Admirals Club purchases.",
+            "amount": "100.00",
+            "period": "annual",
+            "reset_basis": "calendar",
+            "period_boundaries": "inferred",
+            "max_posting_lag_days": null
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "id": "us-chase-doordash-rewards",
+  "issuer": "Chase",
+  "name": "DoorDash Rewards Mastercard",
+  "country": "US",
+  "currency": "USD",
+  "networks": {
+    "values": ["mastercard"],
+    "status": "verified",
+    "source": "us-chase-doordash-rewards-mastercard-list",
+    "last_verified": "2026-11-15",
+    "notes": "Listed on Chase's Mastercard credit cards page."
+  },
+  "audience": "personal",
+  "availability": "open",
+  "rewards": {
+    "program": "chase-cash-back",
+    "unit": "cash"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-chase-doordash-rewards-page",
+      "url": "https://creditcards.chase.com/cash-back-credit-cards/doordash",
+      "title": "DoorDash Rewards Mastercard product page",
+      "accessed": "2026-11-15"
+    },
+    {
+      "accessed": "2026-11-15",
+      "id": "us-chase-doordash-rewards-mastercard-list",
+      "url": "https://creditcards.chase.com/mastercard-credit-cards",
+      "title": "Chase Mastercard credit cards list",
+      "kind": "other"
+    }
+  ],
+  "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-chase-doordash-rewards-page",
+      "last_verified": "2026-11-15",
+      "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+      "annual_fee": "0.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "doordash",
+      "category": "dining",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-doordash-rewards-page",
+          "last_verified": "2026-11-15",
+          "notes": "Purchases made directly through DoorDash.",
+          "rate": "4",
+          "conditions": {
+            "channels": ["any"],
+            "merchants": ["DoorDash"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "dining",
+      "category": "dining",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-doordash-rewards-page",
+          "last_verified": "2026-11-15",
+          "notes": "Dining bought directly from a restaurant.",
+          "rate": "3",
+          "conditions": {
+            "channels": ["direct"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "groceries",
+      "category": "groceries",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-doordash-rewards-page",
+          "last_verified": "2026-11-15",
+          "notes": "Grocery stores.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "everything-else",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-chase-doordash-rewards-page",
+          "last_verified": "2026-11-15",
+          "notes": "All other purchases.",
+          "rate": "1",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": []
+}

@@ -25,7 +25,7 @@ async function fixture(run: (directory: string) => Promise<void>) {
 const options = (directory: string) => ({
   mode: "daily" as const,
   asOf,
-  maxSources: 100,
+  maxSources: 1000,
   schedule: { daily: [], rotation_days: 7 },
   readState: (url: string) => readFetchState(directory, url),
 });
@@ -135,7 +135,7 @@ test("manual-only sources are listed only when eligible and never consume the au
     assert.ok(
       actual.manual_due.every((e) => e.products.includes("us-amex-platinum") && e.reason === "daily"),
     );
-    assert.equal(catalog.issuers.manual_only.length, 7);
+    assert.equal(catalog.issuers.manual_only.length, 11);
   }));
 
 test("reverify includes current verified versions checked at least seven days ago", async () =>
