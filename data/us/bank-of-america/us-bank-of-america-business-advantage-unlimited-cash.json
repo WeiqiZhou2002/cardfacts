@@ -1,0 +1,53 @@
+{
+  "id": "us-bank-of-america-business-advantage-unlimited-cash",
+  "issuer": "Bank of America",
+  "name": "Business Advantage Unlimited Cash Rewards Mastercard",
+  "country": "US",
+  "currency": "USD",
+  "networks": {
+    "values": ["mastercard"],
+    "status": "verified",
+    "source": "us-bank-of-america-business-advantage-unlimited-cash-page",
+    "last_verified": "2026-11-17",
+    "notes": "The product name on the issuer page names Mastercard."
+  },
+  "audience": "business",
+  "availability": "open",
+  "rewards": {
+    "program": "bank-of-america-cash-rewards",
+    "unit": "cash"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-bank-of-america-business-advantage-unlimited-cash-page",
+      "url": "https://business.bankofamerica.com/en/credit-cards/business-advantage-unlimited-cash-rewards",
+      "title": "Business Advantage Unlimited Cash Rewards Mastercard product page",
+      "accessed": "2026-11-17"
+    }
+  ],
+  "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Initial entry: the base earning rate was not captured from the issuer page."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-bank-of-america-business-advantage-unlimited-cash-page",
+      "last_verified": "2026-11-17",
+      "notes": "No annual fee.",
+      "annual_fee": "0.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    }
+  ],
+  "earn_rates": [],
+  "credits": []
+}

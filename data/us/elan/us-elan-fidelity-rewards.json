@@ -1,0 +1,74 @@
+{
+  "id": "us-elan-fidelity-rewards",
+  "issuer": "Elan Financial Services",
+  "name": "Fidelity Rewards Visa Signature Card",
+  "country": "US",
+  "currency": "USD",
+  "networks": {
+    "values": ["visa"],
+    "status": "verified",
+    "source": "us-elan-fidelity-rewards-page",
+    "last_verified": "2026-11-17",
+    "notes": "The issuer page says Elan issues the card under a license from Visa U.S.A."
+  },
+  "audience": "personal",
+  "availability": "open",
+  "rewards": {
+    "program": "fidelity-rewards",
+    "unit": "cash"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-elan-fidelity-rewards-page",
+      "url": "https://www.fidelity.com/spend-save/visa-signature-card",
+      "title": "Fidelity Rewards Visa Signature Card product page",
+      "accessed": "2026-11-17"
+    }
+  ],
+  "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-elan-fidelity-rewards-page",
+      "last_verified": "2026-11-17",
+      "notes": "No annual fee and no foreign transaction fees.",
+      "annual_fee": "0.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": "0"
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "everything-else",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-elan-fidelity-rewards-page",
+          "last_verified": "2026-11-17",
+          "notes": "Unlimited 2% cash back when deposited into an eligible Fidelity account.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": []
+}

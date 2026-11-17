@@ -22,7 +22,7 @@ test("static files cover every parameter-free resource and their links resolve",
     const cards = JSON.parse(await readFile(join(out, "cards.json"), "utf8"));
     assert.equal(cards.api_version, 1);
     assert.equal(cards.license, "CC0-1.0");
-    assert.equal(cards.data.count, 122);
+    assert.equal(cards.data.count, 140);
     for (const card of cards.data.cards)
       for (const link of [card.links.self, card.links.terms, card.links.history])
         await assert.doesNotReject(readFile(join(out, link)), link);
@@ -42,8 +42,8 @@ test("static files cover every parameter-free resource and their links resolve",
 });
 
 test("server-only filters select cards by audience, fees, earn and credit categories", () => {
-  assert.equal(ids("cards.json").length, 122);
-  assert.equal(ids("cards.json", "audience=business").length, 30);
+  assert.equal(ids("cards.json").length, 140);
+  assert.equal(ids("cards.json", "audience=business").length, 41);
   assert.ok(ids("cards.json", "issuer=Chase").every((id) => id.startsWith("us-chase-")));
   assert.ok(ids("cards.json", "earn_category=groceries&min_rate=4").includes("us-amex-gold"));
   assert.ok(!ids("cards.json", "earn_category=groceries&min_rate=4&unit=cash").includes("us-amex-gold"));
@@ -139,7 +139,7 @@ test("the server serves the static bytes, query parameters, CORS, ETags and read
       304,
     );
     const business = await (await fetch(`${base}/api/v1/cards.json?audience=business`)).json();
-    assert.equal(business.data.count, 30);
+    assert.equal(business.data.count, 41);
     assert.equal((await fetch(`${base}/api/v1/cards.json?nope=1`)).status, 400);
     assert.equal((await fetch(`${base}/api/v1/cards%2F..%2F..%2Fpackage.json`)).status, 404);
     assert.equal((await fetch(`${base}/elsewhere`)).status, 404);

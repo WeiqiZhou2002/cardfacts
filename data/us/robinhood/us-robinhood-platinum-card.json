@@ -1,0 +1,168 @@
+{
+  "id": "us-robinhood-platinum-card",
+  "issuer": "Robinhood",
+  "name": "Robinhood Platinum Card",
+  "country": "US",
+  "currency": "USD",
+  "networks": {
+    "values": [],
+    "status": "to_verify",
+    "source": "us-robinhood-platinum-card-page",
+    "last_verified": "2026-11-17",
+    "notes": "The cited product page does not name the network."
+  },
+  "audience": "personal",
+  "availability": "open",
+  "rewards": {
+    "program": "robinhood-cash-back",
+    "unit": "cash"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-robinhood-platinum-card-page",
+      "url": "https://robinhood.com/us/en/creditcard/platinum/",
+      "title": "Robinhood Platinum Card product page",
+      "accessed": "2026-11-17"
+    }
+  ],
+  "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-robinhood-platinum-card-page",
+      "last_verified": "2026-11-17",
+      "notes": "$695 annual fee; no foreign transaction fees.",
+      "annual_fee": "695.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": "0"
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "dining",
+      "category": "dining",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-robinhood-platinum-card-page",
+          "last_verified": "2026-11-17",
+          "notes": "Dining.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "app-flights",
+      "category": "flights",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-robinhood-platinum-card-page",
+          "last_verified": "2026-11-17",
+          "notes": "Flights booked in the Robinhood app.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["issuer_portal"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "app-hotels",
+      "category": "hotels",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-robinhood-platinum-card-page",
+          "last_verified": "2026-11-17",
+          "notes": "Hotels booked in the Robinhood app. The base rate on other purchases was not captured.",
+          "rate": "10",
+          "conditions": {
+            "channels": ["issuer_portal"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "id": "flight",
+      "name": "Flight credit",
+      "category": "travel",
+      "family": "travel",
+      "delivery": "statement_credit",
+      "enrollment": "unknown",
+      "match": {
+        "keywords": ["Flight credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-robinhood-platinum-card-page",
+          "last_verified": "2026-11-17",
+          "notes": "A $150 statement credit every six months, $300 a year, for flights booked in the app or directly with the airline.",
+          "amount": "150.00",
+          "period": "semiannual",
+          "reset_basis": "calendar",
+          "period_boundaries": "inferred",
+          "max_posting_lag_days": null
+        }
+      ]
+    },
+    {
+      "id": "dining",
+      "name": "Dining credit",
+      "category": "dining",
+      "delivery": "statement_credit",
+      "enrollment": "unknown",
+      "match": {
+        "keywords": ["Dining credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "to_verify",
+          "source": "us-robinhood-platinum-card-page",
+          "last_verified": "2026-11-17",
+          "notes": "The page lists a $250 annual credit at eligible restaurants, allotted monthly; the monthly amount was not captured.",
+          "amount": null,
+          "period": "annual",
+          "reset_basis": "calendar",
+          "period_boundaries": "inferred",
+          "max_posting_lag_days": null
+        }
+      ]
+    }
+  ]
+}
