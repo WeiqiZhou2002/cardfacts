@@ -32,7 +32,7 @@ const data: SiteData = {
 const query = (q = "") => context(data, "catalog", "zh", new URLSearchParams(q));
 
 test("filters combine audience, units and conditional earn categories without valuing points", () => {
-  assert.equal(filterCards(query()).length, 140);
+  assert.equal(filterCards(query()).length, 144);
   assert.equal(filterCards(query("audience=business")).length, 41);
   const cash = filterCards(query("unit=cash&earn=groceries&min_rate=3"));
   assert.ok(cash.length > 0);
@@ -130,7 +130,7 @@ test("static build is reproducible, contains all bilingual pages, and resolves e
       right = join(tmp, "two");
     const result = await buildSite(root, left, "/cardfacts/");
     await buildSite(root, right, "/cardfacts/");
-    assert.equal(result.pages.length, 290);
+    assert.equal(result.pages.length, 298);
     const files = await readdir(left, { recursive: true, withFileTypes: true });
     for (const entry of files.filter((e) => e.isFile())) {
       const relative = join(entry.parentPath, entry.name).slice(left.length + 1);
@@ -150,7 +150,7 @@ test("static build is reproducible, contains all bilingual pages, and resolves e
       }
     }
     const html = await readFile(join(left, "index.html"), "utf8");
-    assert.equal((html.match(/class="catalog-row"/g) ?? []).length, 140);
+    assert.equal((html.match(/class="catalog-row"/g) ?? []).length, 144);
     const detail = await readFile(join(left, "en/cards/us-capital-one-venture-x/index.html"), "utf8");
     assert.match(detail, /id="history"/);
     assert.match(detail, /id="sources"/);

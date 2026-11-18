@@ -4,7 +4,7 @@ Open, cited, versioned data on US credit cards, personal and business: **annual 
 statement credits**. Every number links to the issuer's own public terms and carries the date it was last
 checked.
 
-> **Status: Phase 4 in progress; draft data.** 140 cards (99 personal, 41 business), effective-dated terms,
+> **Status: Phase 4 in progress; draft data.** 144 cards (103 personal, 41 business), effective-dated terms,
 > full revision snapshots, a bilingual [wiki](https://weiqizhou2002.github.io/cardfacts/) with filters,
 > comparison and a review queue, a [JSON API](docs/api.md), and an intake for agent submissions. The
 > collection agent is not deployed yet. Each data change is published as a `catalog-*` release; all are
@@ -93,5 +93,5 @@ Nothing here is financial advice. Always confirm terms with the issuer before re
 ## 中文简介
 
 CardFacts 是一个开源的美国信用卡数据项目，覆盖个人卡和商业卡的年费、返现/积分倍数和报销类权益。每个数字都引用
-发卡机构的公开条款并记录核实日期；条款改版保留历史版本；未核实的数值不填写。目前有 140 张卡的中英双语网站（已部署在 GitHub Pages）、筛选对比、待复核队列，以及按生效日期／收录版本查看旧内容的历史页面，并提供 JSON API。每次数据变更都会发布一个 `catalog-*` release，目前均为草稿版本；自动收集 agent 尚未部署。设计文档见
+发卡机构的公开条款并记录核实日期；条款改版保留历史版本；未核实的数值不填写。目前有 144 张卡的中英双语网站（已部署在 GitHub Pages）、筛选对比、待复核队列，以及按生效日期／收录版本查看旧内容的历史页面，并提供 JSON API。每次数据变更都会发布一个 `catalog-*` release，目前均为草稿版本；自动收集 agent 尚未部署。设计文档见
 [docs/proposal.zh.md](docs/proposal.zh.md)。

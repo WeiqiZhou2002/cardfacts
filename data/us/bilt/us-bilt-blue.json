@@ -5,11 +5,11 @@
   "country": "US",
   "currency": "USD",
   "networks": {
-    "values": [],
-    "status": "to_verify",
+    "values": ["mastercard"],
+    "status": "verified",
     "source": "us-bilt-blue-page",
-    "last_verified": "2026-11-16",
-    "notes": "The card comparison page does not name the network."
+    "last_verified": "2026-11-17",
+    "notes": "The issuer page says Bilt Cards are issued by Column N.A. under a license from Mastercard."
   },
   "audience": "personal",
   "availability": "open",
@@ -23,10 +23,10 @@
       "id": "us-bilt-blue-page",
       "url": "https://www.bilt.com/card",
       "title": "Bilt card comparison page",
-      "accessed": "2026-11-16"
+      "accessed": "2026-11-17"
     }
   ],
-  "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+  "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed. Bilt Cards are issued by Column N.A. and serviced by Cardless; the catalog lists them under Bilt.",
   "coverage": {
     "fees": "partial",
     "earn_rates": "partial",
