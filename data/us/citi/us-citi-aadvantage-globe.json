@@ -24,6 +24,12 @@
       "url": "https://www.citi.com/credit-cards/citi-aadvantage-globe-mastercard",
       "title": "Citi / AAdvantage Globe Mastercard product page",
       "accessed": "2026-11-15"
+    },
+    {
+      "id": "us-citi-aadvantage-globe-terms",
+      "url": "https://online.citi.com/US/nga/cards/displayterms?app=UNSOL&HKOP=bb2ab4c39c0e68839eadc12dcaf5e6a2222f74277dec27e68cd0e3b4b83d63d6",
+      "title": "Citi / AAdvantage Globe complete terms and conditions",
+      "accessed": "2026-11-17"
     }
   ],
   "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
@@ -37,7 +43,7 @@
     {
       "effective_from": null,
       "effective_from_basis": "unknown",
-      "effective_to": null,
+      "effective_to": "2026-11-16",
       "status": "to_verify",
       "source": "us-citi-aadvantage-globe-page",
       "last_verified": "2026-11-15",
@@ -46,6 +52,19 @@
       "first_year_annual_fee": null,
       "authorized_user_fee": null,
       "foreign_transaction_fee_percent": null
+    },
+    {
+      "effective_from": "2026-11-17",
+      "effective_from_basis": "detected",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-citi-aadvantage-globe-terms",
+      "last_verified": "2026-11-17",
+      "notes": "From the issuer's complete terms and conditions page. No foreign purchase fee.",
+      "annual_fee": "350.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": "0"
     }
   ],
   "earn_rates": [

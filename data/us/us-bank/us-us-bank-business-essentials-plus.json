@@ -5,11 +5,11 @@
   "country": "US",
   "currency": "USD",
   "networks": {
-    "values": [],
-    "status": "to_verify",
+    "values": ["visa"],
+    "status": "verified",
     "source": "us-us-bank-business-essentials-plus-page",
-    "last_verified": "2026-11-16",
-    "notes": "The cited product page does not name the network."
+    "last_verified": "2026-11-17",
+    "notes": "The product page title names the card the Business Essentials Plus Visa Card."
   },
   "audience": "business",
   "availability": "open",
@@ -23,7 +23,7 @@
       "id": "us-us-bank-business-essentials-plus-page",
       "url": "https://www.usbank.com/business-banking/business-credit-cards/business-essentials-plus-credit-card.html",
       "title": "U.S. Bank Business Essentials Plus Credit Card product page",
-      "accessed": "2026-11-16"
+      "accessed": "2026-11-17"
     }
   ],
   "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
@@ -37,12 +37,25 @@
     {
       "effective_from": null,
       "effective_from_basis": "unknown",
-      "effective_to": null,
+      "effective_to": "2026-11-16",
       "status": "to_verify",
       "source": "us-us-bank-business-essentials-plus-page",
       "last_verified": "2026-11-16",
       "notes": "The page mentions both a $295 fee and no annual fee; the applicable terms were not confirmed.",
       "annual_fee": null,
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    },
+    {
+      "effective_from": "2026-11-17",
+      "effective_from_basis": "detected",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-us-bank-business-essentials-plus-page",
+      "last_verified": "2026-11-17",
+      "notes": "The product page states a $295 annual fee.",
+      "annual_fee": "295.00",
       "first_year_annual_fee": null,
       "authorized_user_fee": null,
       "foreign_transaction_fee_percent": null

@@ -1,0 +1,183 @@
+{
+  "format_version": 1,
+  "id": "20261117T212205Z-bcd51a71349b",
+  "product_id": "us-bank-of-america-atmos-rewards-business",
+  "recorded_at": "2026-11-17T21:22:05Z",
+  "reason": "Resolve pending fees, networks or earning from issuer terms and product pages (checked 2026-11-17).",
+  "content_sha256": "bcd51a71349bbb3664f4cc5da672fa9d41307f611014924485781adc3415b5be",
+  "product": {
+    "id": "us-bank-of-america-atmos-rewards-business",
+    "issuer": "Bank of America",
+    "name": "Atmos Rewards Alaska Airlines Business Credit Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["visa"],
+      "status": "verified",
+      "source": "us-bank-of-america-atmos-rewards-business-page",
+      "last_verified": "2026-11-17",
+      "notes": "The product page names the card the Atmos Rewards Visa Signature Business Card."
+    },
+    "audience": "business",
+    "availability": "open",
+    "rewards": {
+      "program": "atmos-rewards",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-bank-of-america-atmos-rewards-business-page",
+        "url": "https://business.bankofamerica.com/en/credit-cards/atmos-rewards",
+        "title": "Atmos Rewards Alaska Airlines Business Credit Card product page",
+        "accessed": "2026-11-17"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer page."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-bank-of-america-atmos-rewards-business-page",
+        "last_verified": "2026-11-17",
+        "notes": "$70 annual fee for the company and $25 per card.",
+        "annual_fee": "70.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": "25.00",
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "alaska-hawaiian",
+        "category": "flights",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-atmos-rewards-business-page",
+            "last_verified": "2026-11-17",
+            "notes": "Eligible Alaska Airlines and Hawaiian Airlines purchases.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["direct"],
+              "merchants": ["Alaska Airlines", "Hawaiian Airlines"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "gas",
+        "category": "gas",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-atmos-rewards-business-page",
+            "last_verified": "2026-11-17",
+            "notes": "Eligible gas.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "ev-charging",
+        "category": "ev_charging",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-atmos-rewards-business-page",
+            "last_verified": "2026-11-17",
+            "notes": "EV charging stations.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "shipping",
+        "category": "shipping",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-atmos-rewards-business-page",
+            "last_verified": "2026-11-17",
+            "notes": "Shipping.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "transit",
+        "category": "transit",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-atmos-rewards-business-page",
+            "last_verified": "2026-11-17",
+            "notes": "Local transit, including rideshare.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-atmos-rewards-business-page",
+            "last_verified": "2026-11-17",
+            "notes": "All other purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

@@ -24,6 +24,12 @@
       "url": "https://www.citi.com/credit-cards/citi-aadvantage-executive-world-legend-mastercard",
       "title": "Citi / AAdvantage Executive World Legend Mastercard product page",
       "accessed": "2026-11-15"
+    },
+    {
+      "id": "us-citi-aadvantage-executive-terms",
+      "url": "https://online.citi.com/US/nga/cards/displayterms?app=UNSOL&HKOP=6d48331fb916f0df172e3a7569d65d9350789ac09df232843c7c82cf0f94cd28",
+      "title": "Citi / AAdvantage Executive complete terms and conditions",
+      "accessed": "2026-11-17"
     }
   ],
   "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
@@ -37,7 +43,7 @@
     {
       "effective_from": null,
       "effective_from_basis": "unknown",
-      "effective_to": null,
+      "effective_to": "2026-11-16",
       "status": "to_verify",
       "source": "us-citi-aadvantage-executive-page",
       "last_verified": "2026-11-15",
@@ -46,6 +52,19 @@
       "first_year_annual_fee": null,
       "authorized_user_fee": null,
       "foreign_transaction_fee_percent": null
+    },
+    {
+      "effective_from": "2026-11-17",
+      "effective_from_basis": "detected",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-citi-aadvantage-executive-terms",
+      "last_verified": "2026-11-17",
+      "notes": "From the issuer's complete terms and conditions page. $175 covers up to 3 authorized users, then $175 for each additional one. No foreign purchase fee.",
+      "annual_fee": "695.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": "175.00",
+      "foreign_transaction_fee_percent": "0"
     }
   ],
   "earn_rates": [

@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — pending values resolved
+
+- Resolve 9 pending annual fees and 19 pending networks from issuer terms pages and product pages, checked 2026-11-17.
+  - Fees: five Citi AAdvantage cards, the Costco Anywhere card, Delta SkyMiles Gold and two U.S. Bank business cards.
+  - Networks: Citi / AAdvantage Business, seven Bank of America cards, seven Barclays cards and four U.S. Bank business cards.
+- Fees use the intake's method: the pending version ends the day before the check, and a verified version starts on the check date with basis `detected`.
+- Add the earning rates for the Atmos Rewards Visa Signature Business Card.
+
 ## Unreleased — Synchrony cards
 
 - Add five cards issued by Synchrony Bank: Synchrony Premier World Mastercard, PayPal Cashback Mastercard, Venmo Visa, Verizon Visa and Sam's Club Mastercard, for 149 in total. Synchrony is registered with its own domain and the partner domains that host the product pages (paypal.com, venmo.com, verizon.com, samsclub.com), and is manual-only.

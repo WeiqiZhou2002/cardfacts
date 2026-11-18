@@ -1,0 +1,108 @@
+{
+  "format_version": 1,
+  "id": "20261117T212205Z-3bfde8b25cc7",
+  "product_id": "us-bank-of-america-business-advantage-customized-cash",
+  "recorded_at": "2026-11-17T21:22:05Z",
+  "reason": "Resolve pending fees, networks or earning from issuer terms and product pages (checked 2026-11-17).",
+  "content_sha256": "3bfde8b25cc7f102e38aea294d26b4ae79c77748a61c6f6d8d8afc934689b704",
+  "product": {
+    "id": "us-bank-of-america-business-advantage-customized-cash",
+    "issuer": "Bank of America",
+    "name": "Business Advantage Customized Cash Rewards Credit Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["mastercard"],
+      "status": "verified",
+      "source": "us-bank-of-america-business-advantage-customized-cash-terms",
+      "last_verified": "2026-11-17",
+      "notes": "The product's terms and conditions say the Mastercard trademark is used by the issuer under license."
+    },
+    "audience": "business",
+    "availability": "open",
+    "rewards": {
+      "program": "bank-of-america-cash-rewards",
+      "unit": "cash"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-bank-of-america-business-advantage-customized-cash-page",
+        "url": "https://business.bankofamerica.com/en/credit-cards/business-advantage-customized-cash-rewards",
+        "title": "Business Advantage Customized Cash Rewards Credit Card product page",
+        "accessed": "2026-11-17"
+      },
+      {
+        "id": "us-bank-of-america-business-advantage-customized-cash-terms",
+        "url": "https://www.bankofamerica.com/smallbusiness/credit-cards/terms-and-conditions/?campaignid=4078728&productoffercode=BS&locale=en_US",
+        "title": "Terms and conditions for Business Advantage Customized Cash Rewards",
+        "accessed": "2026-11-17"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-bank-of-america-business-advantage-customized-cash-page",
+        "last_verified": "2026-11-17",
+        "notes": "No annual fee.",
+        "annual_fee": "0.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-business-advantage-customized-cash-page",
+            "last_verified": "2026-11-17",
+            "notes": "Dining. 3% in the chosen category and 2% on dining apply to the first $50,000 a calendar year in combined purchases, then 1%.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-bank-of-america-business-advantage-customized-cash-page",
+            "last_verified": "2026-11-17",
+            "notes": "All other purchases. The cardholder-chosen 3% category is not structured.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

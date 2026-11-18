@@ -1,0 +1,143 @@
+{
+  "format_version": 1,
+  "id": "20261117T212205Z-aca0f97bed79",
+  "product_id": "us-barclays-jetblue-plus",
+  "recorded_at": "2026-11-17T21:22:05Z",
+  "reason": "Resolve pending fees, networks or earning from issuer terms and product pages (checked 2026-11-17).",
+  "content_sha256": "aca0f97bed790bd64e4640028bb5e301a034fcd76a27ed7369176f4a0ac19648",
+  "product": {
+    "id": "us-barclays-jetblue-plus",
+    "issuer": "Barclays",
+    "name": "JetBlue Plus Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["mastercard"],
+      "status": "verified",
+      "source": "us-barclays-jetblue-plus-page",
+      "last_verified": "2026-11-17",
+      "notes": "The product page says Barclays Bank Delaware issues the card under a license from Mastercard."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "jetblue-trueblue",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-barclays-jetblue-plus-page",
+        "url": "https://cards.barclaycardus.com/banking/cards/jetblue-plus-card/",
+        "title": "JetBlue Plus Card product page",
+        "accessed": "2026-11-17"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-barclays-jetblue-plus-page",
+        "last_verified": "2026-11-16",
+        "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+        "annual_fee": "99.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "jetblue",
+        "category": "flights",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-barclays-jetblue-plus-page",
+            "last_verified": "2026-11-16",
+            "notes": "Eligible JetBlue purchases.",
+            "rate": "6",
+            "conditions": {
+              "channels": ["direct"],
+              "merchants": ["JetBlue"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-barclays-jetblue-plus-page",
+            "last_verified": "2026-11-16",
+            "notes": "Restaurants.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "groceries",
+        "category": "groceries",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-barclays-jetblue-plus-page",
+            "last_verified": "2026-11-16",
+            "notes": "Eligible grocery stores.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-barclays-jetblue-plus-page",
+            "last_verified": "2026-11-16",
+            "notes": "All other purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

@@ -5,11 +5,11 @@
   "country": "US",
   "currency": "USD",
   "networks": {
-    "values": [],
-    "status": "to_verify",
-    "source": "us-bank-of-america-business-advantage-customized-cash-page",
+    "values": ["mastercard"],
+    "status": "verified",
+    "source": "us-bank-of-america-business-advantage-customized-cash-terms",
     "last_verified": "2026-11-17",
-    "notes": "The cited product page does not name the network."
+    "notes": "The product's terms and conditions say the Mastercard trademark is used by the issuer under license."
   },
   "audience": "business",
   "availability": "open",
@@ -23,6 +23,12 @@
       "id": "us-bank-of-america-business-advantage-customized-cash-page",
       "url": "https://business.bankofamerica.com/en/credit-cards/business-advantage-customized-cash-rewards",
       "title": "Business Advantage Customized Cash Rewards Credit Card product page",
+      "accessed": "2026-11-17"
+    },
+    {
+      "id": "us-bank-of-america-business-advantage-customized-cash-terms",
+      "url": "https://www.bankofamerica.com/smallbusiness/credit-cards/terms-and-conditions/?campaignid=4078728&productoffercode=BS&locale=en_US",
+      "title": "Terms and conditions for Business Advantage Customized Cash Rewards",
       "accessed": "2026-11-17"
     }
   ],

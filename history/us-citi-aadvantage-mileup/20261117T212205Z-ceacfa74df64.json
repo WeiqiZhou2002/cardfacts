@@ -1,0 +1,102 @@
+{
+  "format_version": 1,
+  "id": "20261117T212205Z-ceacfa74df64",
+  "product_id": "us-citi-aadvantage-mileup",
+  "recorded_at": "2026-11-17T21:22:05Z",
+  "reason": "Resolve pending fees, networks or earning from issuer terms and product pages (checked 2026-11-17).",
+  "content_sha256": "ceacfa74df64ffac5ac12a525a844d338fe3e1f4247cade24ed24ccd47c3a6e0",
+  "product": {
+    "id": "us-citi-aadvantage-mileup",
+    "issuer": "Citi",
+    "name": "American Airlines AAdvantage MileUp Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": [],
+      "status": "to_verify",
+      "source": "us-citi-aadvantage-mileup-page",
+      "last_verified": "2026-11-15",
+      "notes": "The cited product page does not name the network."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "aadvantage",
+      "unit": "miles"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-citi-aadvantage-mileup-page",
+        "url": "https://www.citi.com/credit-cards/aadvantage-mile-up-credit-card",
+        "title": "American Airlines AAdvantage MileUp Card product page",
+        "accessed": "2026-11-15"
+      },
+      {
+        "id": "us-citi-aadvantage-mileup-terms",
+        "url": "https://online.citi.com/US/nga/cards/displayterms?app=UNSOL&HKOP=c9af21074c2c8dbb2d811448862184e86b1ad9fb462f574eec01f7707ea4f56e",
+        "title": "American Airlines AAdvantage MileUp complete terms and conditions",
+        "accessed": "2026-11-17"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": "2026-11-16",
+        "status": "to_verify",
+        "source": "us-citi-aadvantage-mileup-page",
+        "last_verified": "2026-11-15",
+        "notes": "The issuer page fills the annual fee in dynamically and it was not captured.",
+        "annual_fee": null,
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": null
+      },
+      {
+        "effective_from": "2026-11-17",
+        "effective_from_basis": "detected",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-citi-aadvantage-mileup-terms",
+        "last_verified": "2026-11-17",
+        "notes": "From the issuer's complete terms and conditions page. No annual fee; foreign purchases cost 3% of each transaction.",
+        "annual_fee": "0.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": "3"
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "american-airlines",
+        "category": "flights",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-citi-aadvantage-mileup-page",
+            "last_verified": "2026-11-15",
+            "notes": "Eligible American Airlines purchases; other rates were not captured.",
+            "rate": "2",
+            "conditions": {
+              "channels": ["direct"],
+              "merchants": ["American Airlines"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

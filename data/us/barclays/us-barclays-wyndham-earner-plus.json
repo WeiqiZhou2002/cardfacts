@@ -5,11 +5,11 @@
   "country": "US",
   "currency": "USD",
   "networks": {
-    "values": [],
-    "status": "to_verify",
+    "values": ["visa"],
+    "status": "verified",
     "source": "us-barclays-wyndham-earner-plus-page",
-    "last_verified": "2026-11-16",
-    "notes": "The cited product page does not name the network."
+    "last_verified": "2026-11-17",
+    "notes": "The product page says Barclays Bank Delaware issues the card under a license from Visa."
   },
   "audience": "personal",
   "availability": "open",
@@ -23,7 +23,7 @@
       "id": "us-barclays-wyndham-earner-plus-page",
       "url": "https://cards.barclaycardus.com/banking/cards/wyndham-rewards-earner-plus-card/",
       "title": "Wyndham Rewards Earner Plus Card product page",
-      "accessed": "2026-11-16"
+      "accessed": "2026-11-17"
     }
   ],
   "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
