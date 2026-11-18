@@ -1,0 +1,215 @@
+{
+  "id": "us-capital-one-venture-business",
+  "issuer": "Capital One",
+  "name": "Capital One Venture Business Card",
+  "country": "US",
+  "currency": "USD",
+  "networks": {
+    "values": [],
+    "status": "to_verify",
+    "source": "us-capital-one-venture-business-page",
+    "last_verified": "2026-11-17",
+    "notes": "Capital One says the network varies by account; the product page does not name it."
+  },
+  "audience": "business",
+  "availability": "open",
+  "rewards": {
+    "program": "capital-one-miles",
+    "unit": "miles"
+  },
+  "aliases": [],
+  "sources": [
+    {
+      "id": "us-capital-one-venture-business-page",
+      "url": "https://www.capitalone.com/small-business/credit-cards/venture-business/",
+      "title": "Capital One Venture Business Card product page",
+      "accessed": "2026-11-17"
+    }
+  ],
+  "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+  "coverage": {
+    "fees": "partial",
+    "earn_rates": "partial",
+    "credits": "partial",
+    "notes": "Initial entry from the issuer's product page. Empty credits means none captured, not a guarantee of absence."
+  },
+  "fees": [
+    {
+      "effective_from": null,
+      "effective_from_basis": "unknown",
+      "effective_to": null,
+      "status": "verified",
+      "source": "us-capital-one-venture-business-page",
+      "last_verified": "2026-11-17",
+      "notes": "Standard annual fee; other fee fields are unconfirmed unless populated.",
+      "annual_fee": "95.00",
+      "first_year_annual_fee": null,
+      "authorized_user_fee": null,
+      "foreign_transaction_fee_percent": null
+    }
+  ],
+  "earn_rates": [
+    {
+      "id": "portal-hotels",
+      "category": "hotels",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-capital-one-venture-business-page",
+          "last_verified": "2026-11-17",
+          "notes": "Hotels booked through Capital One Business Travel.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["issuer_portal"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "portal-vacation-rentals",
+      "category": "vacation_rentals",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-capital-one-venture-business-page",
+          "last_verified": "2026-11-17",
+          "notes": "Vacation rentals booked through Capital One Business Travel.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["issuer_portal"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "portal-car-rental",
+      "category": "car_rental",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-capital-one-venture-business-page",
+          "last_verified": "2026-11-17",
+          "notes": "Rental cars booked through Capital One Business Travel.",
+          "rate": "5",
+          "conditions": {
+            "channels": ["issuer_portal"]
+          },
+          "cap": null
+        }
+      ]
+    },
+    {
+      "id": "everything-else",
+      "category": "everything_else",
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-capital-one-venture-business-page",
+          "last_verified": "2026-11-17",
+          "notes": "Unlimited 2X miles on every purchase.",
+          "rate": "2",
+          "conditions": {
+            "channels": ["any"]
+          },
+          "cap": null
+        }
+      ]
+    }
+  ],
+  "credits": [
+    {
+      "id": "advertising-software",
+      "name": "Advertising and software credit",
+      "category": "business_services",
+      "delivery": "statement_credit",
+      "enrollment": "unknown",
+      "match": {
+        "keywords": ["Advertising and software credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-capital-one-venture-business-page",
+          "last_verified": "2026-11-17",
+          "notes": "An annual statement credit of up to $50 for purchases at qualifying advertising or software merchants.",
+          "amount": "50.00",
+          "period": "annual",
+          "reset_basis": "calendar",
+          "period_boundaries": "inferred",
+          "max_posting_lag_days": null
+        }
+      ]
+    },
+    {
+      "id": "business-travel",
+      "name": "Capital One Business Travel credit",
+      "category": "travel",
+      "family": "travel",
+      "delivery": "statement_credit",
+      "enrollment": "unknown",
+      "match": {
+        "keywords": ["Capital One Business Travel credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "to_verify",
+          "source": "us-capital-one-venture-business-page",
+          "last_verified": "2026-11-17",
+          "notes": "The page lists a $50 annual credit for Capital One Business Travel without stating how it is earned or applied.",
+          "amount": null,
+          "period": "annual",
+          "reset_basis": "calendar",
+          "period_boundaries": "inferred",
+          "max_posting_lag_days": null
+        }
+      ]
+    },
+    {
+      "id": "trusted-traveler",
+      "name": "Global Entry or TSA PreCheck credit",
+      "category": "trusted_traveler",
+      "delivery": "statement_credit",
+      "enrollment": "unknown",
+      "match": {
+        "keywords": ["Global Entry or TSA PreCheck credit"]
+      },
+      "versions": [
+        {
+          "effective_from": null,
+          "effective_from_basis": "unknown",
+          "effective_to": null,
+          "status": "verified",
+          "source": "us-capital-one-venture-business-page",
+          "last_verified": "2026-11-17",
+          "notes": "Up to $120 every four years for Global Entry or TSA PreCheck.",
+          "amount": "120.00",
+          "period": "multi_year",
+          "period_years": 4,
+          "reset_basis": "since_last_credit",
+          "period_boundaries": "inferred",
+          "max_posting_lag_days": null
+        }
+      ]
+    }
+  ]
+}

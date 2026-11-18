@@ -135,7 +135,7 @@ test("manual-only sources are listed only when eligible and never consume the au
     assert.ok(
       actual.manual_due.every((e) => e.products.includes("us-amex-platinum") && e.reason === "daily"),
     );
-    assert.equal(catalog.issuers.manual_only.length, 11);
+    assert.equal(catalog.issuers.manual_only.length, 15);
   }));
 
 test("reverify includes current verified versions checked at least seven days ago", async () =>

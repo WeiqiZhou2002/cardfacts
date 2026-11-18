@@ -1,0 +1,61 @@
+{
+  "format_version": 1,
+  "id": "20261117T064546Z-d4be8bca57bb",
+  "product_id": "us-bank-of-america-atmos-rewards-business",
+  "recorded_at": "2026-11-17T06:45:46Z",
+  "reason": "Initial entry from the issuer's product page (catalog expansion, checked 2026-11-17).",
+  "content_sha256": "d4be8bca57bb786352c4d95d39f1233a1906674b9e5d8aa39d01f6ce6408506d",
+  "product": {
+    "id": "us-bank-of-america-atmos-rewards-business",
+    "issuer": "Bank of America",
+    "name": "Atmos Rewards Alaska Airlines Business Credit Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": [],
+      "status": "to_verify",
+      "source": "us-bank-of-america-atmos-rewards-business-page",
+      "last_verified": "2026-11-17",
+      "notes": "The cited product page does not name the network."
+    },
+    "audience": "business",
+    "availability": "open",
+    "rewards": {
+      "program": "atmos-rewards",
+      "unit": "points"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-bank-of-america-atmos-rewards-business-page",
+        "url": "https://business.bankofamerica.com/en/credit-cards/atmos-rewards",
+        "title": "Atmos Rewards Alaska Airlines Business Credit Card product page",
+        "accessed": "2026-11-17"
+      }
+    ],
+    "notes": "General US product terms from the issuer's product page; excludes welcome offers, insurance and account-specific offers. Null optional fees are unconfirmed.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry: the earning rates were not captured from the issuer page."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-bank-of-america-atmos-rewards-business-page",
+        "last_verified": "2026-11-17",
+        "notes": "$70 annual fee for the company and $25 per card.",
+        "annual_fee": "70.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": "25.00",
+        "foreign_transaction_fee_percent": null
+      }
+    ],
+    "earn_rates": [],
+    "credits": []
+  }
+}

@@ -65,6 +65,30 @@
       "name": "Apple",
       "domains": ["apple.com"],
       "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
+    },
+    {
+      "id": "robinhood",
+      "name": "Robinhood",
+      "domains": ["robinhood.com"],
+      "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
+    },
+    {
+      "id": "penfed",
+      "name": "PenFed",
+      "domains": ["penfed.org"],
+      "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
+    },
+    {
+      "id": "elan",
+      "name": "Elan Financial Services",
+      "domains": ["fidelity.com"],
+      "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
+    },
+    {
+      "id": "fnbo",
+      "name": "FNBO",
+      "domains": ["fnbo.com"],
+      "automation_review": "Pending issuer website terms review; manual checks only until reviewed."
     }
   ],
   "manual_only": [
@@ -78,7 +102,11 @@
     "barclays",
     "bank-of-america",
     "bilt",
-    "apple"
+    "apple",
+    "robinhood",
+    "penfed",
+    "elan",
+    "fnbo"
   ],
   "user_agent": "CardFacts/0.1 (+https://github.com/WeiqiZhou2002/cardfacts)"
 }

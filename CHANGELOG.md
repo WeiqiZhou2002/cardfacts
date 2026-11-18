@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased — catalog expansion, second batch
+
+- Add 18 products (7 personal, 11 business), for 140 in total: Amex Delta SkyMiles business cards, Capital One Venture and VentureOne Business, four Bank of America business cards, the Costco Anywhere Visa Business Card, Robinhood Gold and Platinum, three PenFed cards, Fidelity Rewards and two FNBO Evergreen cards. Values come from the issuer's product pages, checked 2026-11-17.
+- New issuers, all manual-only: Robinhood, PenFed, Elan Financial Services (Fidelity Rewards) and FNBO.
+
 ## Unreleased — catalog expansion
 
 - Add 92 products (72 personal, 20 business), including airline, hotel and retail co-brand cards, for 122 in total. Each value is cited to the issuer's own product page, checked 2026-11-15 or 2026-11-16.
