@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased — Synchrony cards
+
+- Add five cards issued by Synchrony Bank: Synchrony Premier World Mastercard, PayPal Cashback Mastercard, Venmo Visa, Verizon Visa and Sam's Club Mastercard, for 149 in total. Synchrony is registered with its own domain and the partner domains that host the product pages (paypal.com, venmo.com, verizon.com, samsclub.com), and is manual-only.
+
 ## Unreleased — First Electronic Bank cards, Bilt network
 
 - Add four cards issued by First Electronic Bank and serviced by Cardless: Qatar Airways Privilege Club Signature and Infinite, and avianca lifemiles American Express and Elite. The issuer is registered with the partner domains that host the product pages (qatarairways.com, lifemiles.com) and cardless.com, and is manual-only.

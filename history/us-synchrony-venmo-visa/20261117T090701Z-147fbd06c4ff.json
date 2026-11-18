@@ -1,0 +1,122 @@
+{
+  "format_version": 1,
+  "id": "20261117T090701Z-147fbd06c4ff",
+  "product_id": "us-synchrony-venmo-visa",
+  "recorded_at": "2026-11-17T09:07:01Z",
+  "reason": "Initial entry from the issuer or partner product page (checked 2026-11-17).",
+  "content_sha256": "147fbd06c4ffa7a24589794c81c55f60c6cf9b89dc80492c49aed7e77fe609f8",
+  "product": {
+    "id": "us-synchrony-venmo-visa",
+    "issuer": "Synchrony",
+    "name": "Venmo Visa Credit Card",
+    "country": "US",
+    "currency": "USD",
+    "networks": {
+      "values": ["visa"],
+      "status": "verified",
+      "source": "us-synchrony-venmo-visa-page",
+      "last_verified": "2026-11-17",
+      "notes": "The page says Synchrony Bank issues the card under a license from Visa USA."
+    },
+    "audience": "personal",
+    "availability": "open",
+    "rewards": {
+      "program": "venmo-cash-back",
+      "unit": "cash"
+    },
+    "aliases": [],
+    "sources": [
+      {
+        "id": "us-synchrony-venmo-visa-page",
+        "url": "https://venmo.com/about/creditcard/",
+        "title": "Venmo Visa Credit Card product page",
+        "accessed": "2026-11-17"
+      }
+    ],
+    "notes": "General US product terms from the issuer or partner product page; the page says Synchrony Bank issues the card. Excludes welcome offers, insurance and account-specific offers.",
+    "coverage": {
+      "fees": "partial",
+      "earn_rates": "partial",
+      "credits": "partial",
+      "notes": "Initial entry. 3% when paying with Venmo and the extra 1% on split purchases depend on how the card is used and are not structured."
+    },
+    "fees": [
+      {
+        "effective_from": null,
+        "effective_from_basis": "unknown",
+        "effective_to": null,
+        "status": "verified",
+        "source": "us-synchrony-venmo-visa-page",
+        "last_verified": "2026-11-17",
+        "notes": "No annual fee and no foreign transaction fee.",
+        "annual_fee": "0.00",
+        "first_year_annual_fee": null,
+        "authorized_user_fee": null,
+        "foreign_transaction_fee_percent": "0"
+      }
+    ],
+    "earn_rates": [
+      {
+        "id": "dining",
+        "category": "dining",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-synchrony-venmo-visa-page",
+            "last_verified": "2026-11-17",
+            "notes": "Dining.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "entertainment",
+        "category": "entertainment",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-synchrony-venmo-visa-page",
+            "last_verified": "2026-11-17",
+            "notes": "Entertainment.",
+            "rate": "3",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      },
+      {
+        "id": "everything-else",
+        "category": "everything_else",
+        "versions": [
+          {
+            "effective_from": null,
+            "effective_from_basis": "unknown",
+            "effective_to": null,
+            "status": "verified",
+            "source": "us-synchrony-venmo-visa-page",
+            "last_verified": "2026-11-17",
+            "notes": "All other purchases.",
+            "rate": "1",
+            "conditions": {
+              "channels": ["any"]
+            },
+            "cap": null
+          }
+        ]
+      }
+    ],
+    "credits": []
+  }
+}

@@ -56,11 +56,11 @@ test(
         );
       }
       await go();
-      await count(144);
+      await count(149);
       await page.locator('[name="audience"]').selectOption("business");
       await count(41);
       await page.locator("[data-reset]").first().click();
-      await count(144);
+      await count(149);
       await page.locator('[name="q"]').fill("gold");
       await count(5);
       await page.locator('[name="earn"]').selectOption("groceries");
@@ -71,13 +71,13 @@ test(
       await page.locator('[name="unit"]').selectOption("cash");
       await count(0);
       await page.locator("[data-reset]").first().click();
-      await count(144);
+      await count(149);
       // Clear a pending search immediately: a detached form must not restore old filters.
       await page.locator('[name="q"]').fill("no-such-card");
       await page.locator("[data-reset]").first().click();
-      await count(144);
+      await count(149);
       await page.waitForTimeout(180);
-      await count(144);
+      await count(149);
       for (let i = 0; i < 4; i++) {
         const checkbox = page.locator("[data-compare]").nth(i);
         const id = await checkbox.getAttribute("data-compare");
@@ -139,7 +139,7 @@ test(
       await go("cards/us-capital-one-venture-x/?asof=2026-02-30");
       assert.match(await page.getByRole("alert").innerText(), /日期无效/);
       await go("review/?review_on=2026-10-28");
-      assert.equal(await page.locator(".review-item").count(), 24);
+      assert.equal(await page.locator(".review-item").count(), 25);
       await page.locator("[name=review_on]").fill("2027-02-01");
       await page.locator("#review-filters button").click();
       assert.ok((await page.locator(".review-item").count()) > 100);
@@ -191,7 +191,7 @@ test(
       const noJS = await browser.newContext({ javaScriptEnabled: false });
       const staticPage = await noJS.newPage();
       await staticPage.goto(base);
-      assert.equal(await staticPage.locator(".catalog-row").count(), 144);
+      assert.equal(await staticPage.locator(".catalog-row").count(), 149);
       await staticPage.goto(base + "cards/us-amex-gold/");
       assert.ok((await staticPage.locator("#credits .credit-item").count()) > 0);
       assert.match(await staticPage.locator("noscript").innerText(), /预生成内容/);
