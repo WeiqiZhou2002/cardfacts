@@ -7,6 +7,7 @@ import { Ajv2020 } from "ajv/dist/2020.js";
 import addFormatsModule from "ajv-formats";
 import type { ValidateFunction } from "ajv";
 import type { Card, Catalog, CreditVersion, Issuer, IssuerConfig, Version } from "./types.js";
+import { creditFeed } from "./credits.js";
 import { loadRevisions } from "./revisions.js";
 
 // ajv-formats is CommonJS; its declared default is exposed differently by NodeNext.
@@ -464,6 +465,18 @@ export async function buildCatalog(catalog: Catalog, directory = join(catalog.ro
     "cards.json": JSON.stringify(payload, null, 2) + "\n",
     "cards.min.json": JSON.stringify(payload) + "\n",
     "history.json": JSON.stringify({ format_version: 1, revisions: catalog.revisions }, null, 2) + "\n",
+    // The same bytes as api/v1/credits.json, so a tracker can pin the feed by release.
+    "credits.json":
+      JSON.stringify(
+        {
+          api_version: 1,
+          catalog_version: catalog.metadata.catalog_version,
+          license: catalog.metadata.license,
+          data: creditFeed(catalog),
+        },
+        null,
+        2,
+      ) + "\n",
   };
   await mkdir(directory, { recursive: true });
   for (const [name, content] of Object.entries(files)) await writeFile(join(directory, name), content);

@@ -2,6 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { loadCatalog, readJson } from "./catalog.js";
 import { compare, isDate, isTimestamp } from "./primitives.js";
+import { CONTRACT, creditCard, creditFeed } from "./credits.js";
 import { stampCatalog } from "./publication.js";
 import type { Stamp } from "./publication.js";
 import { revisionAt, revisionDiff, termsAt } from "./temporal.js";
@@ -20,6 +21,7 @@ export interface ApiContext {
   credit: Category[];
   asOf: string;
   schemas: Record<string, unknown>;
+  vectors: unknown;
 }
 export interface ApiResult {
   status: number;
@@ -38,6 +40,7 @@ export async function apiContext(root: string, stamp: Stamp = {}): Promise<ApiCo
     schemas: Object.fromEntries(
       await Promise.all(SCHEMAS.map(async (s) => [s, await readJson(join(root, `schema/${s}.schema.json`))])),
     ),
+    vectors: await readJson(join(root, "vectors/credit-progress.json")),
   };
 }
 const envelope = (ctx: ApiContext, data: unknown) => ({
@@ -102,6 +105,7 @@ function summary(card: Card, asOf: string) {
       self: `cards/${card.id}.json`,
       terms: `cards/${card.id}/terms.json`,
       history: `cards/${card.id}/history.json`,
+      credits: `cards/${card.id}/credits.json`,
       wiki: `${WIKI}cards/${card.id}/`,
     },
   };
@@ -126,6 +130,7 @@ const PARAMS: Record<string, string[]> = {
   terms: ["as_of", "recorded_at"],
   category: ["as_of"],
   diff: ["from", "to"],
+  credits: ["ids", "issuer"],
 };
 function checkQuery(query: URLSearchParams, allowed: string[] = []): ApiResult | null {
   for (const key of new Set(query.keys())) {
@@ -262,6 +267,8 @@ export function handle(ctx: ApiContext, path: string, query = new URLSearchParam
   if (path === "" || path === "index.json") return route() ?? ok(ctx, index(ctx));
   if (path === "openapi.json") return route() ?? { status: 200, body: openapi() };
   if (path === "cards.json") return route(PARAMS.cards) ?? listCards(ctx, query);
+  if (path === "credits.json") return route(PARAMS.credits) ?? listCredits(ctx, query);
+  if (path === "credits/vectors.json") return route() ?? ok(ctx, ctx.vectors);
   if (path === "issuers.json")
     return (
       route() ??
@@ -303,13 +310,14 @@ export function handle(ctx: ApiContext, path: string, query = new URLSearchParam
   if ((m = /^schema\/([a-z]+)\.schema\.json$/.exec(path)) && SCHEMAS.includes(m[1]!))
     return route() ?? { status: 200, body: ctx.schemas[m[1]!] };
   m =
-    /^cards\/([a-z0-9]+(?:-[a-z0-9]+)*)(\.json|\/terms\.json|\/history\.json|\/diff\.json|\/revisions\/([0-9TZ]+-[a-f0-9]{12})\.json)$/.exec(
+    /^cards\/([a-z0-9]+(?:-[a-z0-9]+)*)(\.json|\/terms\.json|\/history\.json|\/credits\.json|\/diff\.json|\/revisions\/([0-9TZ]+-[a-f0-9]{12})\.json)$/.exec(
       path,
     );
   if (!m) return fail(404, "not_found", `No API resource at "${path}". See index.json.`);
   const card = ctx.catalog.cards.find((c) => c.id === m![1]);
   if (!card) return fail(404, "not_found", `Unknown card "${m[1]}".`);
   if (m[2] === ".json") return route() ?? ok(ctx, card);
+  if (m[2] === "/credits.json") return route() ?? ok(ctx, { contract: CONTRACT, card: creditCard(card) });
   if (m[2] === "/history.json")
     return (
       route() ??
@@ -347,6 +355,21 @@ export function handle(ctx: ApiContext, path: string, query = new URLSearchParam
   return ok(ctx, revisionDiff(before, after));
 }
 
+// The tracker feed. Filters only choose cards; a listed card always carries all of its credits.
+function listCredits(ctx: ApiContext, query: URLSearchParams): ApiResult {
+  const ids = query.get("ids");
+  const wanted = ids === null ? null : ids.split(",").filter(Boolean);
+  if (wanted && (wanted.length === 0 || wanted.some((id) => !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id))))
+    return fail(400, "invalid_ids", "ids must be a comma-separated list of card ids.");
+  const unknown = wanted?.filter((id) => !ctx.catalog.cards.some((c) => c.id === id)) ?? [];
+  if (unknown.length) return fail(404, "not_found", `Unknown card "${unknown[0]}".`);
+  const issuer = query.get("issuer");
+  const cards = ctx.catalog.cards.filter(
+    (c) => (!wanted || wanted.includes(c.id)) && (issuer === null || c.issuer === issuer),
+  );
+  return ok(ctx, creditFeed(ctx.catalog, cards));
+}
+
 function index(ctx: ApiContext) {
   return {
     description: "Open, cited, versioned data on US credit cards. Paths are relative to this API root.",
@@ -357,6 +380,9 @@ function index(ctx: ApiContext) {
       card: "cards/{id}.json",
       terms: "cards/{id}/terms.json",
       history: "cards/{id}/history.json",
+      card_credits: "cards/{id}/credits.json",
+      credits: "credits.json",
+      credit_vectors: "credits/vectors.json",
       revision: "cards/{id}/revisions/{revision_id}.json",
       diff: "cards/{id}/diff.json?from={revision_id}&to={revision_id} (server only)",
       issuers: "issuers.json",
@@ -383,6 +409,8 @@ export function staticPaths(ctx: ApiContext) {
     "cards.json",
     "issuers.json",
     "categories.json",
+    "credits.json",
+    "credits/vectors.json",
     ...ctx.earn.map((c) => `categories/earn/${c.id}.json`),
     ...ctx.credit.map((c) => `categories/credits/${c.id}.json`),
     ...SCHEMAS.map((s) => `schema/${s}.schema.json`),
@@ -390,6 +418,7 @@ export function staticPaths(ctx: ApiContext) {
       `cards/${card.id}.json`,
       `cards/${card.id}/terms.json`,
       `cards/${card.id}/history.json`,
+      `cards/${card.id}/credits.json`,
       ...ctx.catalog.revisions
         .filter((r) => r.product_id === card.id)
         .map((r) => `cards/${card.id}/revisions/${r.id}.json`),
@@ -526,6 +555,24 @@ function openapi() {
           param("to", "Later revision id.", text, "query", true),
         ],
         "JSON-pointer paths with before and after values.",
+      ),
+      "/credits.json": get(
+        "Statement credits for reimbursement trackers, every version, in the credit progress contract shape",
+        [
+          param("ids", "Comma-separated card ids, for the cards a person holds (server only)."),
+          param("issuer", "Exact issuer name (server only)."),
+        ],
+        "Contract reference and cards with credits, each version with a tracking verdict.",
+      ),
+      "/cards/{id}/credits.json": get(
+        "One card's credits for a tracker",
+        [id],
+        "Contract reference and the card's credits; empty when the card has none.",
+      ),
+      "/credits/vectors.json": get(
+        "Credit progress test vectors",
+        [],
+        "The vectors an implementation of the credit progress contract must reproduce.",
       ),
       "/issuers.json": get("Issuers and their cards", [], "Issuers."),
       "/categories.json": get("Earn and credit categories with card counts", [], "Categories."),

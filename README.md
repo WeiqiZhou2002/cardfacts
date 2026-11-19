@@ -43,6 +43,7 @@ aims to be the shared, machine-readable source with a clear trail back to the is
 | [docs/tooling.md](docs/tooling.md)                                                 | Setup, commands, fetching and local state           |
 | [docs/phase-1-migration.md](docs/phase-1-migration.md)                             | Migration checks and evidence limitations           |
 | [docs/proposal.zh.md](docs/proposal.zh.md)                                         | Original proposal and roadmap (Chinese)             |
+| [docs/credits-api.md](docs/credits-api.md)                                         | Credit feed for reimbursement trackers              |
 | [docs/credit-progress.md](docs/credit-progress.md)                                 | Consumer matching and progress contract             |
 | [vectors/credit-progress.json](vectors/credit-progress.json)                       | 23 unchanged synthetic conformance vectors          |
 | [.claude/skills/card-catalog-maintainer/](.claude/skills/card-catalog-maintainer/) | Future maintenance-agent workflow                   |
