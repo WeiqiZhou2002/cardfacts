@@ -238,12 +238,14 @@ test("build is reproducible, preserves source data, and hashes exact output byte
     const min = await readFile(join(directory, "cards.min.json"), "utf8");
     const sums = await readFile(join(directory, "SHA256SUMS"), "utf8");
     const history = await readFile(join(directory, "history.json"), "utf8");
+    const credits = await readFile(join(directory, "credits.json"), "utf8");
     assert.deepEqual(JSON.parse(first), JSON.parse(min));
+    assert.equal(JSON.parse(credits).catalog_version, catalog.metadata.catalog_version);
     assert.deepEqual(JSON.parse(first).products, catalog.cards);
     assert.deepEqual(JSON.parse(history).revisions, catalog.revisions);
     assert.equal(
       sums,
-      `${sha256(first)}  cards.json\n${sha256(min)}  cards.min.json\n${sha256(history)}  history.json\n`,
+      `${sha256(first)}  cards.json\n${sha256(min)}  cards.min.json\n${sha256(history)}  history.json\n${sha256(credits)}  credits.json\n`,
     );
     await buildCatalog(catalog, directory);
     assert.equal(await readFile(join(directory, "cards.json"), "utf8"), first);

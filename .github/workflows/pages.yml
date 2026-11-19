@@ -57,6 +57,7 @@ jobs:
             dist/site/data/cards.json
             dist/site/data/cards.min.json
             dist/site/data/history.json
+            dist/site/data/credits.json
             dist/site/data/SHA256SUMS
   deploy:
     needs: build

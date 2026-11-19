@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — credits API for reimbursement trackers
+
+- Add `credits.json`, `cards/{id}/credits.json` and `credits/vectors.json` to the API. The feed lists every card with credits, each credit in the credit progress contract's shape with all of its versions, and a `tracking` verdict per version that says whether the contract's rules can compute it. The self-hosted server filters it by `ids` and `issuer`.
+- Catalog releases also carry `credits.json`, byte for byte the static file, listed in `SHA256SUMS`.
+- Card summaries link to the card's credits. Documented in `docs/credits-api.md`.
+
 ## Unreleased — pending values resolved
 
 - Resolve 9 pending annual fees and 19 pending networks from issuer terms pages and product pages, checked 2026-11-17.

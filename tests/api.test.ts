@@ -7,6 +7,7 @@ import { join, resolve } from "node:path";
 import test from "node:test";
 import { apiContext, handle, serialize, staticPaths, writeStaticApi } from "../scripts/lib/api.js";
 import { apiServer } from "../scripts/lib/api-server.js";
+import { buildCatalog } from "../scripts/lib/catalog.js";
 
 const ctx = await apiContext(resolve(import.meta.dirname, ".."));
 type Body = { data: Record<string, unknown> & { cards: { id: string }[]; count: number } };
@@ -215,4 +216,68 @@ test("card summaries list benefit guides by the issuer's URL", () => {
       .filter((c) => c.id !== flex.id)
       .every((c) => !c.benefit_guides.some((g) => (g as { source: string }).source === guide.id)),
   );
+});
+
+test("the credit feed carries every version in the contract shape with a tracking verdict", async () => {
+  type Version = Record<string, unknown> & { tracking: { supported: boolean; reasons: string[] } };
+  type Credit = Record<string, unknown> & { id: string; delivery: string; versions: Version[] };
+  type FeedCard = { id: string; sources: { id: string }[]; credits: Credit[]; links: { credits: string } };
+  const feed = (query = "") =>
+    (
+      get("credits.json", query).body as {
+        data: { contract: { format_version: number }; count: number; cards: FeedCard[] };
+      }
+    ).data;
+  const all = feed();
+  assert.equal(all.contract.format_version, 1);
+  assert.equal(all.count, ctx.catalog.cards.filter((c) => c.credits.length).length);
+  for (const card of all.cards) {
+    const record = ctx.catalog.cards.find((c) => c.id === card.id)!;
+    for (const credit of card.credits) {
+      const { versions, ...rest } = credit;
+      const original = record.credits.find((c) => c.id === credit.id)!;
+      const { versions: originalVersions, ...originalRest } = original;
+      assert.deepEqual(rest, originalRest);
+      assert.deepEqual(
+        versions.map(({ tracking: _tracking, ...v }) => v),
+        originalVersions,
+      );
+      for (const v of versions) {
+        assert.ok(
+          card.sources.some((s) => s.id === v.source),
+          `${card.id} ${String(v.source)}`,
+        );
+        assert.equal(v.tracking.supported, v.tracking.reasons.length === 0);
+        if (credit.delivery !== "statement_credit")
+          assert.ok(v.tracking.reasons.includes("not_statement_credit"));
+      }
+    }
+    assert.equal(get(card.links.credits).status, 200);
+  }
+  const gold = all.cards.find((c) => c.id === "us-amex-gold")!;
+  assert.equal(gold.credits.find((c) => c.id === "dining")!.versions[0]!.tracking.supported, true);
+  const uber = gold.credits.find((c) => c.delivery === "issuer_wallet")!;
+  assert.deepEqual(uber.versions[0]!.tracking.reasons, ["not_statement_credit"]);
+  assert.deepEqual(
+    feed("ids=us-chase-sapphire-reserve,us-amex-gold").cards.map((c) => c.id),
+    ["us-amex-gold", "us-chase-sapphire-reserve"],
+  );
+  assert.ok(feed("issuer=Chase").cards.every((c) => c.id.startsWith("us-chase-")));
+  assert.equal(feed("ids=us-citi-double-cash").count, 0, "cards without credits are left out");
+  assert.equal(get("credits.json", "ids=us-nope").status, 404);
+  assert.equal(get("credits.json", "ids=,").status, 400);
+  const empty = get("cards/us-citi-double-cash/credits.json").body as {
+    data: { card: { credits: unknown[] } };
+  };
+  assert.deepEqual(empty.data.card.credits, []);
+  const vectors = get("credits/vectors.json").body as { data: { format: string; vectors: unknown[] } };
+  assert.equal(vectors.data.format, "card-benefit-progress-vectors");
+  assert.equal(vectors.data.vectors.length, 23);
+  const out = await mkdtemp(join(tmpdir(), "cardfacts-credits-"));
+  try {
+    await buildCatalog(ctx.catalog, out);
+    assert.equal(await readFile(join(out, "credits.json"), "utf8"), serialize(get("credits.json").body));
+  } finally {
+    await rm(out, { recursive: true, force: true });
+  }
 });
